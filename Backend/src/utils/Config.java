@@ -17,7 +17,7 @@ public class Config {
 
     private Config() {
         try {
-            String contents = new String(Files.readAllBytes(Paths.get("config.json")));
+            String contents = new String(Files.readAllBytes(Paths.get("supporting-files/config.json")));
             data =  new Gson().fromJson(contents, JsonObject.class);
         } catch (IOException e) {
             e.printStackTrace();
