@@ -17,7 +17,7 @@ public class Session extends DBObject {
     public final String SESSION_TOKEN;
 
     @Expose
-    public final Timestamp CREATION_DATE;
+    public Timestamp CREATION_DATE;
 
     private int role = -1;
 
@@ -25,6 +25,11 @@ public class Session extends DBObject {
         this.ACCOUNT_ID = ACCOUNT_ID;
         this.SESSION_TOKEN = SESSION_TOKEN;
         this.CREATION_DATE = CREATION_DATE;
+    }
+
+    public Session(String ACCOUNT_ID, String SESSION_TOKEN) {
+        this.ACCOUNT_ID = ACCOUNT_ID;
+        this.SESSION_TOKEN = SESSION_TOKEN;
     }
 
     void setRole(int role) {

@@ -16,6 +16,4 @@ public class MedicalEvent extends DBObject {
     @Expose
     private int typeCode;
 
-
-
 }

@@ -16,10 +16,12 @@ public interface RESTRoute extends Route {
     @Override
     default Object handle(Request request, Response response) throws Exception{
         response.header("Content-Type","application/json");
-        return handle(request,response,new Gson().fromJson(request.body(), JsonObject.class));
+        JsonObject o = new Gson().fromJson(request.body(), JsonObject.class);
+
+        return handle(request,response,o,extractFromBody(o));
     }
 
-    Object handle(Request request, Response response, JsonObject body) throws Exception;
+    Object handle(Request request, Response response, JsonObject body, Session session) throws Exception;
 
     default Session extractFromBody(JsonObject body){
         try {
