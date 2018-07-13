@@ -1,0 +1,13 @@
+{
+  "port" : 8080,
+  "user" : {
+    "max_allowed_sessions" : 5,
+    "session_time_out" : -1
+  },
+  "db" : {
+    "location" : "jdbc:sqlserver://minitour.mooo.com",
+    "database" : "Hospital2018",
+    "username" : "sa",
+    "password" : ""
+  }
+}
