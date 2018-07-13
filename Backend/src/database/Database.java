@@ -12,9 +12,10 @@ import static utils.Config.config;
  */
 public class Database implements AutoCloseable {
 
-    final static int USERNAME = config.get("user").getAsJsonObject().get("max_allowed_sessions").getAsInt();
-    final static long PASSWORD = config.get("user").getAsJsonObject().get("session_time_out").getAsInt();
-    final static String DB_LOCATION = config.get("db").getAsJsonObject().get("access_file_location").getAsString();
+    final static String USERNAME = config.get("db").getAsJsonObject().get("username").getAsString();
+    final static String PASSWORD = config.get("db").getAsJsonObject().get("password").getAsString();
+    final static String DB_LOCATION = config.get("db").getAsJsonObject().get("location").getAsString();
+    final static String DATABASE_NAME = config.get("db").getAsJsonObject().get("database").getAsString();
 
     private Connection connection;
 
@@ -24,18 +25,17 @@ public class Database implements AutoCloseable {
             connection.close();
     }
 
-    Database() throws SQLException {
-        try { 
+    public Database() throws SQLException {
+        try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
-                 connection = DriverManager.getConnection(
-                        "jdbc:sqlserver://minitour.mooo.com;databaseName=country_db",
-                    "sa",
-                    "5hy8ejA9MX9jH9");  
-
-            if(connection!=null) 
-            System.out.println("Database Successfully connected"); 
-             } catch (SQLException | IllegalAccessException | InstantiationException | ClassNotFoundException e) { 
-            e.printStackTrace(); 
+            connection = DriverManager.getConnection(
+                    DB_LOCATION + ";databaseName="+DATABASE_NAME,
+                    USERNAME,
+                    PASSWORD);  
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
+
+
 }
