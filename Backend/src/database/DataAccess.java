@@ -25,14 +25,6 @@ public class DataAccess<E extends DBObject> extends Database {
         return get(call(procedure,args.length),args);
     }
 
-    public List<Map<String,Object>> procedure_get(String procedure,int count, int page,Object... args) throws SQLException {
-        Object[] params = new Object[args.length + 2];
-        params[0] = count;
-        params[1] = page;
-        System.arraycopy(args,0,params,2,args.length);
-        return procedure_any(procedure,params);
-    }
-
     private static String call(String proc,int args){
         return "{ call "+proc +" " +args(args) + " }";
     }
