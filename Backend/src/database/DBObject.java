@@ -9,7 +9,7 @@ import java.util.*;
 /**
  * Created By Tony on 12/02/2018
  */
-public abstract class DBObject implements Mappable{
+public abstract class DBObject{
 
     /**
      * A hash map which holds a list of foreign keys. This map will be populated with values only when calling the
@@ -28,6 +28,10 @@ public abstract class DBObject implements Mappable{
      * @param map The map which contains the values.
      */
     public DBObject(Map<String,Object> map){
+        map(map);
+    }
+
+    public void map(Map<String,Object> map){
         Set<Field> fields = findFields(Expose.class);
         fields.forEach(field -> {
             try {
@@ -89,5 +93,9 @@ public abstract class DBObject implements Mappable{
 
     public String db_table(){
         return "Tbl" + getClass().getSimpleName() + "s";
+    }
+
+    public Column[] db_columns(){
+        return new Column[]{};
     }
 }

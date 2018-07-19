@@ -7,7 +7,7 @@
   "db" : {
     "location" : "jdbc:sqlserver://minitour.mooo.com",
     "database" : "Hospital2018",
-    "username" : "sa",
-    "password" : "5hy8ejA9MX9jH9"
+    "username" : "db_staff",
+    "password" : "FW^n7q2Nsx@^GL*n"
   }
 }
