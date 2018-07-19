@@ -1,19 +1,19 @@
 package model;
 
 import com.google.gson.annotations.Expose;
+import database.DBObject;
 
 /**
  * Created by Antonio Zaitoun on 13/07/2018.
  */
-public class Shift {
+public class Shift extends DBObject {
 
     @Expose
     private int shiftNumber;
 
     @Expose
-    private char dayInWeek;
+    private String dayInWeek;
 
     @Expose
-    private char shiftType;
-
+    private String shiftType;
 }

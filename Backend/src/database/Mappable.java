@@ -10,8 +10,4 @@ public interface Mappable {
 
     default Map getMap(){ return null; }
 
-    default Column[] db_columns(){
-        return new Column[]{};
-    }
-
 }

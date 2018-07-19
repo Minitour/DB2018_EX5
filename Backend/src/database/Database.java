@@ -184,7 +184,7 @@ public class Database implements AutoCloseable {
      * @return A List Of Hash Maps of Type (String:Object)
      * @throws SQLException
      */
-    public List<Map<String,Object>> get(String query, Object...args) throws SQLException {
+    protected List<Map<String,Object>> get(String query, Object[]args) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(query);
 
         int index = 1;

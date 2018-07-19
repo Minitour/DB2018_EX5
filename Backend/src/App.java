@@ -1,9 +1,9 @@
 import controller.LoginController;
-import database.Database;
+import database.data_access.ShiftAccess;
+import model.Shift;
 import utils.RESTApplication;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Antonio Zaitoun on 13/07/2018.
@@ -19,6 +19,13 @@ public class App extends RESTApplication {
             e.printStackTrace();
         }
         */
+
+        try(ShiftAccess access = new ShiftAccess()){
+            List<Shift> data =  access.getById(1);
+            System.out.println(data.size());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         launch(8080);
     }
