@@ -1,6 +1,7 @@
 package database.data_access;
 
-import database.GenericAccess;
+import database.Database;
+import database.access.GenericAccess;
 import model.MedicalEvent;
 
 /**
@@ -9,5 +10,8 @@ import model.MedicalEvent;
 public class MedicalEventAccess extends GenericAccess<MedicalEvent> {
     public MedicalEventAccess() {
         super(MedicalEvent.class,"MedicalEvent");
+    }
+    public MedicalEventAccess(Database db) {
+        super(MedicalEvent.class,"MedicalEvent",db);
     }
 }

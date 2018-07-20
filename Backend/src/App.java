@@ -1,8 +1,16 @@
 import controller.LoginController;
+import database.data_access.AccountAccess;
+import database.data_access.SessionAccess;
 import database.data_access.ShiftAccess;
+import model.Account;
+import model.Session;
 import model.Shift;
+import org.apache.log4j.BasicConfigurator;
 import utils.RESTApplication;
+import utils.Utils;
 
+import java.math.BigDecimal;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -11,22 +19,17 @@ import java.util.List;
 public class App extends RESTApplication {
 
     public static void main(String... args){
-        /*
-        try(Database db = new Database()) {
-            List<Map<String,Object>> data = db.get("{call QUERY_12(?)}","343434343");
-            System.out.println(data.size());
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        */
 
-        try(ShiftAccess access = new ShiftAccess()){
-            List<Shift> data =  access.getById(1);
-            System.out.println(data.size());
-        }catch (Exception e){
+        try(SessionAccess session_db = new SessionAccess();
+            AccountAccess account_db = new AccountAccess(session_db)){
+
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
+
+        BasicConfigurator.configure();
         launch(8080);
     }
 
