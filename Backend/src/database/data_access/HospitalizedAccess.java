@@ -1,6 +1,7 @@
 package database.data_access;
 
-import database.GenericAccess;
+import database.Database;
+import database.access.GenericAccess;
 import model.Hospitalized;
 
 /**
@@ -8,4 +9,5 @@ import model.Hospitalized;
  */
 public class HospitalizedAccess extends GenericAccess<Hospitalized> {
     public HospitalizedAccess() { super(Hospitalized.class,"Hospital"); }
+    public HospitalizedAccess(Database db) { super(Hospitalized.class,"Hospital",db); }
 }

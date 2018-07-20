@@ -1,6 +1,7 @@
 package database.data_access;
 
-import database.GenericAccess;
+import database.Database;
+import database.access.GenericAccess;
 import model.Shift;
 
 /**
@@ -8,4 +9,5 @@ import model.Shift;
  */
 public class ShiftAccess extends GenericAccess<Shift> {
     public ShiftAccess() { super(Shift.class, "Shifts"); }
+    public ShiftAccess(Database db) { super(Shift.class, "Shifts",db); }
 }

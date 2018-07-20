@@ -21,6 +21,14 @@ public abstract class Database implements AutoCloseable {
 
     private Connection connection;
 
+    static {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void close() throws Exception {
         if(!connection.isClosed())
@@ -28,14 +36,25 @@ public abstract class Database implements AutoCloseable {
     }
 
     public Database() {
+        initConnection();
+    }
+
+    public Database(Database existingDatabase) {
+        if(existingDatabase == null){
+            initConnection();
+        }else {
+            this.connection = existingDatabase.connection;
+        }
+
+    }
+
+    private void initConnection(){
         try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
             connection = DriverManager.getConnection(DB_LOCATION + ";databaseName="+DATABASE_NAME,USERNAME,PASSWORD);
         }catch (Exception e){
             e.printStackTrace();
         }
     }
-
 
     /**
      * Use this method to make Database Queries.

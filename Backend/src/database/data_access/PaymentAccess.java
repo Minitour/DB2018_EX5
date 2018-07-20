@@ -1,6 +1,7 @@
 package database.data_access;
 
-import database.GenericAccess;
+import database.Database;
+import database.access.GenericAccess;
 import model.Payment;
 
 /**
@@ -8,4 +9,5 @@ import model.Payment;
  */
 public class PaymentAccess extends GenericAccess<Payment> {
     public PaymentAccess() { super(Payment.class,"Paymentes"); }
+    public PaymentAccess(Database db) { super(Payment.class,"Paymentes",db); }
 }

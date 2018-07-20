@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
 import java.util.*;
 
 /**
@@ -16,6 +17,7 @@ public abstract class DBObject{
      * @code {DBObject(Map<String,Object> map)} Constructor.
      */
     final transient private Map<String,Object> foreignKeys = new HashMap<>();
+    final transient private Map<String,Object> computedFields = new HashMap<>();
 
     /**
      * Default Constructor
@@ -36,12 +38,16 @@ public abstract class DBObject{
         fields.forEach(field -> {
             try {
                 field.setAccessible(true);
-                field.set(this,map.get(field.getName()));
+                String fieldName = field.getName();
+                field.set(this,map.get(fieldName));
+                map.remove(field.getName());
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }catch (IllegalArgumentException e){
                 //field is a foreign key!
                 foreignKeys.put(field.getName(),map.get(field.getName()));
+            }finally {
+                map.forEach(computedFields::put);
             }
         });
     }
@@ -63,6 +69,21 @@ public abstract class DBObject{
             c = c.getSuperclass();
         }
         return set;
+    }
+
+    private List<Field> findFieldsAsList(Class<? extends Annotation> ann) {
+        List<Field> list = new ArrayList<>();
+
+        Class<?> c = getClass();
+        while (c != null) {
+            for (Field field : c.getDeclaredFields()) {
+                if (field.isAnnotationPresent(ann)) {
+                    list.add(field);
+                }
+            }
+            c = c.getSuperclass();
+        }
+        return list;
     }
 
     /**
@@ -97,5 +118,34 @@ public abstract class DBObject{
 
     public Column[] db_columns(){
         return new Column[]{};
+    }
+
+    public Object[] flatValues(){
+        List<Field> fields = findFieldsAsList(Expose.class);
+        Object[] o = new Object[fields.size()];
+
+        for (int i = 0; i < fields.size(); i++) {
+            Field f = fields.get(i);
+            f.setAccessible(true);
+            try {
+                o[i] = fields.get(i).get(this);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return o;
+    }
+
+    public int getInsertedID(){
+        Object val = computedFields.get("InsertedID");
+        try {
+            return (int) val;
+        }catch (Exception e) {  return -1; }
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(flatValues());
     }
 }

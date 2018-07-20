@@ -1,6 +1,7 @@
 package database.data_access;
 
-import database.GenericAccess;
+import database.Database;
+import database.access.GenericAccess;
 import model.Session;
 
 /**
@@ -8,4 +9,5 @@ import model.Session;
  */
 public class SessionAccess extends GenericAccess<Session> {
     public SessionAccess() { super(Session.class,"TBL_Session"); }
+    public SessionAccess(Database db) { super(Session.class,"TBL_Session",db); }
 }

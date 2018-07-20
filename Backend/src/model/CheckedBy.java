@@ -31,4 +31,15 @@ public class CheckedBy extends DBObject {
     @Expose
     private String bloodPressure;
 
+    public CheckedBy() { }
+
+    public CheckedBy(String patientID, int eventCode, String doctorID, int shiftNumber, Date checkTime, float bodyTemp, String bloodPressure) {
+        this.patientID = patientID;
+        this.eventCode = eventCode;
+        this.doctorID = doctorID;
+        this.shiftNumber = shiftNumber;
+        this.checkTime = checkTime;
+        this.bodyTemp = bodyTemp;
+        this.bloodPressure = bloodPressure;
+    }
 }

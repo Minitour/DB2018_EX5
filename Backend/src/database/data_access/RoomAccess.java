@@ -1,6 +1,7 @@
 package database.data_access;
 
-import database.GenericAccess;
+import database.Database;
+import database.access.GenericAccess;
 import model.Room;
 
 /**
@@ -8,4 +9,5 @@ import model.Room;
  */
 public class RoomAccess extends GenericAccess<Room> {
     public RoomAccess() { super(Room.class,"Room"); }
+    public RoomAccess(Database db) { super(Room.class,"Room",db); }
 }

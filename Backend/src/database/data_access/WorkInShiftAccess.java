@@ -1,6 +1,7 @@
 package database.data_access;
 
-import database.GenericAccess;
+import database.Database;
+import database.access.GenericAccess;
 import model.WorkInShift;
 
 /**
@@ -8,4 +9,5 @@ import model.WorkInShift;
  */
 public class WorkInShiftAccess extends GenericAccess<WorkInShift> {
     public WorkInShiftAccess() { super(WorkInShift.class,"worksInShift"); }
+    public WorkInShiftAccess(Database db) { super(WorkInShift.class,"worksInShift",db); }
 }
