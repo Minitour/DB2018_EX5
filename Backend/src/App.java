@@ -20,14 +20,6 @@ public class App extends RESTApplication {
 
     public static void main(String... args){
 
-        try(SessionAccess session_db = new SessionAccess();
-            AccountAccess account_db = new AccountAccess(session_db)){
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
 
         BasicConfigurator.configure();
         launch(8080);
