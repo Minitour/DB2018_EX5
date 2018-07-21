@@ -31,15 +31,13 @@ class HospitalizedAccessTest {
     @Test
     void getById() {
 
-        String patiendID = "";
-        int eventCode = 0;
-        int hospitalID = 0;
-        int depID = 0;
-        int roomNumber = 0;
+        String patiendID = "343434343";
+        int eventCode = 1;
+        int hospitalID = 1002;
+        int depID = 2;
+        short roomNumber = 1;
 
-
-
-        List<Hospitalized> hospitalizations = access.getById();
+        List<Hospitalized> hospitalizations = access.getById(patiendID, eventCode, hospitalID, depID, roomNumber);
 
         if (hospitalizations.size() == 0) {
             System.out.println("no hospitals");
