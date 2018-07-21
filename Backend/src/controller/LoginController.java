@@ -10,6 +10,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import spark.Request;
 import spark.Response;
 import utils.JSONResponse;
+import utils.Permissions;
 import utils.RESTRoute;
 import utils.Utils;
 
@@ -34,6 +35,7 @@ public class LoginController implements RESTRoute {
     @Override
     public Object handle(Request request, Response response, JsonObject body, Session _ignored) throws Exception {
 
+
         JsonElement emailJson = body.get("EMAIL");
         JsonElement passwordJson = body.get("PASSWORD");
 
@@ -45,6 +47,8 @@ public class LoginController implements RESTRoute {
 
 
         //Always use try-with resources to close the connections automatically at the end of the execution.
+
+
 
         try(    //create account access with new connection
                 AccountAccess account_db = new AccountAccess();
