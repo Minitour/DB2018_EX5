@@ -14,4 +14,26 @@ public class WorkInShift extends DBObject {
     @Expose
     private int shiftNumber;
 
+    public WorkInShift() {}
+
+    public WorkInShift(String doctorID, int shiftNumber) {
+        this.doctorID = doctorID;
+        this.shiftNumber = shiftNumber;
+    }
+
+    public String getDoctorID() {
+        return doctorID;
+    }
+
+    public int getShiftNumber() {
+        return shiftNumber;
+    }
+
+    public void setDoctorID(String doctorID) {
+        this.doctorID = doctorID;
+    }
+
+    public void setShiftNumber(int shiftNumber) {
+        this.shiftNumber = shiftNumber;
+    }
 }

@@ -22,9 +22,10 @@ class AccountAccessTest {
         try(AccountAccess accountAccess = new AccountAccess()) {
             List<Account> accounts = accountAccess.getAll();
 
+            System.out.println(accounts);
 
         }catch (Exception e){
-
+            e.printStackTrace();
         }
     }
 }

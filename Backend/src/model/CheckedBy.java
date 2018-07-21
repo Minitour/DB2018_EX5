@@ -42,4 +42,62 @@ public class CheckedBy extends DBObject {
         this.bodyTemp = bodyTemp;
         this.bloodPressure = bloodPressure;
     }
+
+    public String getPatientID() {
+        return patientID;
+    }
+
+    public int getEventCode() {
+        return eventCode;
+    }
+
+    public String getDoctorID() {
+        return doctorID;
+    }
+
+    public int getShiftNumber() {
+        return shiftNumber;
+    }
+
+    public Date getCheckTime() {
+        return checkTime;
+    }
+
+    public float getBodyTemp() {
+        return bodyTemp;
+    }
+
+    public String getBloodPressure() {
+        return bloodPressure;
+    }
+
+    public void setPatientID(String patientID) {
+        this.patientID = patientID;
+    }
+
+    public void setEventCode(int eventCode) {
+        this.eventCode = eventCode;
+    }
+
+    public void setDoctorID(String doctorID) {
+        this.doctorID = doctorID;
+    }
+
+    public void setShiftNumber(int shiftNumber) {
+        this.shiftNumber = shiftNumber;
+    }
+
+    public void setCheckTime(Date checkTime) {
+        this.checkTime = checkTime;
+    }
+
+    public void setBodyTemp(float bodyTemp) {
+        this.bodyTemp = bodyTemp;
+    }
+
+    public void setBloodPressure(String bloodPressure) {
+        this.bloodPressure = bloodPressure;
+    }
+
+
 }

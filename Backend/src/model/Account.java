@@ -72,4 +72,8 @@ public class Account extends DBObject{
     public void setUSER_PASSWORD(String USER_PASSWORD) {
         this.USER_PASSWORD = USER_PASSWORD;
     }
+
+
+    // This class returns ACCOUNT_ID as InsertedId
+
 }
