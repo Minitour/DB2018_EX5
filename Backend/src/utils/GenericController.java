@@ -38,4 +38,12 @@ public class GenericController implements RESTRoute {
     public Object delete(JsonObject body, Session session){ return JSONResponse.FAILURE(); }
 
     public Object upsert(JsonObject body, Session session){ return JSONResponse.FAILURE(); }
+
+    protected JsonObject parameters(JsonObject body) {
+        try {
+            return body.get("parameters").getAsJsonObject();
+        }catch (NullPointerException e){
+            return null;
+        }
+    }
 }

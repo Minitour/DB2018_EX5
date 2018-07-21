@@ -76,9 +76,9 @@ public interface RESTRoute extends Route {
             session.CREATION_DATE = storedSession.CREATION_DATE;
 
             //get account id
-            int accountId = account_db.getById(session.ACCOUNT_ID,null).get(0).getACCOUNT_ID();
+            int role = account_db.getById(session.ACCOUNT_ID,null).get(0).getROLE_ID();
 
-            session.setRole(accountId);
+            session.setRole(role);
 
         } catch (Exception e) {
             e.printStackTrace();
