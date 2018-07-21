@@ -5,8 +5,7 @@ package database.access;
  */
 public class AccessException extends RuntimeException {
 
-    public AccessException() {
-    }
+    public AccessException() { }
 
     public AccessException(String message) {
         super(message);

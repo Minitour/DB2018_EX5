@@ -1,4 +1,5 @@
 import controller.LoginController;
+import controller.PatientsController;
 import controller.ProfileController;
 import database.data_access.AccountAccess;
 import database.data_access.PatientAccess;
@@ -34,5 +35,6 @@ public class App extends RESTApplication {
     public void init() {
         post("/login",new LoginController());
         post("/profile",new ProfileController());
+        post("/patient",new PatientsController());
     }
 }
