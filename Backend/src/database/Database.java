@@ -73,7 +73,15 @@ public abstract class Database implements AutoCloseable {
         for(Object val : args)
             statement.setObject(index++,val);
 
-        ResultSet set = statement.executeQuery();
+        ResultSet set;
+        if(query.toLowerCase().contains("delete")){
+            statement.execute();
+            return null;
+        }else {
+           set = statement.executeQuery();
+        }
+
+
 
         String[] columns = new String[set.getMetaData().getColumnCount()];
 
