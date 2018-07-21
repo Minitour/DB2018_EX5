@@ -12,6 +12,7 @@
       "groupId": 2,
       "groupName": "secretary",
       "permissions": [
+        "io.hospital.profile.upsert",
         "io.hospital.patient.*",
         "io.hospital.hospitalized.read",
         "io.hospital.hospitalized.read_all",
