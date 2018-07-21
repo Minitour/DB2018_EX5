@@ -104,10 +104,6 @@ class CheckedByAccessTest {
         LocalDate date = LocalDate.parse(tempdate, formatter);
 
         access.delete(patientID, eventCode, doctorID, shiftNumber, date);
-
-        
-
-
     }
 
 }
