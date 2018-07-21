@@ -1,9 +1,11 @@
 import controller.LoginController;
 import controller.ProfileController;
 import database.data_access.AccountAccess;
+import database.data_access.PatientAccess;
 import database.data_access.SessionAccess;
 import database.data_access.ShiftAccess;
 import model.Account;
+import model.Person;
 import model.Session;
 import model.Shift;
 import org.apache.log4j.BasicConfigurator;
@@ -23,7 +25,6 @@ import java.util.List;
 public class App extends RESTApplication {
 
     public static void main(String... args) throws IOException {
-
         Permissions.init();
         BasicConfigurator.configure();
         launch(8080);

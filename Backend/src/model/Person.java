@@ -19,7 +19,7 @@ public class Person extends DBObject{
     private String surName;
 
     @Expose
-    private Date birthOfBirth;
+    private Date dateOfBirth;
 
     @Expose
     private String city;
@@ -28,7 +28,7 @@ public class Person extends DBObject{
     private String street;
 
     @Expose
-    private Character gender;
+    private String gender;
 
     @Expose
     private String phone;
@@ -47,11 +47,11 @@ public class Person extends DBObject{
 
     public Person() {}
 
-    public Person(String ID, String firstName, String surName, Date birthOfBirth, String city, String street, Character gender, String phone, String bloodType, String careFacility, String contactID, Account ACCOUNT_ID) {
+    public Person(String ID, String firstName, String surName, Date dateOfBirth, String city, String street, String gender, String phone, String bloodType, String careFacility, String contactID, Account ACCOUNT_ID) {
         this.ID = ID;
         this.firstName = firstName;
         this.surName = surName;
-        this.birthOfBirth = birthOfBirth;
+        this.dateOfBirth = dateOfBirth;
         this.city = city;
         this.street = street;
         this.gender = gender;
@@ -74,8 +74,8 @@ public class Person extends DBObject{
         return surName;
     }
 
-    public Date getBirthOfBirth() {
-        return birthOfBirth;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
     public String getCity() {
@@ -86,7 +86,7 @@ public class Person extends DBObject{
         return street;
     }
 
-    public Character getGender() {
+    public String getGender() {
         return gender;
     }
 
@@ -122,8 +122,8 @@ public class Person extends DBObject{
         this.surName = surName;
     }
 
-    public void setBirthOfBirth(Date birthOfBirth) {
-        this.birthOfBirth = birthOfBirth;
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public void setCity(String city) {
@@ -134,7 +134,7 @@ public class Person extends DBObject{
         this.street = street;
     }
 
-    public void setGender(Character gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
