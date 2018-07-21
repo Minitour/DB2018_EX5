@@ -1,0 +1,78 @@
+{
+  "permissions" : {
+    "io" : {
+      "hospital" : {
+        "profile" : [
+          "read",
+          "read_all",
+          "delete",
+          "upsert"
+        ],
+        "account" : [
+          "read",
+          "read_all",
+          "delete",
+          "upsert"
+        ],
+        "patient" : [
+          "read",
+          "read_all",
+          "delete",
+          "upsert"
+        ],
+        "hospitalized" : [
+          "read",
+          "read_all",
+          "delete",
+          "upsert"
+        ],
+        "room" : [
+          "read",
+          "read_all",
+          "delete",
+          "upsert"
+        ],
+        "check" : [
+          "read",
+          "read_all",
+          "delete",
+          "upsert"
+        ],
+        "doctor" : [
+          "read",
+          "read_all",
+          "delete",
+          "upsert"
+        ],
+        "shift" : [
+          "read",
+          "read_all",
+          "delete",
+          "upsert"
+          ],
+        "department" : [
+          "read",
+          "read_all",
+          "delete",
+          "upsert"
+        ],
+        "hospital" : [
+          "read",
+          "read_all",
+          "delete",
+          "upsert"
+        ],
+        "dashboard" : [
+          "read",
+          "read_all"
+        ],
+        "administrator" : [
+          "read",
+          "read_all",
+          "delete",
+          "upsert"
+        ]
+      }
+    }
+  }
+}

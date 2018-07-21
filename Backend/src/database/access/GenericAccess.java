@@ -55,8 +55,8 @@ public class GenericAccess<E extends DBObject> extends DataAccess<E> {
 
     }
 
-    public List<E> getAll() throws  AccessException {
-        return super.get(classType, proc(GET_ALL));
+    public List<E> getAll(Object... params) throws  AccessException {
+        return super.get(classType, proc(GET_ALL),params);
     }
 
     public void delete(Object... params) throws AccessException{

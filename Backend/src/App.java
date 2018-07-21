@@ -6,9 +6,11 @@ import model.Account;
 import model.Session;
 import model.Shift;
 import org.apache.log4j.BasicConfigurator;
+import utils.Permissions;
 import utils.RESTApplication;
 import utils.Utils;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
@@ -18,7 +20,10 @@ import java.util.List;
  */
 public class App extends RESTApplication {
 
-    public static void main(String... args){
+    public static void main(String... args) throws IOException {
+
+        Permissions.init();
+
 
 
         BasicConfigurator.configure();
