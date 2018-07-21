@@ -11,7 +11,7 @@ import java.sql.Date;
 public class Doctor extends DBObject {
 
     @Expose
-    private String doctorId;
+    private String doctorID;
 
     @Expose
     private int hospitalID;
@@ -28,15 +28,15 @@ public class Doctor extends DBObject {
     public Doctor() {}
 
     public Doctor(String doctorId, int hospitalID, int departmentID, Date dateOfGraduation, int manager) {
-        this.doctorId = doctorId;
+        this.doctorID = doctorId;
         this.hospitalID = hospitalID;
         this.departmentID = departmentID;
         this.dateOfGraduation = dateOfGraduation;
         this.manager = manager;
     }
 
-    public String getDoctorId() {
-        return doctorId;
+    public String getDoctorID() {
+        return doctorID;
     }
 
     public int getHospitalID() {
@@ -55,8 +55,8 @@ public class Doctor extends DBObject {
         return manager;
     }
 
-    public void setDoctorId(String doctorId) {
-        this.doctorId = doctorId;
+    public void setDoctorID(String doctorID) {
+        this.doctorID = doctorID;
     }
 
     public void setHospitalID(int hospitalID) {
