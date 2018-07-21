@@ -11,16 +11,16 @@ public class MedicalEvent extends DBObject {
     private int eventCode;
 
     @Expose
-    private String description;
+    private String discription;
 
     @Expose
     private int typeCode;
 
     public MedicalEvent() {}
 
-    public MedicalEvent(int eventCode, String description, int typeCode) {
+    public MedicalEvent(int eventCode, String discription, int typeCode) {
         this.eventCode = eventCode;
-        this.description = description;
+        this.discription = discription;
         this.typeCode = typeCode;
     }
 
@@ -28,8 +28,8 @@ public class MedicalEvent extends DBObject {
         return eventCode;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDiscription() {
+        return discription;
     }
 
     public int getTypeCode() {
@@ -40,8 +40,8 @@ public class MedicalEvent extends DBObject {
         this.eventCode = eventCode;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDiscription(String discription) {
+        this.discription = discription;
     }
 
     public void setTypeCode(int typeCode) {
