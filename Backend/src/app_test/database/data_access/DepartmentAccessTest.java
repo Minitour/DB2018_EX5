@@ -30,10 +30,10 @@ class DepartmentAccessTest {
     }
 
     @Test
-    void getById(int hospitalID, int departmentID) {
+    void getById() {
 
-        int hospitalIDTemp = 1;
-        int departmentIDTemp = 2;
+        int hospitalIDTemp = 2;
+        int departmentIDTemp = 1;
 
         List<Department> departments = access.getById(hospitalIDTemp,departmentIDTemp);
 
@@ -44,7 +44,9 @@ class DepartmentAccessTest {
     @Test
     void getAll() {
 
-        List<Department> departments = access.getAll();
+        int hospitalID = 2;
+
+        List<Department> departments = access.getAll(hospitalID);
 
         departments.forEach(System.out::println);
 
