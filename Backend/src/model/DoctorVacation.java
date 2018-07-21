@@ -16,4 +16,26 @@ public class DoctorVacation extends DBObject {
     @Expose
     private Date vacationDate;
 
+    public DoctorVacation() {}
+
+    public DoctorVacation(String doctorID, Date vacationDate) {
+        this.doctorID = doctorID;
+        this.vacationDate = vacationDate;
+    }
+
+    public String getDoctorID() {
+        return doctorID;
+    }
+
+    public Date getVacationDate() {
+        return vacationDate;
+    }
+
+    public void setDoctorID(String doctorID) {
+        this.doctorID = doctorID;
+    }
+
+    public void setVacationDate(Date vacationDate) {
+        this.vacationDate = vacationDate;
+    }
 }
