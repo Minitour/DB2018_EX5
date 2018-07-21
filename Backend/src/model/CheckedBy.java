@@ -26,14 +26,14 @@ public class CheckedBy extends DBObject {
     private Date checkTime;
 
     @Expose
-    private float bodyTemp;
+    private Double bodyTemp;
 
     @Expose
     private String bloodPressure;
 
     public CheckedBy() { }
 
-    public CheckedBy(String patientID, int eventCode, String doctorID, int shiftNumber, Date checkTime, float bodyTemp, String bloodPressure) {
+    public CheckedBy(String patientID, int eventCode, String doctorID, int shiftNumber, Date checkTime, Double bodyTemp, String bloodPressure) {
         this.patientID = patientID;
         this.eventCode = eventCode;
         this.doctorID = doctorID;
@@ -63,7 +63,7 @@ public class CheckedBy extends DBObject {
         return checkTime;
     }
 
-    public float getBodyTemp() {
+    public Double getBodyTemp() {
         return bodyTemp;
     }
 
@@ -91,7 +91,7 @@ public class CheckedBy extends DBObject {
         this.checkTime = checkTime;
     }
 
-    public void setBodyTemp(float bodyTemp) {
+    public void setBodyTemp(Double bodyTemp) {
         this.bodyTemp = bodyTemp;
     }
 
