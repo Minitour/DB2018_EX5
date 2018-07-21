@@ -26,7 +26,7 @@ public class Session extends DBObject {
         this.SESSION_TOKEN = SESSION_TOKEN;
     }
 
-    void setRole(int role) {
+    public void setRole(int role) {
         this.role = role;
     }
 

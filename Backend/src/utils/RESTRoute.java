@@ -2,12 +2,16 @@ package utils;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import database.Database;
+import database.data_access.AccountAccess;
+import database.data_access.SessionAccess;
 import model.Session;
 import spark.Request;
 import spark.Response;
 import spark.Route;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Antonio Zaitoun on 09/02/2018.
@@ -37,6 +41,67 @@ public interface RESTRoute extends Route {
         }catch (NullPointerException e){
             return null;
         }
+    }
+
+    /**
+     * validate session with new connection
+     * @param session
+     */
+    default void validateSession(Session session){
+        validateSession(session,null,true);
+    }
+
+    /**
+     * Use this method to validate a session token.
+     *
+     * @param session a session that was extracted from the client.
+     * @param existingConnection an existing database connection (if present). use null to create a new connection.
+     */
+    default void validateSession(Session session,Database existingConnection,boolean closeOnFinish) {
+        //create session from existing connection if not null
+        SessionAccess session_db =
+                existingConnection == null ? new SessionAccess() : new SessionAccess(existingConnection);
+
+        //init account db
+        AccountAccess account_db = new AccountAccess(session_db);
+        try {
+
+            List<Session> sessionList = session_db.getById(session.ACCOUNT_ID,session.SESSION_TOKEN);
+
+            if(sessionList.size() != 1)
+                return;
+
+            Session storedSession = sessionList.get(0);
+
+            session.CREATION_DATE = storedSession.CREATION_DATE;
+
+            //get account id
+            int accountId = account_db.getById(session.ACCOUNT_ID,null).get(0).getACCOUNT_ID();
+
+            session.setRole(accountId);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            if(existingConnection == null)
+                closeOnFinish = true;
+
+            if(closeOnFinish)
+                try {
+                    account_db.close();
+                } catch (Exception ignored) { }
+        }
+    }
+
+    /**
+     * Checks if the current session has permission for this certain action.
+     *
+     * @param permission
+     * @param session
+     * @return
+     */
+    default boolean hasPermission(String permission, Session session){
+        return Permissions.hasPermissionFor(permission,session);
     }
 
     default void require(Object... values){

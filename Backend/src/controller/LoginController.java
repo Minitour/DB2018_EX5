@@ -46,9 +46,8 @@ public class LoginController implements RESTRoute {
         String password = passwordJson.getAsString();
 
 
+
         //Always use try-with resources to close the connections automatically at the end of the execution.
-
-
 
         try(    //create account access with new connection
                 AccountAccess account_db = new AccountAccess();
@@ -58,7 +57,7 @@ public class LoginController implements RESTRoute {
         ) {
 
             //get account with email
-            List<Account> accounts = account_db.getById(email,null);
+            List<Account> accounts = account_db.getById(null,email);
 
             //make sure there is only one account that matches.
             if (accounts.size() != 1)
