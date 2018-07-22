@@ -2,16 +2,15 @@ package controller;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import database.data_access.DoctorVacationAccess;
-import model.Doctor;
-import model.DoctorVacation;
+import database.data_access.ShiftAccess;
 import model.Session;
+import model.Shift;
 import utils.GenericController;
 import utils.JSONResponse;
 
 import java.util.List;
 
-public class DoctorVacationsController extends GenericController {
+public class ShiftController extends GenericController {
 
     @Override
     public Object read(JsonObject body, Session session) {
@@ -19,18 +18,18 @@ public class DoctorVacationsController extends GenericController {
         JsonObject params = parameters(body);
         require(params);
 
-        String doctorID = params.get("doctorID").getAsString();
+        int shiftNumber = params.get("shiftNumber").getAsInt();
 
-        try(DoctorVacationAccess doctorVacationAccess = new DoctorVacationAccess()) {
+        try(ShiftAccess shiftAccess = new ShiftAccess()) {
 
-            validateSession(session, doctorVacationAccess, false);
+            validateSession(session, shiftAccess, false);
 
-            if (!hasPermission("io.hospital.vacation.read", session))
+            if (!hasPermission("io.hospital.shift.read", session))
                 return JSONResponse.FAILURE().message("Access Denied.");
 
-            List<DoctorVacation> doctorVacations = doctorVacationAccess.getById(doctorID);
-            JSONResponse<List<DoctorVacation>> jsonResponse = JSONResponse.SUCCESS();
-            jsonResponse.data(doctorVacations);
+            List<Shift> shifts = shiftAccess.getById(shiftNumber);
+            JSONResponse<List<Shift>> jsonResponse = JSONResponse.SUCCESS();
+            jsonResponse.data(shifts);
 
             return jsonResponse;
 
@@ -45,16 +44,16 @@ public class DoctorVacationsController extends GenericController {
     @Override
     public Object readAll(JsonObject body, Session session) {
 
-        try(DoctorVacationAccess doctorVacationAccess = new DoctorVacationAccess()) {
+        try(ShiftAccess shiftAccess = new ShiftAccess()) {
 
-            validateSession(session, doctorVacationAccess, false);
+            validateSession(session, shiftAccess, false);
 
-            if (!hasPermission("io.hospital.vacation.read_all", session))
+            if (!hasPermission("io.hospital.shift.read_all", session))
                 return JSONResponse.FAILURE().message("Access Denied.");
 
-            List<DoctorVacation> doctorVacations = doctorVacationAccess.getAll();
-            JSONResponse<List<DoctorVacation>> jsonResponse = JSONResponse.SUCCESS();
-            jsonResponse.data(doctorVacations);
+            List<Shift> shifts = shiftAccess.getAll();
+            JSONResponse<List<Shift>> jsonResponse = JSONResponse.SUCCESS();
+            jsonResponse.data(shifts);
 
             return jsonResponse;
 
@@ -63,6 +62,7 @@ public class DoctorVacationsController extends GenericController {
                     .FAILURE()
                     .message(e.getMessage());
         }
+
     }
 
     @Override
@@ -72,20 +72,20 @@ public class DoctorVacationsController extends GenericController {
         require(params);
         Gson gson = new Gson();
 
-        DoctorVacation doctorVacation = gson.fromJson(params.get("vacation"),DoctorVacation.class);
+        Shift shift = gson.fromJson(params.get("shift"),Shift.class);
 
-        try(DoctorVacationAccess vacation_db = new DoctorVacationAccess()) {
+        try(ShiftAccess shift_db = new ShiftAccess()) {
 
             //validate session
-            validateSession(session,vacation_db,false);
+            validateSession(session,shift_db,false);
 
             //check permissions
-            boolean isOk = hasPermission("io.hospital.vacation.upsert",session);
+            boolean isOk = hasPermission("io.hospital.shift.upsert",session);
 
             if(!isOk)
                 return JSONResponse.FAILURE().message("Access Denied");
 
-            vacation_db.upsert(doctorVacation);
+            shift_db.upsert(shift);
 
             return JSONResponse.SUCCESS();
 
@@ -102,18 +102,16 @@ public class DoctorVacationsController extends GenericController {
         JsonObject params = parameters(body);
         require(params);
 
-        String id = params.get("doctorID").getAsString();
+        int shiftNumber = params.get("shiftNumber").getAsInt();
 
-        try(DoctorVacationAccess access = new DoctorVacationAccess()){
+        try(ShiftAccess shiftAccess = new ShiftAccess()) {
 
-            //validate session.
-            validateSession(session,access,false);
+            validateSession(session, shiftAccess, false);
 
-            //validate permissions.
-            if(!hasPermission("io.hospital.vacation.delete",session))
+            if (!hasPermission("io.hospital.shift.delete", session))
                 return JSONResponse.FAILURE().message("Access Denied.");
 
-            access.delete(id);
+            shiftAccess.delete(shiftNumber);
 
             return JSONResponse.SUCCESS();
 

@@ -36,7 +36,7 @@ public class DoctorsController extends GenericController {
             List<Doctor> doctors = doctorAccess.getById(doctorID);
 
             if (doctors.size() != -1) {
-                return JSONResponse.FAILURE().message("Not found.");
+                return JSONResponse.FAILURE().message("Doctor Not found.");
             }
 
             Doctor doctor = doctors.get(0);
