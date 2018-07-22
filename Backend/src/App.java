@@ -1,6 +1,4 @@
-import controller.LoginController;
-import controller.PatientsController;
-import controller.ProfileController;
+import controller.*;
 import org.apache.log4j.BasicConfigurator;
 import utils.Permissions;
 import utils.RESTApplication;
@@ -23,5 +21,7 @@ public class App extends RESTApplication {
         post("/login",new LoginController());
         post("/profile",new ProfileController());
         post("/patient",new PatientsController());
+        post("/doctor",new DoctorsController());
+        post("/vacation",new DoctorVacationsController());
     }
 }
