@@ -5,9 +5,11 @@ import com.google.gson.JsonObject;
 /**
  * Created By Tony on 14/02/2018
  */
-public class ServerResponse {
+public class Response {
+
     private int code;
     private String message;
+    private Exception exception;
 
     public int getCode() {
         return code;
@@ -25,12 +27,20 @@ public class ServerResponse {
         this.message = message;
     }
 
-    public ServerResponse(int code, String message) {
+    public Exception getException() {
+        return exception;
+    }
+
+    public void setException(Exception exception) {
+        this.exception = exception;
+    }
+
+    public Response(int code, String message) {
         this.code = code;
         this.message = message;
     }
 
-    public ServerResponse(JsonObject json){
+    public Response(JsonObject json){
         try {
             code = json.get("code").getAsInt();
             message = json.get("message").getAsString();
@@ -46,7 +56,7 @@ public class ServerResponse {
 
     @Override
     public String toString() {
-        return "ServerResponse{" +
+        return "Response{" +
                 "code=" + code +
                 ", message='" + message + '\'' +
                 '}';

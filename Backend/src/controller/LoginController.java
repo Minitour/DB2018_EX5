@@ -81,6 +81,8 @@ public class LoginController implements RESTRoute {
 
             Session session = new Session(accountId,token);
             session_db.upsert(session);
+
+            session.setRole(account.getROLE_ID());
             return JSONResponse.SUCCESS().data(session);
         }catch (Exception e){
             return JSONResponse.FAILURE().message(e.getMessage());

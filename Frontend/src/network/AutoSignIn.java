@@ -7,7 +7,7 @@ public final class AutoSignIn {
 
     private AutoSignIn(){}
 
-    public static String ID = null;
+    public static Integer ID = null;
 
     public static String SESSION_TOKEN = null;
 
