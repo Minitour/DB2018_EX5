@@ -1,13 +1,13 @@
 package network;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import javafx.application.Platform;
+import model.Account;
 import okhttp3.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -72,6 +72,37 @@ public class APIManager {
         });
     }
 
+
+    public void getAccounts(String id, String token, Callbacks.General callback) {
+        JsonObject body = new JsonObject();
+        body.addProperty("id",id);
+        body.addProperty("sessionToken",token);
+
+        makeRequest(Constants.Routes.getAccounts(),null,body,(json, exception) -> {
+            ServerResponse r = new ServerResponse(json);
+            if(exception == null){
+                List<Account> accounts = new ArrayList<>();
+                JsonArray array = gson.fromJson(json.get("data").getAsJsonArray(),JsonArray.class);
+
+                for(JsonElement object : array){
+                    try {
+                        Account account = gson.fromJson(object, Account.class);
+                        accounts.add(account);
+                    }catch (Exception e){
+                        System.err.println(e.getMessage());
+                    }
+                }
+
+                callback.make(r,null);
+            }else{
+                callback.make(r,exception);
+            }
+        });
+    }
+
+    public void getAccounts(Callbacks.General callback){
+        getAccounts(AutoSignIn.ID,AutoSignIn.SESSION_TOKEN,callback);
+    }
 
 
     /**
