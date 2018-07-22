@@ -40,11 +40,12 @@
       "permissions": [
         "io.hospital.doctor.read",
         "io.hospital.doctor.read_all",
-        "io.hospital.shift.*",
+        "io.hospital.shift.read",
+        "io.hospital.shift.read_all",
         "io.hospital.department.read",
         "io.hospital.department.read_all",
-        "io.hospital.vacation.*"
-
+        "io.hospital.vacation.*",
+        "io.hospital.work.*"
       ],
       "extends" : [ 3 ]
     },
@@ -60,7 +61,8 @@
         "io.hospital.check.read",
         "io.hospital.check.read_all",
         "io.hospital.doctor.*",
-        "io.hospital.department.*"
+        "io.hospital.department.*",
+        "io.hospital.shift.*"
       ],
       "extends" : [ 1 ]
     },

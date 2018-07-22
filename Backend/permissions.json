@@ -56,6 +56,12 @@
           "delete",
           "upsert"
           ],
+        "work" : [
+          "read",
+          "read_all",
+          "delete",
+          "upsert"
+        ],
         "department" : [
           "read",
           "read_all",
@@ -63,6 +69,18 @@
           "upsert"
         ],
         "hospital" : [
+          "read",
+          "read_all",
+          "delete",
+          "upsert"
+        ],
+        "event" : [
+          "read",
+          "read_all",
+          "delete",
+          "upsert"
+        ],
+        "event_in_dep" : [
           "read",
           "read_all",
           "delete",
