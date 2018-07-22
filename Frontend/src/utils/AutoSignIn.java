@@ -1,4 +1,4 @@
-package network;
+package utils;
 
 /**
  * Created By Tony on 14/02/2018

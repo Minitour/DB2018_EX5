@@ -6,7 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import network.api.LoginAPI;
 import ui.UIViewController;
+import utils.EmailValidator;
 import view.DialogView;
 
 import java.util.ResourceBundle;
@@ -48,45 +50,48 @@ public class LoginController extends UIViewController {
 
     private void doLogin(){
 
-//        if(!isDialogShowing){
-//            String email = userInputField.getText();
-//            String password = passwordInputField.getText();
-//
-//            if(EmailValidator.validate(email) && password.length() >= 8) {
-//                APIManager.getInstance().login(email, password, (response, id, token, roleId, ex) -> {
-//                    if (roleId != -1)
-//                        passwordInputField.setText(null);
-//
-//                    if(roleId == -1){
-//                        if(ex != null){
-//                            dialogView.setTitle("Error");
-//                            dialogView.setMessage(ex.getLocalizedMessage());
-//                        }else{
-//                            dialogView.setTitle("Invalid Credentials");
-//                            dialogView.setMessage("Incorrect email or password. Please try again.");
-//                        }
-//                        dialogView.setPostiveEventHandler(event1 -> dialogView.close());
-//                        dialogView.getPostiveButton().setText("Close");
-//                        dialogView.show(view);
-//                        isDialogShowing = true;
-//                    }
-//
-//                    if (authentication != null)
-//                        authentication.onAuth(roleId,ex);
-//
-//                });
-//            }else{
-//                dialogView.setTitle("Invalid Credentials");
-//                dialogView.setMessage("Please check your login info and try again.");
-//                dialogView.setPostiveEventHandler(event1 -> dialogView.close());
-//                dialogView.getPostiveButton().setText("Close");
-//                dialogView.show(this.view);
-//                isDialogShowing = true;
-//            }
-//        }else{
-//            dialogView.close();
-//            isDialogShowing = false;
-//        }
+        if(!isDialogShowing){
+            String email = userInputField.getText();
+            String password = passwordInputField.getText();
+            LoginAPI auth = new LoginAPI();
+            if(EmailValidator.validate(email) && password.length() >= 8) {
+                auth.login(email, password, (response, id, token, roleId) -> {
+
+                    Exception ex = response.getException();
+
+                    if (roleId != -1)
+                        passwordInputField.setText(null);
+
+                    if(roleId == -1){
+                        if(ex != null){
+                            dialogView.setTitle("Error");
+                            dialogView.setMessage(ex.getLocalizedMessage());
+                        }else{
+                            dialogView.setTitle("Invalid Credentials");
+                            dialogView.setMessage("Incorrect email or password. Please try again.");
+                        }
+                        dialogView.setPostiveEventHandler(event1 -> dialogView.close());
+                        dialogView.getPostiveButton().setText("Close");
+                        dialogView.show(view);
+                        isDialogShowing = true;
+                    }
+
+                    if (authentication != null)
+                        authentication.onAuth(roleId,ex);
+
+                });
+            }else{
+                dialogView.setTitle("Invalid Credentials");
+                dialogView.setMessage("Please check your login info and try again.");
+                dialogView.setPostiveEventHandler(event1 -> dialogView.close());
+                dialogView.getPostiveButton().setText("Close");
+                dialogView.show(this.view);
+                isDialogShowing = true;
+            }
+        }else{
+            dialogView.close();
+            isDialogShowing = false;
+        }
     }
 
     @Override

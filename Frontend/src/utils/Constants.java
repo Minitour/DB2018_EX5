@@ -1,4 +1,6 @@
-package network;
+package utils;
+
+import utils.Config;
 
 /**
  * Created By Tony on 14/02/2018

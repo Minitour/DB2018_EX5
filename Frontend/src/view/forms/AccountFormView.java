@@ -2,7 +2,7 @@ package view.forms;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import main.EmailValidator;
+import utils.EmailValidator;
 
 /**
  * Created By Tony on 14/02/2018
