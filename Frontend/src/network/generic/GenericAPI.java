@@ -65,7 +65,7 @@ public abstract class GenericAPI<T> {
      * @param object The object to insert or update.
      * @param callback The callback response.
      */
-    public void upsert(T object, Upsert<T> callback){
+    public void upsert(T object, Upsert callback){
         do_upsert(callback,object);
     }
 
@@ -75,7 +75,7 @@ public abstract class GenericAPI<T> {
      * @param object An object only containing the search keys. (id...)
      * @param callback The callback response.
      */
-    public void delete(T object, Delete<T> callback){
+    public void delete(T object, Delete callback){
         do_delete(callback,object);
     }
 
@@ -149,7 +149,7 @@ public abstract class GenericAPI<T> {
         });
     }
 
-    private void do_upsert(Upsert<T>  callback, T input){
+    private void do_upsert(Upsert callback, T input){
         JsonObject body = new JsonObject();
         build(body,UPSERT,input);
 
@@ -172,7 +172,7 @@ public abstract class GenericAPI<T> {
 
     }
 
-    private void do_delete(Delete<T>  callback, T input){
+    private void do_delete(Delete callback, T input){
         JsonObject body = new JsonObject();
         build(body,DELETE,input);
 
@@ -236,12 +236,12 @@ public abstract class GenericAPI<T> {
     }
 
     @FunctionalInterface
-    public interface Upsert<T> {
+    public interface Upsert {
         void execute(Response response);
     }
 
     @FunctionalInterface
-    public interface Delete<T> {
+    public interface Delete {
         void execute(Response response);
     }
 }
