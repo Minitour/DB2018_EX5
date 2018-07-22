@@ -4,8 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
-import network.AutoSignIn;
-import network.Response;
+import network.SharedInstance;
+import utils.AutoSignIn;
+import utils.Response;
 
 import java.util.List;
 
@@ -19,26 +20,57 @@ public class GenericAPI<T> {
     private static final String READ = "read";
     private static final String UPSERT = "upsert";
 
-    protected final String url;
+    /**
+     * The url
+     */
+    private final String url;
 
     private final Gson gson = new Gson();
 
+    /**
+     * @param url the base endpoint url.
+     */
     public GenericAPI(String url){
         this.url = url;
     }
 
+    /**
+     * Read a single object from the server based on certain parameters.
+     *
+     * @param object The object used to search. (object containing the ids)
+     * @param callback The callback containing the response.
+     */
     public void read(T object, Read<T> callback){
         do_read(callback,object);
     }
 
+    /**
+     * Read a list of objects from the server.
+     *
+     * @param callback The callback containing the response.
+     */
     public void readAll(ReadAll<T> callback){
         do_read_all(callback);
     }
 
+    /**
+     * Insert or update an object. be sure to include all parameters.
+     *
+     * When updating null parameters will override existing ones.
+     *
+     * @param object The object to insert or update.
+     * @param callback The callback response.
+     */
     public void upsert(T object, Upsert<T> callback){
         do_upsert(callback,object);
     }
 
+    /**
+     * Delete a certain object.
+     *
+     * @param object An object only containing the search keys. (id...)
+     * @param callback The callback response.
+     */
     public void delete(T object, Delete<T> callback){
         do_delete(callback,object);
     }
@@ -103,9 +135,14 @@ public class GenericAPI<T> {
         });
     }
 
+    /**
+     * Build the request body.
+     *
+     * @param body empty body.
+     * @param action action (crud action)
+     * @param input input value
+     */
     private void build(JsonObject body, String action, T input){
-
-
         addAction(action,body);
         if(input != null) {
             JsonObject params = gson.toJsonTree(input).getAsJsonObject();

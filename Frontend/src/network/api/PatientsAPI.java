@@ -1,7 +1,7 @@
 package network.api;
 
 import model.Person;
-import network.Constants;
+import utils.Constants;
 import network.generic.GenericAPI;
 
 /**

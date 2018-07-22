@@ -1,16 +1,23 @@
 package network.api;
 
 import com.google.gson.JsonObject;
-import network.AutoSignIn;
-import network.Constants;
-import network.Response;
-import network.generic.SharedInstance;
+import utils.AutoSignIn;
+import utils.Constants;
+import utils.Response;
+import network.SharedInstance;
 
 /**
  * Created By Tony on 23/07/2018
  */
 public class LoginAPI {
 
+    /**
+     * Login with email and password.
+     *
+     * @param email The email of the account.
+     * @param password The password of the account.
+     * @param callback The response callback.
+     */
     public void login(String email, String password, Auth callback){
         JsonObject data = new JsonObject();
 
