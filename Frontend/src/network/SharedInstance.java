@@ -93,22 +93,18 @@ public final class SharedInstance {
                         System.out.println("onResponse: " + res);
 
                         //make thread safe.
-                        Platform.runLater(() -> {
-                            try {
-                                JsonParser parser = new JsonParser();
-                                JsonObject o = parser.parse(res).getAsJsonObject();
-                                callback.make(o, null);
-                            } catch (Exception e) {
-                                callback.make(null, e);
-                            }
-
-                        });
+                        try {
+                            JsonParser parser = new JsonParser();
+                            JsonObject o = parser.parse(res).getAsJsonObject();
+                            callback.make(o, null);
+                        } catch (Exception e) {
+                            callback.make(null, e);
+                        }
                         responseBody.close();
                     }
                 }
             }
         });
-
     }
 
     @FunctionalInterface
