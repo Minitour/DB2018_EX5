@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
+import javafx.application.Platform;
 import network.SharedInstance;
 import utils.AutoSignIn;
 import utils.Response;
@@ -13,7 +14,7 @@ import java.util.List;
 /**
  * Created By Tony on 23/07/2018
  */
-public class GenericAPI<T> {
+public abstract class GenericAPI<T> {
 
     private static final String DELETE = "delete";
     private static final String READ_ALL = "read_all";
@@ -25,6 +26,8 @@ public class GenericAPI<T> {
      */
     private final String url;
 
+    private boolean runOnUi = false;
+
     private final Gson gson = new Gson();
 
     /**
@@ -33,6 +36,7 @@ public class GenericAPI<T> {
     public GenericAPI(String url){
         this.url = url;
     }
+
 
     /**
      * Read a single object from the server based on certain parameters.
@@ -80,17 +84,36 @@ public class GenericAPI<T> {
         JsonObject body = new JsonObject();
         build(body,READ,input);
 
+        //make api request to url with body
         SharedInstance.main.makeRequest(url, null, body, (json, exception) -> {
+
+            //get json and exception
             Response r = new Response(json);
             r.setException(exception);
 
-            if(exception == null) {
+            //create runnable object
+            Runnable runnable;
+
+            //check if exception is null (everything is good)
+            if(exception == null && r.isOK()) {
+                //parse data
                 JsonElement data = json.get("data");
                 T obj = gson.fromJson(data, (Class<T>) input.getClass());
-                callback.execute(r,obj);
+
+                //create runnable from callback
+                runnable = () -> callback.execute(r,obj);
             }else {
-                callback.execute(r,null);
+                //create runnable from callback
+                runnable = () -> callback.execute(r,null);
             }
+
+            //run on preferred thread
+
+            if(GenericAPI.this.runOnUi)
+                Platform.runLater(runnable);
+
+            else runnable.run();
+
         });
 
     }
@@ -99,27 +122,52 @@ public class GenericAPI<T> {
         JsonObject body = new JsonObject();
         build(body,READ_ALL,null);
 
+        //make api request to url with body
         SharedInstance.main.makeRequest(url, null, body, (json, exception) -> {
+
+            //get json and exception
             Response r = new Response(json);
             r.setException(exception);
 
+            //create runnable object
+            Runnable runnable;
+
+            //check if exception is null (everything is good)
             if(exception == null) {
                 JsonElement data = json.get("data");
                 List<T> list = gson.fromJson(data, new TypeToken<List<T>>(){}.getType());
-                callback.execute(r,list);
+                runnable = () -> callback.execute(r,list);
             }else {
-                callback.execute(r,null);
+                runnable = () -> callback.execute(r,null);
             }
+
+            //run on preferred thread
+
+            if(GenericAPI.this.runOnUi)
+                Platform.runLater(runnable);
+            else runnable.run();
         });
     }
 
     private void do_upsert(Upsert<T>  callback, T input){
         JsonObject body = new JsonObject();
         build(body,UPSERT,input);
+
+        //make api request to url with body
         SharedInstance.main.makeRequest(url, null, body, (json, exception) -> {
+
+            //get json and exception
             Response r = new Response(json);
             r.setException(exception);
-            callback.execute(r);
+
+            //create runnable object
+            Runnable runnable = () -> callback.execute(r);
+
+            //run on preferred thread
+
+            if(GenericAPI.this.runOnUi)
+                Platform.runLater(runnable);
+            else runnable.run();
         });
 
     }
@@ -128,10 +176,21 @@ public class GenericAPI<T> {
         JsonObject body = new JsonObject();
         build(body,DELETE,input);
 
+        //make api request to url with body
         SharedInstance.main.makeRequest(url, null, body, (json, exception) -> {
+
+            //get json and exception
             Response r = new Response(json);
             r.setException(exception);
-            callback.execute(r);
+
+            //create runnable object
+            Runnable runnable = () -> callback.execute(r);
+
+            //run on preferred thread
+
+            if(GenericAPI.this.runOnUi)
+                Platform.runLater(runnable);
+            else runnable.run();
         });
     }
 
