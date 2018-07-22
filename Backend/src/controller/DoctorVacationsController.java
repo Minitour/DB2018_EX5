@@ -1,48 +1,38 @@
 package controller;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import database.access.GenericAccess;
-import database.data_access.DoctorAccess;
-import database.data_access.PersonAccess;
+import database.data_access.DoctorVacationAccess;
 import model.Doctor;
-import model.Person;
+import model.DoctorVacation;
 import model.Session;
 import utils.GenericController;
 import utils.JSONResponse;
 
-import javax.print.Doc;
 import java.util.List;
 
-public class DoctorsController extends GenericController {
+public class DoctorVacationsController extends GenericController {
 
     @Override
-    public Object read(JsonObject body, Session session)       {
+    public Object read(JsonObject body, Session session) {
 
         JsonObject params = parameters(body);
         require(params);
 
         String doctorID = params.get("doctorID").getAsString();
 
-        try (DoctorAccess doctorAccess = new DoctorAccess()) {
+        try(DoctorVacationAccess doctorVacationAccess = new DoctorVacationAccess()) {
 
-            validateSession(session,doctorAccess,false);
+            validateSession(session, doctorVacationAccess, false);
 
-            if(!hasPermission("io.hospital.doctor.read", session))
+            if (!hasPermission("io.hospital.doctor.read", session))
                 return JSONResponse.FAILURE().message("Access Denied.");
 
+            List<DoctorVacation> doctorVacations = doctorVacationAccess.getById(doctorID);
+            JSONResponse<List<DoctorVacation>> jsonResponse = JSONResponse.SUCCESS();
+            jsonResponse.data(doctorVacations);
 
-            List<Doctor> doctors = doctorAccess.getById(doctorID);
-
-            if (doctors.size() != -1) {
-                return JSONResponse.FAILURE().message("Not found.");
-            }
-
-            Doctor doctor = doctors.get(0);
-
-            return JSONResponse.SUCCESS().data(doctor);
-
+            return jsonResponse;
 
         } catch (Exception e) {
             return JSONResponse
@@ -55,26 +45,24 @@ public class DoctorsController extends GenericController {
     @Override
     public Object readAll(JsonObject body, Session session) {
 
-        try(DoctorAccess doctorAccess = new DoctorAccess()) {
+        try(DoctorVacationAccess doctorVacationAccess = new DoctorVacationAccess()) {
 
-            validateSession(session,doctorAccess,false);
+            validateSession(session, doctorVacationAccess, false);
 
-            if(!hasPermission("io.hospital.doctor.read_all", session))
+            if (!hasPermission("io.hospital.doctor.read_all", session))
                 return JSONResponse.FAILURE().message("Access Denied.");
 
-            List<Doctor> doctors = doctorAccess.getAll();
-            JSONResponse<List<Doctor>> jsonResponse = JSONResponse.SUCCESS();
-            jsonResponse.data(doctors);
+            List<DoctorVacation> doctorVacations = doctorVacationAccess.getAll();
+            JSONResponse<List<DoctorVacation>> jsonResponse = JSONResponse.SUCCESS();
+            jsonResponse.data(doctorVacations);
 
             return jsonResponse;
-
 
         } catch (Exception e) {
             return JSONResponse
                     .FAILURE()
                     .message(e.getMessage());
         }
-
     }
 
     @Override
@@ -84,20 +72,20 @@ public class DoctorsController extends GenericController {
         require(params);
         Gson gson = new Gson();
 
-        Doctor d = gson.fromJson(params.get("doctor"),Doctor.class);
+        DoctorVacation doctorVacation = gson.fromJson(params.get("vacation"),DoctorVacation.class);
 
-        try(DoctorAccess doctor_db = new DoctorAccess()) {
+        try(DoctorVacationAccess vacation_db = new DoctorVacationAccess()) {
 
             //validate session
-            validateSession(session,doctor_db,false);
+            validateSession(session,vacation_db,false);
 
             //check permissions
-            boolean isOk = hasPermission("io.hospital.doctor.upsert",session);
+            boolean isOk = hasPermission("io.hospital.vacation.upsert",session);
 
             if(!isOk)
                 return JSONResponse.FAILURE().message("Access Denied");
 
-            doctor_db.upsert(d);
+            vacation_db.upsert(doctorVacation);
 
             return JSONResponse.SUCCESS();
 
@@ -106,7 +94,6 @@ public class DoctorsController extends GenericController {
                     .FAILURE()
                     .message(e.getMessage());
         }
-
     }
 
     @Override
@@ -115,18 +102,18 @@ public class DoctorsController extends GenericController {
         JsonObject params = parameters(body);
         require(params);
 
-        String doctorID = params.get("doctorID").getAsString();
+        String id = params.get("doctorID").getAsString();
 
-        try(DoctorAccess doctorAccess = new DoctorAccess()){
+        try(DoctorVacationAccess access = new DoctorVacationAccess()){
 
             //validate session.
-            validateSession(session,doctorAccess,false);
+            validateSession(session,access,false);
 
             //validate permissions.
-            if(!hasPermission("io.hospital.doctor.delete",session))
+            if(!hasPermission("io.hospital.vacation.delete",session))
                 return JSONResponse.FAILURE().message("Access Denied.");
 
-            doctorAccess.delete(doctorID);
+            access.delete(id);
 
             return JSONResponse.SUCCESS();
 
@@ -137,5 +124,4 @@ public class DoctorsController extends GenericController {
         }
 
     }
-
 }

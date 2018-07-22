@@ -44,6 +44,12 @@
           "delete",
           "upsert"
         ],
+        "vacation" : [
+          "read",
+          "read_all",
+          "delete",
+          "upsert"
+        ],
         "shift" : [
           "read",
           "read_all",
