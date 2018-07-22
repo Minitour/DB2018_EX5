@@ -19,7 +19,7 @@ public class Session extends DBObject {
     @Expose
     public transient Date CREATION_DATE = new Date(System.currentTimeMillis());
 
-    private transient int role = -1;
+    private int role = -1;
 
     public Session(Integer ACCOUNT_ID, String SESSION_TOKEN) {
         this.ACCOUNT_ID = ACCOUNT_ID;
