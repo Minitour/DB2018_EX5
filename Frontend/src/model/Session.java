@@ -15,4 +15,9 @@ public class Session {
     @Expose
     public String SESSION_TOKEN;
 
+    public Session(Integer ACCOUNT_ID, String SESSION_TOKEN) {
+        this.ACCOUNT_ID = ACCOUNT_ID;
+        this.SESSION_TOKEN = SESSION_TOKEN;
+    }
+
 }

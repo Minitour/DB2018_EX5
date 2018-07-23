@@ -22,4 +22,6 @@ public class Hospital {
     @Expose
     private String phone;
 
+    public Hospital(int hospitalID) { this.hospitalID = hospitalID; }
+
 }

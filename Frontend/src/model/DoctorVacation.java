@@ -15,4 +15,6 @@ public class DoctorVacation {
     @Expose
     private Date vacationDate;
 
+    public DoctorVacation(String doctorID) { this.doctorID = doctorID; }
+
 }

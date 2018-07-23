@@ -20,7 +20,7 @@ public class Account{
     private Short ROLE_ID;
 
 
-
+    public Account(Integer ACCOUNT_ID) { this.ACCOUNT_ID = ACCOUNT_ID; }
     // This class returns ACCOUNT_ID as InsertedId
 
 }

@@ -15,4 +15,6 @@ public class Shift {
 
     @Expose
     private String shiftType;
+
+    public Shift(int shiftNumber) { this.shiftNumber = shiftNumber; }
 }

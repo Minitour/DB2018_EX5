@@ -18,4 +18,10 @@ public class Room {
 
     @Expose
     private int bedsAmount;
+
+    public Room(int hospitalID, int departmentID, int roomNumber) {
+        this.hospitalID = hospitalID;
+        this.departmentID = departmentID;
+        this.roomNumber = roomNumber;
+    }
 }

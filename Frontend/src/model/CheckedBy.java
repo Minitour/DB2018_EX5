@@ -29,4 +29,12 @@ public class CheckedBy {
 
     @Expose
     private String bloodPressure;
+
+    public CheckedBy(String patientID, int eventCode, String doctorID, int shiftNumber, Date checkTime) {
+        this.patientID = patientID;
+        this.eventCode = eventCode;
+        this.doctorID = doctorID;
+        this.shiftNumber = shiftNumber;
+        this.checkTime = checkTime;
+    }
 }
