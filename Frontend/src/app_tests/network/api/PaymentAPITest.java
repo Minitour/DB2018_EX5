@@ -1,18 +1,18 @@
 package network.api;
 
-import model.Doctor;
+import model.Payment;
 import org.junit.Test;
 import utils.AutoSignIn;
 
 import static org.junit.Assert.assertTrue;
 
-public class DoctorAPITest {
+public class PaymentAPITest {
 
-    DoctorAPI api = new DoctorAPI();
+    PaymentAPI api = new PaymentAPI();
     String sessionToken = "6Nmyqt6W9u7pNCARdnvZsw0qsSjcD0MJm9s2ybULzGdyxHKXA7QygFMAs3Yl5nRwkcKUKvzKcU8zbTBzvP4QNhHLUbBynwR0M9CPKXgQCPkx5UeaqRumT7fNsngPlGvP";
     int accountId = 15;
 //        "ACCOUNT_ID": 15,
-        //"SESSION_TOKEN": "6Nmyqt6W9u7pNCARdnvZsw0qsSjcD0MJm9s2ybULzGdyxHKXA7QygFMAs3Yl5nRwkcKUKvzKcU8zbTBzvP4QNhHLUbBynwR0M9CPKXgQCPkx5UeaqRumT7fNsngPlGvP"
+    //"SESSION_TOKEN": "6Nmyqt6W9u7pNCARdnvZsw0qsSjcD0MJm9s2ybULzGdyxHKXA7QygFMAs3Yl5nRwkcKUKvzKcU8zbTBzvP4QNhHLUbBynwR0M9CPKXgQCPkx5UeaqRumT7fNsngPlGvP"
 
 
     @Test
@@ -20,9 +20,9 @@ public class DoctorAPITest {
         AutoSignIn.ID = accountId;
         AutoSignIn.SESSION_TOKEN = sessionToken;
 
-        Doctor d = new Doctor("343434343");
-        api.read(d, (res,doctor) -> {
-            assertTrue(doctor != null);
+        Payment m = new Payment(1);
+        api.read(m, (res,event) -> {
+            assertTrue(event != null);
         });
     }
 

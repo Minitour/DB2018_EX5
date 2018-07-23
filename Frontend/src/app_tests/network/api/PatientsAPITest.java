@@ -41,11 +41,11 @@ public class PatientsAPITest {
         });
     }
 
-    @Test
-    public void readAll() {
-        api.readAll((response, items) -> {
-            assertTrue(items != null);
-        });
-    }
+//    @Test
+//    public void readAll() {
+//        api.readAll((response, items) -> {
+//            assertTrue(items != null);
+//        });
+//    }
 
 }

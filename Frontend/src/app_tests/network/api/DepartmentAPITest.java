@@ -9,23 +9,8 @@ import static org.junit.Assert.assertTrue;
 public class DepartmentAPITest {
 
     DepartmentAPI api = new DepartmentAPI();
-    String sessionToken;
-    int accountId;
-
-    @Test
-    public void login() {
-
-        LoginAPI api = new LoginAPI();
-
-        String email = "tony@newsound.mobi";
-        String password = "1212121212";
-
-        api.login(email, password, (response, id, token, roleId) -> {
-            assertTrue(token != null);
-            assertTrue(id != 0);
-            assertTrue(roleId != -1 && roleId != 0);
-        });
-    }
+    String sessionToken = "6Nmyqt6W9u7pNCARdnvZsw0qsSjcD0MJm9s2ybULzGdyxHKXA7QygFMAs3Yl5nRwkcKUKvzKcU8zbTBzvP4QNhHLUbBynwR0M9CPKXgQCPkx5UeaqRumT7fNsngPlGvP";
+    int accountId = 15;
 
     @Test
     public void read() {
