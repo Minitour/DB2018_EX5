@@ -32,4 +32,9 @@ public class Hospitalized {
 
     @Expose
     private int roomNumber;
+
+    public Hospitalized(String patientID, int eventCode) {
+        this.patientID = patientID;
+        this.eventCode = eventCode;
+    }
 }

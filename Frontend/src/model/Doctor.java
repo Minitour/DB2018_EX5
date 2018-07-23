@@ -23,4 +23,6 @@ public class Doctor {
 
     @Expose
     private int manager;
+
+    public Doctor(String doctorID) { this.doctorID = doctorID; }
 }

@@ -18,4 +18,6 @@ public class Payment {
 
     @Expose
     private int amount;
+
+    public Payment(int serialNumber) { this.serialNumber = serialNumber; }
 }

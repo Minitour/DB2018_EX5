@@ -11,4 +11,6 @@ public class MedicalEventTypes {
 
     @Expose
     private String typeName;
+
+    public MedicalEventTypes(int typeCode) { this.typeCode = typeCode; }
 }
