@@ -34,6 +34,8 @@ final public class Constants {
      */
     public static class Routes {
 
+        public static String checkedBy() { return getAddress() + "/checkedBy"; }
+
         public static String department() { return getAddress() + "/department"; }
 
         public static String doctor() { return getAddress() + "/doctor"; }
@@ -42,11 +44,15 @@ final public class Constants {
 
         public static String eventInDep() { return getAddress() + "/eventInDep"; }
 
+        public static String eventTypes() { return getAddress() + "/eventTypes"; }
+
         public static String hospital() { return getAddress() + "/hospital"; }
 
         public static String hospitalized() { return getAddress() + "/hospitalized"; }
 
         public static String profile() { return getAddress() + "/profile"; }
+
+        public static String payment() { return getAddress() + "/payment"; }
 
         public static String room() { return getAddress() + "/room"; }
 
