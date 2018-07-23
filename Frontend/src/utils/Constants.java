@@ -34,14 +34,31 @@ final public class Constants {
      */
     public static class Routes {
 
-        public static String login(){
-            return getAddress() + "/login";
-        }
-        public static String getAccounts() { return getAddress() + "/getAccounts"; }
+        public static String department() { return getAddress() + "/department"; }
 
-        public static String patients() {
-            return getAddress() + "/patient";
-        }
+        public static String doctor() { return getAddress() + "/doctor"; }
+
+        public static String event() { return getAddress() + "/event"; }
+
+        public static String eventInDep() { return getAddress() + "/eventInDep"; }
+
+        public static String hospital() { return getAddress() + "/hospital"; }
+
+        public static String hospitalized() { return getAddress() + "/hospitalized"; }
+
+        public static String profile() { return getAddress() + "/profile"; }
+
+        public static String room() { return getAddress() + "/room"; }
+
+        public static String shift() { return getAddress() + "/shift"; }
+
+        public static String vacation() { return getAddress() + "/vacation"; }
+
+        public static String workInShift() { return getAddress() + "/workInShift"; }
+
+        public static String login(){ return getAddress() + "/login"; }
+
+        public static String patients() { return getAddress() + "/patient"; }
     }
     public static class Codes{
         public static final int SUCCESS=200;
