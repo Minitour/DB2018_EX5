@@ -26,9 +26,17 @@ public abstract class GenericAPI<T> {
      */
     private final String url;
 
-    private boolean runOnUi = false;
+    private boolean runOnUi = true;
 
     private final Gson gson = new Gson();
+
+    public void setRunOnUi(boolean runOnUi) {
+        this.runOnUi = runOnUi;
+    }
+
+    public boolean isUiSafe() {
+        return runOnUi;
+    }
 
     /**
      * @param url the base endpoint url.
