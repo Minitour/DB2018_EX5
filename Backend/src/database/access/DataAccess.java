@@ -15,13 +15,14 @@ import java.util.Map;
  */
 public class DataAccess<E extends DBObject> extends Database {
 
-    DataAccess() { }
+    public DataAccess() { }
 
-    DataAccess(Database existingDatabase) {
+    public DataAccess(Database existingDatabase) {
         super(existingDatabase);
     }
 
-    protected List<E> get(Class<E> cls, String procedure, Object... args) throws AccessException {
+
+    protected<E extends DBObject> List<E> get(Class<E> cls, String procedure, Object... args) throws AccessException {
         List<Map<String, Object>> data = procedure_any(procedure, args);
 
         if(data == null)

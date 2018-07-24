@@ -57,7 +57,7 @@ public abstract class DBObject{
      * @param ann
      * @return
      */
-    private Set<Field> findFields(Class<? extends Annotation> ann) {
+    protected Set<Field> findFields(Class<? extends Annotation> ann) {
         Set<Field> set = new HashSet<>();
         Class<?> c = getClass();
         while (c != null) {
@@ -71,7 +71,7 @@ public abstract class DBObject{
         return set;
     }
 
-    private List<Field> findFieldsAsList(Class<? extends Annotation> ann) {
+    protected List<Field> findFieldsAsList(Class<? extends Annotation> ann) {
         List<Field> list = new ArrayList<>();
 
         Class<?> c = getClass();
