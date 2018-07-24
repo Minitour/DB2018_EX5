@@ -1,6 +1,7 @@
 package network.api;
 
 import com.google.gson.JsonObject;
+import javafx.application.Platform;
 import utils.AutoSignIn;
 import utils.Constants;
 import utils.Response;
@@ -28,21 +29,24 @@ public class LoginAPI {
             Response r = new Response(json);
             r.setException(exception);
 
-            if(exception == null && r.isOK()){
-                JsonObject d = json.get("data").getAsJsonObject();
+            Platform.runLater(()-> {
+                if(exception == null && r.isOK()){
+                    JsonObject d = json.get("data").getAsJsonObject();
 
-                int id = d.get("ACCOUNT_ID").getAsInt();
-                String token = d.get("SESSION_TOKEN").getAsString();
-                int roleId = d.get("role").getAsInt();
+                    int id = d.get("ACCOUNT_ID").getAsInt();
+                    String token = d.get("SESSION_TOKEN").getAsString();
+                    int roleId = d.get("role").getAsInt();
 
-                AutoSignIn.ID = id;
-                AutoSignIn.SESSION_TOKEN = token;
-                AutoSignIn.ROLE_ID = roleId;
-                AutoSignIn.EMAIL = email;
+                    AutoSignIn.ID = id;
+                    AutoSignIn.SESSION_TOKEN = token;
+                    AutoSignIn.ROLE_ID = roleId;
+                    AutoSignIn.EMAIL = email;
 
-                callback.make(r,id,token,roleId);
-            }else
-                callback.make(r,null,null,-1);
+                    callback.make(r,id,token,roleId);
+                }else
+                    callback.make(r,null,null,-1);
+            });
+
         });
 
     }
