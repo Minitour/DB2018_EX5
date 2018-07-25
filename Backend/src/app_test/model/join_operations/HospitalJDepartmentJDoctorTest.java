@@ -3,6 +3,7 @@ package model.join_operations;
 import database.data_access.QueriesAccess;
 import model.join.HospitalJoinDepartment;
 import model.join.HospitalJoinDepartmentJoinDoctor;
+import model.join.HospitalJoinHospitalized;
 import model.join.HospitalJoinPerson;
 import org.junit.jupiter.api.Test;
 
@@ -16,9 +17,12 @@ public class HospitalJDepartmentJDoctorTest {
 
         QueriesAccess queriesAccess = new QueriesAccess();
 
-        List<HospitalJoinPerson> hospitalJoinPeople = queriesAccess.query2();
+        List<HospitalJoinHospitalized> hospitalJoinPeople = queriesAccess.query6();
 
-        hospitalJoinPeople.forEach(System.out::println);
+        System.out.println(hospitalJoinPeople.get(0).getMonth());
+        System.out.println(hospitalJoinPeople.get(0).getTotalPayment());
+
+        //hospitalJoinPeople.forEach(System.out::println);
 
         queriesAccess.close();
 
