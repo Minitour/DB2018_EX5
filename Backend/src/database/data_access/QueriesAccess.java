@@ -3,6 +3,7 @@ package database.data_access;
 import database.DBObject;
 import database.Database;
 import database.access.DataAccess;
+import model.Person;
 import model.join.*;
 
 import java.util.List;
@@ -31,11 +32,23 @@ public class QueriesAccess extends DataAccess<DBObject> {
         return get(HospitalJoinPersonJoinDoctor.class,"QUERY_4");
     }
 
+    public List<PersonJoinCheckedBy> query5(String doctorID) {
+        return get(PersonJoinCheckedBy.class,"QUERY_5", doctorID);
+    }
+
     public List<HospitalJoinHospitalized> query6(){
         return get(HospitalJoinHospitalized.class,"QUERY_6");
     }
-    public List<HospitalJoinDepartment> query7(){
+    public List<HospitalJoinDepartment> query7A(){
         return get(HospitalJoinDepartment.class,"QUERY_7A");
+    }
+
+    public List<HospitalJoinDepartmentJoinDoctor> query7B(){
+        return get(HospitalJoinDepartmentJoinDoctor.class,"QUERY_7B");
+    }
+
+    public List<Person> query8(){
+        return get(Person.class,"QUERY_8");
     }
 
     public List<HospitalJoinDepartment> query9(){

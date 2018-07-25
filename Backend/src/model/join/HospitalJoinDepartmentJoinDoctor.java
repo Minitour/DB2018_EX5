@@ -12,6 +12,9 @@ public class HospitalJoinDepartmentJoinDoctor extends Join<HospitalJoinDepartmen
     @Expose
     private String hospitalStatus;
 
+    @Expose
+    private Integer numOfDoctors;
+
     public HospitalJoinDepartmentJoinDoctor() {
         super(HospitalJoinDepartment.class, Doctor.class);
     }
@@ -22,5 +25,13 @@ public class HospitalJoinDepartmentJoinDoctor extends Join<HospitalJoinDepartmen
 
     public void setHospitalStatus(String hospitalStatus) {
         this.hospitalStatus = hospitalStatus;
+    }
+
+    public void setNumOfDoctors(Integer numOfDoctors) {
+        this.numOfDoctors = numOfDoctors;
+    }
+
+    public Integer getNumOfDoctors() {
+        return numOfDoctors;
     }
 }
