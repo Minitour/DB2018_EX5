@@ -12,6 +12,6 @@ public class EventInDepartmentAPI extends GenericAPI<MedicalEventTypeInDepartmen
      * @param url the base endpoint url.
      */
     public EventInDepartmentAPI() {
-        super(Constants.Routes.eventInDep());
+        super(Constants.Routes.eventInDep(),MedicalEventTypeInDepartment.class);
     }
 }

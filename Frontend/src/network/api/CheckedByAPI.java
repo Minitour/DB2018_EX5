@@ -8,6 +8,6 @@ public class CheckedByAPI extends GenericAPI<CheckedBy> {
     /**
      * @param url the base endpoint url.
      */
-    public CheckedByAPI() { super(Constants.Routes.checkedBy());}
+    public CheckedByAPI() { super(Constants.Routes.checkedBy(),CheckedBy.class);}
 
 }

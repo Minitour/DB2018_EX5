@@ -12,6 +12,6 @@ public class DepartmentAPI extends GenericAPI<Department>{
      * @param url the base endpoint url.
      */
     public DepartmentAPI() {
-        super(Constants.Routes.department());
+        super(Constants.Routes.department(),Department.class);
     }
 }

@@ -61,8 +61,19 @@ public class ProfileController extends GenericController {
             validateSession(session,personAccess,false);
 
             //check permissions
-            if(!hasPermission("io.hospital.profile.read_all",session))
-                return JSONResponse.FAILURE().message("Access Denied.");
+            if(!hasPermission("io.hospital.profile.read_all",session)) {
+                //can read one
+                if (!hasPermission("io.hospital.profile.read",session)){
+                    return JSONResponse.FAILURE().message("Access Denied.");
+                }else {
+                    List<Person> personList = personAccess.getAll();
+                    personList.removeIf(person -> !session.ACCOUNT_ID.equals(person.getACCOUNT_ID()));
+                    JSONResponse<List<Person>> jsonResponse = JSONResponse.SUCCESS();
+                    jsonResponse.data(personList);
+                    return jsonResponse;
+                }
+            }
+
 
             List<Person> personList = personAccess.getAll();
             JSONResponse<List<Person>> jsonResponse = JSONResponse.SUCCESS();

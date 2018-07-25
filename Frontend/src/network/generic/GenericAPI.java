@@ -1,6 +1,7 @@
 package network.generic;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
@@ -9,6 +10,8 @@ import network.SharedInstance;
 import utils.AutoSignIn;
 import utils.Response;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,11 +41,14 @@ public abstract class GenericAPI<T> {
         return runOnUi;
     }
 
+    private Class<T> cls;
+
     /**
      * @param url the base endpoint url.
      */
-    public GenericAPI(String url){
+    public GenericAPI(String url,Class<T> cls){
         this.url = url;
+        this.cls = cls;
     }
 
 
@@ -143,7 +149,15 @@ public abstract class GenericAPI<T> {
             //check if exception is null (everything is good)
             if(exception == null) {
                 JsonElement data = json.get("data");
-                List<T> list = gson.fromJson(data, new TypeToken<List<T>>(){}.getType());
+                List<T> list = new ArrayList<>();
+
+                JsonArray array = data.getAsJsonArray();
+                for (JsonElement element : array) {
+                    T item = gson.fromJson(element,cls);
+                    list.add(item);
+                }
+                //TypeToken t = new TypeToken<List<E>>(){};
+                //List<E> list = gson.fromJson(data, t.getType());
                 runnable = () -> callback.execute(r,list);
             }else {
                 runnable = () -> callback.execute(r,null);

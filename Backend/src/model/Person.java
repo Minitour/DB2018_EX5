@@ -43,11 +43,11 @@ public class Person extends DBObject{
     private String contactID;
 
     @Expose
-    private Account ACCOUNT_ID;
+    private Integer ACCOUNT_ID;
 
     public Person() {}
 
-    public Person(String ID, String firstName, String surName, Date dateOfBirth, String city, String street, String gender, String phone, String bloodType, String careFacility, String contactID, Account ACCOUNT_ID) {
+    public Person(String ID, String firstName, String surName, Date dateOfBirth, String city, String street, String gender, String phone, String bloodType, String careFacility, String contactID, Integer ACCOUNT_ID) {
         this.ID = ID;
         this.firstName = firstName;
         this.surName = surName;
@@ -106,7 +106,7 @@ public class Person extends DBObject{
         return contactID;
     }
 
-    public Account getACCOUNT_ID() {
+    public Integer getACCOUNT_ID() {
         return ACCOUNT_ID;
     }
 
@@ -154,7 +154,7 @@ public class Person extends DBObject{
         this.contactID = contactID;
     }
 
-    public void setACCOUNT_ID(Account ACCOUNT_ID) {
+    public void setACCOUNT_ID(Integer ACCOUNT_ID) {
         this.ACCOUNT_ID = ACCOUNT_ID;
     }
 }

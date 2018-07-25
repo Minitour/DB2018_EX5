@@ -1,6 +1,7 @@
 package view;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -24,10 +25,10 @@ public class AccountView extends UIView {
     private JFXTextField email;
 
     @FXML
-    private JFXTextField password;
+    private JFXPasswordField password;
 
     @FXML
-    private JFXTextField newPassword;
+    private JFXPasswordField newPassword;
 
     @FXML
     private JFXButton update;
