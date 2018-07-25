@@ -58,6 +58,14 @@ public class Join<A extends DBObject,B extends DBObject> extends DBObject {
         }
     }
 
+    public A left() {
+        return object_a;
+    }
+
+    public B right() {
+        return object_b;
+    }
+
     @Override
     public String toString() {
         return object_a.toString() + object_b.toString();
