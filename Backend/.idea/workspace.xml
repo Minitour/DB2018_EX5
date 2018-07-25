@@ -20,40 +20,56 @@
       <file leaf-file-name="HospitalJoinDepartment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/join/HospitalJoinDepartment.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="86">
+              <caret line="21" column="33" lean-forward="false" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#428#429#0" expanded="true" />
+                <element signature="e#483#484#0" expanded="true" />
+                <element signature="e#523#524#0" expanded="true" />
+                <element signature="e#558#559#0" expanded="true" />
+                <element signature="e#615#616#0" expanded="true" />
+                <element signature="e#663#664#0" expanded="true" />
+                <element signature="e#711#712#0" expanded="true" />
+                <element signature="e#754#755#0" expanded="true" />
+                <element signature="e#787#788#0" expanded="true" />
+                <element signature="e#816#817#0" expanded="true" />
+                <element signature="e#997#998#0" expanded="true" />
+                <element signature="e#1033#1034#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PersonJoinCheckedBy.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/join/PersonJoinCheckedBy.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#243#244#0" expanded="true" />
-                <element signature="e#298#299#0" expanded="true" />
+                <element signature="e#190#191#0" expanded="true" />
+                <element signature="e#242#243#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Join.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/database/Join.java">
+      <file leaf-file-name="CheckedByController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/CheckedByController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1689#1690#0" expanded="true" />
-                <element signature="e#1720#1721#0" expanded="true" />
-                <element signature="e#1744#1745#0" expanded="true" />
-                <element signature="e#1775#1776#0" expanded="true" />
-                <element signature="e#1821#1822#0" expanded="true" />
-                <element signature="e#1885#1886#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="60">
+              <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GenericAccess.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/database/access/GenericAccess.java">
+      <file leaf-file-name="CheckedByAccess.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/database/data_access/CheckedByAccess.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="53" column="23" lean-forward="true" selection-start-line="53" selection-start-column="23" selection-end-line="53" selection-end-column="23" />
+            <state relative-caret-position="120">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -62,21 +78,36 @@
       <file leaf-file-name="QueriesAccess.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/database/data_access/QueriesAccess.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="33" column="38" lean-forward="false" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="38" />
+            <state relative-caret-position="150">
+              <caret line="16" column="24" lean-forward="false" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="24" />
               <folding>
-                <element signature="e#693#694#0" expanded="true" />
-                <element signature="e#765#766#0" expanded="true" />
+                <element signature="e#714#715#0" expanded="true" />
+                <element signature="e#786#787#0" expanded="true" />
+                <element signature="e#1095#1096#0" expanded="true" />
+                <element signature="e#1162#1163#0" expanded="true" />
+                <element signature="e#1336#1337#0" expanded="true" />
+                <element signature="e#1386#1387#0" expanded="true" />
+                <marker date="1532545953506" expanded="true" signature="789:924" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HospitalJDepartmentJDoctorTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DataAccess.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/database/access/DataAccess.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="151">
+              <caret line="25" column="68" lean-forward="true" selection-start-line="25" selection-start-column="68" selection-end-line="25" selection-end-column="68" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HospitalJDepartmentJDoctorTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app_test/model/join_operations/HospitalJDepartmentJDoctorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+            <state relative-caret-position="-49">
+              <caret line="17" column="78" lean-forward="false" selection-start-line="17" selection-start-column="78" selection-end-line="17" selection-end-column="78" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -128,33 +159,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HospitalJoinDepartmentJoinDoctor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/join/HospitalJoinDepartmentJoinDoctor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Account.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Account.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="83" column="37" lean-forward="true" selection-start-line="83" selection-start-column="37" selection-end-line="83" selection-end-column="37" />
-              <folding>
-                <element signature="e#1802#1803#0" expanded="true" />
-                <element signature="e#1835#1836#0" expanded="true" />
-                <element signature="e#1888#1889#0" expanded="true" />
-                <element signature="e#1932#1933#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -187,7 +191,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/database/data_access/PaymentAccess.java" />
         <option value="$PROJECT_DIR$/src/database/data_access/PersonAccess.java" />
         <option value="$PROJECT_DIR$/src/database/data_access/RoomAccess.java" />
         <option value="$PROJECT_DIR$/src/database/data_access/SessionAccess.java" />
@@ -226,18 +229,19 @@
         <option value="$PROJECT_DIR$/src/model/join/HospitalJoinPersonJoinDoctor.java" />
         <option value="$PROJECT_DIR$/src/model/join/HospitalJoinPerson.java" />
         <option value="$PROJECT_DIR$/src/database/access/DataAccess.java" />
-        <option value="$PROJECT_DIR$/src/database/data_access/QueriesAccess.java" />
         <option value="$PROJECT_DIR$/src/App.java" />
-        <option value="$PROJECT_DIR$/src/model/join/HospitalJoinDepartment.java" />
         <option value="$PROJECT_DIR$/src/app_test/model/join_operations/HospitalJHospitalizedTest.java" />
         <option value="$PROJECT_DIR$/src/app_test/model/join_operations/HospitalJPersonJDoctorTest.java" />
         <option value="$PROJECT_DIR$/src/app_test/model/join_operations/HospitalJPersonTest.java" />
         <option value="$PROJECT_DIR$/src/app_test/model/join_operations/HospitalJDepartmentTest.java" />
         <option value="$PROJECT_DIR$/src/model/Account.java" />
-        <option value="$PROJECT_DIR$/src/model/join/HospitalJoinDepartmentJoinDoctor.java" />
         <option value="$PROJECT_DIR$/src/database/Join.java" />
         <option value="$PROJECT_DIR$/src/model/join/HospitalJoinHospitalized.java" />
+        <option value="$PROJECT_DIR$/src/model/join/HospitalJoinDepartment.java" />
+        <option value="$PROJECT_DIR$/src/model/join/HospitalJoinDepartmentJoinDoctor.java" />
+        <option value="$PROJECT_DIR$/src/model/join/PersonJoinCheckedBy.java" />
         <option value="$PROJECT_DIR$/src/app_test/model/join_operations/HospitalJDepartmentJDoctorTest.java" />
+        <option value="$PROJECT_DIR$/src/database/data_access/QueriesAccess.java" />
       </list>
     </option>
   </component>
@@ -560,34 +564,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="HospitalJDepartmentJDoctorTest_test - 2018.07.25 at 20h 00m 45s.xml">
+    <history-entry file="HospitalJDepartmentJDoctorTest_test - 2018.07.25 at 21h 00m 02s.xml">
       <configuration name="HospitalJDepartmentJDoctorTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HospitalJDepartmentJDoctorTest_test - 2018.07.25 at 20h 13m 44s.xml">
+    <history-entry file="HospitalJDepartmentJDoctorTest_test - 2018.07.25 at 21h 04m 04s.xml">
       <configuration name="HospitalJDepartmentJDoctorTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HospitalJDepartmentJDoctorTest_test - 2018.07.25 at 20h 18m 29s.xml">
+    <history-entry file="HospitalJDepartmentJDoctorTest_test - 2018.07.25 at 21h 17m 08s.xml">
       <configuration name="HospitalJDepartmentJDoctorTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HospitalJDepartmentJDoctorTest_test - 2018.07.25 at 20h 19m 45s.xml">
+    <history-entry file="HospitalJDepartmentJDoctorTest_test - 2018.07.25 at 21h 17m 48s.xml">
       <configuration name="HospitalJDepartmentJDoctorTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HospitalJDepartmentJDoctorTest_test - 2018.07.25 at 20h 21m 14s.xml">
+    <history-entry file="HospitalJDepartmentJDoctorTest_test - 2018.07.25 at 21h 18m 07s.xml">
       <configuration name="HospitalJDepartmentJDoctorTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HospitalJDepartmentJDoctorTest_test - 2018.07.25 at 20h 21m 38s.xml">
+    <history-entry file="HospitalJDepartmentJDoctorTest_test - 2018.07.25 at 21h 31m 40s.xml">
       <configuration name="HospitalJDepartmentJDoctorTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HospitalJDepartmentJDoctorTest_test - 2018.07.25 at 20h 22m 51s.xml">
+    <history-entry file="HospitalJDepartmentJDoctorTest_test - 2018.07.25 at 21h 35m 47s.xml">
       <configuration name="HospitalJDepartmentJDoctorTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HospitalJDepartmentJDoctorTest_test - 2018.07.25 at 20h 23m 56s.xml">
+    <history-entry file="HospitalJDepartmentJDoctorTest_test - 2018.07.25 at 21h 41m 13s.xml">
       <configuration name="HospitalJDepartmentJDoctorTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HospitalJDepartmentJDoctorTest_test - 2018.07.25 at 20h 24m 25s.xml">
+    <history-entry file="HospitalJDepartmentJDoctorTest_test - 2018.07.25 at 22h 10m 46s.xml">
       <configuration name="HospitalJDepartmentJDoctorTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HospitalJDepartmentJDoctorTest_test - 2018.07.25 at 20h 24m 50s.xml">
+    <history-entry file="HospitalJDepartmentJDoctorTest_test - 2018.07.25 at 22h 12m 38s.xml">
       <configuration name="HospitalJDepartmentJDoctorTest.test" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -612,12 +616,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4055944" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4055944" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23891273" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26037195" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -647,7 +652,6 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23933902" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
     </layout>
@@ -685,33 +689,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/app_test/model/join_operations/HospitalJDepartmentJDoctorTest.java</url>
-          <line>21</line>
-          <properties />
-          <option name="timeStamp" value="76" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="77" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/controller/DoctorsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1189">
-          <caret line="38" column="62" lean-forward="false" selection-start-line="38" selection-start-column="62" selection-end-line="38" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/DoctorVacationsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="51" column="52" lean-forward="false" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/HospitalController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-741">
@@ -786,6 +768,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1042">
           <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -793,13 +776,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1581">
           <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/data_access/CheckedByAccess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -977,65 +953,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/access/DataAccess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/join/HospitalJoinPersonJoinDoctor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/join/HospitalJoinDepartment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#243#244#0" expanded="true" />
-            <element signature="e#298#299#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/data_access/QueriesAccess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="33" column="38" lean-forward="false" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="38" />
-          <folding>
-            <element signature="e#693#694#0" expanded="true" />
-            <element signature="e#765#766#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/join/HospitalJoinDepartmentJoinDoctor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/join/HospitalJoinPerson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="20" lean-forward="false" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
-          <folding>
-            <element signature="e#226#227#0" expanded="true" />
-            <element signature="e#277#278#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/database/Join.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="124">
@@ -1048,6 +965,20 @@
             <element signature="e#1775#1776#0" expanded="true" />
             <element signature="e#1821#1822#0" expanded="true" />
             <element signature="e#1885#1886#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/join/HospitalJoinDepartmentJoinDoctor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#696#697#0" expanded="true" />
+            <element signature="e#744#745#0" expanded="true" />
+            <element signature="e#784#785#0" expanded="true" />
+            <element signature="e#819#820#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1071,13 +1002,106 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/join/HospitalJoinPerson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="10" column="20" lean-forward="false" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+          <folding>
+            <element signature="e#226#227#0" expanded="true" />
+            <element signature="e#277#278#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/join/HospitalJoinPersonJoinDoctor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/join/HospitalJoinDepartment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="86">
+          <caret line="21" column="33" lean-forward="false" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#428#429#0" expanded="true" />
+            <element signature="e#483#484#0" expanded="true" />
+            <element signature="e#523#524#0" expanded="true" />
+            <element signature="e#558#559#0" expanded="true" />
+            <element signature="e#615#616#0" expanded="true" />
+            <element signature="e#663#664#0" expanded="true" />
+            <element signature="e#711#712#0" expanded="true" />
+            <element signature="e#754#755#0" expanded="true" />
+            <element signature="e#787#788#0" expanded="true" />
+            <element signature="e#816#817#0" expanded="true" />
+            <element signature="e#997#998#0" expanded="true" />
+            <element signature="e#1033#1034#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/join/PersonJoinCheckedBy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#190#191#0" expanded="true" />
+            <element signature="e#242#243#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database/access/DataAccess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="25" column="68" lean-forward="true" selection-start-line="25" selection-start-column="68" selection-end-line="25" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/app_test/model/join_operations/HospitalJDepartmentJDoctorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        <state relative-caret-position="-49">
+          <caret line="17" column="78" lean-forward="false" selection-start-line="17" selection-start-column="78" selection-end-line="17" selection-end-column="78" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database/data_access/QueriesAccess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="16" column="24" lean-forward="false" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="24" />
+          <folding>
+            <element signature="e#714#715#0" expanded="true" />
+            <element signature="e#786#787#0" expanded="true" />
+            <element signature="e#1095#1096#0" expanded="true" />
+            <element signature="e#1162#1163#0" expanded="true" />
+            <element signature="e#1336#1337#0" expanded="true" />
+            <element signature="e#1386#1387#0" expanded="true" />
+            <marker date="1532545953506" expanded="true" signature="789:924" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/CheckedByController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database/data_access/CheckedByAccess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
