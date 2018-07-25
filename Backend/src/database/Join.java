@@ -23,6 +23,8 @@ public class Join<A extends DBObject,B extends DBObject> extends DBObject {
     @Override
     public void map(Map<String, Object> map) {
 
+        super.map(map);
+
         if(object_a != null)
             object_a.map(map);
 
