@@ -12,9 +12,20 @@ import java.util.Map;
  */
 public class Join<A extends DBObject,B extends DBObject> extends DBObject {
 
+    /**
+     * The left part of the join.
+     */
     private A object_a;
+
+    /**
+     * The right part of the join.
+     */
     private B object_b;
 
+    /**
+     * @param clsA The left class
+     * @param clsB The right class.
+     */
     public Join(Class<A> clsA, Class<B> clsB){
         object_a = initFrom(clsA);
         object_b = initFrom(clsB);
@@ -22,6 +33,7 @@ public class Join<A extends DBObject,B extends DBObject> extends DBObject {
 
     @Override
     public void map(Map<String, Object> map) {
+        super.map(map);
 
         super.map(map);
 
