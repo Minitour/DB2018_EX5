@@ -18,7 +18,7 @@ public class Person {
     private String surName;
 
     @Expose
-    private Date birthOfBirth;
+    private Date dateOfBirth;
 
     @Expose
     private String city;
@@ -42,7 +42,7 @@ public class Person {
     private String contactID;
 
     @Expose
-    private Account ACCOUNT_ID;
+    private Integer ACCOUNT_ID;
 
     public Person(String ID) {
         this.ID = ID;
@@ -72,12 +72,12 @@ public class Person {
         this.surName = surName;
     }
 
-    public Date getBirthOfBirth() {
-        return birthOfBirth;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setBirthOfBirth(Date birthOfBirth) {
-        this.birthOfBirth = birthOfBirth;
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getCity() {
@@ -136,11 +136,11 @@ public class Person {
         this.contactID = contactID;
     }
 
-    public Account getACCOUNT_ID() {
+    public Integer getACCOUNT_ID() {
         return ACCOUNT_ID;
     }
 
-    public void setACCOUNT_ID(Account ACCOUNT_ID) {
+    public void setACCOUNT_ID(Integer ACCOUNT_ID) {
         this.ACCOUNT_ID = ACCOUNT_ID;
     }
 }

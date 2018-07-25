@@ -35,12 +35,14 @@ public class LoginAPI {
 
                     int id = d.get("ACCOUNT_ID").getAsInt();
                     String token = d.get("SESSION_TOKEN").getAsString();
+                    String hospital = d.get("hospitalId").getAsString();
                     int roleId = d.get("role").getAsInt();
 
                     AutoSignIn.ID = id;
                     AutoSignIn.SESSION_TOKEN = token;
                     AutoSignIn.ROLE_ID = roleId;
                     AutoSignIn.EMAIL = email;
+                    AutoSignIn.HOSPITAL_ID = hospital;
 
                     callback.make(r,id,token,roleId);
                 }else

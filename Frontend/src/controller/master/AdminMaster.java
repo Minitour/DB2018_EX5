@@ -6,6 +6,9 @@ import ui.UIView;
  * Created By Tony on 25/07/2018
  */
 public class AdminMaster extends MasterMenuController {
+
+    UIView[] views = {};
+
     @Override
     public UIView viewForIndexAt(int index) {
         return null;
