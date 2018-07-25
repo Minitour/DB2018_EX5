@@ -1,5 +1,6 @@
 package network.api;
 
+import model.Doctor;
 import model.DoctorVacation;
 import network.generic.GenericAPI;
 import utils.Constants;
@@ -12,6 +13,6 @@ public class VacationAPI extends GenericAPI<DoctorVacation> {
      * @param url the base endpoint url.
      */
     public VacationAPI() {
-        super(Constants.Routes.vacation());
+        super(Constants.Routes.vacation(), DoctorVacation.class);
     }
 }

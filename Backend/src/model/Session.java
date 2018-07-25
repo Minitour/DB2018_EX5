@@ -19,6 +19,8 @@ public class Session extends DBObject {
     @Expose
     public transient Date CREATION_DATE = new Date(System.currentTimeMillis());
 
+    private int hospitalId = 0;
+
     private int role = -1;
 
     public Session(Integer ACCOUNT_ID, String SESSION_TOKEN) {
@@ -36,5 +38,14 @@ public class Session extends DBObject {
 
     public int getRole() {
         return role;
+    }
+
+
+    public int getHospitalId() {
+        return hospitalId;
+    }
+
+    public void setHospitalId(int hospitalId) {
+        this.hospitalId = hospitalId;
     }
 }

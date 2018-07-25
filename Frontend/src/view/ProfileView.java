@@ -31,7 +31,7 @@ public class ProfileView extends UIView {
     @FXML private JFXTextField contactID;
 
     public ProfileView() {
-        super("/resources/xml/");
+        super("/resources/xml/view_profile.fxml");
     }
 
     @Override

@@ -1,5 +1,6 @@
 package network.api;
 
+import model.Hospital;
 import model.Hospitalized;
 import network.generic.GenericAPI;
 import utils.Constants;
@@ -12,6 +13,6 @@ public class HospitalizedAPI extends GenericAPI<Hospitalized> {
      * @param url the base endpoint url.
      */
     public HospitalizedAPI() {
-        super(Constants.Routes.hospitalized());
+        super(Constants.Routes.hospitalized(), Hospitalized.class);
     }
 }

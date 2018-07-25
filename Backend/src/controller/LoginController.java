@@ -80,9 +80,15 @@ public class LoginController implements RESTRoute {
             String token = Utils.generateToken();
 
             Session session = new Session(accountId,token);
+
             session_db.upsert(session);
 
+            Integer hospital = account.getHospitalID();
+            if(hospital != null)
+                session.setHospitalId(hospital);
+
             session.setRole(account.getROLE_ID());
+
             return JSONResponse.SUCCESS().data(session);
         }catch (Exception e){
             return JSONResponse.FAILURE().message(e.getMessage());

@@ -12,6 +12,6 @@ public class DoctorAPI extends GenericAPI<Doctor> {
      * @param url the base endpoint url.
      */
     public DoctorAPI() {
-        super(Constants.Routes.doctor());
+        super(Constants.Routes.doctor(),Doctor.class);
     }
 }
