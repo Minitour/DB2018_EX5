@@ -21,6 +21,9 @@ public class Account extends DBObject{
     @Expose
     private Short ROLE_ID;
 
+    @Expose
+    private Integer hospitalID;
+
 
     public Account(Integer ACCOUNT_ID, String EMAIL, Short ROLE_ID, String USER_PASSWORD) {
         this.ACCOUNT_ID = ACCOUNT_ID;
@@ -73,7 +76,13 @@ public class Account extends DBObject{
         this.USER_PASSWORD = USER_PASSWORD;
     }
 
+    public Integer getHospitalID() {
+        return hospitalID;
+    }
 
+    public void setHospitalID(Integer hospitalID) {
+        this.hospitalID = hospitalID;
+    }
     // This class returns ACCOUNT_ID as InsertedId
 
 }
