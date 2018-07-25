@@ -35,7 +35,7 @@ public class Join<A extends DBObject,B extends DBObject> extends DBObject {
 
         List<Field> alist = object_a.findFieldsAsList(ann);
         List<Field> blist = object_b.findFieldsAsList(ann);
-        List<Field> current = findFieldsAsList(ann);
+        List<Field> current = super.findFieldsAsList(ann);
 
         alist.addAll(blist);
         alist.addAll(current);
@@ -56,5 +56,10 @@ public class Join<A extends DBObject,B extends DBObject> extends DBObject {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public String toString() {
+        return object_a.toString() + object_b.toString();
     }
 }
