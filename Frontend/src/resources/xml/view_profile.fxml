@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import ui.UIView?>
+<UIView xmlns="http://javafx.com/javafx"
+        xmlns:fx="http://javafx.com/fxml"
+        stylesheets="@../../ui/res/css/styles.css"
+        prefHeight="400.0" prefWidth="600.0">
+
+    <VBox spacing="8">
+        <Label text="Profile Details">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Label>
+        <VBox spacing="10">
+
+            <JFXTextField fx:id="id" promptText="ID" editable="false" />
+            <JFXTextField fx:id="firstName" promptText="First Name" editable="false" />
+            <JFXTextField fx:id="surName" promptText="Surname" editable="false" />
+            <JFXTextField fx:id="dateOfBirth" promptText="Date Of Birth" editable="false" />
+            <JFXTextField fx:id="city" promptText="City" editable="false" />
+            <JFXTextField fx:id="street" promptText="Street" editable="false" />
+            <JFXTextField fx:id="gender" promptText="Gender" editable="false" />
+            <JFXTextField fx:id="phone" promptText="Phone" editable="false" />
+            <JFXTextField fx:id="bloodType" promptText="Bloody Type" editable="false" />
+            <JFXTextField fx:id="careFacility" promptText="Care Facility" editable="false" />
+            <JFXTextField fx:id="contactID" promptText="Contact ID" editable="false" />
+        </VBox>
+        <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
+    </VBox>
+
+
+</UIView>

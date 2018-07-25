@@ -1,17 +1,23 @@
 package controller.master;
 
 import ui.UIView;
+import view.AccountView;
+import view.ProfileView;
 
 /**
  * Created By Tony on 25/07/2018
  */
 public class PatientMaster extends MasterMenuController {
 
-    //TODO: add controllers
+    //TODO: add views
+    private UIView[] views = {
+            new ProfileView(),
+            new AccountView()
+    };
 
     @Override
     public UIView viewForIndexAt(int index) {
-        return null;
+        return views[index];
     }
 
     @Override
