@@ -2,6 +2,7 @@ package controller.master;
 
 import ui.UIView;
 import view.AccountView;
+import view.tables.HospitalizationTableView;
 import view.tables.PatientsTableView;
 import view.tables.RoomsTableView;
 
@@ -13,7 +14,7 @@ public class SecretaryMaster extends MasterMenuController {
     UIView[] views = {
             new PatientsTableView(true,true,true),
             new RoomsTableView(false,false,false),
-            null,
+            new HospitalizationTableView(false,false,false),
             new AccountView()
     };
 

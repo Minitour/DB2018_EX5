@@ -37,4 +37,9 @@ public class Hospitalized {
         this.patientID = patientID;
         this.eventCode = eventCode;
     }
+
+    public Hospitalized(Integer hospitalID, Integer departmentID) {
+        this.hospitalID = hospitalID;
+        this.departmentID = departmentID;
+    }
 }
