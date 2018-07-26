@@ -1,9 +1,8 @@
 package controller.master;
 
 import ui.UIView;
-import view.AccountView;
-import view.ProfileView;
-import view.forms.PersonForm;
+import view.special.AccountView;
+import view.special.ProfileView;
 
 /**
  * Created By Tony on 25/07/2018

@@ -1,17 +1,13 @@
-package view;
+package view.special;
 
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import model.Person;
 import network.api.ProfileAPI;
-import network.generic.GenericAPI;
 import ui.UIView;
 import utils.AutoSignIn;
-import utils.Response;
 
-import java.util.List;
 import java.util.ResourceBundle;
-import java.util.function.Predicate;
 
 /**
  * Created By Tony on 25/07/2018

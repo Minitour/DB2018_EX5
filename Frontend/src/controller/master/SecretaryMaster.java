@@ -1,7 +1,7 @@
 package controller.master;
 
 import ui.UIView;
-import view.AccountView;
+import view.special.AccountView;
 import view.tables.HospitalizationTableView;
 import view.tables.PatientsTableView;
 import view.tables.RoomsTableView;
