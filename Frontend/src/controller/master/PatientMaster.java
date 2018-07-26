@@ -2,6 +2,7 @@ package controller.master;
 
 import ui.UIView;
 import view.AccountView;
+import view.PersonForm;
 import view.ProfileView;
 
 /**
@@ -11,7 +12,7 @@ public class PatientMaster extends MasterMenuController {
 
     //TODO: add views
     private UIView[] views = {
-            new ProfileView(),
+            new PersonForm(),
             new AccountView()
     };
 
