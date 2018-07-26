@@ -17,12 +17,25 @@ import java.util.ResourceBundle;
 public class PatientsTableView extends GenericTableView<Person> {
 
     private PatientsAPI api;
+    private List<Person> personList = new ArrayList<>();
+
 
     public PatientsTableView(boolean delete, boolean update, boolean insert) {
         super(delete, update, insert);
     }
 
-    private List<Person> personList = new ArrayList<>();
+    @Override
+    protected void onDelete(int index) {
+        Person p = personList.remove(index);
+        api.delete(p,System.out::println);
+        reloadData();
+    }
+
+    @Override
+    protected UIFormView<Person> onView(int index) {
+        Person p = personList.get(index);
+        return new PersonForm(p,this);
+    }
 
     @Override
     protected UIFormView<Person> onInsert() {
@@ -34,18 +47,6 @@ public class PatientsTableView extends GenericTableView<Person> {
         return Person.class;
     }
 
-    @Override
-    protected UIFormView<Person> onView(int index) {
-        Person p = personList.get(index);
-        return new PersonForm(p,this);
-    }
-
-    @Override
-    protected void onDelete(int index) {
-        Person p = personList.remove(index);
-        api.delete(p,System.out::println);
-        reloadData();
-    }
 
     @Override
     public void layoutSubviews(ResourceBundle bundle) {
