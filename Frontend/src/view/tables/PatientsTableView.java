@@ -2,8 +2,6 @@ package view.tables;
 
 import model.Person;
 import network.api.PatientsAPI;
-import network.generic.GenericAPI;
-import utils.Response;
 import view.forms.PersonForm;
 import view.generic.GenericTableView;
 import view.generic.UIFormView;
@@ -32,6 +30,11 @@ public class PatientsTableView extends GenericTableView<Person> {
     }
 
     @Override
+    protected Class<Person> classType() {
+        return Person.class;
+    }
+
+    @Override
     protected UIFormView<Person> onView(int index) {
         Person p = personList.get(index);
         return new PersonForm(p,this);
@@ -48,17 +51,16 @@ public class PatientsTableView extends GenericTableView<Person> {
     public void layoutSubviews(ResourceBundle bundle) {
         super.layoutSubviews(bundle);
         api = new PatientsAPI();
-
         api.setRunOnUi(true);
+        reloadDataFromServer();
+    }
+
+    private void reloadDataFromServer(){
         api.readAll((response, items) -> {
+            personList.clear();
             personList.addAll(items);
             reloadData();
         });
-    }
-
-    @Override
-    public int numberOfColumns() {
-        return 11;
     }
 
     @Override
@@ -66,45 +68,13 @@ public class PatientsTableView extends GenericTableView<Person> {
         return personList;
     }
 
-    @Override
-    public String bundleIdForIndex(int index) {
-        switch (index){
-            case 0: return "ID";
-            case 1: return "firstName";
-            case 2: return "surName";
-            case 3: return "dateOfBirth";
-            case 4: return "city";
-            case 5: return "street";
-            case 6: return "gender";
-            case 7: return "phone";
-            case 8: return "bloodType";
-            case 9: return "careFacility";
-            case 10: return "contactID";
-        }
-        return null;
-    }
 
-    @Override
-    public TableColumnValue<Person> cellValueForColumnAt(int index) {
-        switch (index){
-            case 0: return Person::getID;
-            case 1: return Person::getFirstName;
-            case 2: return Person::getSurName;
-            case 3: return Person::getDateOfBirth;
-            case 4: return Person::getCity;
-            case 5: return Person::getStreet;
-            case 6: return Person::getGender;
-            case 7: return Person::getPhone;
-            case 8: return Person::getBloodType;
-            case 9: return Person::getCareFacility;
-            case 10: return Person::getContactID;
-        }
-        return null;
-    }
 
     @Override
     public void callback(Person value) {
+        super.callback(value);
         //on update or insert
         api.upsert(value, System.out::println);
+        reloadDataFromServer();
     }
 }

@@ -35,4 +35,9 @@ public class PersonForm extends UIFormView<Person> {
     public void setFormMode(FormMode formMode) {
 
     }
+
+    @Override
+    public String[] inupdateableFields() {
+        return new String[]{"ID"};
+    }
 }

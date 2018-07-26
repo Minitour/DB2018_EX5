@@ -16,10 +16,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * Created By Tony on 14/02/2018
@@ -42,14 +39,18 @@ public abstract class UIFormView<T> extends UIView {
     private OnFinish<T> callback = null;
 
     public UIFormView(Class<T> cls){
-        this(cls,null,null);
+        this(cls,null);
     }
 
     public UIFormView(Class<T> cls,T existingValue){
-        this(cls,existingValue,null);
+        this(cls,existingValue,null,true);
     }
 
-    public UIFormView(Class<T> cls,T existingValue,OnFinish<T> callback) {
+    public UIFormView(Class<T> cls,T existingValue,OnFinish<T> callback){
+        this(cls,existingValue,callback,true);
+    }
+
+    public UIFormView(Class<T> cls,T existingValue,OnFinish<T> callback,boolean useAlternativeButton) {
         super("/resources/xml/base_form.fxml");
         this.cls = cls;
         this.callback = callback;
@@ -62,13 +63,13 @@ public abstract class UIFormView<T> extends UIView {
             callback.callback(val);
         });
 
-        if (callback == null) {
-            //read only mode
-            confirm.setVisible(false);
-        }
+        //read only mode
+        confirm.setVisible(!useAlternativeButton);
+
 
 
         List<Field> fields = findFieldsAsList(Expose.class,cls);
+        Set<String> notEditable = new HashSet<>(Arrays.asList(inupdateableFields()));
         for (Field field : fields) {
 
             Class ofField = field.getType();
@@ -78,13 +79,16 @@ public abstract class UIFormView<T> extends UIView {
                     ofField.equals(Short.class)) {
                 TextField tf = getTextField(field.getName());
 
-                tf.setEditable(callback != null);
+
 
                 if(existingValue != null){
+                    if(notEditable.contains(field.getName()))
+                        tf.setEditable(false);
                     try {
                         field.setAccessible(true);
                         Object val = field.get(existingValue);
-                        tf.setText(String.valueOf(val));
+                        String strValue = String.valueOf(val);
+                        tf.setText(strValue.equals("null") ? "" : strValue);
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
                     }
@@ -95,8 +99,12 @@ public abstract class UIFormView<T> extends UIView {
             if (ofField.equals(Date.class) || ofField.equals(java.sql.Date.class)){
 
                 DatePicker picker = getDatePicker(field.getName());
-                picker.setEditable(callback != null);
+
+
                 if(existingValue != null){
+                    if(notEditable.contains(field.getName()))
+                        picker.setEditable(false);
+
                     try {
                         field.setAccessible(true);
                         Object o =  field.get(existingValue);
@@ -120,11 +128,6 @@ public abstract class UIFormView<T> extends UIView {
             }
         }
 
-    }
-
-    @Override
-    public void layoutSubviews(ResourceBundle bundle) {
-        super.layoutSubviews(bundle);
     }
 
     protected DatePicker datePickerFactory(){
@@ -176,6 +179,11 @@ public abstract class UIFormView<T> extends UIView {
      */
     public void reset(){};
 
+    public String[] inupdateableFields(){
+        return new String[]{};
+    }
+
+
     /**
      * @return A result object from the form.
      */
@@ -195,6 +203,7 @@ public abstract class UIFormView<T> extends UIView {
 
     private void populateFields(T instance) {
         List<Field> fields = findFieldsAsList(Expose.class,instance.getClass());
+
         for (Field field : fields) {
             try {
                 Class ofField = field.getType();
@@ -208,35 +217,39 @@ public abstract class UIFormView<T> extends UIView {
 
                     TextField tf = (TextField) elements_vbox.lookup("#"+field.getName());
 
+
                     if (tf == null)
                         continue;
 
                     String data = tf.getText();
 
                     if(ofField.equals(String.class)){
-                        value = data;
+                        if (data.length() != 0)
+                            value = data;
+                        else
+                            value = null;
                     }
 
                     if(ofField.equals(Integer.class)){
                         try {
                             value = Integer.parseInt(data);
-                        }catch (NumberFormatException e){ value = 0; }
+                        }catch (NumberFormatException e){ value = null; }
                     }
 
                     if(ofField.equals(Float.class)){
                         try {
                             value = Float.parseFloat(data);
-                        }catch (NumberFormatException e){ value = 0; }
+                        }catch (NumberFormatException e){ value = null; }
                     }
 
                     if(ofField.equals(Short.class)){
                         try {
                             value = Short.parseShort(data);
-                        }catch (NumberFormatException e){ value = 0; }
+                        }catch (NumberFormatException e){ value = null; }
                     }
                 }
 
-                if (ofField.equals(Date.class) || ofField.equals(java.sql.Date.class)){
+                if (ofField.equals(java.sql.Date.class)){
 
                     DatePicker picker = (DatePicker) elements_vbox.lookup("#"+field.getName());
 
@@ -246,10 +259,12 @@ public abstract class UIFormView<T> extends UIView {
                     LocalDate localDate = picker.getValue();
                     if(localDate != null) {
                         Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
-                        value = Date.from(instant);
+                        value = new java.sql.Date(Date.from(instant).getTime());
                     }
-                    if(value == null)
-                        value = new Date();
+
+                    if(value == null) {
+                        value = new java.sql.Date(System.currentTimeMillis());
+                    }
                 }
 
                 field.setAccessible(true);
