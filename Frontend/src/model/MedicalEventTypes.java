@@ -7,7 +7,7 @@ import com.google.gson.annotations.Expose;
  */
 public class MedicalEventTypes {
     @Expose
-    private int typeCode;
+    private Integer typeCode;
 
     @Expose
     private String typeName;

@@ -13,16 +13,16 @@ public class Doctor {
     private String doctorID;
 
     @Expose
-    private int hospitalID;
+    private Integer hospitalID;
 
     @Expose
-    private int departmentID;
+    private Integer departmentID;
 
     @Expose
     private Date dateOfGraduation;
 
     @Expose
-    private int manager;
+    private Integer manager;
 
     public Doctor(String doctorID) { this.doctorID = doctorID; }
 }

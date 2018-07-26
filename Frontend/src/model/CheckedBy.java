@@ -13,19 +13,19 @@ public class CheckedBy {
     private String patientID;
 
     @Expose
-    private int eventCode;
+    private Integer eventCode;
 
     @Expose
     private String doctorID;
 
     @Expose
-    private int shiftNumber;
+    private Integer shiftNumber;
 
     @Expose
     private Date checkTime;
 
     @Expose
-    private float bodyTemp;
+    private Float bodyTemp;
 
     @Expose
     private String bloodPressure;

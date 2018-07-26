@@ -11,7 +11,7 @@ public class WorkInShift  {
     private String doctorID;
 
     @Expose
-    private int shiftNumber;
+    private Integer shiftNumber;
 
     public WorkInShift() {}
 

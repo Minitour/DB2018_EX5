@@ -11,8 +11,10 @@ import java.util.ResourceBundle;
 /**
  * Created By Tony on 26/07/2018
  */
-public abstract class GenericTableView<T> extends UITableView<T> {
+public abstract class GenericTableView<T> extends UITableView<T> implements UIFormView.OnFinish<T>{
 
+    static int arc = 0;
+    final int counter = arc++;
     /**
      * should show the delete column
      */
@@ -33,14 +35,10 @@ public abstract class GenericTableView<T> extends UITableView<T> {
     private Button addButton;
 
     public GenericTableView(boolean delete, boolean update, boolean insert) {
+        super();
         this.delete = delete;
         this.update = update;
         this.insert = insert;
-    }
-
-    @Override
-    public void layoutSubviews(ResourceBundle bundle) {
-        super.layoutSubviews(bundle);
 
         col_delete = new TableColumn<>();
         col_view = new TableColumn<>();
@@ -66,9 +64,9 @@ public abstract class GenericTableView<T> extends UITableView<T> {
             //show insert button
             getToolBar().getChildren().add(addButton);
         }
-
     }
 
+   
     /**
      * Method called for deleting an object at certain index.
      *
@@ -78,15 +76,15 @@ public abstract class GenericTableView<T> extends UITableView<T> {
 
     }
 
-    protected void onView(int index) {
-
+    protected UIFormView<T> onView(int index) {
+        return null;
     }
 
     /**
      * Method called when table requests an insert view.
      */
-    protected void onInsert() {
-
+    protected UIFormView<T> onInsert() {
+        return null;
     }
 
     public static class ButtonCell extends TableCell {

@@ -8,7 +8,7 @@ import com.google.gson.annotations.Expose;
 public class Shift {
 
     @Expose
-    private int shiftNumber;
+    private Integer shiftNumber;
 
     @Expose
     private String dayInWeek;
