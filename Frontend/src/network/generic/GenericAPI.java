@@ -156,8 +156,6 @@ public abstract class GenericAPI<T> {
                     T item = gson.fromJson(element,cls);
                     list.add(item);
                 }
-                //TypeToken t = new TypeToken<List<E>>(){};
-                //List<E> list = gson.fromJson(data, t.getType());
                 runnable = () -> callback.execute(r,list);
             }else {
                 runnable = () -> callback.execute(r,null);
