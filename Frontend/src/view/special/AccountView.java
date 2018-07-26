@@ -1,4 +1,4 @@
-package view;
+package view.special;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
