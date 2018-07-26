@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Button?>
 <fx:root type="javafx.scene.layout.StackPane"
          xmlns="http://javafx.com/javafx"
          xmlns:fx="http://javafx.com/fxml"
@@ -22,6 +23,8 @@
             <VBox fx:id="elements_vbox" spacing="10">
 
             </VBox>
+
+            <Button fx:id="confirm" text="Confirm"/>
             <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
         </VBox>
     </ScrollPane>

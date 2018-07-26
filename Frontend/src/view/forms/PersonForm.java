@@ -1,17 +1,19 @@
-package view;
+package view.forms;
 
 import com.jfoenix.controls.JFXTextField;
 import javafx.scene.control.TextField;
 import model.Person;
 import view.generic.UIFormView;
 
+import java.sql.Date;
+
 /**
  * Created By Tony on 26/07/2018
  */
 public class PersonForm extends UIFormView<Person> {
 
-    public PersonForm() {
-        super(Person.class);
+    public PersonForm(Person p,OnFinish<Person> callback) {
+        super(Person.class,p,callback);
     }
 
     @Override
@@ -27,11 +29,6 @@ public class PersonForm extends UIFormView<Person> {
     @Override
     public void reset() {
 
-    }
-
-    @Override
-    public Person result() {
-        return null;
     }
 
     @Override

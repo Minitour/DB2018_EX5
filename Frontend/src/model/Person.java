@@ -27,7 +27,7 @@ public class Person {
     private String street;
 
     @Expose
-    private Character gender;
+    private String gender;
 
     @Expose
     private String phone;
@@ -46,6 +46,21 @@ public class Person {
 
     public Person(String ID) {
         this.ID = ID;
+    }
+
+    public Person(String ID, String firstName, String surName, Date dateOfBirth, String city, String street, String gender, String phone, String bloodType, String careFacility, String contactID, Integer ACCOUNT_ID) {
+        this.ID = ID;
+        this.firstName = firstName;
+        this.surName = surName;
+        this.dateOfBirth = dateOfBirth;
+        this.city = city;
+        this.street = street;
+        this.gender = gender;
+        this.phone = phone;
+        this.bloodType = bloodType;
+        this.careFacility = careFacility;
+        this.contactID = contactID;
+        this.ACCOUNT_ID = ACCOUNT_ID;
     }
 
     public String getID() {
@@ -96,11 +111,11 @@ public class Person {
         this.street = street;
     }
 
-    public Character getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Character gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

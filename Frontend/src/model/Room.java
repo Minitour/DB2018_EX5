@@ -8,16 +8,16 @@ import com.google.gson.annotations.Expose;
 public class Room {
 
     @Expose
-    private int hospitalID;
+    private Integer hospitalID;
 
     @Expose
-    private int departmentID;
+    private Integer departmentID;
 
     @Expose
-    private int roomNumber;
+    private Integer roomNumber;
 
     @Expose
-    private int bedsAmount;
+    private Integer bedsAmount;
 
     public Room(int hospitalID, int departmentID, int roomNumber) {
         this.hospitalID = hospitalID;

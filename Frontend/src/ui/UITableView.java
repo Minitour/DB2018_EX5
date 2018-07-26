@@ -168,7 +168,14 @@ abstract public class UITableView<T> extends UIView {
 
     private <T>Callback getCallback(TableColumnValue<T> value){
         return  (Callback<TableColumn.CellDataFeatures<T, String>, ObservableValue<String>>)
-                param -> new SimpleStringProperty(value.value(param.getValue()).toString());
+                 param -> {
+
+                    String val = null;
+                    try {
+                        val = value.value(param.getValue()).toString();
+                    }catch (NullPointerException e) {val = ""; };
+                    return new SimpleStringProperty(val);
+                 };
     }
 
 }

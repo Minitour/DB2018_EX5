@@ -8,16 +8,16 @@ import com.google.gson.annotations.Expose;
 public class Department {
 
     @Expose
-    private int hospitalID;
+    private Integer hospitalID;
 
     @Expose
-    private int departmentID;
+    private Integer departmentID;
 
     @Expose
     private String departmentName;
 
     @Expose
-    private int maxCapacity;
+    private Integer maxCapacity;
 
     public Department(int hospitalID, int departmentID) {
         this.hospitalID = hospitalID;

@@ -8,16 +8,16 @@ import com.google.gson.annotations.Expose;
 public class Payment {
 
     @Expose
-    private int serialNumber;
+    private Integer serialNumber;
 
     @Expose
-    private int minDay;
+    private Integer minDay;
 
     @Expose
-    private int maxDay;
+    private Integer maxDay;
 
     @Expose
-    private int amount;
+    private Integer amount;
 
     public Payment(int serialNumber) { this.serialNumber = serialNumber; }
 }

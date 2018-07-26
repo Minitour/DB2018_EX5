@@ -8,13 +8,13 @@ import com.google.gson.annotations.Expose;
 public class MedicalEventTypeInDepartment {
 
     @Expose
-    private int hospitalID;
+    private Integer hospitalID;
 
     @Expose
-    private int departmentID;
+    private Integer departmentID;
 
     @Expose
-    private int typeCode;
+    private Integer typeCode;
 
     public MedicalEventTypeInDepartment(int hospitalID, int departmentID, int typeCode) {
         this.hospitalID = hospitalID;
