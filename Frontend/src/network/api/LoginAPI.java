@@ -35,7 +35,7 @@ public class LoginAPI {
 
                     int id = d.get("ACCOUNT_ID").getAsInt();
                     String token = d.get("SESSION_TOKEN").getAsString();
-                    String hospital = d.get("hospitalId").getAsString();
+                    int hospital = d.get("hospitalId").getAsInt();
                     int roleId = d.get("role").getAsInt();
 
                     AutoSignIn.ID = id;

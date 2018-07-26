@@ -69,7 +69,6 @@ public class PatientsTableView extends GenericTableView<Person> {
     }
 
 
-
     @Override
     public void callback(Person value) {
         super.callback(value);

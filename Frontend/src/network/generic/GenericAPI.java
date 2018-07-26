@@ -67,8 +67,12 @@ public abstract class GenericAPI<T> {
      *
      * @param callback The callback containing the response.
      */
+    public void readAll(T object,ReadAll<T> callback){
+        do_read_all(callback,object);
+    }
+
     public void readAll(ReadAll<T> callback){
-        do_read_all(callback);
+        do_read_all(callback,null);
     }
 
     /**
@@ -132,9 +136,9 @@ public abstract class GenericAPI<T> {
 
     }
 
-    private void do_read_all(ReadAll<T>  callback){
+    private void do_read_all(ReadAll<T>  callback,T input){
         JsonObject body = new JsonObject();
-        build(body,READ_ALL,null);
+        build(body,READ_ALL,input);
 
         //make api request to url with body
         SharedInstance.main.makeRequest(url, null, body, (json, exception) -> {
