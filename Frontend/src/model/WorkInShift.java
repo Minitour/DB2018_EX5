@@ -15,7 +15,7 @@ public class WorkInShift  {
 
     public WorkInShift() {}
 
-    public WorkInShift(String doctorID, int shiftNumber) {
+    public WorkInShift(String doctorID, Integer shiftNumber) {
         this.doctorID = doctorID;
         this.shiftNumber = shiftNumber;
     }

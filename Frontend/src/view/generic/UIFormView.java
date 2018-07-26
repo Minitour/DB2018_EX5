@@ -1,11 +1,10 @@
 package view.generic;
 
 import com.google.gson.annotations.Expose;
+import javafx.beans.binding.ObjectExpression;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import ui.UIView;
 
@@ -17,6 +16,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
+import java.util.concurrent.ConcurrentNavigableMap;
 
 /**
  * Created By Tony on 14/02/2018
@@ -37,6 +37,8 @@ public abstract class UIFormView<T> extends UIView {
     private T existingValue;
 
     private OnFinish<T> callback = null;
+
+    private Map<String,ObservableList<String>> comboItems = new HashMap<>();
 
     public UIFormView(Class<T> cls){
         this(cls,null);
@@ -70,9 +72,40 @@ public abstract class UIFormView<T> extends UIView {
 
         List<Field> fields = findFieldsAsList(Expose.class,cls);
         Set<String> notEditable = new HashSet<>(Arrays.asList(inupdateableFields()));
+        Set<String> comboFields = new HashSet<>(Arrays.asList(comboBoxForFields()));
+
+        //MARK: field creation
         for (Field field : fields) {
 
             Class ofField = field.getType();
+
+            String fieldName = field.getName();
+
+            if(comboFields.contains(fieldName)) {
+                ObservableList<String> observableList = listForField(fieldName);
+                if(observableList != null){
+                    comboItems.put(fieldName,observableList);
+                    StringComboBox comboBox = new StringComboBox();
+                    comboBox.setId(fieldName);
+                    comboBox.setItems(observableList);
+                    comboBox.setPromptText(transform(fieldName));
+
+                    if(existingValue != null){
+                        try {
+                            field.setAccessible(true);
+                            Object val = field.get(existingValue);
+                            String strValue = String.valueOf(val);
+                            comboBox.getSelectionModel().select(strValue);
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    elements_vbox.getChildren().add(comboBox);
+                    continue;
+                }
+            }
+
             if (ofField.equals(String.class) ||
                     ofField.equals(Integer.class) ||
                     ofField.equals(Float.class) ||
@@ -183,6 +216,14 @@ public abstract class UIFormView<T> extends UIView {
         return new String[]{};
     }
 
+    protected String[] comboBoxForFields() {
+        return new String[]{};
+    }
+
+    protected ObservableList<String> listForField(String fieldName){
+        return null;
+    }
+
 
     /**
      * @return A result object from the form.
@@ -209,6 +250,39 @@ public abstract class UIFormView<T> extends UIView {
                 Class ofField = field.getType();
 
                 Object value = null;
+
+                if(comboItems.containsKey(ofField.getName())){
+                    StringComboBox comboBox = (StringComboBox) elements_vbox.lookup("#"+field.getName());
+                    String data = comboBox.getSelectedValue();
+
+                    if(ofField.equals(String.class)){
+                        if (data.length() != 0)
+                            value = data;
+                        else
+                            value = null;
+                    }
+
+                    if(ofField.equals(Integer.class)){
+                        try {
+                            value = Integer.parseInt(data);
+                        }catch (NumberFormatException e){ value = null; }
+                    }
+
+                    if(ofField.equals(Float.class)){
+                        try {
+                            value = Float.parseFloat(data);
+                        }catch (NumberFormatException e){ value = null; }
+                    }
+
+                    if(ofField.equals(Short.class)){
+                        try {
+                            value = Short.parseShort(data);
+                        }catch (NumberFormatException e){ value = null; }
+                    }
+                    field.setAccessible(true);
+                    field.set(instance,value);
+                    continue;
+                }
 
                 if (ofField.equals(String.class) ||
                         ofField.equals(Integer.class) ||
@@ -313,5 +387,11 @@ public abstract class UIFormView<T> extends UIView {
 
     public interface OnFinish<T> {
         void callback(T value);
+    }
+
+    private class StringComboBox extends ComboBox<String> {
+        public String getSelectedValue(){
+            return getSelectionModel().getSelectedItem();
+        }
     }
 }

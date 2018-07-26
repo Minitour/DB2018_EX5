@@ -5,7 +5,8 @@
       "groupName": "patient",
       "permissions": [
         "io.hospital.profile.read",
-        "io.hospital.account.read"
+        "io.hospital.account.read",
+        "io.hospital.hospital.read"
       ]
     },
     {
@@ -24,6 +25,8 @@
       "groupId": 3,
       "groupName": "doctor",
       "permissions": [
+        "io.hospital.work.read_all",
+        "io.hospital.profile.upsert",
         "io.hospital.patient.*",
         "io.hospital.hospitalized.*",
         "io.hospital.room.read_all",

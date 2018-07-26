@@ -17,4 +17,16 @@ public class Shift {
     private String shiftType;
 
     public Shift(int shiftNumber) { this.shiftNumber = shiftNumber; }
+
+    public Integer getShiftNumber() {
+        return shiftNumber;
+    }
+
+    public String getDayInWeek() {
+        return dayInWeek;
+    }
+
+    public String getShiftType() {
+        return shiftType;
+    }
 }

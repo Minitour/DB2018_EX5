@@ -28,7 +28,7 @@ public class RoomsTableView extends GenericTableView<Room> {
     @Override
     protected void onDelete(int index) {
         Room r = roomList.get(index);
-        api.delete(r,System.out::println);
+        api.delete(r,response -> reloadDataFromServer());
         reloadData();
     }
 
@@ -64,8 +64,7 @@ public class RoomsTableView extends GenericTableView<Room> {
     @Override
     public void callback(Room value) {
         super.callback(value);
-        api.upsert(value, System.out::println);
-        reloadDataFromServer();
+        api.upsert(value, response -> reloadDataFromServer());
     }
 
     private void reloadDataFromServer(){
