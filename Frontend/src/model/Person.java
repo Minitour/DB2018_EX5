@@ -44,6 +44,9 @@ public class Person {
     @Expose
     private Integer ACCOUNT_ID;
 
+    public Person() {
+    }
+
     public Person(String ID) {
         this.ID = ID;
     }

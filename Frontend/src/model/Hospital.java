@@ -24,4 +24,24 @@ public class Hospital {
 
     public Hospital(int hospitalID) { this.hospitalID = hospitalID; }
 
+
+    public Integer getHospitalID() {
+        return hospitalID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
 }

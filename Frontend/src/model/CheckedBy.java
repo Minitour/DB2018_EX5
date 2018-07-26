@@ -30,7 +30,7 @@ public class CheckedBy {
     @Expose
     private String bloodPressure;
 
-    public CheckedBy(String patientID, int eventCode, String doctorID, int shiftNumber, Date checkTime) {
+    public CheckedBy(String patientID, Integer eventCode, String doctorID, Integer shiftNumber, Date checkTime) {
         this.patientID = patientID;
         this.eventCode = eventCode;
         this.doctorID = doctorID;

@@ -27,8 +27,7 @@ public class PatientsTableView extends GenericTableView<Person> {
     @Override
     protected void onDelete(int index) {
         Person p = personList.remove(index);
-        api.delete(p,System.out::println);
-        reloadData();
+        api.delete(p,response -> reloadDataFromServer());
     }
 
     @Override
@@ -74,7 +73,6 @@ public class PatientsTableView extends GenericTableView<Person> {
     public void callback(Person value) {
         super.callback(value);
         //on update or insert
-        api.upsert(value, System.out::println);
-        reloadDataFromServer();
+        api.upsert(value, response -> reloadDataFromServer());
     }
 }

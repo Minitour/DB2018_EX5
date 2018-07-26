@@ -76,7 +76,7 @@ public class CheckedByController extends GenericController {
         require(params);
         Gson gson = new Gson();
 
-        CheckedBy checkedBy = gson.fromJson(params.get("checkedBy"),CheckedBy.class);
+        CheckedBy checkedBy = gson.fromJson(params,CheckedBy.class);
 
         try(CheckedByAccess checkedBy_db = new CheckedByAccess()) {
 
