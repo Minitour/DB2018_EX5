@@ -51,11 +51,11 @@ public class AccountController extends GenericController {
             if(!hasPermission("io.hospital.account.read_all",session))
                 return JSONResponse.FAILURE().message("Access Denied");
 
-            Account currentAccount = account_db.getById(session.ACCOUNT_ID,null).get(0);
+            Account currentAccount = account_db.getById(session.ACCOUNT_ID,null,null).get(0);
             int currentHospital = currentAccount.getHospitalID();
 
             //TODO: get only for current hospital
-            List<Account> accounts = account_db.getAll();
+            List<Account> accounts = account_db.getAll(session.getRole() == 6 ? null : currentHospital);
 
             return JSONResponse
                     .SUCCESS()
@@ -166,7 +166,7 @@ public class AccountController extends GenericController {
 
             //check that account doesn't exist already
             List<Account> existingAccounts =
-                    account_db.getById(null,account.getEMAIL());
+                    account_db.getById(null,account.getEMAIL(),null);
 
             if(existingAccounts.size() > 0){
                 Account existing = existingAccounts.get(0);
