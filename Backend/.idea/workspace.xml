@@ -2,10 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0e43bbb-af19-49b1-8a54-4b9d4060284a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/view/forms/DoctorVacationForm.java" afterPath="$PROJECT_DIR$/../Frontend/src/view/forms/DoctorVacationForm.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Frontend/src/view/tables/MedicalEventTableView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Frontend/src/view/tables/MedicalEventTypeTableView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Frontend/src/view/tables/PaymentTableView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Frontend/src/view/tables/ShiftTableView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Frontend/src/view/tables/WorkInShiftTableView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/view/forms/AccountForm.java" afterPath="$PROJECT_DIR$/../Frontend/src/view/forms/AccountForm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/view/forms/CheckedByForm.java" afterPath="$PROJECT_DIR$/../Frontend/src/view/forms/CheckedByForm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/view/forms/DoctorForm.java" afterPath="$PROJECT_DIR$/../Frontend/src/view/forms/DoctorForm.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/view/forms/HospitalForm.java" afterPath="$PROJECT_DIR$/../Frontend/src/view/forms/HospitalForm.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/view/forms/HospitalizedForm.java" afterPath="$PROJECT_DIR$/../Frontend/src/view/forms/HospitalizedForm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/view/tables/DepartmentTableView.java" afterPath="$PROJECT_DIR$/../Frontend/src/view/tables/DepartmentTableView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/view/forms/MedicalEventForm.java" afterPath="$PROJECT_DIR$/../Frontend/src/view/forms/MedicalEventForm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/view/forms/MedicalEventTypeForm.java" afterPath="$PROJECT_DIR$/../Frontend/src/view/forms/MedicalEventTypeForm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/view/forms/MedicalEventTypeInDepartmentForm.java" afterPath="$PROJECT_DIR$/../Frontend/src/view/forms/MedicalEventTypeInDepartmentForm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/view/forms/PaymentForm.java" afterPath="$PROJECT_DIR$/../Frontend/src/view/forms/PaymentForm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/view/forms/RoomForm.java" afterPath="$PROJECT_DIR$/../Frontend/src/view/forms/RoomForm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/view/forms/ShiftForm.java" afterPath="$PROJECT_DIR$/../Frontend/src/view/forms/ShiftForm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/view/forms/WorkInShiftForm.java" afterPath="$PROJECT_DIR$/../Frontend/src/view/forms/WorkInShiftForm.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
