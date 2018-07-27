@@ -1,6 +1,7 @@
 package view.generic;
 
 import com.google.gson.annotations.Expose;
+import com.jfoenix.controls.JFXButton;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -52,7 +53,7 @@ public abstract class GenericTableView<T> extends UITableView<T> implements UIFo
         col_delete = new TableColumn<>();
         col_view = new TableColumn<>();
 
-        col_delete.setCellFactory(param -> new ButtonCell("Delete", this::onDelete));
+        col_delete.setCellFactory(param -> new ButtonCell("Delete", this::onDelete,"button-delete"));
         col_view.setCellFactory(param -> new ButtonCell("View", index -> {
             UIFormView view = onView(index);
             dialogView = new DynamicDialog(view);
@@ -62,9 +63,10 @@ public abstract class GenericTableView<T> extends UITableView<T> implements UIFo
                     .delegate(this)
                     .prepare()
                     .show(this);
-        }));
+        },"button-normal"));
 
-        addButton = new Button("Add");
+        addButton = new JFXButton("+");
+        addButton.getStyleClass().add("fab");
         addButton.setOnAction(event -> {
             UIFormView form = onInsert();
             dialogView = new DynamicDialog(form);
@@ -115,8 +117,9 @@ public abstract class GenericTableView<T> extends UITableView<T> implements UIFo
     public static class ButtonCell extends TableCell {
         final Button cellButton;
 
-        public ButtonCell(String title, ActionCallBack callBack) {
-            cellButton = new Button(title);
+        public ButtonCell(String title, ActionCallBack callBack,String styleClass) {
+            cellButton = new JFXButton(title);
+            cellButton.getStyleClass().add(styleClass);
             cellButton.setOnAction(t -> callBack.didSelectAction(ButtonCell.this.getIndex()));
         }
 

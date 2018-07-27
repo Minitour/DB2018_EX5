@@ -1,5 +1,6 @@
 package view.forms;
 
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,6 +20,7 @@ public class AccountForm extends UIFormView<Account> {
 
     private ObservableList<ComboItem> hospitalList;
 
+
     public AccountForm(Account existingValue, OnFinish<Account> callback) { super(Account.class, existingValue, callback); }
 
     public AccountForm(Account existingValue, OnFinish<Account> callback, boolean useAlternativeButton) {
@@ -30,6 +32,10 @@ public class AccountForm extends UIFormView<Account> {
         return new JFXTextField();
     }
 
+    @Override
+    protected TextField passwordTextFieldFactory() {
+        return new JFXPasswordField();
+    }
 
     /**
      * This method is called once and is used to declare which fields are of type combo box.

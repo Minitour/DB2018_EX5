@@ -179,6 +179,7 @@ public abstract class UIFormView<T> extends UIView {
 
                     //add combo box to view
                     elements_vbox.getChildren().add(comboBox);
+                    comboBox.prefWidthProperty().bind(elements_vbox.widthProperty());
                     continue;
                 }
 
@@ -201,6 +202,7 @@ public abstract class UIFormView<T> extends UIView {
 
                 //add field to the view
                 elements_vbox.getChildren().add(tf);
+                tf.prefWidthProperty().bind(elements_vbox.widthProperty());
             }
 
             //if normal date or sql date
@@ -236,8 +238,11 @@ public abstract class UIFormView<T> extends UIView {
 
                 //add field
                 elements_vbox.getChildren().add(picker);
+                picker.prefWidthProperty().bind(elements_vbox.widthProperty());
             }
         }
+
+
 
     }
 
