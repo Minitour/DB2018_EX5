@@ -3,6 +3,7 @@ package view.forms;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import model.Doctor;
 import view.generic.UIFormView;

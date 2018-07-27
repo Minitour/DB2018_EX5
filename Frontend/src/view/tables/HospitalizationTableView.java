@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 public class HospitalizationTableView extends GenericTableView<Hospitalized> {
 
     private List<Hospitalized> list = new ArrayList<>();
-    private HospitalizedAPI api = new HospitalizedAPI();
+    private HospitalizedAPI api;
 
     public HospitalizationTableView(boolean delete, boolean update, boolean insert) {
         super(delete, update, insert);

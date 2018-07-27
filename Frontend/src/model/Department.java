@@ -23,4 +23,20 @@ public class Department {
         this.hospitalID = hospitalID;
         this.departmentID = departmentID;
     }
+
+    public Integer getHospitalID() {
+        return hospitalID;
+    }
+
+    public Integer getDepartmentID() {
+        return departmentID;
+    }
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public Integer getMaxCapacity() {
+        return maxCapacity;
+    }
 }
