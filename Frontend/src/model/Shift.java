@@ -26,7 +26,4 @@ public class Shift {
         return dayInWeek;
     }
 
-    public String getShiftType() {
-        return shiftType;
-    }
 }

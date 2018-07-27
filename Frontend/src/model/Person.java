@@ -78,80 +78,40 @@ public class Person {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getSurName() {
         return surName;
-    }
-
-    public void setSurName(String surName) {
-        this.surName = surName;
     }
 
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
     public String getCity() {
         return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
     }
 
     public String getStreet() {
         return street;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
     public String getGender() {
         return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
     }
 
     public String getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public String getBloodType() {
         return bloodType;
-    }
-
-    public void setBloodType(String bloodType) {
-        this.bloodType = bloodType;
     }
 
     public String getCareFacility() {
         return careFacility;
     }
 
-    public void setCareFacility(String careFacility) {
-        this.careFacility = careFacility;
-    }
-
     public String getContactID() {
         return contactID;
-    }
-
-    public void setContactID(String contactID) {
-        this.contactID = contactID;
     }
 
     public Integer getACCOUNT_ID() {

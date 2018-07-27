@@ -35,8 +35,4 @@ public class Department {
     public String getDepartmentName() {
         return departmentName;
     }
-
-    public Integer getMaxCapacity() {
-        return maxCapacity;
-    }
 }
