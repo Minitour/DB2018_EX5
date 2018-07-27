@@ -2,6 +2,7 @@ package view.generic;
 
 import com.google.gson.annotations.Expose;
 import javafx.beans.binding.ObjectExpression;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -113,6 +114,7 @@ public abstract class UIFormView<T> extends UIView {
         Set<String> notEditable = new HashSet<>(Arrays.asList(inupdateableFields()));
         Set<String> comboFields = new HashSet<>(Arrays.asList(comboBoxForFields()));
         Set<String> uninsertableFields = new HashSet<>(Arrays.asList(defaultValueFields()));
+        Set<String> protectedFields = new HashSet<>(Arrays.asList(protectedFields()));
 
         //MARK: field creation
         for (Field field : fields) {
@@ -146,7 +148,32 @@ public abstract class UIFormView<T> extends UIView {
                     StringComboBox comboBox = getComboBox(fieldName,observableList);
 
                     //extract value if exists
-                    extract(field, existingValue, value -> comboBox.getSelectionModel().select(new ComboItem(value,null)));
+
+                    extract(field, existingValue, value -> {
+
+                        if(value != null) {
+                            if (observableList.isEmpty()) {
+                                observableList.addListener(new ListChangeListener<ComboItem>() {
+                                    @Override
+                                    public void onChanged(Change<? extends ComboItem> c) {
+                                        c.next();
+                                        ComboItem added = c.getList().get(c.getTo() - 1);
+                                        boolean isEqual = value.equals(String.valueOf(added.value));
+                                        //comboBox.getSelectionModel().select(index >= 0 ? index : 0);
+                                        if (isEqual) {
+                                            comboBox.getSelectionModel().select(added);
+                                            observableList.removeListener(this);
+                                        }
+                                    }
+                                });
+                            }else {
+                                int index = observableList.indexOf(new ComboItem(value));
+                                comboBox.getSelectionModel().select(index);
+                            }
+                        }
+
+
+                    });
 
                     //add combo box to view
                     elements_vbox.getChildren().add(comboBox);
@@ -160,7 +187,7 @@ public abstract class UIFormView<T> extends UIView {
             if (isStringOrNumber(ofField)) {
 
                 //create a text field.
-                TextField tf = getTextField(field.getName());
+                TextField tf = getTextField(field.getName(),protectedFields.contains(fieldName));
 
                 //check if there is a present value
                 if(existingValue != null){
@@ -220,6 +247,10 @@ public abstract class UIFormView<T> extends UIView {
         return new TextField();
     }
 
+    protected TextField passwordTextFieldFactory() {
+        return new PasswordField();
+    }
+
     private DatePicker getDatePicker(String fieldName) {
         DatePicker picker = datePickerFactory();
         picker.setId(fieldName);
@@ -228,8 +259,8 @@ public abstract class UIFormView<T> extends UIView {
         return picker;
     }
 
-    private TextField getTextField(String fieldName){
-        TextField textField = textFieldFactory();
+    private TextField getTextField(String fieldName,boolean password){
+        TextField textField = password ? passwordTextFieldFactory() : textFieldFactory();
         textField.setId(fieldName);
 
         textField.setPromptText(transform(fieldName));
@@ -312,6 +343,9 @@ public abstract class UIFormView<T> extends UIView {
         return new String[]{};
     }
 
+    protected String[] hiddenFields() { return new String[]{}; }
+
+    protected String[] protectedFields() {return new String[]{};}
     /**
      *
      * @param fieldName The field for which the combo box will display the list.
@@ -349,11 +383,15 @@ public abstract class UIFormView<T> extends UIView {
         List<Field> fields = findFieldsAsList(Expose.class,instance.getClass());
         Set<String> uninsertableFields = new HashSet<>(Arrays.asList(defaultValueFields()));
 
+        Set<String> hiddenFields = new HashSet<>(Arrays.asList(hiddenFields()));
+
+
         for (Field field : fields) {
             try {
                 Class ofField = field.getType();
 
                 Object value = null;
+
 
                 //if the field is un-insertable and component does not exist:
                 // meaning we are inserting and not updating
@@ -506,7 +544,9 @@ public abstract class UIFormView<T> extends UIView {
 
     private class StringComboBox extends ComboBox<ComboItem> {
         public String getSelectedValue(){
-            return String.valueOf(getSelectionModel().getSelectedItem());
+            ComboItem item = getSelectionModel().getSelectedItem();
+            System.out.println(item);
+            return String.valueOf(item.value);
         }
 
     }
@@ -532,7 +572,7 @@ public abstract class UIFormView<T> extends UIView {
 
         @Override
         public boolean equals(Object obj) {
-            return obj instanceof ComboItem && ((ComboItem) obj).displayName.equals(displayName);
+            return obj instanceof ComboItem && (((ComboItem) obj).displayName.equals(displayName) || String.valueOf(((ComboItem) obj).value).equals(String.valueOf(value)));
         }
     }
 }

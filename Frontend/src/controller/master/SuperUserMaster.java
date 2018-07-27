@@ -4,6 +4,7 @@ import ui.UIView;
 import view.forms.DepartmentForm;
 import view.forms.HospitalForm;
 import view.special.AccountView;
+import view.tables.AccountTableView;
 import view.tables.HospitalTableView;
 
 /**
@@ -13,7 +14,7 @@ public class SuperUserMaster extends MasterMenuController {
 
     UIView[] views = {
             new HospitalTableView(true,true,true),
-            null,
+            new AccountTableView(true,true,true),
             new AccountView()
     };
     @Override
