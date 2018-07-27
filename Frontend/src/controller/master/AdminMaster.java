@@ -7,11 +7,13 @@ import ui.UIView;
  */
 public class AdminMaster extends MasterMenuController {
 
-    UIView[] views = {};
+    UIView[] views = {
+
+    };
 
     @Override
     public UIView viewForIndexAt(int index) {
-        return null;
+        return views[index];
     }
 
     @Override
