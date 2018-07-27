@@ -47,10 +47,13 @@ public class DoctorForm extends UIFormView<Doctor> {
      * @return The observable list for the combo box containing the items we want to display.
      */
     @Override
-    protected ObservableList<String> listForField(String fieldName) {
+    protected ObservableList<ComboItem> listForField(String fieldName) {
         switch (fieldName){
             case "manager":
-                return FXCollections.observableArrayList(Arrays.asList("Yes","No"));
+                return FXCollections.observableArrayList(Arrays.asList(
+                        new ComboItem("Yes",1),
+                        new ComboItem("No",0))
+                );
         }
         return null;
     }
