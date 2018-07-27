@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import network.api.LoginAPI;
+import network.api.AuthAPI;
 import ui.UIViewController;
 import utils.EmailValidator;
 import view.DialogView;
@@ -53,7 +53,7 @@ public class LoginController extends UIViewController {
         if(!isDialogShowing){
             String email = userInputField.getText();
             String password = passwordInputField.getText();
-            LoginAPI auth = new LoginAPI();
+            AuthAPI auth = new AuthAPI();
             if(EmailValidator.validate(email) && password.length() >= 8) {
                 auth.login(email, password, (response, id, token, roleId) -> {
 

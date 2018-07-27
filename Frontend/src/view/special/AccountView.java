@@ -2,9 +2,11 @@ package view.special;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import network.api.AuthAPI;
 import ui.UIView;
 import utils.AutoSignIn;
 
@@ -49,6 +51,12 @@ public class AccountView extends UIView {
 
         update.setOnAction(e -> {
             //TODO: update password
+            new AuthAPI().updatePassword(password.getText(),newPassword.getText(),response -> {
+                JFXSnackbar bar = new JFXSnackbar(this);
+                bar.enqueue(new JFXSnackbar.SnackbarEvent(response.isOK() ? "Successfully Updated Password" : "Failed to update password"));
+                password.setText("");
+                newPassword.setText("");
+            });
         });
     }
 }
