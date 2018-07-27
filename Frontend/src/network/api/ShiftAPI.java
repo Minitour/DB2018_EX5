@@ -12,6 +12,6 @@ public class ShiftAPI extends GenericAPI<Shift> {
      * @param url the base endpoint url.
      */
     public ShiftAPI() {
-        super(Constants.Routes.shift());
+        super(Constants.Routes.shift(),Shift.class);
     }
 }

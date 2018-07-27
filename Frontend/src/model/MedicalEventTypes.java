@@ -7,10 +7,10 @@ import com.google.gson.annotations.Expose;
  */
 public class MedicalEventTypes {
     @Expose
-    private int typeCode;
+    private Integer typeCode;
 
     @Expose
     private String typeName;
 
-    public MedicalEventTypes(int typeCode) { this.typeCode = typeCode; }
+    public MedicalEventTypes(Integer typeCode) { this.typeCode = typeCode; }
 }

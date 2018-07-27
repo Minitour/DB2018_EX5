@@ -9,6 +9,6 @@ import network.generic.GenericAPI;
  */
 public class PatientsAPI extends GenericAPI<Person> {
 
-    public PatientsAPI() { super(Constants.Routes.patients()); }
+    public PatientsAPI() { super(Constants.Routes.patients(),Person.class); }
 
 }

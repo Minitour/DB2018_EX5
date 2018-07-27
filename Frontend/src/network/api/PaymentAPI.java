@@ -8,5 +8,5 @@ public class PaymentAPI extends GenericAPI<Payment> {
     /**
      * @param url the base endpoint url.
      */
-    public PaymentAPI() { super(Constants.Routes.payment()); }
+    public PaymentAPI() { super(Constants.Routes.payment(),Payment.class); }
 }

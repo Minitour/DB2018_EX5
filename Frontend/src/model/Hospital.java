@@ -8,7 +8,7 @@ import com.google.gson.annotations.Expose;
 public class Hospital {
 
     @Expose
-    private int hospitalID;
+    private Integer hospitalID;
 
     @Expose
     private String name;
@@ -22,6 +22,26 @@ public class Hospital {
     @Expose
     private String phone;
 
-    public Hospital(int hospitalID) { this.hospitalID = hospitalID; }
+    public Hospital(Integer hospitalID) { this.hospitalID = hospitalID; }
 
+
+    public Integer getHospitalID() {
+        return hospitalID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
 }

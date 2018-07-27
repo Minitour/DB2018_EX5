@@ -18,7 +18,7 @@ public class Person {
     private String surName;
 
     @Expose
-    private Date birthOfBirth;
+    private Date dateOfBirth;
 
     @Expose
     private String city;
@@ -27,7 +27,7 @@ public class Person {
     private String street;
 
     @Expose
-    private Character gender;
+    private String gender;
 
     @Expose
     private String phone;
@@ -42,10 +42,28 @@ public class Person {
     private String contactID;
 
     @Expose
-    private Account ACCOUNT_ID;
+    private Integer ACCOUNT_ID;
+
+    public Person() {
+    }
 
     public Person(String ID) {
         this.ID = ID;
+    }
+
+    public Person(String ID, String firstName, String surName, Date dateOfBirth, String city, String street, String gender, String phone, String bloodType, String careFacility, String contactID, Integer ACCOUNT_ID) {
+        this.ID = ID;
+        this.firstName = firstName;
+        this.surName = surName;
+        this.dateOfBirth = dateOfBirth;
+        this.city = city;
+        this.street = street;
+        this.gender = gender;
+        this.phone = phone;
+        this.bloodType = bloodType;
+        this.careFacility = careFacility;
+        this.contactID = contactID;
+        this.ACCOUNT_ID = ACCOUNT_ID;
     }
 
     public String getID() {
@@ -72,12 +90,12 @@ public class Person {
         this.surName = surName;
     }
 
-    public Date getBirthOfBirth() {
-        return birthOfBirth;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setBirthOfBirth(Date birthOfBirth) {
-        this.birthOfBirth = birthOfBirth;
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getCity() {
@@ -96,11 +114,11 @@ public class Person {
         this.street = street;
     }
 
-    public Character getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Character gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -136,11 +154,11 @@ public class Person {
         this.contactID = contactID;
     }
 
-    public Account getACCOUNT_ID() {
+    public Integer getACCOUNT_ID() {
         return ACCOUNT_ID;
     }
 
-    public void setACCOUNT_ID(Account ACCOUNT_ID) {
+    public void setACCOUNT_ID(Integer ACCOUNT_ID) {
         this.ACCOUNT_ID = ACCOUNT_ID;
     }
 }

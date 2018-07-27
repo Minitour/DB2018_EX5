@@ -8,7 +8,7 @@ import com.google.gson.annotations.Expose;
 public class Shift {
 
     @Expose
-    private int shiftNumber;
+    private Integer shiftNumber;
 
     @Expose
     private String dayInWeek;
@@ -16,5 +16,17 @@ public class Shift {
     @Expose
     private String shiftType;
 
-    public Shift(int shiftNumber) { this.shiftNumber = shiftNumber; }
+    public Shift(Integer shiftNumber) { this.shiftNumber = shiftNumber; }
+
+    public Integer getShiftNumber() {
+        return shiftNumber;
+    }
+
+    public String getDayInWeek() {
+        return dayInWeek;
+    }
+
+    public String getShiftType() {
+        return shiftType;
+    }
 }

@@ -1,14 +1,15 @@
 package network.generic;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
 import javafx.application.Platform;
 import network.SharedInstance;
 import utils.AutoSignIn;
 import utils.Response;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,11 +39,14 @@ public abstract class GenericAPI<T> {
         return runOnUi;
     }
 
+    private Class<T> cls;
+
     /**
      * @param url the base endpoint url.
      */
-    public GenericAPI(String url){
+    public GenericAPI(String url,Class<T> cls){
         this.url = url;
+        this.cls = cls;
     }
 
 
@@ -61,8 +65,12 @@ public abstract class GenericAPI<T> {
      *
      * @param callback The callback containing the response.
      */
+    public void readAll(T object,ReadAll<T> callback){
+        do_read_all(callback,object);
+    }
+
     public void readAll(ReadAll<T> callback){
-        do_read_all(callback);
+        do_read_all(callback,null);
     }
 
     /**
@@ -126,9 +134,9 @@ public abstract class GenericAPI<T> {
 
     }
 
-    private void do_read_all(ReadAll<T>  callback){
+    private void do_read_all(ReadAll<T>  callback,T input){
         JsonObject body = new JsonObject();
-        build(body,READ_ALL,null);
+        build(body,READ_ALL,input);
 
         //make api request to url with body
         SharedInstance.main.makeRequest(url, null, body, (json, exception) -> {
@@ -143,7 +151,13 @@ public abstract class GenericAPI<T> {
             //check if exception is null (everything is good)
             if(exception == null) {
                 JsonElement data = json.get("data");
-                List<T> list = gson.fromJson(data, new TypeToken<List<T>>(){}.getType());
+                List<T> list = new ArrayList<>();
+
+                JsonArray array = data.getAsJsonArray();
+                for (JsonElement element : array) {
+                    T item = gson.fromJson(element,cls);
+                    list.add(item);
+                }
                 runnable = () -> callback.execute(r,list);
             }else {
                 runnable = () -> callback.execute(r,null);

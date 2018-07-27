@@ -15,6 +15,8 @@ public final class AutoSignIn {
 
     public static String EMAIL = null;
 
+    public static Integer HOSPITAL_ID = null;
+
     public static void reset() {
         ID = null;
         SESSION_TOKEN = null;

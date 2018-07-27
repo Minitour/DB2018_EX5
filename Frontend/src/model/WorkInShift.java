@@ -11,11 +11,11 @@ public class WorkInShift  {
     private String doctorID;
 
     @Expose
-    private int shiftNumber;
+    private Integer shiftNumber;
 
     public WorkInShift() {}
 
-    public WorkInShift(String doctorID, int shiftNumber) {
+    public WorkInShift(String doctorID, Integer shiftNumber) {
         this.doctorID = doctorID;
         this.shiftNumber = shiftNumber;
     }

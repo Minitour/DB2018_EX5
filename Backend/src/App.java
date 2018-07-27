@@ -36,5 +36,6 @@ public class App extends RESTApplication {
         post("/vacation",new DoctorVacationsController());
         post("/workInShift",new WorkInShiftController());
         post("/updatePassword", new AccountController());
+        post("/checkedBy",new CheckedByController());
     }
 }

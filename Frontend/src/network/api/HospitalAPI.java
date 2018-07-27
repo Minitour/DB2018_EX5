@@ -12,6 +12,6 @@ public class HospitalAPI extends GenericAPI<Hospital>{
      * @param url the base endpoint url.
      */
     public HospitalAPI() {
-        super(Constants.Routes.hospital());
+        super(Constants.Routes.hospital(),Hospital.class);
     }
 }
