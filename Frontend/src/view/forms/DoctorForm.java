@@ -69,6 +69,6 @@ public class DoctorForm extends UIFormView<Doctor> {
      */
     @Override
     public String[] inupdateableFields() {
-        return new String[]{"doctorID, dateOfGraduation"};
+        return new String[]{"doctorID"};
     }
 }
