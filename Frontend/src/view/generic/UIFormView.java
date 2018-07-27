@@ -59,7 +59,7 @@ public abstract class UIFormView<T> extends UIView {
     /**
      * A map that contains a list of observable values used to display on the combo box.
      */
-    private Map<String,ObservableList<String>> comboItems = new HashMap<>();
+    private Map<String,ObservableList<ComboItem>> comboItems = new HashMap<>();
 
     /**
      * Constructor from class only.
@@ -127,7 +127,7 @@ public abstract class UIFormView<T> extends UIView {
             if(comboFields.contains(fieldName)) {
 
                 //get observable list for combo box.
-                ObservableList<String> observableList = listForField(fieldName);
+                ObservableList<ComboItem> observableList = listForField(fieldName);
 
                 //check if not null
                 if(observableList != null){
@@ -139,7 +139,7 @@ public abstract class UIFormView<T> extends UIView {
                     StringComboBox comboBox = getComboBox(fieldName,observableList);
 
                     //extract value if exists
-                    extract(field, existingValue, value -> comboBox.getSelectionModel().select(value));
+                    extract(field, existingValue, value -> comboBox.getSelectionModel().select(new ComboItem(value,null)));
 
                     //add combo box to view
                     elements_vbox.getChildren().add(comboBox);
@@ -229,7 +229,7 @@ public abstract class UIFormView<T> extends UIView {
         return textField;
     }
 
-    private StringComboBox getComboBox(String fieldName,ObservableList<String> list){
+    private StringComboBox getComboBox(String fieldName,ObservableList<ComboItem> list){
         StringComboBox comboBox = new StringComboBox();
         comboBox.setId(fieldName);
         comboBox.setItems(list);
@@ -294,7 +294,7 @@ public abstract class UIFormView<T> extends UIView {
         return new String[]{};
     }
 
-    protected ObservableList<String> listForField(String fieldName){
+    protected ObservableList<ComboItem> listForField(String fieldName){
         return null;
     }
 
@@ -463,9 +463,35 @@ public abstract class UIFormView<T> extends UIView {
         void callback(T value);
     }
 
-    private class StringComboBox extends ComboBox<String> {
+    private class StringComboBox extends ComboBox<ComboItem> {
         public String getSelectedValue(){
-            return getSelectionModel().getSelectedItem();
+            return String.valueOf(getSelectionModel().getSelectedItem());
+        }
+
+    }
+
+    public static class ComboItem {
+        public String displayName;
+        public Object value;
+
+        public ComboItem(String displayName, Object value) {
+            this.displayName = displayName;
+            this.value = value;
+        }
+
+        public ComboItem(String displayNameAndValue){
+            this.displayName = displayNameAndValue;
+            this.value = displayNameAndValue;
+        }
+
+        @Override
+        public String toString() {
+            return displayName;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            return obj instanceof ComboItem && ((ComboItem) obj).displayName.equals(displayName);
         }
     }
 }
