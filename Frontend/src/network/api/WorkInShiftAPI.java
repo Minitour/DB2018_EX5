@@ -12,6 +12,6 @@ public class WorkInShiftAPI extends GenericAPI<WorkInShift> {
      * @param url the base endpoint url.
      */
     public WorkInShiftAPI() {
-        super(Constants.Routes.workInShift());
+        super(Constants.Routes.workInShift(),WorkInShift.class);
     }
 }

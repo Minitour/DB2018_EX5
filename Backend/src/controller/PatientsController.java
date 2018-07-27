@@ -108,7 +108,7 @@ public class PatientsController extends GenericController{
         require(params);
         Gson gson = new Gson();
 
-        Person p = gson.fromJson(params.get("person"),Person.class);
+        Person p = gson.fromJson(params,Person.class);
 
         try(PatientAccess patient_db = new PatientAccess();
             PersonAccess person_db = new PersonAccess(patient_db)) {

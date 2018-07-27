@@ -12,6 +12,6 @@ public class RoomAPI extends GenericAPI<Room> {
      * @param url the base endpoint url.
      */
     public RoomAPI() {
-        super(Constants.Routes.room());
+        super(Constants.Routes.room(),Room.class);
     }
 }

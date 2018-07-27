@@ -11,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import model.Hospital;
+import network.api.HospitalAPI;
 import ui.UIListViewCell;
 import ui.UIView;
 import ui.UIViewController;
@@ -42,7 +44,13 @@ public abstract class MasterMenuController extends UIViewController {
 
     public MasterMenuController() {
         super("/resources/xml/controller_master.fxml");
-        welcomeLabel.setText("Hospital Name");
+        welcomeLabel.setText("Loading...");
+        new HospitalAPI().read(new Hospital(AutoSignIn.HOSPITAL_ID), (response, object) -> {
+            if(object != null)
+                welcomeLabel.setText(object.getName());
+            else
+                welcomeLabel.setText("Hospital Name");
+        });
     }
 
     @Override

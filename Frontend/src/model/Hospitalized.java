@@ -13,28 +13,33 @@ public class Hospitalized {
     private String patientID;
 
     @Expose
-    private int eventCode;
+    private Integer eventCode;
 
     @Expose
-    private int numberOfDays;
+    private Integer numberOfDays;
 
     @Expose
     private Date dateOfArrival;
 
     @Expose
-    private int severityLevel;
+    private Integer severityLevel;
 
     @Expose
-    private int hospitalID;
+    private Integer hospitalID;
 
     @Expose
-    private int departmentID;
+    private Integer departmentID;
 
     @Expose
-    private int roomNumber;
+    private Integer roomNumber;
 
-    public Hospitalized(String patientID, int eventCode) {
+    public Hospitalized(String patientID, Integer eventCode) {
         this.patientID = patientID;
         this.eventCode = eventCode;
+    }
+
+    public Hospitalized(Integer hospitalID, Integer departmentID) {
+        this.hospitalID = hospitalID;
+        this.departmentID = departmentID;
     }
 }

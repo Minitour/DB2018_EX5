@@ -12,6 +12,6 @@ public class ProfileAPI extends GenericAPI<Person> {
      * @param url the base endpoint url.
      */
     public ProfileAPI() {
-        super(Constants.Routes.profile());
+        super(Constants.Routes.profile(),Person.class);
     }
 }
