@@ -5,10 +5,7 @@
       "groupName": "patient",
       "permissions": [
         "io.hospital.profile.read",
-        "io.hospital.account.read",
-        "io.hospital.hospital.read",
-        "io.hospital.account.read",
-        "io.hospital.account.upsert"
+        "io.hospital.hospital.read"
       ]
     },
     {
@@ -19,7 +16,8 @@
         "io.hospital.patient.*",
         "io.hospital.hospitalized.read",
         "io.hospital.hospitalized.read_all",
-        "io.hospital.room.read_all"
+        "io.hospital.room.read_all",
+        "io.hospital.account.upsert"
       ],
       "extends" : [ 1 ]
     },
@@ -35,8 +33,7 @@
         "io.hospital.check.*",
         "io.hospital.shift.read",
         "io.hospital.shift.read_all",
-        "io.hospital.vacation.read",
-        "io.hospital.account.upsert"
+        "io.hospital.vacation.read"
       ],
       "extends" : [ 1 ]
     },
@@ -77,8 +74,7 @@
       "groupId": 6,
       "groupName": "superuser",
       "permissions": [
-        "io.hospital.account.read",
-        "io.hospital.account.read_all",
+        "io.hospital.account.*",
         "io.hospital.hospital.*",
         "io.hospital.administrator.*"
       ],
