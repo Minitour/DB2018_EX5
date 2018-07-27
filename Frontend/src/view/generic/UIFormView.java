@@ -23,35 +23,76 @@ import java.util.concurrent.ConcurrentNavigableMap;
  */
 public abstract class UIFormView<T> extends UIView {
 
+    /**
+     * The title label of this form.
+     */
     @FXML
-    private Label title_label;
+    protected Label title_label;
 
+    /**
+     * The vbox that holds the items of the form.
+     */
     @FXML
     private VBox elements_vbox;
 
+    /**
+     * confirm button.
+     */
     @FXML
     private Button confirm;
 
+    /**
+     * The class type of this form
+     */
     private Class<T> cls;
 
+    /**
+     * The existing value of this form.
+     */
     private T existingValue;
 
+    /**
+     * The callback delegate.
+     */
     private OnFinish<T> callback = null;
 
+    /**
+     * A map that contains a list of observable values used to display on the combo box.
+     */
     private Map<String,ObservableList<String>> comboItems = new HashMap<>();
 
+    /**
+     * Constructor from class only.
+     * @param cls the class of the
+     */
     public UIFormView(Class<T> cls){
         this(cls,null);
     }
 
+    /**
+     * @param cls The class of the form.
+     * @param existingValue An existing value to show.
+     */
     public UIFormView(Class<T> cls,T existingValue){
         this(cls,existingValue,null,true);
     }
 
+    /**
+     * @param cls The class of the form.
+     * @param existingValue An existing value to show.
+     * @param callback The callback once user is done with the form.
+     */
     public UIFormView(Class<T> cls,T existingValue,OnFinish<T> callback){
         this(cls,existingValue,callback,true);
     }
 
+    /**
+     *
+     * @param cls The class of the form.
+     * @param existingValue An existing value to show.
+     * @param callback The callback once user is done with the form.
+     * @param useAlternativeButton Use alternative submit button.
+     */
     public UIFormView(Class<T> cls,T existingValue,OnFinish<T> callback,boolean useAlternativeButton) {
         super("/resources/xml/base_form.fxml");
         this.cls = cls;
@@ -68,8 +109,6 @@ public abstract class UIFormView<T> extends UIView {
         //read only mode
         confirm.setVisible(!useAlternativeButton);
 
-
-
         List<Field> fields = findFieldsAsList(Expose.class,cls);
         Set<String> notEditable = new HashSet<>(Arrays.asList(inupdateableFields()));
         Set<String> comboFields = new HashSet<>(Arrays.asList(comboBoxForFields()));
@@ -77,63 +116,64 @@ public abstract class UIFormView<T> extends UIView {
         //MARK: field creation
         for (Field field : fields) {
 
+            //get field type
             Class ofField = field.getType();
 
+            //get field name
             String fieldName = field.getName();
 
+
+            //check if value is of type combo box
             if(comboFields.contains(fieldName)) {
+
+                //get observable list for combo box.
                 ObservableList<String> observableList = listForField(fieldName);
+
+                //check if not null
                 if(observableList != null){
+
+                    //store list in map
                     comboItems.put(fieldName,observableList);
-                    StringComboBox comboBox = new StringComboBox();
-                    comboBox.setId(fieldName);
-                    comboBox.setItems(observableList);
-                    comboBox.setPromptText(transform(fieldName));
 
-                    if(existingValue != null){
-                        try {
-                            field.setAccessible(true);
-                            Object val = field.get(existingValue);
-                            String strValue = String.valueOf(val);
-                            comboBox.getSelectionModel().select(strValue);
-                        } catch (IllegalAccessException e) {
-                            e.printStackTrace();
-                        }
-                    }
+                    //create combobox
+                    StringComboBox comboBox = getComboBox(fieldName,observableList);
 
+                    //extract value if exists
+                    extract(field, existingValue, value -> comboBox.getSelectionModel().select(value));
+
+                    //add combo box to view
                     elements_vbox.getChildren().add(comboBox);
                     continue;
                 }
+
+                //else fallthrough and create as normal field.
             }
 
-            if (ofField.equals(String.class) ||
-                    ofField.equals(Integer.class) ||
-                    ofField.equals(Float.class) ||
-                    ofField.equals(Short.class)) {
+            //check if field is string or number
+            if (isStringOrNumber(ofField)) {
+
+                //create a text field.
                 TextField tf = getTextField(field.getName());
 
-
-
+                //check if there is a present value
                 if(existingValue != null){
                     if(notEditable.contains(field.getName()))
                         tf.setEditable(false);
-                    try {
-                        field.setAccessible(true);
-                        Object val = field.get(existingValue);
-                        String strValue = String.valueOf(val);
-                        tf.setText(strValue.equals("null") ? "" : strValue);
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
+
+                    extract(field,existingValue, tf::setText);
                 }
+
+                //add field to the view
                 elements_vbox.getChildren().add(tf);
             }
 
+            //if normal date or sql date
             if (ofField.equals(Date.class) || ofField.equals(java.sql.Date.class)){
 
+                // create a date picker
                 DatePicker picker = getDatePicker(field.getName());
 
-
+                //add populate with existing value if present
                 if(existingValue != null){
                     if(notEditable.contains(field.getName()))
                         picker.setEditable(false);
@@ -157,6 +197,8 @@ public abstract class UIFormView<T> extends UIView {
                         e.printStackTrace();
                     }
                 }
+
+                //add field
                 elements_vbox.getChildren().add(picker);
             }
         }
@@ -185,6 +227,38 @@ public abstract class UIFormView<T> extends UIView {
 
         textField.setPromptText(transform(fieldName));
         return textField;
+    }
+
+    private StringComboBox getComboBox(String fieldName,ObservableList<String> list){
+        StringComboBox comboBox = new StringComboBox();
+        comboBox.setId(fieldName);
+        comboBox.setItems(list);
+        comboBox.setPromptText(transform(fieldName));
+        return comboBox;
+    }
+
+    private boolean isStringOrNumber(Class<?> ofField){
+       return ofField.equals(String.class) ||
+                ofField.equals(Integer.class) ||
+                ofField.equals(Float.class) ||
+                ofField.equals(Short.class);
+    }
+
+    private void extract(Field field,Object o, PopulateCallback callback){
+        if(o != null) {
+            try {
+                field.setAccessible(true);
+                Object val = field.get(o);
+                String strValue = String.valueOf(val);
+                callback.extracted(strValue.equals("null") ? "" : strValue);
+            } catch (IllegalAccessException ignored) {
+            }
+        }
+    }
+
+    @FunctionalInterface
+    private interface PopulateCallback{
+        void extracted(String value);
     }
 
     private List<Field> findFieldsAsList(Class<? extends Annotation> ann,Class<?> cls) {
