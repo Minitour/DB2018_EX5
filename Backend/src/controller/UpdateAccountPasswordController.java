@@ -7,22 +7,22 @@ import database.data_access.SessionAccess;
 import model.Account;
 import model.Session;
 import org.mindrot.jbcrypt.BCrypt;
+import spark.Request;
+import spark.Response;
 import utils.GenericController;
 import utils.JSONResponse;
+import utils.RESTRoute;
 
 import java.util.List;
 
-public class UpdateAccountPasswordController extends GenericController {
+public class UpdateAccountPasswordController implements RESTRoute {
 
     @Override
-    public Object upsert(JsonObject body, Session session) {
-
-        JsonObject params = parameters(body);
-
-        JsonElement account_id = params.get("ACCOUNT_ID");
-        JsonElement session_token = params.get("SESSION_TOKEN");
-        JsonElement cPassword = params.get("currentPassword");
-        JsonElement nPassword = params.get("newPassword");
+    public Object handle(Request request, Response response, JsonObject body, Session session) throws Exception {
+        JsonElement account_id = body.get("ACCOUNT_ID");
+        JsonElement session_token = body.get("SESSION_TOKEN");
+        JsonElement cPassword = body.get("currentPassword");
+        JsonElement nPassword = body.get("newPassword");
 
         //require not null objects
         require(account_id,session_token, cPassword, nPassword);
@@ -82,6 +82,5 @@ public class UpdateAccountPasswordController extends GenericController {
         }catch (Exception e){
             return JSONResponse.FAILURE().message(e.getMessage());
         }
-
     }
 }
