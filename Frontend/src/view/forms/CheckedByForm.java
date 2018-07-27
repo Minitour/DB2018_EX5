@@ -49,7 +49,7 @@ public class CheckedByForm extends UIFormView<CheckedBy> {
      * @return The observable list for the combo box containing the items we want to display.
      */
     @Override
-    protected ObservableList<String> listForField(String fieldName) {
+    protected ObservableList<ComboItem> listForField(String fieldName) {
 
 
         return null;

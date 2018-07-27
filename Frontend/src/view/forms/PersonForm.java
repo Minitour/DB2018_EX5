@@ -48,14 +48,24 @@ public class PersonForm extends UIFormView<Person> {
      * @return The observable list for the combo box containing the items we want to display.
      */
     @Override
-    protected ObservableList<String> listForField(String fieldName) {
+    protected ObservableList<ComboItem> listForField(String fieldName) {
         switch (fieldName){
             case "careFacility":
-                return FXCollections.observableArrayList(Arrays.asList("מאוחדת","כללית","מכבי","לאומית"));
+                return FXCollections.observableArrayList(Arrays.asList(
+                        new ComboItem("מאוחדת"),
+                        new ComboItem("כללית"),
+                        new ComboItem("מכבי"),
+                        new ComboItem("לאומית")));
             case "bloodType":
-                return FXCollections.observableArrayList(Arrays.asList("AB","B","A","O"));
+                return FXCollections.observableArrayList(Arrays.asList(
+                        new ComboItem("AB"),
+                        new ComboItem("B"),
+                        new ComboItem("A"),
+                        new ComboItem("O")));
             case "gender":
-                return FXCollections.observableArrayList(Arrays.asList("M","F"));
+                return FXCollections.observableArrayList(Arrays.asList(
+                        new ComboItem("Male","M"),
+                        new ComboItem("Female","F")));
         }
         return null;
     }
