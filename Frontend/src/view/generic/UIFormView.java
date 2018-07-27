@@ -112,6 +112,7 @@ public abstract class UIFormView<T> extends UIView {
         List<Field> fields = findFieldsAsList(Expose.class,cls);
         Set<String> notEditable = new HashSet<>(Arrays.asList(inupdateableFields()));
         Set<String> comboFields = new HashSet<>(Arrays.asList(comboBoxForFields()));
+        Set<String> uninsertableFields = new HashSet<>(Arrays.asList(defaultValueFields()));
 
         //MARK: field creation
         for (Field field : fields) {
@@ -122,6 +123,12 @@ public abstract class UIFormView<T> extends UIView {
             //get field name
             String fieldName = field.getName();
 
+
+            //if this is a new form and this is not an insert-able field, skip to the next field.
+            if(existingValue == null &&
+                    uninsertableFields.contains(fieldName)){
+                continue;
+            }
 
             //check if value is of type combo box
             if(comboFields.contains(fieldName)) {
@@ -276,7 +283,7 @@ public abstract class UIFormView<T> extends UIView {
     }
 
     /**
-     * A function that checks if all the form fields has valid input.
+     * A function that checks if all the form  has valid input.
      * @return true if all the fields have valid input else false.
      */
     public boolean isValid(){ return true; }
@@ -286,18 +293,40 @@ public abstract class UIFormView<T> extends UIView {
      */
     public void reset(){};
 
+    /**
+     * @return A list of fields that cannot be updated.
+     */
     public String[] inupdateableFields(){
         return new String[]{};
     }
 
+    /**
+     * @return A list of fields that cannot be inserted (they are automatically generated, like account id).
+     */
+    public String[] defaultValueFields() { return new String[]{};}
+
+    /**
+     * @return A list of fields that should be treated as a combo box.
+     */
     protected String[] comboBoxForFields() {
         return new String[]{};
     }
 
+    /**
+     *
+     * @param fieldName The field for which the combo box will display the list.
+     * @return An observable list for the combo box to show.
+     */
     protected ObservableList<ComboItem> listForField(String fieldName){
         return null;
     }
 
+    /**
+     * The default value for a field name that cannot be inserted.
+     * @param fieldName
+     * @return
+     */
+    protected Object defaultValueForField(String fieldName) { return null; }
 
     /**
      * @return A result object from the form.
@@ -318,12 +347,24 @@ public abstract class UIFormView<T> extends UIView {
 
     private void populateFields(T instance) {
         List<Field> fields = findFieldsAsList(Expose.class,instance.getClass());
+        Set<String> uninsertableFields = new HashSet<>(Arrays.asList(defaultValueFields()));
 
         for (Field field : fields) {
             try {
                 Class ofField = field.getType();
 
                 Object value = null;
+
+                //if the field is un-insertable and component does not exist:
+                // meaning we are inserting and not updating
+                if(uninsertableFields.contains(field.getName()) &&
+                        elements_vbox.lookup("#"+field.getName()) == null){
+                    //populate with default value.
+                    value = defaultValueForField(field.getName());
+                    field.setAccessible(true);
+                    field.set(instance,value);
+                    continue;
+                }
 
                 if(comboItems.containsKey(field.getName())){
                     StringComboBox comboBox = (StringComboBox) elements_vbox.lookup("#"+field.getName());
