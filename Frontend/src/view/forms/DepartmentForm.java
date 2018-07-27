@@ -5,14 +5,22 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TextField;
 import model.Department;
+import model.Hospital;
 import view.generic.UIFormView;
+import view.tables.DepartmentTableView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created By Tony on 26/07/2018
  */
 public class DepartmentForm extends UIFormView<Department> {
+
+    public static List<Hospital> hospitalList = new ArrayList<>();
+    public static List<Department> departments = new ArrayList<>();
+
     public DepartmentForm(Department existingValue, OnFinish<Department> callback) {
         super(Department.class, existingValue, callback);
     }
@@ -46,7 +54,19 @@ public class DepartmentForm extends UIFormView<Department> {
      * @return The observable list for the combo box containing the items we want to display.
      */
     @Override
-    protected ObservableList<String> listForField(String fieldName) {
+    protected ObservableList<ComboItem> listForField(String fieldName) {
+
+        switch (fieldName){
+            case "hospitalID":
+                ObservableList<ComboItem> hos = FXCollections.observableArrayList();
+                hospitalList.forEach(hospital -> hos.add(new ComboItem(String.valueOf(hospital.getHospitalID()), hospital)));
+                return hos;
+
+            case "departmentID":
+                ObservableList<ComboItem> deps = FXCollections.observableArrayList();
+                departments.forEach(department -> deps.add(new ComboItem(String.valueOf(department.getDepartmentID()), department)));
+                return deps;
+        }
         return null;
     }
 

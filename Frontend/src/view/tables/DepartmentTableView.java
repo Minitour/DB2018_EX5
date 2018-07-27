@@ -1,7 +1,11 @@
 package view.tables;
 
 import model.Department;
+import model.Hospital;
 import network.api.DepartmentAPI;
+import network.api.HospitalAPI;
+import network.generic.GenericAPI;
+import view.forms.DepartmentForm;
 import view.generic.GenericTableView;
 import view.generic.UIFormView;
 
@@ -12,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class DepartmentTableView extends GenericTableView<Department> {
 
-    private DepartmentAPI api;
+    private DepartmentAPI api ;
     private List<Department> departments = new ArrayList<>();
 
     public DepartmentTableView(boolean delete, boolean update, boolean insert) {
@@ -27,22 +31,23 @@ public class DepartmentTableView extends GenericTableView<Department> {
 
     @Override
     protected UIFormView<Department> onView(int index) {
-        return null;
+        Department department = departments.get(index);
+        return new DepartmentForm(department,this);
     }
 
     @Override
     protected UIFormView<Department> onInsert() {
-        return null;
+        return new DepartmentForm(null, this);
     }
 
     @Override
     protected Class<Department> classType() {
-        return null;
+        return Department.class;
     }
 
     @Override
     public Collection<? extends Department> dataSource() {
-        return null;
+        return departments;
     }
 
     @Override
@@ -56,6 +61,23 @@ public class DepartmentTableView extends GenericTableView<Department> {
     public void layoutSubviews(ResourceBundle bundle) {
         super.layoutSubviews(bundle);
         api = new DepartmentAPI();
+
+        HospitalAPI hospitalAPI = new HospitalAPI();
+
+        // get the hospitals for the form
+        List<Hospital> hospitals = new ArrayList<>();
+        hospitalAPI.readAll(((response, items) -> {
+            DepartmentForm.hospitalList.addAll(items);
+            reloadDataFromServer();
+        }));
+
+        // get the department list for the form
+        List<Department> departmentList = new ArrayList<>();
+        api.readAll(((response, items) -> {
+            DepartmentForm.departments.addAll(items);
+            reloadDataFromServer();
+        }));
+
         api.setRunOnUi(true);
         reloadDataFromServer();
     }

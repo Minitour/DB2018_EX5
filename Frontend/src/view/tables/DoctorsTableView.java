@@ -60,6 +60,7 @@ public class DoctorsTableView extends GenericTableView<Doctor> {
     public void layoutSubviews(ResourceBundle bundle) {
         super.layoutSubviews(bundle);
         doctorAPI = new DoctorAPI();
+
         doctorAPI.setRunOnUi(true);
         reloadDataFromServer();
     }
