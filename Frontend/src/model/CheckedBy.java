@@ -37,4 +37,32 @@ public class CheckedBy {
         this.shiftNumber = shiftNumber;
         this.checkTime = checkTime;
     }
+
+    public String getPatientID() {
+        return patientID;
+    }
+
+    public Integer getEventCode() {
+        return eventCode;
+    }
+
+    public String getDoctorID() {
+        return doctorID;
+    }
+
+    public Integer getShiftNumber() {
+        return shiftNumber;
+    }
+
+    public Date getCheckTime() {
+        return checkTime;
+    }
+
+    public Float getBodyTemp() {
+        return bodyTemp;
+    }
+
+    public String getBloodPressure() {
+        return bloodPressure;
+    }
 }

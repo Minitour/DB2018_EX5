@@ -22,4 +22,15 @@ public class MedicalEventTypeInDepartment {
         this.typeCode = typeCode;
     }
 
+    public Integer getHospitalID() {
+        return hospitalID;
+    }
+
+    public Integer getDepartmentID() {
+        return departmentID;
+    }
+
+    public Integer getTypeCode() {
+        return typeCode;
+    }
 }
