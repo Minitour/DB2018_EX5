@@ -170,6 +170,12 @@ public class AccountController extends GenericController {
                     account_db.getById(null,account.getEMAIL(),0);
 
             if(existingAccounts.size() > 0){
+                if(session.getRole() != 6)
+                    return JSONResponse
+                            .FAILURE()
+                            .message("You do not have a permission to update an account.");
+
+
                 Account existing = existingAccounts.get(0);
 
                 account.setACCOUNT_ID(existing.getACCOUNT_ID());
@@ -196,7 +202,15 @@ public class AccountController extends GenericController {
 
             account.setROLE_ID(roleId);
 
-            //set account values
+            Account currentAccount = account_db.getById(session.ACCOUNT_ID,null,0).get(0);
+            int currentHospital = currentAccount.getHospitalID();
+
+            if(roleId != 6 && account.getHospitalID() != currentHospital)
+                return JSONResponse
+                        .FAILURE()
+                        .message("Attempting to add an account to a hospital of which you are not a part of.");
+
+
 
             //insert account
             account_db.upsert(account);
