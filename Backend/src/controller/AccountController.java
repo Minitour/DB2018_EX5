@@ -121,6 +121,7 @@ public class AccountController extends GenericController {
                 for(Person p : accountOwner)
                     person_db.delete(p.getID());
 
+
             //delete account
             account_db.delete(null,id);
 
@@ -180,6 +181,20 @@ public class AccountController extends GenericController {
                 account.setACCOUNT_ID(0);
             }
 
+            short roleId = account.getROLE_ID();
+
+            switch (session.getRole()){
+                case 2:
+                case 3:
+                case 4:
+                    roleId = 1;
+                    break;
+                case 5:
+                    roleId = roleId > 5 || roleId < 1 ? 5 : roleId;
+                    break;
+            }
+
+            account.setROLE_ID(roleId);
 
             //set account values
 
