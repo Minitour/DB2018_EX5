@@ -12,15 +12,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import model.Hospital;
-import model.Person;
 import network.api.HospitalAPI;
-import network.api.ProfileAPI;
-import network.generic.GenericAPI;
 import ui.UIListViewCell;
 import ui.UIView;
 import ui.UIViewController;
 import utils.AutoSignIn;
-import utils.Response;
 import view.DialogView;
 
 import java.util.Arrays;

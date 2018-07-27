@@ -19,7 +19,7 @@ public class Room {
     @Expose
     private Integer bedsAmount;
 
-    public Room(int hospitalID, int departmentID, int roomNumber) {
+    public Room(Integer hospitalID, Integer departmentID, Integer roomNumber) {
         this.hospitalID = hospitalID;
         this.departmentID = departmentID;
         this.roomNumber = roomNumber;

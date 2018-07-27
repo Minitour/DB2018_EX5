@@ -4,13 +4,11 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
 import javafx.application.Platform;
 import network.SharedInstance;
 import utils.AutoSignIn;
 import utils.Response;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 

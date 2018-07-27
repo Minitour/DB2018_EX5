@@ -19,5 +19,5 @@ public class Payment {
     @Expose
     private Integer amount;
 
-    public Payment(int serialNumber) { this.serialNumber = serialNumber; }
+    public Payment(Integer serialNumber) { this.serialNumber = serialNumber; }
 }
