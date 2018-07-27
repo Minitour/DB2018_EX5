@@ -5,6 +5,7 @@ import javafx.beans.binding.ObjectExpression;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import ui.UIView;
@@ -18,6 +19,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
 import java.util.concurrent.ConcurrentNavigableMap;
+import java.util.function.Consumer;
 
 /**
  * Created By Tony on 14/02/2018
@@ -322,7 +324,26 @@ public abstract class UIFormView<T> extends UIView {
     /**
      * A function used to clear the fields and reset them.
      */
-    public void reset(){};
+    public void reset(){
+        elements_vbox.getChildren().forEach(node -> {
+            if(node instanceof TextField){
+                TextField tf = (TextField) node;
+                tf.setText("");
+                return;
+            }
+
+            if(node instanceof ComboBox){
+                ComboBox comboBox = (ComboBox) node;
+                comboBox.getSelectionModel().clearSelection();
+                return;
+            }
+
+            if(node instanceof DatePicker){
+                DatePicker datePicker = (DatePicker) node;
+                datePicker.getEditor().setText("");
+            }
+        });
+    };
 
     /**
      * @return A list of fields that cannot be updated.
@@ -546,7 +567,6 @@ public abstract class UIFormView<T> extends UIView {
         public String getSelectedValue(){
             try {
                 ComboItem item = getSelectionModel().getSelectedItem();
-                System.out.println(item);
                 return String.valueOf(item.value);
             }catch (NullPointerException e){
                 return null;

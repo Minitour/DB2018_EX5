@@ -21,6 +21,10 @@ public class AccountForm extends UIFormView<Account> {
 
     public AccountForm(Account existingValue, OnFinish<Account> callback) { super(Account.class, existingValue, callback); }
 
+    public AccountForm(Account existingValue, OnFinish<Account> callback, boolean useAlternativeButton) {
+        super(Account.class, existingValue, callback, useAlternativeButton);
+    }
+
     @Override
     protected TextField textFieldFactory() {
         return new JFXTextField();
