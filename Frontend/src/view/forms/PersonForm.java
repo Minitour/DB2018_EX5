@@ -44,7 +44,7 @@ public class PersonForm extends UIFormView<Person> {
 
     @Override
     protected String[] comboBoxForFields() {
-        return new String[]{"careFacility","bloodType"};
+        return new String[]{"careFacility","bloodType","gender"};
     }
 
     @Override
@@ -54,6 +54,8 @@ public class PersonForm extends UIFormView<Person> {
                 return FXCollections.observableArrayList(Arrays.asList("מאוחדת","כללית","מכבי","לאומית"));
             case "bloodType":
                 return FXCollections.observableArrayList(Arrays.asList("AB","B","A","O"));
+            case "gender":
+                return FXCollections.observableArrayList(Arrays.asList("M","F"));
         }
         return null;
     }
