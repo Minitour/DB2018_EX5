@@ -6,20 +6,17 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TextField;
 import model.Department;
 import model.Hospital;
+import network.api.HospitalAPI;
 import view.generic.UIFormView;
-import view.tables.DepartmentTableView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  * Created By Tony on 26/07/2018
  */
 public class DepartmentForm extends UIFormView<Department> {
 
-    public static List<Hospital> hospitalList = new ArrayList<>();
-    public static List<Department> departments = new ArrayList<>();
+    private ObservableList<ComboItem> hospitalList = FXCollections.observableArrayList();
 
     public DepartmentForm(Department existingValue, OnFinish<Department> callback) {
         super(Department.class, existingValue, callback);
@@ -38,7 +35,7 @@ public class DepartmentForm extends UIFormView<Department> {
      */
     @Override
     protected String[] comboBoxForFields() {
-        return null;
+        return new String[]{"hospitalID"};
     }
 
     /**
@@ -58,14 +55,8 @@ public class DepartmentForm extends UIFormView<Department> {
 
         switch (fieldName){
             case "hospitalID":
-                ObservableList<ComboItem> hos = FXCollections.observableArrayList();
-                hospitalList.forEach(hospital -> hos.add(new ComboItem(String.valueOf(hospital.getHospitalID()), hospital)));
-                return hos;
+                return hospitalList;
 
-            case "departmentID":
-                ObservableList<ComboItem> deps = FXCollections.observableArrayList();
-                departments.forEach(department -> deps.add(new ComboItem(String.valueOf(department.getDepartmentID()), department)));
-                return deps;
         }
         return null;
     }
@@ -81,5 +72,20 @@ public class DepartmentForm extends UIFormView<Department> {
     @Override
     public String[] inupdateableFields() {
         return new String[]{"hospitalID", "departmentID"};
+    }
+
+    @Override
+    public void layoutSubviews(ResourceBundle bundle) {
+        super.layoutSubviews(bundle);
+
+        new HospitalAPI().readAll((response, items) -> {
+            if(response.isOK())
+                for (Hospital item : items)
+                    hospitalList.add(new ComboItem(
+                            item.getName(),
+                            item.getHospitalID()
+                    ));
+
+        });
     }
 }

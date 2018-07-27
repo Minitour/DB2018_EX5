@@ -64,19 +64,19 @@ public class DepartmentTableView extends GenericTableView<Department> {
 
         HospitalAPI hospitalAPI = new HospitalAPI();
 
-        // get the hospitals for the form
-        List<Hospital> hospitals = new ArrayList<>();
-        hospitalAPI.readAll(((response, items) -> {
-            DepartmentForm.hospitalList.addAll(items);
-            reloadDataFromServer();
-        }));
-
-        // get the department list for the form
-        List<Department> departmentList = new ArrayList<>();
-        api.readAll(((response, items) -> {
-            DepartmentForm.departments.addAll(items);
-            reloadDataFromServer();
-        }));
+//        // get the hospitals for the form
+//        List<Hospital> hospitals = new ArrayList<>();
+//        hospitalAPI.readAll(((response, items) -> {
+//            DepartmentForm.hospitalList.addAll(items);
+//            reloadDataFromServer();
+//        }));
+//
+//        // get the department list for the form
+//        List<Department> departmentList = new ArrayList<>();
+//        api.readAll(((response, items) -> {
+//            DepartmentForm.departments.addAll(items);
+//            reloadDataFromServer();
+//        }));
 
         api.setRunOnUi(true);
         reloadDataFromServer();
