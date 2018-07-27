@@ -37,6 +37,11 @@ public class AccountForm extends UIFormView<Account> {
         return new String[]{"hospitalID","ROLE_ID"};
     }
 
+    @Override
+    protected String[] protectedFields() {
+        return new String[]{"USER_PASSWORD"};
+    }
+
     /**
      * Here we return an observable list.
      * Note that this observable list is retained within the form itself inside a hashmap.
@@ -69,6 +74,28 @@ public class AccountForm extends UIFormView<Account> {
         return null;
     }
 
+    /**
+     * avoid insertion for account id
+     * @return
+     */
+    @Override
+    public String[] defaultValueFields() {
+        return new String[]{"ACCOUNT_ID"};
+    }
+
+    /**
+     * supply default value on insert
+     *
+     * @param fieldName
+     * @return
+     */
+    @Override
+    protected Object defaultValueForField(String fieldName) {
+        switch (fieldName){
+            case "ACCOUNT_ID": return 0;
+        }
+        return null;
+    }
 
     /**
      * This method is used to lock certain fields when viewing an existing object.
@@ -79,7 +106,12 @@ public class AccountForm extends UIFormView<Account> {
      */
     @Override
     public String[] inupdateableFields() {
-        return new String[]{"ACCOUNT_ID","EMAIL"};
+        return new String[]{"ACCOUNT_ID","EMAIL","USER_PASSWORD"};
+    }
+
+    @Override
+    protected String[] hiddenFields() {
+        return new String[]{"USER_PASSWORD"};
     }
 
     @Override

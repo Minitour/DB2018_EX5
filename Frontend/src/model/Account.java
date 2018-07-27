@@ -10,7 +10,7 @@ public class Account{
     @Expose
     private Integer ACCOUNT_ID;
 
-    @Expose(serialize = false,deserialize = false)
+    @Expose
     private String USER_PASSWORD;
 
     @Expose
