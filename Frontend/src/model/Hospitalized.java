@@ -42,4 +42,36 @@ public class Hospitalized {
         this.hospitalID = hospitalID;
         this.departmentID = departmentID;
     }
+
+    public String getPatientID() {
+        return patientID;
+    }
+
+    public Integer getEventCode() {
+        return eventCode;
+    }
+
+    public Integer getNumberOfDays() {
+        return numberOfDays;
+    }
+
+    public Date getDateOfArrival() {
+        return dateOfArrival;
+    }
+
+    public Integer getSeverityLevel() {
+        return severityLevel;
+    }
+
+    public Integer getHospitalID() {
+        return hospitalID;
+    }
+
+    public Integer getDepartmentID() {
+        return departmentID;
+    }
+
+    public Integer getRoomNumber() {
+        return roomNumber;
+    }
 }

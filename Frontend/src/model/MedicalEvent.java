@@ -17,4 +17,17 @@ public class MedicalEvent  {
 
     public MedicalEvent(Integer eventCode) { this.eventCode = eventCode; }
 
+    public Integer getEventCode() {
+        return eventCode;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Integer getTypeCode() {
+        return typeCode;
+    }
+
+
 }
