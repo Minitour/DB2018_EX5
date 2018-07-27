@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0e43bbb-af19-49b1-8a54-4b9d4060284a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/model/CheckedBy.java" afterPath="$PROJECT_DIR$/../Frontend/src/model/CheckedBy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/model/Doctor.java" afterPath="$PROJECT_DIR$/../Frontend/src/model/Doctor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/model/DoctorVacation.java" afterPath="$PROJECT_DIR$/../Frontend/src/model/DoctorVacation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/model/Hospitalized.java" afterPath="$PROJECT_DIR$/../Frontend/src/model/Hospitalized.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/model/MedicalEvent.java" afterPath="$PROJECT_DIR$/../Frontend/src/model/MedicalEvent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/model/MedicalEventTypeInDepartment.java" afterPath="$PROJECT_DIR$/../Frontend/src/model/MedicalEventTypeInDepartment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/model/MedicalEventTypes.java" afterPath="$PROJECT_DIR$/../Frontend/src/model/MedicalEventTypes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/model/Payment.java" afterPath="$PROJECT_DIR$/../Frontend/src/model/Payment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/model/Room.java" afterPath="$PROJECT_DIR$/../Frontend/src/model/Room.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/view/forms/DoctorVacationForm.java" afterPath="$PROJECT_DIR$/../Frontend/src/view/forms/DoctorVacationForm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/view/forms/HospitalForm.java" afterPath="$PROJECT_DIR$/../Frontend/src/view/forms/HospitalForm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/view/forms/HospitalizedForm.java" afterPath="$PROJECT_DIR$/../Frontend/src/view/forms/HospitalizedForm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Frontend/src/view/tables/DepartmentTableView.java" afterPath="$PROJECT_DIR$/../Frontend/src/view/tables/DepartmentTableView.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,7 +22,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="App.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="495">
@@ -43,7 +37,7 @@
       <file leaf-file-name="UpdateAccountPasswordController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/UpdateAccountPasswordController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1260">
+            <state relative-caret-position="796">
               <caret line="84" column="5" lean-forward="false" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -85,6 +79,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="permissions.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/permissions.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/database/Database.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -93,19 +97,6 @@
               <folding>
                 <element signature="e#1170#1171#0" expanded="true" />
                 <element signature="e#1202#1203#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Account.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Account.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="945">
-              <caret line="83" column="37" lean-forward="false" selection-start-line="83" selection-start-column="37" selection-end-line="83" selection-end-column="37" />
-              <folding>
-                <element signature="e#1888#1889#0" expanded="true" />
-                <element signature="e#1932#1933#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -131,11 +122,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="roles.json" pinned="false" current-in-tab="false">
+      <file leaf-file-name="roles.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/roles.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="36" lean-forward="false" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+            <state relative-caret-position="105">
+              <caret line="7" column="28" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -811,25 +802,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app_test/database/data_access/AccountControllerTest.java" />
-    <entry file="file://$PROJECT_DIR$/permissions.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.2/gson-2.8.2.jar!/com/google/gson/JsonObject.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
           <caret line="78" column="23" lean-forward="false" selection-start-line="78" selection-start-column="23" selection-end-line="78" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/data_access/AccountAccess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="31" lean-forward="false" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -838,8 +814,8 @@
         <state relative-caret-position="945">
           <caret line="83" column="37" lean-forward="false" selection-start-line="83" selection-start-column="37" selection-end-line="83" selection-end-column="37" />
           <folding>
-            <element signature="e#1888#1889#0" expanded="true" />
-            <element signature="e#1932#1933#0" expanded="true" />
+            <element signature="e#1888#1889#0" expanded="false" />
+            <element signature="e#1932#1933#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -848,14 +824,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="39" column="19" lean-forward="false" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/roles.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="36" lean-forward="false" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
           <folding />
         </state>
       </provider>
@@ -891,6 +859,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -936,9 +905,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/CheckedBy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-521">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database/data_access/AccountAccess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="10" column="31" lean-forward="false" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/UpdateAccountPasswordController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
+        <state relative-caret-position="796">
           <caret line="84" column="5" lean-forward="false" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -947,10 +931,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/CheckedBy.java">
+    <entry file="file://$PROJECT_DIR$/permissions.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-521">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="60">
+          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/roles.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="28" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
