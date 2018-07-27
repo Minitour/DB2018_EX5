@@ -5,14 +5,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TextField;
 import model.Account;
+import model.Hospital;
+import network.api.HospitalAPI;
 import view.generic.UIFormView;
 
 import java.util.Arrays;
+import java.util.ResourceBundle;
 
 /**
  * Created By Tony on 26/07/2018
  */
 public class AccountForm extends UIFormView<Account> {
+
+    private ObservableList<ComboItem> hospitalList;
 
     public AccountForm(Account existingValue, OnFinish<Account> callback) { super(Account.class, existingValue, callback); }
 
@@ -29,7 +34,7 @@ public class AccountForm extends UIFormView<Account> {
      */
     @Override
     protected String[] comboBoxForFields() {
-        return new String[]{"ROLE_ID"};
+        return new String[]{"hospitalID","ROLE_ID"};
     }
 
     /**
@@ -46,17 +51,24 @@ public class AccountForm extends UIFormView<Account> {
      */
     @Override
     protected ObservableList<ComboItem> listForField(String fieldName) {
+
         switch (fieldName){
+            case "hospitalID":
+                return hospitalList;
             case "ROLE_ID":
                 return FXCollections.observableArrayList(Arrays.asList(
-                        new ComboItem("מאוחדת"),
-                        new ComboItem("כללית"),
-                        new ComboItem("מכבי"),
-                        new ComboItem("לאומית")));
+                        new ComboItem("Patient",1),
+                        new ComboItem("Secretary",2),
+                        new ComboItem("Doctor",3),
+                        new ComboItem("Doctor Manager",4),
+                        new ComboItem("Admin",5),
+                        new ComboItem("Super User",6)
+                ));
 
         }
         return null;
     }
+
 
     /**
      * This method is used to lock certain fields when viewing an existing object.
@@ -67,6 +79,22 @@ public class AccountForm extends UIFormView<Account> {
      */
     @Override
     public String[] inupdateableFields() {
-        return new String[]{"ACCOUNT_ID"};
+        return new String[]{"ACCOUNT_ID","EMAIL"};
+    }
+
+    @Override
+    public void layoutSubviews(ResourceBundle bundle) {
+        super.layoutSubviews(bundle);
+        hospitalList = FXCollections.observableArrayList();
+
+        new HospitalAPI().readAll((response, items) -> {
+            if(response.isOK())
+                for (Hospital item : items)
+                    hospitalList.add(new ComboItem(
+                            item.getName(),
+                            item.getHospitalID()
+                    ));
+
+        });
     }
 }
