@@ -7,16 +7,14 @@ import javafx.scene.control.TextField;
 import model.Person;
 import view.generic.UIFormView;
 
-import java.sql.Date;
 import java.util.Arrays;
-import java.util.ResourceBundle;
 
 /**
  * Created By Tony on 26/07/2018
  */
 public class PersonForm extends UIFormView<Person> {
 
-    
+
     public PersonForm(Person p,OnFinish<Person> callback) {
         super(Person.class,p,callback);
     }

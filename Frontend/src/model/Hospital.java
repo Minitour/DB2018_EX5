@@ -22,7 +22,7 @@ public class Hospital {
     @Expose
     private String phone;
 
-    public Hospital(int hospitalID) { this.hospitalID = hospitalID; }
+    public Hospital(Integer hospitalID) { this.hospitalID = hospitalID; }
 
 
     public Integer getHospitalID() {

@@ -16,7 +16,7 @@ public class MedicalEventTypeInDepartment {
     @Expose
     private Integer typeCode;
 
-    public MedicalEventTypeInDepartment(int hospitalID, int departmentID, int typeCode) {
+    public MedicalEventTypeInDepartment(Integer hospitalID, Integer departmentID, Integer typeCode) {
         this.hospitalID = hospitalID;
         this.departmentID = departmentID;
         this.typeCode = typeCode;

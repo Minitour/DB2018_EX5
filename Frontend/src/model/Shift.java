@@ -16,7 +16,7 @@ public class Shift {
     @Expose
     private String shiftType;
 
-    public Shift(int shiftNumber) { this.shiftNumber = shiftNumber; }
+    public Shift(Integer shiftNumber) { this.shiftNumber = shiftNumber; }
 
     public Integer getShiftNumber() {
         return shiftNumber;

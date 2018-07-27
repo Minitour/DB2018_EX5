@@ -33,7 +33,7 @@ public class Hospitalized {
     @Expose
     private Integer roomNumber;
 
-    public Hospitalized(String patientID, int eventCode) {
+    public Hospitalized(String patientID, Integer eventCode) {
         this.patientID = patientID;
         this.eventCode = eventCode;
     }
