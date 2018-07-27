@@ -18,7 +18,7 @@ public class PatientsAPITest {
 
     @Before
     public void setup() throws InterruptedException {
-        LoginAPI api = new LoginAPI();
+        AuthAPI api = new AuthAPI();
 
         String email = "asdasdasdasd";
         String password = "1212121212";
