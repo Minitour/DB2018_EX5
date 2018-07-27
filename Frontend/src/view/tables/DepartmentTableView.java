@@ -61,9 +61,6 @@ public class DepartmentTableView extends GenericTableView<Department> {
     public void layoutSubviews(ResourceBundle bundle) {
         super.layoutSubviews(bundle);
         api = new DepartmentAPI();
-
-        HospitalAPI hospitalAPI = new HospitalAPI();
-
         api.setRunOnUi(true);
         reloadDataFromServer();
     }

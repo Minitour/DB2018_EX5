@@ -544,9 +544,13 @@ public abstract class UIFormView<T> extends UIView {
 
     private class StringComboBox extends ComboBox<ComboItem> {
         public String getSelectedValue(){
-            ComboItem item = getSelectionModel().getSelectedItem();
-            System.out.println(item);
-            return String.valueOf(item.value);
+            try {
+                ComboItem item = getSelectionModel().getSelectedItem();
+                System.out.println(item);
+                return String.valueOf(item.value);
+            }catch (NullPointerException e){
+                return null;
+            }
         }
 
     }
