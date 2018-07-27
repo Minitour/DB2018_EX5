@@ -117,7 +117,7 @@ public class HospitalController extends GenericController {
         require(params);
         Gson gson = new Gson();
 
-        Hospital hospital = gson.fromJson(params.get("hospital"),Hospital.class);
+        Hospital hospital = gson.fromJson(params,Hospital.class);
 
         try(HospitalAccess hospital_db = new HospitalAccess()) {
 

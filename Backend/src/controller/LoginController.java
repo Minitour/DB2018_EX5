@@ -57,7 +57,7 @@ public class LoginController implements RESTRoute {
         ) {
 
             //get account with email
-            List<Account> accounts = account_db.getById(null,email,null);
+            List<Account> accounts = account_db.getById(null,email,0);
 
             //make sure there is only one account that matches.
             if (accounts.size() != 1)
