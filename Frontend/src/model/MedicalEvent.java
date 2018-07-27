@@ -25,9 +25,5 @@ public class MedicalEvent  {
         return description;
     }
 
-    public Integer getTypeCode() {
-        return typeCode;
-    }
-
 
 }

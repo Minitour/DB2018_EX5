@@ -22,11 +22,4 @@ public class MedicalEventTypes {
         return typeName;
     }
 
-    public void setTypeCode(Integer typeCode) {
-        this.typeCode = typeCode;
-    }
-
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
-    }
 }

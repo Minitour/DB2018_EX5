@@ -33,15 +33,4 @@ public class Hospital {
         return name;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
 }
