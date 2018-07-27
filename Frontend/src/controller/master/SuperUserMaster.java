@@ -26,7 +26,7 @@ public class SuperUserMaster extends MasterMenuController {
     public String[] itemsForMenu() {
         return new String[]{
                 "Hospitals", //create hospitals
-                "Admins", // create admins
+                "Users", // create admins
                 "Account"
         };
     }

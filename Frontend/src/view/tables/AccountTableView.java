@@ -2,6 +2,7 @@ package view.tables;
 
 import model.Account;
 import network.api.AccountAPI;
+import ui.UITableView;
 import view.forms.AccountForm;
 import view.generic.GenericTableView;
 import view.generic.UIFormView;
@@ -21,9 +22,40 @@ public class AccountTableView extends GenericTableView<Account> {
     }
 
     @Override
+    public int numberOfColumns() {
+        return 4;
+    }
+
+    @Override
+    public String bundleIdForIndex(int index) {
+        switch (index){
+            case 0: return "Account ID";
+            case 1: return "Email";
+            case 2: return "Role ID";
+            case 3: return "Hospital ID";
+        }
+        return null;
+    }
+
+    @Override
+    public TableColumnValue<Account> cellValueForColumnAt(int index) {
+        switch (index){
+            case 0:
+                return Account::getACCOUNT_ID;
+            case 1:
+                return Account::getEMAIL;
+            case 2:
+                return Account::getROLE_ID;
+            case 3:
+                return Account::getHospitalID;
+
+            default:return null;
+        }
+    }
+
+    @Override
     protected void onDelete(int index) {
-        api.delete(list.remove(index),System.out::println);
-        reloadData();
+        api.delete(list.remove(index),response -> reloadDataFromServer());
     }
 
     @Override
@@ -64,7 +96,6 @@ public class AccountTableView extends GenericTableView<Account> {
     @Override
     public void callback(Account value) {
         super.callback(value);
-        api.upsert(value,System.out::println);
-        reloadDataFromServer();
+        api.upsert(value, response -> reloadDataFromServer());
     }
 }

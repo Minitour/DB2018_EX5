@@ -14,6 +14,7 @@ import utils.GenericController;
 import utils.JSONResponse;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -147,6 +148,11 @@ public class AccountController extends GenericController {
         String password = params.get("USER_PASSWORD").getAsString();
         Gson gson = new Gson();
         Account account = gson.fromJson(params,Account.class);
+
+        if(Objects.equals(account.getACCOUNT_ID(), session.ACCOUNT_ID))
+            return JSONResponse
+                    .FAILURE()
+                    .message("You cannot modify your own account.");
 
         try(AccountAccess account_db = new AccountAccess()){
 

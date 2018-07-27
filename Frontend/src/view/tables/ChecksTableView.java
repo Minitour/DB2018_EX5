@@ -25,8 +25,7 @@ public class ChecksTableView extends GenericTableView<CheckedBy> {
 
     @Override
     protected void onDelete(int index) {
-        api.delete(list.remove(index),System.out::println);
-        reloadData();
+        api.delete(list.remove(index),response -> reloadDataFromServer());
     }
 
     @Override
@@ -67,7 +66,6 @@ public class ChecksTableView extends GenericTableView<CheckedBy> {
     @Override
     public void callback(CheckedBy value) {
         super.callback(value);
-        api.upsert(value,System.out::println);
-        reloadDataFromServer();
+        api.upsert(value,response -> reloadDataFromServer());
     }
 }
