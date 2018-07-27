@@ -162,15 +162,20 @@ public class AccountController extends GenericController {
             List<Account> existingAccounts =
                     account_db.getById(null,account.getEMAIL());
 
-            if(existingAccounts.size() > 0)
-                return JSONResponse
-                        .FAILURE()
-                        .message("Invalid Action. Attempting to update existing account.");
+            if(existingAccounts.size() > 0){
+                Account existing = existingAccounts.get(0);
+
+                account.setACCOUNT_ID(existing.getACCOUNT_ID());
+                account.setUSER_PASSWORD(existing.getUSER_PASSWORD());
+
+            }else {
+                String hashedPassword = BCrypt.hashpw(password,BCrypt.gensalt());
+                account.setUSER_PASSWORD(hashedPassword);
+                account.setACCOUNT_ID(0);
+            }
+
 
             //set account values
-            String hashedPassword = BCrypt.hashpw(password,BCrypt.gensalt());
-            account.setUSER_PASSWORD(hashedPassword);
-            account.setACCOUNT_ID(0);
 
             //insert account
             account_db.upsert(account);
