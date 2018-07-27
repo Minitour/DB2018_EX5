@@ -5,7 +5,8 @@
       "groupName": "patient",
       "permissions": [
         "io.hospital.profile.read",
-        "io.hospital.account.read"
+        "io.hospital.account.read",
+        "io.hospital.account.upsert"
       ]
     },
     {
@@ -30,7 +31,8 @@
         "io.hospital.check.*",
         "io.hospital.shift.read",
         "io.hospital.shift.read_all",
-        "io.hospital.vacation.read"
+        "io.hospital.vacation.read",
+        "io.hospital.account.upsert"
       ],
       "extends" : [ 1 ]
     },
@@ -45,7 +47,8 @@
         "io.hospital.department.read",
         "io.hospital.department.read_all",
         "io.hospital.vacation.*",
-        "io.hospital.work.*"
+        "io.hospital.work.*",
+        "io.hospital.account.upsert"
       ],
       "extends" : [ 3 ]
     },
