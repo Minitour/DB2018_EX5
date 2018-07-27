@@ -4,15 +4,21 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TextField;
+import model.Doctor;
 import model.DoctorVacation;
+import network.api.DoctorAPI;
 import view.generic.UIFormView;
 
 import java.util.Arrays;
+import java.util.ResourceBundle;
 
 /**
  * Created By Tony on 26/07/2018
  */
 public class DoctorVacationForm extends UIFormView<DoctorVacation> {
+
+    public ObservableList<ComboItem> doctors = FXCollections.observableArrayList();
+
     public DoctorVacationForm(DoctorVacation existingValue, OnFinish<DoctorVacation> callback) {
         super(DoctorVacation.class, existingValue, callback);
     }
@@ -30,7 +36,7 @@ public class DoctorVacationForm extends UIFormView<DoctorVacation> {
      */
     @Override
     protected String[] comboBoxForFields() {
-        return null;
+        return new String[]{"doctorID"};
     }
 
     /**
@@ -47,6 +53,12 @@ public class DoctorVacationForm extends UIFormView<DoctorVacation> {
      */
     @Override
     protected ObservableList<ComboItem> listForField(String fieldName) {
+
+        switch (fieldName){
+            case "doctorID":
+                return doctors;
+        }
+
         return null;
     }
 
@@ -60,6 +72,20 @@ public class DoctorVacationForm extends UIFormView<DoctorVacation> {
      */
     @Override
     public String[] inupdateableFields() {
-        return null;
+        return new String[]{"doctorID", "vacationDate"};
+    }
+
+    @Override
+    public void layoutSubviews(ResourceBundle bundle) {
+        super.layoutSubviews(bundle);
+
+        new DoctorAPI().readAll((response, items) -> {
+            if(response.isOK())
+                for (Doctor item : items)
+                    doctors.add(new ComboItem(
+                            item.getDoctorID()
+                    ));
+
+        });
     }
 }
