@@ -8,6 +8,7 @@ public class Procedures {
     public static class Account {
         public static final String get = "get_account";
         public static final String insert = "insert_account";
+        public static final String update = "update_account";
     }
 
     public static class Session {
