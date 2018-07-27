@@ -6,15 +6,13 @@ import database.data_access.AccountAccess;
 import database.data_access.SessionAccess;
 import model.Account;
 import model.Session;
-import utils.GenericController;
 import org.mindrot.jbcrypt.BCrypt;
+import utils.GenericController;
 import utils.JSONResponse;
-import utils.Utils;
 
 import java.util.List;
 
-public class AccountController extends GenericController {
-
+public class UpdateAccountPasswordController extends GenericController {
 
     @Override
     public Object upsert(JsonObject body, Session session) {
