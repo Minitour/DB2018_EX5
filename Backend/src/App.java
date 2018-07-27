@@ -2,7 +2,6 @@ import controller.*;
 import database.data_access.QueriesAccess;
 import database.data_access.SessionAccess;
 import model.join.HospitalJoinPerson;
-import org.apache.log4j.BasicConfigurator;
 import utils.Permissions;
 import utils.RESTApplication;
 
@@ -16,7 +15,7 @@ public class App extends RESTApplication {
     public static void main(String... args) throws IOException {
 
         Permissions.init();
-        BasicConfigurator.configure();
+        //BasicConfigurator.configure();
         launch(8080);
     }
 
