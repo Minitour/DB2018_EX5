@@ -17,11 +17,4 @@ public class DoctorVacation {
 
     public DoctorVacation(String doctorID) { this.doctorID = doctorID; }
 
-    public String getDoctorID() {
-        return doctorID;
-    }
-
-    public Date getVacationDate() {
-        return vacationDate;
-    }
 }

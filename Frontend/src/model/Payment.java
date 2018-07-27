@@ -25,31 +25,6 @@ public class Payment {
         return serialNumber;
     }
 
-    public Integer getMinDay() {
-        return minDay;
-    }
 
-    public Integer getMaxDay() {
-        return maxDay;
-    }
 
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public void setSerialNumber(Integer serialNumber) {
-        this.serialNumber = serialNumber;
-    }
-
-    public void setMinDay(Integer minDay) {
-        this.minDay = minDay;
-    }
-
-    public void setMaxDay(Integer maxDay) {
-        this.maxDay = maxDay;
-    }
-
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
 }

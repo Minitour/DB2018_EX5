@@ -28,11 +28,4 @@ public class WorkInShift  {
         return shiftNumber;
     }
 
-    public void setDoctorID(String doctorID) {
-        this.doctorID = doctorID;
-    }
-
-    public void setShiftNumber(int shiftNumber) {
-        this.shiftNumber = shiftNumber;
-    }
 }

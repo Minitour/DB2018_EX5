@@ -34,15 +34,4 @@ public class Doctor {
         return hospitalID;
     }
 
-    public Integer getDepartmentID() {
-        return departmentID;
-    }
-
-    public Date getDateOfGraduation() {
-        return dateOfGraduation;
-    }
-
-    public Integer getManager() {
-        return manager;
-    }
 }

@@ -51,18 +51,6 @@ public class Hospitalized {
         return eventCode;
     }
 
-    public Integer getNumberOfDays() {
-        return numberOfDays;
-    }
-
-    public Date getDateOfArrival() {
-        return dateOfArrival;
-    }
-
-    public Integer getSeverityLevel() {
-        return severityLevel;
-    }
-
     public Integer getHospitalID() {
         return hospitalID;
     }

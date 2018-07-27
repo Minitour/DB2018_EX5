@@ -81,7 +81,7 @@ public class HospitalizedForm extends UIFormView<Hospitalized> {
      */
     @Override
     public String[] inupdateableFields() {
-        return new String[]{"patientID", "hospitalID"};
+        return new String[]{"patientID", "eventCode"};
     }
 
     @Override

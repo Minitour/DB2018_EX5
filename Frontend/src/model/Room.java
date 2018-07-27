@@ -37,23 +37,8 @@ public class Room {
         return roomNumber;
     }
 
-    public Integer getBedsAmount() {
-        return bedsAmount;
-    }
-
     public void setHospitalID(Integer hospitalID) {
         this.hospitalID = hospitalID;
     }
 
-    public void setDepartmentID(Integer departmentID) {
-        this.departmentID = departmentID;
-    }
-
-    public void setRoomNumber(Integer roomNumber) {
-        this.roomNumber = roomNumber;
-    }
-
-    public void setBedsAmount(Integer bedsAmount) {
-        this.bedsAmount = bedsAmount;
-    }
 }

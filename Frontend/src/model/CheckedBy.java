@@ -53,16 +53,4 @@ public class CheckedBy {
     public Integer getShiftNumber() {
         return shiftNumber;
     }
-
-    public Date getCheckTime() {
-        return checkTime;
-    }
-
-    public Float getBodyTemp() {
-        return bodyTemp;
-    }
-
-    public String getBloodPressure() {
-        return bloodPressure;
-    }
 }
