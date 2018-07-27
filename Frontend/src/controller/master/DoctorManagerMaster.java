@@ -1,11 +1,28 @@
 package controller.master;
 
 import ui.UIView;
+import view.special.AccountView;
+import view.special.ShiftsView;
+import view.special.WorkingShiftsView;
+import view.tables.*;
 
 /**
  * Created By Tony on 25/07/2018
  */
 public class DoctorManagerMaster extends MasterMenuController {
+
+    UIView[] views = {
+            new PatientsTableView(true,true,false),
+            new RoomsTableView(false,false,false),
+            new HospitalizationTableView(true,true,true),
+            new ChecksTableView(true,true,true),
+            new WorkingShiftsView(),
+            new ShiftTableView(true,true,true),
+            new DoctorsTableView(false,true,true),
+            new DepartmentTableView(false,false,false),
+            new AccountView()
+    };
+
     @Override
     public UIView viewForIndexAt(int index) {
         return null;
@@ -18,7 +35,8 @@ public class DoctorManagerMaster extends MasterMenuController {
                 "Rooms",
                 "Hospitalizations",
                 "Checks",
-                "Shifts",
+                "Working Shifts",
+                "Manage Shifts",
                 "Doctors",
                 "Department",
                 "Account"

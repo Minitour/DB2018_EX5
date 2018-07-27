@@ -1,7 +1,7 @@
 package controller.master;
 
 import ui.UIView;
-import view.forms.AccountForm;
+import view.tables.*;
 
 /**
  * Created By Tony on 25/07/2018
@@ -9,7 +9,13 @@ import view.forms.AccountForm;
 public class AdminMaster extends MasterMenuController {
 
     UIView[] views = {
-            new AccountForm(null,null)
+            null, //TODO: add dashboard
+            new PatientsTableView(true,true,true),
+            new RoomsTableView(true,true,true),
+            new HospitalizationTableView(true,true,true),
+            new ChecksTableView(true,true,true),
+            new ShiftTableView(true,true,true),
+            null //TODO: add account table view
     };
 
     @Override

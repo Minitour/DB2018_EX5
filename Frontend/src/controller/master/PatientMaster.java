@@ -9,7 +9,6 @@ import view.special.ProfileView;
  */
 public class PatientMaster extends MasterMenuController {
 
-    //TODO: add views
     private UIView[] views = {
             new ProfileView(),
             new AccountView()
