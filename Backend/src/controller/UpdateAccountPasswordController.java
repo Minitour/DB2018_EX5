@@ -40,7 +40,7 @@ public class UpdateAccountPasswordController implements RESTRoute {
         ) {
 
             // get account with ACCOUNT_ID
-            List<Account> accounts = account_db.getById(ACCOUNT_ID, null);
+            List<Account> accounts = account_db.getById(ACCOUNT_ID, null,null);
 
             // get the session for this user
             List<Session> sessions = session_db.getById(ACCOUNT_ID, SESSION_TOKEN);

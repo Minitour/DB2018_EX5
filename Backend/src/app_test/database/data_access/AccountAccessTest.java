@@ -13,7 +13,7 @@ class AccountAccessTest {
     @Test
     void test(){
         try(AccountAccess accountAccess = new AccountAccess()) {
-            List<Account> accounts = accountAccess.getAll();
+            List<Account> accounts = accountAccess.getAll(null);
 
             System.out.println(accounts);
 
