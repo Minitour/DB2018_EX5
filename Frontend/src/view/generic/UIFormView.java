@@ -325,7 +325,7 @@ public abstract class UIFormView<T> extends UIView {
 
                 Object value = null;
 
-                if(comboItems.containsKey(ofField.getName())){
+                if(comboItems.containsKey(field.getName())){
                     StringComboBox comboBox = (StringComboBox) elements_vbox.lookup("#"+field.getName());
                     String data = comboBox.getSelectedValue();
 
