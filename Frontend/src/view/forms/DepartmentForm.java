@@ -9,6 +9,7 @@ import model.Hospital;
 import network.api.HospitalAPI;
 import view.generic.UIFormView;
 
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 /**
@@ -56,7 +57,6 @@ public class DepartmentForm extends UIFormView<Department> {
         switch (fieldName){
             case "hospitalID":
                 return hospitalList;
-
         }
         return null;
     }

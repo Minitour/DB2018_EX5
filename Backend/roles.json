@@ -5,7 +5,8 @@
       "groupName": "patient",
       "permissions": [
         "io.hospital.profile.read",
-        "io.hospital.hospital.read"
+        "io.hospital.hospital.read",
+        "io.hospital.hospital.read_all"
       ]
     },
     {

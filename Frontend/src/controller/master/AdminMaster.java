@@ -1,6 +1,7 @@
 package controller.master;
 
 import ui.UIView;
+import view.forms.AccountForm;
 
 /**
  * Created By Tony on 25/07/2018
@@ -8,7 +9,7 @@ import ui.UIView;
 public class AdminMaster extends MasterMenuController {
 
     UIView[] views = {
-
+            new AccountForm(null,null)
     };
 
     @Override

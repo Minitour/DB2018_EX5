@@ -67,6 +67,10 @@ final public class Constants {
         public static String updatePassword(){ return getAddress() + "/updatePassword"; }
 
         public static String patients() { return getAddress() + "/patient"; }
+
+        public static String account() {
+            return getAddress() + "/account";
+        }
     }
     public static class Codes{
         public static final int SUCCESS=200;
