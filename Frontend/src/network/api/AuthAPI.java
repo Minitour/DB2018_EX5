@@ -63,7 +63,7 @@ public class AuthAPI {
         data.addProperty("newPassword",newPassword);
 
 
-        SharedInstance.main.makeRequest(Constants.Routes.login(), null, data, (json, exception) -> {
+        SharedInstance.main.makeRequest(Constants.Routes.updatePassword(), null, data, (json, exception) -> {
             Response r = new Response(json);
             r.setException(exception);
 
