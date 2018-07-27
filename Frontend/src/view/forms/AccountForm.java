@@ -45,7 +45,7 @@ public class AccountForm extends UIFormView<Account> {
      * @return The observable list for the combo box containing the items we want to display.
      */
     @Override
-    protected ObservableList<String> listForField(String fieldName) {
+    protected ObservableList<ComboItem> listForField(String fieldName) {
 
         return null;
     }
