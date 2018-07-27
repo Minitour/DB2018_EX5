@@ -2,16 +2,11 @@ import controller.LoginController;
 import controller.master.*;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import network.api.LoginAPI;
-import network.api.PatientsAPI;
 import ui.UIViewController;
 import utils.AutoSignIn;
-
-import java.io.File;
 
 /**
  * Created by Antonio Zaitoun on 21/07/2018.

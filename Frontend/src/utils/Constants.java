@@ -64,6 +64,8 @@ final public class Constants {
 
         public static String login(){ return getAddress() + "/login"; }
 
+        public static String updatePassword(){ return getAddress() + "/updatePassword"; }
+
         public static String patients() { return getAddress() + "/patient"; }
     }
     public static class Codes{
