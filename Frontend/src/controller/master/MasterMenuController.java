@@ -66,6 +66,7 @@ public abstract class MasterMenuController extends UIViewController {
         listView.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue)
                 -> onListItemChanged(newValue.intValue()));
 
+
     }
 
     protected DialogView makeDialog(String title, String message){
@@ -81,7 +82,7 @@ public abstract class MasterMenuController extends UIViewController {
         logout.setOnAction(eventHandler);
     }
 
-    private void onListItemChanged(int index){
+    protected void onListItemChanged(int index){
         showView(viewForIndexAt(index));
     }
 

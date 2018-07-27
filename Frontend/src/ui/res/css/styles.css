@@ -413,6 +413,19 @@ List View
     -fx-background-color: transparent;
 }
 
+.button-normal{
+    -jfx-button-type: FLAT;
+    -fx-background-color: transparent;
+    -fx-text-fill: rgb(26, 188, 156);
+    -fx-min-width: 64;
+}
+
+.button-delete{
+    -jfx-button-type: FLAT;
+    -fx-background-color: transparent;
+    -fx-text-fill: #e74c3c;
+    -fx-min-width: 64;
+}
 
 
 .table-view > .virtual-flow > .scroll-bar > .increment-button,

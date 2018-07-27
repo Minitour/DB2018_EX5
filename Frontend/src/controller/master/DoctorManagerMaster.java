@@ -1,6 +1,7 @@
 package controller.master;
 
 import ui.UIView;
+import view.CardView;
 import view.special.AccountView;
 import view.special.ShiftsView;
 import view.special.WorkingShiftsView;
@@ -20,8 +21,12 @@ public class DoctorManagerMaster extends MasterMenuController {
             new ShiftTableView(true,true,true),
             new DoctorsTableView(false,true,true),
             new DepartmentTableView(false,false,false),
-            new AccountView()
+            new CardView(new AccountView())
     };
+
+    public DoctorManagerMaster() {
+        onListItemChanged(0);
+    }
 
     @Override
     public UIView viewForIndexAt(int index) {

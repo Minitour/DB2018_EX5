@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<fx:root type="javafx.scene.layout.StackPane"
+         xmlns="http://javafx.com/javafx"
+         xmlns:fx="http://javafx.com/fxml"
+         stylesheets="@../../ui/res/css/styles.css">
+    <AnchorPane>
+        <VBox spacing="8"
+              AnchorPane.topAnchor="0"
+              AnchorPane.leftAnchor="0"
+              fx:id="main"
+              minWidth="200"
+              style="-fx-background-color: white;-fx-border-radius: 5 5 5 5;-fx-background-radius: 5 5 5 5;-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.26), 10, 0.12, -1, 2);">
+            <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
+        </VBox>
+    </AnchorPane>
+
+    <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
+</fx:root>

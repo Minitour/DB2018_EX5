@@ -11,8 +11,7 @@
 <fx:root type="javafx.scene.layout.StackPane"
          xmlns="http://javafx.com/javafx"
         xmlns:fx="http://javafx.com/fxml"
-        stylesheets="@../../ui/res/css/styles.css"
-        prefHeight="400.0" prefWidth="600.0">
+        stylesheets="@../../ui/res/css/styles.css">
 
     <VBox spacing="8">
         <Label text="Account Details">
@@ -20,12 +19,12 @@
                 <Font name="System Bold" size="12.0" />
             </font>
         </Label>
-        <VBox spacing="10">
+        <VBox alignment="CENTER" fx:id="parent" spacing="10">
 
 
-            <Label fx:id="hospital">Hospital Name</Label>
+            <Label fx:id="hospital" prefWidth="${parent.prefWidth}">Hospital Name</Label>
 
-            <Label fx:id="role">Role Type</Label>
+            <Label fx:id="role" prefWidth="${parent.prefWidth}">Role Type</Label>
 
             <JFXTextField fx:id="email" promptText="Email" />
 
@@ -35,7 +34,7 @@
 
             <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
 
-            <JFXButton styleClass="button-raised" fx:id="update">Update</JFXButton>
+            <JFXButton styleClass="button-raised"  fx:id="update">Update</JFXButton>
         </VBox>
         <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
     </VBox>

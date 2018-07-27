@@ -1,6 +1,7 @@
 package controller.master;
 
 import ui.UIView;
+import view.CardView;
 import view.special.AccountView;
 import view.tables.*;
 
@@ -16,8 +17,12 @@ public class AdminMaster extends MasterMenuController {
             new HospitalizationTableView(true,true,true),
             new ChecksTableView(true,true,true),
             new ShiftTableView(true,true,true),
-            new AccountView()
+            new CardView(new AccountView())
     };
+
+    public AdminMaster() {
+        onListItemChanged(0);
+    }
 
     @Override
     public UIView viewForIndexAt(int index) {

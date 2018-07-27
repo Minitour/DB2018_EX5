@@ -5,6 +5,7 @@ import network.api.AccountAPI;
 import network.generic.GenericAPI;
 import ui.UIView;
 import utils.Response;
+import view.CardView;
 import view.forms.AccountForm;
 import view.generic.UIFormView;
 import view.special.AccountView;
@@ -21,9 +22,13 @@ public class SecretaryMaster extends MasterMenuController implements UIFormView.
             new PatientsTableView(true,true,true),
             new RoomsTableView(false,false,false),
             new HospitalizationTableView(false,false,false),
-            new AccountForm(null,this,false),
-            new AccountView()
+            new CardView(new AccountForm(null,this,false)),
+            new CardView(new AccountView())
     };
+
+    public SecretaryMaster() {
+        onListItemChanged(0);
+    }
 
     @Override
     public UIView viewForIndexAt(int index) {
