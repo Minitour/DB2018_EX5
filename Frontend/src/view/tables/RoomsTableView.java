@@ -1,5 +1,6 @@
 package view.tables;
 
+import com.jfoenix.controls.JFXSnackbar;
 import model.Room;
 import network.api.PatientsAPI;
 import network.api.RoomAPI;
@@ -64,7 +65,13 @@ public class RoomsTableView extends GenericTableView<Room> {
     @Override
     public void callback(Room value) {
         super.callback(value);
-        api.upsert(value, response -> reloadDataFromServer());
+        api.upsert(value, response -> {
+
+            JFXSnackbar bar = new JFXSnackbar(this);
+            bar.enqueue(new JFXSnackbar.SnackbarEvent(response.isOK() ? "Success" : "Failed, response message: " + response.getMessage()));
+            reloadDataFromServer();
+
+        });
     }
 
     private void reloadDataFromServer(){

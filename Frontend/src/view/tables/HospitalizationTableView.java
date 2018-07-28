@@ -1,5 +1,6 @@
 package view.tables;
 
+import com.jfoenix.controls.JFXSnackbar;
 import model.Hospitalized;
 import network.api.HospitalizedAPI;
 import utils.AutoSignIn;
@@ -53,8 +54,13 @@ public class HospitalizationTableView extends GenericTableView<Hospitalized> {
     @Override
     public void callback(Hospitalized value) {
         super.callback(value);
-        api.upsert(value, response -> reloadDataFromServer());
-        reloadDataFromServer();
+        api.upsert(value, response -> {
+
+            JFXSnackbar bar = new JFXSnackbar(this);
+            bar.enqueue(new JFXSnackbar.SnackbarEvent(response.isOK() ? "Success" : "Failed, response message: " + response.getMessage()));
+            reloadDataFromServer();
+
+        });
     }
 
     @Override
