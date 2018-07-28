@@ -36,15 +36,14 @@ public class DashboardController implements RESTRoute {
         }
     }
 
-    DashboardDB DashboardController() {
+    void DashboardController() {
         if (db == null) {
             try {
-                return new DashboardDB();
+                db = new DashboardDB();
             }catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        return db;
     }
 
 
@@ -59,6 +58,8 @@ public class DashboardController implements RESTRoute {
         try{
 
             getQueryInstance();
+
+            DashboardController();
 
             // get the the object we wanted
             List<HospitalJoinPerson> joinList = queriesAccess.query2();

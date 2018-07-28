@@ -8,8 +8,6 @@ import java.util.List;
 
 public class DashboardDB {
 
-
-
     public static List<Query_2> query_2_list;
     public static List<Query_3> query_3_list;
     public static List<Query_4> query_4_list;
