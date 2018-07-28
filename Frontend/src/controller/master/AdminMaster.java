@@ -2,6 +2,7 @@ package controller.master;
 
 import ui.UIView;
 import view.CardView;
+import view.forms.MedicalEventTypeInDepartmentForm;
 import view.special.AccountView;
 import view.special.DashboardView;
 import view.tables.*;
@@ -18,6 +19,7 @@ public class AdminMaster extends MasterMenuController {
             new HospitalizationTableView(true,true,true),
             new ChecksTableView(true,true,true),
             new ShiftTableView(true,true,true),
+            new MedicalEventTypeInDepTableView(true,true,true),
             new CardView(new AccountView())
     };
 
@@ -39,6 +41,7 @@ public class AdminMaster extends MasterMenuController {
                 "Hospitalizations",
                 "Checks",
                 "Shifts",
+                "Medical Events In Department",
                 "Account"
         };
     }

@@ -69,7 +69,8 @@
         "io.hospital.check.read_all",
         "io.hospital.doctor.*",
         "io.hospital.department.*",
-        "io.hospital.shift.*"
+        "io.hospital.shift.*",
+        "io.hospital.event_in_dep.read_all"
       ],
       "extends" : [ 1 ]
     },
