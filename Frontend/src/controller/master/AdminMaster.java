@@ -3,6 +3,7 @@ package controller.master;
 import ui.UIView;
 import view.CardView;
 import view.special.AccountView;
+import view.special.DashboardView;
 import view.tables.*;
 
 /**
@@ -11,7 +12,7 @@ import view.tables.*;
 public class AdminMaster extends MasterMenuController {
 
     UIView[] views = {
-            null, //TODO: add dashboard
+            new DashboardView(),
             new PatientsTableView(true,true,true),
             new RoomsTableView(true,true,true),
             new HospitalizationTableView(true,true,true),

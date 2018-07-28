@@ -7,6 +7,6 @@ import ui.UIView;
  */
 public class DashboardView extends UIView {
     public DashboardView() {
-        super("/resources/xml/view_dashboard.fxml");
+        super("/resources/xml/view_dashboard2.fxml");
     }
 }

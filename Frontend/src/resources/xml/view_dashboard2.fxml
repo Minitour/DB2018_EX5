@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.StackedAreaChart?>
+<?import javafx.scene.chart.StackedBarChart?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+
+<fx:root stylesheets="@../../ui/res/css/styles.css" type="javafx.scene.layout.StackPane" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+
+    <AnchorPane>
+        <GridPane hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" vgap="10.0" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0">
+
+            <padding>
+                <Insets bottom="8" left="8" right="8" top="8" />
+            </padding>
+
+            <children>
+                <StackedAreaChart maxHeight="224" styleClass="container">
+                    <xAxis>
+                        <NumberAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis side="LEFT" />
+                    </yAxis>
+                </StackedAreaChart>
+                <StackedBarChart maxHeight="224" styleClass="container" GridPane.columnIndex="1">
+                    <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis side="LEFT" />
+                    </yAxis>
+                </StackedBarChart>
+                <PieChart maxHeight="224" GridPane.rowIndex="1" styleClass="container" />
+                <GridPane hgap="10.0" maxHeight="224" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <children>
+                        <PieChart maxHeight="224" maxWidth="224" styleClass="container" GridPane.columnIndex="1" />
+                        <PieChart maxHeight="224" maxWidth="224" styleClass="container">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin></PieChart>
+                    </children>
+                    <columnConstraints>
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                    </rowConstraints>
+                </GridPane>
+                <StackedAreaChart maxHeight="224" styleClass="container" GridPane.rowIndex="2">
+                    <xAxis>
+                        <NumberAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis side="LEFT" />
+                    </yAxis>
+                </StackedAreaChart>
+                <LineChart maxHeight="224" styleClass="container" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis side="LEFT" />
+                    </yAxis>
+                </LineChart>
+            </children>
+            <columnConstraints>
+                <ColumnConstraints />
+                <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+            </rowConstraints>
+        </GridPane>
+    </AnchorPane>
+
+
+
+
+</fx:root>
