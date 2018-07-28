@@ -30,7 +30,7 @@ public class DoctorManagerMaster extends MasterMenuController {
 
     @Override
     public UIView viewForIndexAt(int index) {
-        return null;
+        return views[index];
     }
 
     @Override

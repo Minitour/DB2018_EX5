@@ -6,6 +6,7 @@ import model.Hospital;
 import network.api.DepartmentAPI;
 import network.api.HospitalAPI;
 import network.generic.GenericAPI;
+import utils.AutoSignIn;
 import view.forms.DepartmentForm;
 import view.generic.GenericTableView;
 import view.generic.UIFormView;
@@ -73,7 +74,7 @@ public class DepartmentTableView extends GenericTableView<Department> {
     }
 
     private void reloadDataFromServer(){
-        api.readAll((response, items) -> {
+        api.readAll(new Department(AutoSignIn.HOSPITAL_ID),(response, items) -> {
             departments.clear();
             departments.addAll(items);
             reloadData();
