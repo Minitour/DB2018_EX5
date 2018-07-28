@@ -22,8 +22,16 @@ public class DashboardController implements RESTRoute {
 
             validateSession(session,query_db,false);
 
+
             if(!hasPermission("io.hospital.dashboard.read",session))
                 return JSONResponse.FAILURE().message("Access Denied.");
+
+            switch (session.getRole()) {
+                case 5:
+                    //admin view
+                case 6:
+                    //super user view
+            }
 
             DashboardModel dashboardModel = new DashboardModel();
 
@@ -40,9 +48,10 @@ public class DashboardController implements RESTRoute {
             dashboardModel.setQuery11_result(query_db.query8());
 
             return JSONResponse
-                    .SUCCESS();
+                    .SUCCESS()
+                    .data(dashboardModel);
         }catch (Exception e){
-            JSONResponse
+            return JSONResponse
                     .FAILURE()
                     .message(e.getMessage());
         }
