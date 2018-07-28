@@ -7,6 +7,7 @@ import view.forms.HospitalForm;
 import view.special.AccountView;
 import view.tables.AccountTableView;
 import view.tables.HospitalTableView;
+import view.tables.MedicalEventTableView;
 
 /**
  * Created By Tony on 25/07/2018
@@ -16,6 +17,7 @@ public class SuperUserMaster extends MasterMenuController {
     UIView[] views = {
             new HospitalTableView(true,true,true),
             new AccountTableView(true,true,true),
+            new MedicalEventTableView(true,true,true),
             new CardView(new AccountView())
     };
 
@@ -33,6 +35,7 @@ public class SuperUserMaster extends MasterMenuController {
         return new String[]{
                 "Hospitals", //create hospitals
                 "Users", // create admins
+                "Medical Events",
                 "Account"
         };
     }

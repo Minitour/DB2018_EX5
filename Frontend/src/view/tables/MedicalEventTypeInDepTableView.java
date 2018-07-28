@@ -2,6 +2,7 @@ package view.tables;
 
 import model.MedicalEventTypeInDepartment;
 import network.api.EventInDepartmentAPI;
+import utils.AutoSignIn;
 import view.forms.MedicalEventTypeInDepartmentForm;
 import view.generic.GenericTableView;
 import view.generic.UIFormView;
@@ -63,10 +64,12 @@ public class MedicalEventTypeInDepTableView extends GenericTableView<MedicalEven
     }
 
     private void reloadDataFromServer(){
-        api.readAll((response, items) -> {
-            events.clear();
-            events.addAll(items);
-            reloadData();
+        api.readAll(new MedicalEventTypeInDepartment(AutoSignIn.HOSPITAL_ID),(response, items) -> {
+            if(response.isOK()) {
+                events.clear();
+                events.addAll(items);
+                reloadData();
+            }
         });
     }
 }
