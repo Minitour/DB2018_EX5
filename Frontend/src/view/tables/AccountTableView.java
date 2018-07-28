@@ -1,5 +1,6 @@
 package view.tables;
 
+import com.jfoenix.controls.JFXSnackbar;
 import model.Account;
 import network.api.AccountAPI;
 import ui.UITableView;
@@ -96,6 +97,12 @@ public class AccountTableView extends GenericTableView<Account> {
     @Override
     public void callback(Account value) {
         super.callback(value);
-        api.upsert(value, response -> reloadDataFromServer());
+        api.upsert(value, response -> {
+
+            JFXSnackbar bar = new JFXSnackbar(this);
+            bar.enqueue(new JFXSnackbar.SnackbarEvent(response.isOK() ? "Successfully Account Added" : "Failed to create account"));
+            reloadDataFromServer();
+
+        });
     }
 }

@@ -42,7 +42,7 @@ public class SecretaryMaster extends MasterMenuController implements UIFormView.
 
     @Override
     public void callback(Account value) {
-        UIFormView<Account> formView = (UIFormView<Account>) views[3];
+        UIFormView<Account> formView = (UIFormView<Account>) ((CardView) views[3]).getContentView();
         new AccountAPI().upsert(value, response -> {
             if(response.isOK()){
                 formView.reset();

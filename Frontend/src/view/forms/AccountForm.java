@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import model.Account;
 import model.Hospital;
 import network.api.HospitalAPI;
+import utils.AutoSignIn;
 import view.generic.UIFormView;
 
 import java.util.Arrays;
@@ -19,6 +20,7 @@ import java.util.ResourceBundle;
 public class AccountForm extends UIFormView<Account> {
 
     private ObservableList<ComboItem> hospitalList;
+    private ObservableList<ComboItem> roles;
 
 
     public AccountForm(Account existingValue, OnFinish<Account> callback) { super(Account.class, existingValue, callback); }
@@ -71,14 +73,7 @@ public class AccountForm extends UIFormView<Account> {
             case "hospitalID":
                 return hospitalList;
             case "ROLE_ID":
-                return FXCollections.observableArrayList(Arrays.asList(
-                        new ComboItem("Patient",1),
-                        new ComboItem("Secretary",2),
-                        new ComboItem("Doctor",3),
-                        new ComboItem("Doctor Manager",4),
-                        new ComboItem("Admin",5),
-                        new ComboItem("Super User",6)
-                ));
+                return roles;
 
         }
         return null;
@@ -129,13 +124,43 @@ public class AccountForm extends UIFormView<Account> {
         super.layoutSubviews(bundle);
         hospitalList = FXCollections.observableArrayList();
 
+        roles = FXCollections.observableArrayList();
+
+        switch (AutoSignIn.ROLE_ID) {
+            case 2:
+            case 3:
+            case 4:
+                roles.add(new ComboItem("Patient",1));
+                break;
+            case 5:
+                roles.addAll(new ComboItem("Patient",1),
+                        new ComboItem("Secretary",2),
+                        new ComboItem("Doctor",3),
+                        new ComboItem("Doctor Manager",4),
+                        new ComboItem("Admin",5));
+                break;
+            case 6:
+                roles.addAll(new ComboItem("Patient",1),
+                        new ComboItem("Secretary",2),
+                        new ComboItem("Doctor",3),
+                        new ComboItem("Doctor Manager",4),
+                        new ComboItem("Admin",5),
+                        new ComboItem("Super User",6));
+                break;
+
+        }
+
+
         new HospitalAPI().readAll((response, items) -> {
             if(response.isOK())
                 for (Hospital item : items)
-                    hospitalList.add(new ComboItem(
-                            item.getName(),
-                            item.getHospitalID()
-                    ));
+                    // if super user  - all
+                    // else can enter only with the same hospitalID as
+                    if (AutoSignIn.ROLE_ID == 6 || item.getHospitalID().equals(AutoSignIn.HOSPITAL_ID))
+                        hospitalList.add(new ComboItem(
+                                item.getName(),
+                                item.getHospitalID()
+                        ));
 
         });
     }

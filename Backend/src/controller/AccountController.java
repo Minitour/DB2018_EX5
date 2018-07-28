@@ -205,7 +205,7 @@ public class AccountController extends GenericController {
             Account currentAccount = account_db.getById(session.ACCOUNT_ID,null,0).get(0);
             int currentHospital = currentAccount.getHospitalID();
 
-            if(roleId != 6 && account.getHospitalID() != currentHospital)
+            if(session.getRole() != 6 && account.getHospitalID() != currentHospital)
                 return JSONResponse
                         .FAILURE()
                         .message("Attempting to add an account to a hospital of which you are not a part of.");
