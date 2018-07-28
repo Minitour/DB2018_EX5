@@ -1,5 +1,6 @@
 package view.tables;
 
+import com.jfoenix.controls.JFXSnackbar;
 import model.WorkInShift;
 import network.api.WorkInShiftAPI;
 import view.forms.WorkInShiftForm;
@@ -51,7 +52,13 @@ public class WorkInShiftTableView extends GenericTableView<WorkInShift> {
     public void callback(WorkInShift value) {
         super.callback(value);
         //on update or insert
-        api.upsert(value, response -> reloadDataFromServer());
+        api.upsert(value, response -> {
+
+            JFXSnackbar bar = new JFXSnackbar(this);
+            bar.enqueue(new JFXSnackbar.SnackbarEvent(response.isOK() ? "Success" : "Failed, response message: " + response.getMessage()));
+            reloadDataFromServer();
+
+        });
     }
 
     @Override

@@ -1,5 +1,6 @@
 package view.tables;
 
+import com.jfoenix.controls.JFXSnackbar;
 import model.Department;
 import model.Hospital;
 import network.api.DepartmentAPI;
@@ -54,7 +55,13 @@ public class DepartmentTableView extends GenericTableView<Department> {
     public void callback(Department value) {
         super.callback(value);
         //on update or insert
-        api.upsert(value, response -> reloadDataFromServer());
+        api.upsert(value, response -> {
+
+            JFXSnackbar bar = new JFXSnackbar(this);
+            bar.enqueue(new JFXSnackbar.SnackbarEvent(response.isOK() ? "Success" : "Failed, response message: " + response.getMessage()));
+            reloadDataFromServer();
+
+        });
     }
 
     @Override

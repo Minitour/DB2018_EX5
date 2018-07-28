@@ -1,5 +1,6 @@
 package view.tables;
 
+import com.jfoenix.controls.JFXSnackbar;
 import model.Hospital;
 import network.api.HospitalAPI;
 import view.forms.HospitalForm;
@@ -51,7 +52,13 @@ public class HospitalTableView extends GenericTableView<Hospital> {
     public void callback(Hospital value) {
         super.callback(value);
         //on update or insert
-        api.upsert(value, response -> reloadDataFromServer());
+        api.upsert(value, response -> {
+
+            JFXSnackbar bar = new JFXSnackbar(this);
+            bar.enqueue(new JFXSnackbar.SnackbarEvent(response.isOK() ? "Success" : "Failed, response message: " + response.getMessage()));
+            reloadDataFromServer();
+
+        });
     }
 
     @Override

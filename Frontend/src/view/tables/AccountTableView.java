@@ -100,7 +100,7 @@ public class AccountTableView extends GenericTableView<Account> {
         api.upsert(value, response -> {
 
             JFXSnackbar bar = new JFXSnackbar(this);
-            bar.enqueue(new JFXSnackbar.SnackbarEvent(response.isOK() ? "Successfully Account Added" : "Failed to create account"));
+            bar.enqueue(new JFXSnackbar.SnackbarEvent(response.isOK() ? "Success" : "Failed, response message: " + response.getMessage()));
             reloadDataFromServer();
 
         });

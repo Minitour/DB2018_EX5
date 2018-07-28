@@ -1,5 +1,6 @@
 package view.tables;
 
+import com.jfoenix.controls.JFXSnackbar;
 import model.CheckedBy;
 import network.api.CheckedByAPI;
 import view.forms.CheckedByForm;
@@ -66,6 +67,12 @@ public class ChecksTableView extends GenericTableView<CheckedBy> {
     @Override
     public void callback(CheckedBy value) {
         super.callback(value);
-        api.upsert(value,response -> reloadDataFromServer());
+        api.upsert(value, response -> {
+
+            JFXSnackbar bar = new JFXSnackbar(this);
+            bar.enqueue(new JFXSnackbar.SnackbarEvent(response.isOK() ? "Success" : "Failed, response message: " + response.getMessage()));
+            reloadDataFromServer();
+
+        });
     }
 }
