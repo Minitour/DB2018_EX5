@@ -24,7 +24,6 @@ public class DashboardController implements RESTRoute {
     //TODO: validate session + permissions
 
     private QueriesAccess queriesAccess;
-    private
 
     void getQueryInstance() {
         if (queriesAccess == null) {
@@ -75,66 +74,38 @@ public class DashboardController implements RESTRoute {
         }
     }
 
-    public List<Query_3> get_query_3() {
+    public void add_to_query_3() {
 
-        try {
-
-            getQueryInstance();
-
-
-
-            return null;
-
-        }catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
 
     }
 
-    public List<Query_4> get_query_4() {
-        try {
+    public void add_to_query_4() {
 
-            getQueryInstance();
-
-            List<HospitalJoinPersonJoinDoctor> joinList = queriesAccess.query4();
-
-            List<Query_4> objectsList = new ArrayList<>();
-
-            joinList.forEach(record -> {
-                objectsList.add(new Query_4(record.left().left().getName(), record.left().right().getID(), record.left().right().getFirstName(), record.left().right().getSurName()));
-            });
-
-            return objectsList;
-
-        }catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 
-    public List<Query_5> get_query_5(String doctorID) {
-        return null;
+    public void add_to_query_5(String doctorID) {
+
     }
 
-    public List<Query_6> get_query_6() {
-        return null;
+    public void add_to_query_6() {
+
     }
 
-    public List<Query_7> get_query_7() {
-        return null;
+    public void add_to_query_7() {
+
     }
 
-    public List<Person> get_query_8() {
-        return null;
+    public void add_to_query_8() {
+
     }
 
-    public List<Query_9> get_query_9() {
-        return null;
+    public void add_to_query_9() {
+
     }
 
-    public List<Query_11> get_query_11() {
-        return null;
+    public void add_to_query_11() {
+
+
     }
 
 
