@@ -1,9 +1,6 @@
 package network.generic;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
 import javafx.application.Platform;
 import network.SharedInstance;
 import utils.AutoSignIn;
@@ -29,7 +26,7 @@ public abstract class GenericAPI<T> {
 
     private boolean runOnUi = true;
 
-    private final Gson gson = new Gson();
+    private final Gson gson;
 
     public void setRunOnUi(boolean runOnUi) {
         this.runOnUi = runOnUi;
@@ -47,6 +44,9 @@ public abstract class GenericAPI<T> {
     public GenericAPI(String url,Class<T> cls){
         this.url = url;
         this.cls = cls;
+        GsonBuilder builder = new GsonBuilder();
+        builder.serializeNulls();
+        gson = builder.create();
     }
 
 
