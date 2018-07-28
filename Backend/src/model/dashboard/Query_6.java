@@ -12,9 +12,9 @@ public class Query_6 extends DBObject {
     private Integer month;
 
     @Expose
-    private double totalPayment;
+    private Integer totalPayment;
 
-    public Query_6(String name, Integer month, double totalPayment) {
+    public Query_6(String name, Integer month, Integer totalPayment) {
         this.name = name;
         this.month = month;
         this.totalPayment = totalPayment;
@@ -28,7 +28,7 @@ public class Query_6 extends DBObject {
         return month;
     }
 
-    public double getTotalPayment() {
+    public Integer getTotalPayment() {
         return totalPayment;
     }
 
@@ -40,7 +40,7 @@ public class Query_6 extends DBObject {
         this.month = month;
     }
 
-    public void setTotalPayment(double totalPayment) {
+    public void setTotalPayment(Integer totalPayment) {
         this.totalPayment = totalPayment;
     }
 }
