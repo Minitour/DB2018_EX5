@@ -1,118 +1,53 @@
 package controller;
 
 import com.google.gson.JsonObject;
-import database.DashboardDB;
-import database.Database;
 import database.data_access.QueriesAccess;
-import model.Person;
+import model.DashboardModel;
 import model.Session;
-import model.dashboard.*;
-import model.join.HospitalJoinPerson;
-import model.join.HospitalJoinPersonJoinDoctor;
-import model.join.PersonJoinCheckedBy;
 import spark.Request;
 import spark.Response;
-import utils.GenericController;
+import utils.JSONResponse;
 import utils.RESTRoute;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class DashboardController implements RESTRoute {
 
 
     //TODO: validate session + permissions
 
-    private QueriesAccess queriesAccess;
-    private DashboardDB db;
-
-    void getQueryInstance() {
-        if (queriesAccess == null) {
-            try{
-                queriesAccess = new QueriesAccess();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    void DashboardController() {
-        if (db == null) {
-            try {
-                db = new DashboardDB();
-            }catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
 
     @Override
     public Object handle(Request request, Response response, JsonObject body, Session session) throws Exception {
-        return null;
-    }
 
+        try(QueriesAccess query_db = new QueriesAccess()){
 
-    public void add_to_query_2() {
+            validateSession(session,query_db,false);
 
-        try{
+            if(!hasPermission("io.hospital.dashboard.read",session))
+                return JSONResponse.FAILURE().message("Access Denied.");
 
-            getQueryInstance();
+            DashboardModel dashboardModel = new DashboardModel();
 
-            DashboardController();
+            //populate data
+            dashboardModel.setQuery2_result(query_db.query2());
+            dashboardModel.setQuery3_result(query_db.query3());
+            dashboardModel.setQuery4_result(query_db.query4());
+//            dashboardModel.setQuery5_result(query_db.query5(null));
+            dashboardModel.setQuery6_result(query_db.query6());
+            dashboardModel.setQuery7A_result(query_db.query7A());
+            dashboardModel.setQuery7B_result(query_db.query7B());
+            dashboardModel.setQuery8_result(query_db.query8());
+            dashboardModel.setQuery9_result(query_db.query9());
+            dashboardModel.setQuery11_result(query_db.query8());
 
-            // get the the object we wanted
-            List<HospitalJoinPerson> joinList = queriesAccess.query2();
-
-            // create a new list for the controller
-            List<Query_2> objectsList = new ArrayList<>();
-
-            // creating the objects with the correct model and add to the list
-            joinList.forEach(record -> {
-                objectsList.add(new Query_2(record.right().getID(), record.right().getFirstName(), record.right().getSurName(), record.left().getName()));
-            });
-
-            db.add_to_query_2_list(objectsList);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-
+            return JSONResponse
+                    .SUCCESS();
+        }catch (Exception e){
+            JSONResponse
+                    .FAILURE()
+                    .message(e.getMessage());
         }
     }
 
-    public void add_to_query_3() {
-
-
-    }
-
-    public void add_to_query_4() {
-
-    }
-
-    public void add_to_query_5(String doctorID) {
-
-    }
-
-    public void add_to_query_6() {
-
-    }
-
-    public void add_to_query_7() {
-
-    }
-
-    public void add_to_query_8() {
-
-    }
-
-    public void add_to_query_9() {
-
-    }
-
-    public void add_to_query_11() {
-
-
-    }
 
 
 
