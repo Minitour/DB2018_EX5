@@ -20,10 +20,10 @@ import java.util.ResourceBundle;
  */
 public class CheckedByForm extends UIFormView<CheckedBy> {
 
-    private ObservableList<ComboItem> patients = FXCollections.observableArrayList();
-    private ObservableList<ComboItem> events = FXCollections.observableArrayList();
-    private ObservableList<ComboItem> doctors = FXCollections.observableArrayList();
-    private ObservableList<ComboItem> shifts = FXCollections.observableArrayList();
+    private ObservableList<ComboItem> patients;
+    private ObservableList<ComboItem> events;
+    private ObservableList<ComboItem> doctors;
+    private ObservableList<ComboItem> shifts;
 
     public CheckedByForm(CheckedBy existingValue, OnFinish<CheckedBy> callback) {
         super(CheckedBy.class, existingValue, callback);
@@ -90,6 +90,11 @@ public class CheckedByForm extends UIFormView<CheckedBy> {
     @Override
     public void layoutSubviews(ResourceBundle bundle) {
         super.layoutSubviews(bundle);
+
+        patients = FXCollections.observableArrayList();
+        events = FXCollections.observableArrayList();
+        doctors = FXCollections.observableArrayList();
+        shifts = FXCollections.observableArrayList();
 
         // patients
         new PatientsAPI().readAll((response, items) -> {

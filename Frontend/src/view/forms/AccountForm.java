@@ -1,9 +1,11 @@
 package view.forms;
 
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import model.Account;
 import model.Hospital;
@@ -11,7 +13,6 @@ import network.api.HospitalAPI;
 import utils.AutoSignIn;
 import view.generic.UIFormView;
 
-import java.util.Arrays;
 import java.util.ResourceBundle;
 
 /**
