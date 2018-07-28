@@ -24,6 +24,7 @@ public class DashboardController implements RESTRoute {
     //TODO: validate session + permissions
 
     private QueriesAccess queriesAccess;
+    private DashboardDB db;
 
     void getQueryInstance() {
         if (queriesAccess == null) {
@@ -36,7 +37,13 @@ public class DashboardController implements RESTRoute {
     }
 
     DashboardDB DashboardController() {
-        DashboardDB db = new DashboardDB();
+        if (db == null) {
+            try {
+                return new DashboardDB();
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         return db;
     }
 
@@ -53,8 +60,6 @@ public class DashboardController implements RESTRoute {
 
             getQueryInstance();
 
-            DashboardDB temp = DashboardController();
-
             // get the the object we wanted
             List<HospitalJoinPerson> joinList = queriesAccess.query2();
 
@@ -66,7 +71,7 @@ public class DashboardController implements RESTRoute {
                 objectsList.add(new Query_2(record.right().getID(), record.right().getFirstName(), record.right().getSurName(), record.left().getName()));
             });
 
-            temp.add_to_query_2_list(objectsList);
+            db.add_to_query_2_list(objectsList);
 
         } catch (Exception e) {
             e.printStackTrace();
