@@ -145,6 +145,8 @@ public abstract class UIFormView<T> extends UIView {
                     //create combobox
                     StringComboBox comboBox = getComboBox(fieldName,observableList);
 
+
+
                     //add change listener
                     comboBox.valueProperty().addListener((observable, oldValue, newValue)
                             -> didComboSelectionChanged(fieldName,newValue));
@@ -153,6 +155,9 @@ public abstract class UIFormView<T> extends UIView {
                     extract(field, existingValue, value -> {
 
                         if(value != null) {
+                            if(notEditable.contains(fieldName))
+                                comboBox.setDisable(true);
+
                             if (observableList.isEmpty()) {
                                 observableList.addListener(new ListChangeListener<ComboItem>() {
                                     @Override
