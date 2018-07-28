@@ -83,7 +83,7 @@ public class HospitalizedController extends GenericController {
         require(params);
         Gson gson = new Gson();
 
-        Hospitalized hospitalized = gson.fromJson(params.get("hospitalized"),Hospitalized.class);
+        Hospitalized hospitalized = gson.fromJson(params,Hospitalized.class);
 
         try(HospitalizedAccess hospitalized_db = new HospitalizedAccess()) {
 

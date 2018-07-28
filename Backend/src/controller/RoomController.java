@@ -53,7 +53,7 @@ public class RoomController extends GenericController {
         require(params);
 
         int hospitalID = params.get("hospitalID").getAsInt();
-        //int departmentID = params.get("departmentID").getAsInt();
+        int departmentID = params.has("departmentID") ? params.get("departmentID").getAsInt() : 0;
 
         try(RoomAccess roomAccess = new RoomAccess()) {
 
@@ -63,7 +63,7 @@ public class RoomController extends GenericController {
                 return JSONResponse.FAILURE().message("Access Denied.");
             }
 
-            List<Room> rooms = roomAccess.getAll(hospitalID);
+            List<Room> rooms = roomAccess.getAll(hospitalID,departmentID);
             JSONResponse<List<Room>> jsonResponse = JSONResponse.SUCCESS();
             jsonResponse.data(rooms);
 

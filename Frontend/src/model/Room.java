@@ -25,6 +25,11 @@ public class Room {
         this.roomNumber = roomNumber;
     }
 
+    public Room(Integer hospitalID, Integer departmentID) {
+        this.hospitalID = hospitalID;
+        this.departmentID = departmentID;
+    }
+
     public Integer getHospitalID() {
         return hospitalID;
     }
