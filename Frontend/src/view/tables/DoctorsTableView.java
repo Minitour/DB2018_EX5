@@ -1,5 +1,6 @@
 package view.tables;
 
+import com.jfoenix.controls.JFXSnackbar;
 import model.Doctor;
 import network.api.DoctorAPI;
 import view.forms.DoctorForm;
@@ -69,6 +70,12 @@ public class DoctorsTableView extends GenericTableView<Doctor> {
     public void callback(Doctor value) {
         super.callback(value);
         //on update or insert
-        doctorAPI.upsert(value, response -> reloadDataFromServer());
+        doctorAPI.upsert(value, response -> {
+
+            JFXSnackbar bar = new JFXSnackbar(this);
+            bar.enqueue(new JFXSnackbar.SnackbarEvent(response.isOK() ? "Success" : "Failed, response message: " + response.getMessage()));
+            reloadDataFromServer();
+
+        });
     }
 }
