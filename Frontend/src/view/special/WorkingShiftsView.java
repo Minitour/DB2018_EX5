@@ -80,33 +80,35 @@ public class WorkingShiftsView extends UIView{
 
         new ProfileAPI().read(new Person(), (response1, object) -> {
 
-            api.readAll((response, items) -> {
-                for (Shift item : items) {
-                    shifts.put(item.getShiftNumber(),item);
-                }
-            });
+            if(object != null) {
+                api.readAll((response, items) -> {
+                    for (Shift item : items) {
+                        shifts.put(item.getShiftNumber(), item);
+                    }
+                });
 
-            api2.readAll(new WorkInShift(object.getID(),null),(response, items) -> {
-                this.list.clear();
-                this.list.addAll(items);
-                shiftsTableView.reloadData();
-            });
+                api2.readAll(new WorkInShift(object.getID(), null), (response, items) -> {
+                    this.list.clear();
+                    this.list.addAll(items);
+                    shiftsTableView.reloadData();
+                });
 
-            datePicker.valueProperty().addListener((observable, oldValue, newValue) -> {
+                datePicker.valueProperty().addListener((observable, oldValue, newValue) -> {
 
-                if(newValue != null) {
-                    int dow = newValue.getDayOfWeek().getValue();
-                    dow += 1;
-                    if (dow > 7)
-                        dow = 1;
+                    if (newValue != null) {
+                        int dow = newValue.getDayOfWeek().getValue();
+                        dow += 1;
+                        if (dow > 7)
+                            dow = 1;
 
-                    final int day = dow;
-                    predicate = shift -> Integer.parseInt(shifts.get(shift.getShiftNumber()).getDayInWeek()) == day;
-                }else
-                    predicate = null;
+                        final int day = dow;
+                        predicate = shift -> Integer.parseInt(shifts.get(shift.getShiftNumber()).getDayInWeek()) == day;
+                    } else
+                        predicate = null;
 
-                shiftsTableView.reloadData();
-            });
+                    shiftsTableView.reloadData();
+                });
+            }
         });
 
     }
