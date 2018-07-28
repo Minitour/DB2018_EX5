@@ -3,11 +3,18 @@ package view.forms;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import model.*;
 import network.api.*;
+import network.generic.GenericAPI;
+import utils.AutoSignIn;
+import utils.Response;
 import view.generic.UIFormView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -15,11 +22,11 @@ import java.util.ResourceBundle;
  */
 public class HospitalizedForm extends UIFormView<Hospitalized> {
 
-    private ObservableList<ComboItem> hospitalList = FXCollections.observableArrayList();
-    private ObservableList<ComboItem> departmentList = FXCollections.observableArrayList();
-    private ObservableList<ComboItem> patients = FXCollections.observableArrayList();
-    private ObservableList<ComboItem> events = FXCollections.observableArrayList();
-    private ObservableList<ComboItem> rooms = FXCollections.observableArrayList();
+    private ObservableList<ComboItem> hospitalList;
+    private ObservableList<ComboItem> departmentList;
+    private ObservableList<ComboItem> patients;
+    private ObservableList<ComboItem> events;
+    private ObservableList<ComboItem> rooms;
 
     public HospitalizedForm(Hospitalized existingValue, OnFinish<Hospitalized> callback) {
         super(Hospitalized.class, existingValue, callback);
@@ -38,7 +45,7 @@ public class HospitalizedForm extends UIFormView<Hospitalized> {
      */
     @Override
     protected String[] comboBoxForFields() {
-        return new String[]{"patientID", "eventCode", "hospitalID", "departmentID", "roomNumber"};
+        return new String[]{"patientID", "eventCode", "hospitalID", "departmentID", "roomNumber", "severityLevel"};
     }
 
     /**
@@ -67,6 +74,19 @@ public class HospitalizedForm extends UIFormView<Hospitalized> {
                 return events;
             case "roomNumber":
                 return rooms;
+            case "severityLevel":
+                return FXCollections.observableArrayList(Arrays.asList(
+                        new ComboItem("1",1),
+                        new ComboItem("2",2),
+                        new ComboItem("3",3),
+                        new ComboItem("4",4),
+                        new ComboItem("5",5),
+                        new ComboItem("6",6),
+                        new ComboItem("7",7),
+                        new ComboItem("8",8),
+                        new ComboItem("9",9),
+                        new ComboItem("10",10)
+                ));
         }
         return null;
     }
@@ -85,8 +105,35 @@ public class HospitalizedForm extends UIFormView<Hospitalized> {
     }
 
     @Override
+    protected void didComboSelectionChanged(String nameField, ComboItem value) {
+        switch (nameField){
+            case "departmentID":
+                if(value != null) {
+                    int departmentId = (int) value.value;
+                    ComboBox comboBox = (ComboBox) elements_vbox.lookup("#roomNumber");
+                    comboBox.getSelectionModel().clearSelection();
+                    this.rooms.clear();
+                    new RoomAPI().readAll(new Room(AutoSignIn.HOSPITAL_ID, departmentId), (response, items) -> {
+                        if(response.isOK()){
+                            for (Room item : items) {
+                                rooms.add(new ComboItem(
+                                        String.valueOf(item.getRoomNumber())
+                                ));
+                            }
+                        }
+                    });
+                }
+        }
+    }
+
+    @Override
     public void layoutSubviews(ResourceBundle bundle) {
         super.layoutSubviews(bundle);
+        hospitalList = FXCollections.observableArrayList();
+        departmentList = FXCollections.observableArrayList();
+        patients = FXCollections.observableArrayList();
+        events = FXCollections.observableArrayList();
+        rooms = FXCollections.observableArrayList();
 
         // patients
         new PatientsAPI().readAll((response, items) -> {
@@ -114,15 +161,16 @@ public class HospitalizedForm extends UIFormView<Hospitalized> {
         new HospitalAPI().readAll((response, items) -> {
             if(response.isOK())
                 for (Hospital item : items)
-                    hospitalList.add(new ComboItem(
-                            item.getName(),
-                            item.getHospitalID()
-                    ));
+                    if(item.getHospitalID() == AutoSignIn.HOSPITAL_ID)
+                        hospitalList.add(new ComboItem(
+                                item.getName(),
+                                item.getHospitalID()
+                        ));
 
         });
 
         // departments
-        new DepartmentAPI().readAll((response, items) -> {
+        new DepartmentAPI().readAll(new Department(AutoSignIn.HOSPITAL_ID),(response, items) -> {
             if(response.isOK())
                 for (Department item : items)
                     departmentList.add(new ComboItem(
@@ -132,14 +180,14 @@ public class HospitalizedForm extends UIFormView<Hospitalized> {
 
         });
 
-        // rooms
-        new RoomAPI().readAll((response, items) -> {
-            if(response.isOK())
-                for (Room item : items)
-                    departmentList.add(new ComboItem(
-                            String.valueOf(item.getRoomNumber())
-                    ));
-
-        });
+//        // rooms
+//        new RoomAPI().readAll((response, items) -> {
+//            if(response.isOK())
+//                for (Room item : items)
+//                    rooms.add(new ComboItem(
+//                            String.valueOf(item.getRoomNumber())
+//                    ));
+//
+//        });
     }
 }

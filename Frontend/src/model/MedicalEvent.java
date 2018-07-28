@@ -10,7 +10,7 @@ public class MedicalEvent  {
     private Integer eventCode;
 
     @Expose
-    private String description;
+    private String discription;
 
     @Expose
     private Integer typeCode;
@@ -22,7 +22,7 @@ public class MedicalEvent  {
     }
 
     public String getDescription() {
-        return description;
+        return discription;
     }
 
 

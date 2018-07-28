@@ -19,6 +19,10 @@ public class Department {
     @Expose
     private Integer maxCapacity;
 
+    public Department(Integer hospitalID) {
+        this.hospitalID = hospitalID;
+    }
+
     public Department(int hospitalID, int departmentID) {
         this.hospitalID = hospitalID;
         this.departmentID = departmentID;

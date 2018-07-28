@@ -1,11 +1,9 @@
 package view.generic;
 
 import com.google.gson.annotations.Expose;
-import javafx.beans.binding.ObjectExpression;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import ui.UIView;
@@ -18,8 +16,6 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
-import java.util.concurrent.ConcurrentNavigableMap;
-import java.util.function.Consumer;
 
 /**
  * Created By Tony on 14/02/2018
@@ -36,7 +32,7 @@ public abstract class UIFormView<T> extends UIView {
      * The vbox that holds the items of the form.
      */
     @FXML
-    private VBox elements_vbox;
+    protected VBox elements_vbox;
 
     /**
      * confirm button.
@@ -149,8 +145,11 @@ public abstract class UIFormView<T> extends UIView {
                     //create combobox
                     StringComboBox comboBox = getComboBox(fieldName,observableList);
 
-                    //extract value if exists
+                    //add change listener
+                    comboBox.valueProperty().addListener((observable, oldValue, newValue)
+                            -> didComboSelectionChanged(fieldName,newValue));
 
+                    //extract value if exists
                     extract(field, existingValue, value -> {
 
                         if(value != null) {
@@ -405,6 +404,8 @@ public abstract class UIFormView<T> extends UIView {
         }
     }
 
+    protected void didComboSelectionChanged(String nameField,ComboItem value){ }
+
     private void populateFields(T instance) {
         List<Field> fields = findFieldsAsList(Expose.class,instance.getClass());
         Set<String> uninsertableFields = new HashSet<>(Arrays.asList(defaultValueFields()));
@@ -601,7 +602,9 @@ public abstract class UIFormView<T> extends UIView {
 
         @Override
         public boolean equals(Object obj) {
-            return obj instanceof ComboItem && (((ComboItem) obj).displayName.equals(displayName) || String.valueOf(((ComboItem) obj).value).equals(String.valueOf(value)));
+            return obj != null &&
+                    obj instanceof ComboItem
+                    && (((ComboItem) obj).displayName.equals(displayName) || String.valueOf(((ComboItem) obj).value).equals(String.valueOf(value)));
         }
     }
 }

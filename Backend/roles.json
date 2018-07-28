@@ -34,7 +34,9 @@
         "io.hospital.check.*",
         "io.hospital.shift.read",
         "io.hospital.shift.read_all",
-        "io.hospital.vacation.read"
+        "io.hospital.vacation.read",
+        "io.hospital.event.read_all",
+        "io.hospital.department.read_all"
       ],
       "extends" : [ 1 ]
     },
