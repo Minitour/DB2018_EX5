@@ -7,12 +7,14 @@ import javafx.scene.control.TextField;
 import model.Shift;
 import view.generic.UIFormView;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
  * Created By Tony on 26/07/2018
  */
 public class ShiftForm extends UIFormView<Shift> {
+
     public ShiftForm(Shift existingValue, OnFinish<Shift> callback) {
         super(Shift.class, existingValue, callback);
     }
@@ -53,11 +55,20 @@ public class ShiftForm extends UIFormView<Shift> {
                 return FXCollections.observableArrayList(Arrays.asList(
                         new ComboItem("Morning","M"),
                         new ComboItem("Evening","E")));
+            case "dayInWeek":
+                return FXCollections.observableArrayList(Arrays.asList(
+                        new ComboItem("Sunday","1"),
+                        new ComboItem("Monday","2"),
+                        new ComboItem("Tuesday","3"),
+                        new ComboItem("Wednesday","4"),
+                        new ComboItem("Thursday","5"),
+                        new ComboItem("Friday","6"),
+                        new ComboItem("Saturday","7")
+                ));
 
         }
         return null;
     }
-
 
     /**
      * This method is used to lock certain fields when viewing an existing object.
@@ -70,4 +81,5 @@ public class ShiftForm extends UIFormView<Shift> {
     public String[] inupdateableFields() {
         return new String[]{"shiftNumber"};
     }
+
 }

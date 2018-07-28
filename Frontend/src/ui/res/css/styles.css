@@ -4,8 +4,8 @@
     -fx-faint-focus-color: transparent;
 }
 
-.jfx-date-picker{
-    -default-color: #673AB7;
+.jfx-date-picker .month-year-pane{
+    -fx-background-color: #16a085;
 }
 
 .jfx-snackbar-content {
@@ -26,7 +26,7 @@
 /* Default Button Style*/
 .button-raised {
     -jfx-button-type: RASIED;
-    -fx-background-color: #2ecc71;
+    -fx-background-color: #16a085;
     -fx-pref-width: 128;
     -fx-pref-height: 30;
     -fx-text-fill: WHITE;
@@ -65,7 +65,7 @@
 
 .fab {
     -jfx-button-type: RASIED;
-    -fx-background-color: #2ecc71;
+    -fx-background-color: #16a085;
     -fx-text-fill: WHITE;
     -fx-text-alignment: center;
     -fx-min-width: 48;
@@ -86,7 +86,7 @@
     -fx-background-color: WHITE;
     -fx-prompt-text-fill: #808080;
     -fx-alignment: top-left;
-    -jfx-focus-color: #2ecc71;
+    -jfx-focus-color: #16a085;
     -jfx-unfocus-color: rgb(236, 240, 241);
     -fx-max-width: 300;
     -fx-font: 14px "Helvetica";
@@ -99,7 +99,7 @@
 }
 
 .jfx-radio-button{
-    -jfx-selected-color: #2ecc71;
+    -jfx-selected-color: #16a085;
     -jfx-unselected-color: #bdc3c7;
 }
 .scroll-pane .scroll-bar:vertical .increment-button,
@@ -468,14 +468,14 @@ List View
 {
     -fx-max-height: 110;
     -fx-background: -fx-accent;
-    -fx-background-color: #2ecc71/*-fx-selection-bar*/;
+    -fx-background-color: #16a085/*-fx-selection-bar*/;
     -fx-text-fill: white/*-fx-selection-bar-text*/;
 
 }
 
 .combo-box-popup .list-view .list-cell:filled:hover
 {
-    -fx-background-color: #2ecc71;
+    -fx-background-color: #16a085;
     -fx-text-fill: white;
 }
 
@@ -497,7 +497,7 @@ List View
 
 .combo-box-base:showing
 {
-    -fx-border-color: #2ecc71;
+    -fx-border-color: #16a085;
 }
 
 .combo-box-base:hover

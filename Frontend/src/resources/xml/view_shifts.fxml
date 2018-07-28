@@ -5,10 +5,11 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.geometry.Insets?>
+<?import com.jfoenix.controls.JFXDatePicker?>
 <fx:root prefHeight="400.0" prefWidth="600.0" stylesheets="@../../ui/res/css/styles.css" type="javafx.scene.layout.StackPane" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
 
     <VBox fx:id="vbox" spacing="20" alignment="TOP_RIGHT">
-        <DatePicker fx:id="datePicker" promptText="Shift Date"/>
+        <JFXDatePicker fx:id="datePicker" promptText="Shift Date"/>
         <padding>
             <Insets top="8" left="8" right="8" bottom="8"/>
         </padding>
