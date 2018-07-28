@@ -1,5 +1,4 @@
 package view.generic;
-
 import com.google.gson.annotations.Expose;
 import com.jfoenix.controls.JFXButton;
 import javafx.geometry.Pos;

@@ -16,7 +16,7 @@ public class AdminMaster extends MasterMenuController {
             new DashboardView(),
             new PatientsTableView(true,true,true),
             new RoomsTableView(true,true,true),
-            new HospitalizationTableView(true,true,true),
+            new HospitalizationTableView(false,false,false),
             new ChecksTableView(true,true,true),
             new ShiftTableView(true,true,true),
             new MedicalEventTypeInDepTableView(true,true,true),
