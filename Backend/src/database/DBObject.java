@@ -40,7 +40,7 @@ public abstract class DBObject{
                 field.setAccessible(true);
                 String fieldName = field.getName();
                 field.set(this,map.get(fieldName));
-                map.remove(field.getName());
+                //map.remove(field.getName());
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }catch (IllegalArgumentException e){
