@@ -56,11 +56,11 @@ public class QueriesAccess extends DataAccess<DBObject> {
     }
 
     /**
-     * this query returns the income from patients by MONTH and HOSPITAL
+     * this query returns the income from patients by HOSPITAL
      * @return
      */
-    public List<HospitalJoinHospitalized> query6(){
-        return get(HospitalJoinHospitalized.class,"QUERY_6");
+    public List<HospitalJoinDepartment> query6(int hospitalID){
+        return get(HospitalJoinDepartment.class,"QUERY_6", hospitalID);
     }
 
     /**

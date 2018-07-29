@@ -1,6 +1,7 @@
 package controller;
 
 import com.google.gson.JsonObject;
+import database.data_access.PersonAccess;
 import database.data_access.QueriesAccess;
 import model.DashboardModel;
 import model.Session;
@@ -12,10 +13,14 @@ import utils.RESTRoute;
 public class DashboardController implements RESTRoute {
 
 
+    //TODO: validate session + permissions
+
+
     @Override
     public Object handle(Request request, Response response, JsonObject body, Session session) throws Exception {
 
-        try(QueriesAccess query_db = new QueriesAccess()){
+        try(QueriesAccess query_db = new QueriesAccess();
+            PersonAccess personAccess = new PersonAccess(query_db)){
 
             validateSession(session,query_db,false);
 
@@ -33,7 +38,7 @@ public class DashboardController implements RESTRoute {
                     // dashboardModel.setQuery5_result(query_db.query5(null));
                     dashboard.setQuery8_result(query_db.query8());
                     dashboard.setQuery9_result(query_db.query9());
-                    dashboard.setQuery11_result(query_db.query8());
+                    dashboard.setQuery11_result(query_db.query11(personAccess.getById(session.ACCOUNT_ID).get(0).getID()));
                     dashboard.setQuery13_result(query_db.query13(session.getHospitalId()));
 
                     break;
