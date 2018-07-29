@@ -56,7 +56,7 @@ public class MedicalEventInDepartmentController extends GenericController {
             if (!hasPermission("io.hospital.event_in_dep.read_all", session))
                 return JSONResponse.FAILURE().message("Access Denied.");
 
-            List<MedicalEventTypeInDepartment> medicals = medicalEventTypeInDepartmentAccess.getById(hospitalID);
+            List<MedicalEventTypeInDepartment> medicals = medicalEventTypeInDepartmentAccess.getAll(hospitalID);
             JSONResponse<List<MedicalEventTypeInDepartment>> jsonResponse = JSONResponse.SUCCESS();
             jsonResponse.data(medicals);
 

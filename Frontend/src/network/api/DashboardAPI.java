@@ -20,7 +20,7 @@ public class DashboardAPI {
         data.addProperty("SESSION_TOKEN",AutoSignIn.SESSION_TOKEN);
 
 
-        SharedInstance.main.makeRequest(Constants.Routes.updatePassword(), null, data, (json, exception) -> {
+        SharedInstance.main.makeRequest(Constants.Routes.dashboard(), null, data, (json, exception) -> {
             Response r = new Response(json);
             r.setException(exception);
 
