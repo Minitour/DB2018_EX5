@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import database.Database;
 import database.data_access.AccountAccess;
 import database.data_access.SessionAccess;
+import model.Account;
 import model.Session;
 import spark.Request;
 import spark.Response;
@@ -76,9 +77,11 @@ public interface RESTRoute extends Route {
             session.CREATION_DATE = storedSession.CREATION_DATE;
 
             //get account id
-            int role = account_db.getById(session.ACCOUNT_ID,null,0).get(0).getROLE_ID();
+            Account account = account_db.getById(session.ACCOUNT_ID,null,0).get(0);
 
-            session.setRole(role);
+            session.setRole(account.getROLE_ID());
+            session.setHospitalId(account.getHospitalID());
+
 
         } catch (Exception e) {
             e.printStackTrace();
