@@ -101,4 +101,22 @@ public class QueriesAccess extends DataAccess<DBObject> {
         return get(Person.class,"QUERY_11",patientId);
     }
 
+    /**
+     * TODO: Add query description
+     * @param patientId
+     * @return
+     */
+    public List<Person> query13(){
+        return get(Person.class,"QUERY_11",patientId);
+    }
+
+    /**
+     * TODO: Add query description
+     * @param patientId
+     * @return
+     */
+    public List<Person> query13A(){
+        return get(Person.class,"QUERY_11",patientId);
+    }
+
 }

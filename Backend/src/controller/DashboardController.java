@@ -26,30 +26,37 @@ public class DashboardController implements RESTRoute {
             if(!hasPermission("io.hospital.dashboard.read",session))
                 return JSONResponse.FAILURE().message("Access Denied.");
 
+            DashboardModel dashboard = new DashboardModel();;
             switch (session.getRole()) {
                 case 5:
-                    //admin view
+                    //admin dashboard
+
+                    //TODO: query_13
+                    // assign the relevant components (queries) to the admin dashboard
+                    dashboard.setQuery2_result(query_db.query2());
+                    // dashboardModel.setQuery5_result(query_db.query5(null));
+                    dashboard.setQuery8_result(query_db.query8());
+                    dashboard.setQuery9_result(query_db.query9());
+                    dashboard.setQuery11_result(query_db.query8());
+
+                    break;
+
                 case 6:
-                    //super user view
+                    //super user dashboard
+
+                    //TODO: query_13A
+                    // assign the relevant components (queries) to the super user dashboard
+                    dashboard.setQuery3_result(query_db.query3());
+                    dashboard.setQuery4_result(query_db.query4());
+                    dashboard.setQuery6_result(query_db.query6());
+                    dashboard.setQuery7A_result(query_db.query7A());
+                    dashboard.setQuery7B_result(query_db.query7B());
+                    break;
             }
-
-            DashboardModel dashboardModel = new DashboardModel();
-
-            //populate data
-            dashboardModel.setQuery2_result(query_db.query2());
-            dashboardModel.setQuery3_result(query_db.query3());
-            dashboardModel.setQuery4_result(query_db.query4());
-//            dashboardModel.setQuery5_result(query_db.query5(null));
-            dashboardModel.setQuery6_result(query_db.query6());
-            dashboardModel.setQuery7A_result(query_db.query7A());
-            dashboardModel.setQuery7B_result(query_db.query7B());
-            dashboardModel.setQuery8_result(query_db.query8());
-            dashboardModel.setQuery9_result(query_db.query9());
-            dashboardModel.setQuery11_result(query_db.query8());
-
             return JSONResponse
                     .SUCCESS()
-                    .data(dashboardModel);
+                    .data(dashboard);
+
         }catch (Exception e){
             return JSONResponse
                     .FAILURE()
