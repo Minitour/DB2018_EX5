@@ -23,7 +23,7 @@ public class DashboardModel {
     private List<PersonJoinCheckedBy> query5_result;
 
     @Expose
-    private List<HospitalJoinHospitalized> query6_result;
+    private List<HospitalJoinDepartment> query6_result;
 
     @Expose
     private List<HospitalJoinDepartment> query7A_result;
@@ -66,7 +66,7 @@ public class DashboardModel {
         this.query5_result = query5_result;
     }
 
-    public void setQuery6_result(List<HospitalJoinHospitalized> query6_result) {
+    public void setQuery6_result(List<HospitalJoinDepartment> query6_result) {
         this.query6_result = query6_result;
     }
 

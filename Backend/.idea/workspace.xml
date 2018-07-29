@@ -43,16 +43,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QueriesAccess.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="QueriesAccess.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/database/data_access/QueriesAccess.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="69" column="50" lean-forward="true" selection-start-line="69" selection-start-column="50" selection-end-line="69" selection-end-column="50" />
+            <state relative-caret-position="244">
+              <caret line="65" column="7" lean-forward="true" selection-start-line="65" selection-start-column="7" selection-end-line="65" selection-end-column="7" />
               <folding>
                 <element signature="e#610#611#0" expanded="true" />
                 <element signature="e#672#673#0" expanded="true" />
                 <element signature="e#1062#1063#0" expanded="true" />
                 <element signature="e#1134#1135#0" expanded="true" />
+                <element signature="e#1798#1799#0" expanded="true" />
                 <element signature="e#1865#1866#0" expanded="true" />
                 <element signature="e#2262#2263#0" expanded="true" />
                 <element signature="e#2312#2313#0" expanded="true" />
@@ -68,8 +69,8 @@
       <file leaf-file-name="QueryAccessTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app_test/database/data_access/QueryAccessTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state relative-caret-position="143">
+              <caret line="22" column="46" lean-forward="false" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -137,11 +138,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DashboardController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DashboardController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/DashboardController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="41" column="91" lean-forward="true" selection-start-line="41" selection-start-column="91" selection-end-line="41" selection-end-column="91" />
+            <state relative-caret-position="257">
+              <caret line="53" column="68" lean-forward="true" selection-start-line="53" selection-start-column="68" selection-end-line="53" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -152,8 +153,8 @@
       <file leaf-file-name="DashboardModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/DashboardModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="49" column="19" lean-forward="false" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
+            <state relative-caret-position="-327">
+              <caret line="13" column="51" lean-forward="true" selection-start-line="13" selection-start-column="51" selection-end-line="13" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -243,14 +244,14 @@
         <option value="$PROJECT_DIR$/src/model/dashboard/DashboardDB.java" />
         <option value="$PROJECT_DIR$/src/database/DashboardDB.java" />
         <option value="$PROJECT_DIR$/src/controller/WorkInShiftController.java" />
-        <option value="$PROJECT_DIR$/src/model/DashboardModel.java" />
         <option value="$PROJECT_DIR$/src/model/join/DashboardHospitalJoinHospitalized.java" />
         <option value="$PROJECT_DIR$/src/app_test/database/data_access/QueryAccessTest.java" />
         <option value="$PROJECT_DIR$/src/database/DBObject.java" />
-        <option value="$PROJECT_DIR$/src/controller/DashboardController.java" />
         <option value="$PROJECT_DIR$/src/model/join/HospitalJoinDepartment.java" />
         <option value="$PROJECT_DIR$/src/database/data_access/QueriesAccess.java" />
         <option value="$PROJECT_DIR$/src/database/data_access/QueriesAccess.java" />
+        <option value="$PROJECT_DIR$/src/controller/DashboardController.java" />
+        <option value="$PROJECT_DIR$/src/model/DashboardModel.java" />
       </list>
     </option>
   </component>
@@ -561,9 +562,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="QueryAccessTest - 2018.07.29 at 21h 48m 47s.xml">
-      <configuration name="QueryAccessTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="QueryAccessTest - 2018.07.29 at 21h 51m 08s.xml">
       <configuration name="QueryAccessTest" configurationId="JUnit" />
     </history-entry>
@@ -589,6 +587,9 @@
       <configuration name="QueryAccessTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="QueryAccessTest - 2018.07.29 at 23h 39m 23s.xml">
+      <configuration name="QueryAccessTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="QueryAccessTest - 2018.07.30 at 00h 18m 26s.xml">
       <configuration name="QueryAccessTest" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -961,16 +962,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/DashboardModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="49" column="19" lean-forward="false" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/permissions.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -984,26 +975,6 @@
         <state relative-caret-position="163">
           <caret line="81" column="30" lean-forward="false" selection-start-line="81" selection-start-column="9" selection-end-line="81" selection-end-column="30" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/DashboardController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="41" column="91" lean-forward="true" selection-start-line="41" selection-start-column="91" selection-end-line="41" selection-end-column="91" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app_test/database/data_access/QueryAccessTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1022,15 +993,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/DashboardModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-327">
+          <caret line="13" column="51" lean-forward="true" selection-start-line="13" selection-start-column="51" selection-end-line="13" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/database/data_access/QueriesAccess.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="69" column="50" lean-forward="true" selection-start-line="69" selection-start-column="50" selection-end-line="69" selection-end-column="50" />
+        <state relative-caret-position="244">
+          <caret line="65" column="7" lean-forward="true" selection-start-line="65" selection-start-column="7" selection-end-line="65" selection-end-column="7" />
           <folding>
             <element signature="e#610#611#0" expanded="true" />
             <element signature="e#672#673#0" expanded="true" />
             <element signature="e#1062#1063#0" expanded="true" />
             <element signature="e#1134#1135#0" expanded="true" />
+            <element signature="e#1798#1799#0" expanded="true" />
             <element signature="e#1865#1866#0" expanded="true" />
             <element signature="e#2262#2263#0" expanded="true" />
             <element signature="e#2312#2313#0" expanded="true" />
@@ -1038,6 +1020,26 @@
             <element signature="e#2550#2551#0" expanded="true" />
             <element signature="e#2730#2731#0" expanded="true" />
             <element signature="e#2791#2792#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app_test/database/data_access/QueryAccessTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="22" column="46" lean-forward="false" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/DashboardController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="53" column="68" lean-forward="true" selection-start-line="53" selection-start-column="68" selection-end-line="53" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
