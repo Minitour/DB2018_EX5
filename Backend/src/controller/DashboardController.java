@@ -31,26 +31,26 @@ public class DashboardController implements RESTRoute {
                 case 5:
                     //admin dashboard
 
-                    //TODO: query_13
                     // assign the relevant components (queries) to the admin dashboard
                     dashboard.setQuery2_result(query_db.query2());
                     // dashboardModel.setQuery5_result(query_db.query5(null));
                     dashboard.setQuery8_result(query_db.query8());
                     dashboard.setQuery9_result(query_db.query9());
                     dashboard.setQuery11_result(query_db.query8());
+                    dashboard.setQuery13_result(query_db.query13(session.getHospitalId()));
 
                     break;
 
                 case 6:
                     //super user dashboard
 
-                    //TODO: query_13A
                     // assign the relevant components (queries) to the super user dashboard
                     dashboard.setQuery3_result(query_db.query3());
                     dashboard.setQuery4_result(query_db.query4());
                     dashboard.setQuery6_result(query_db.query6());
                     dashboard.setQuery7A_result(query_db.query7A());
                     dashboard.setQuery7B_result(query_db.query7B());
+                    dashboard.setQuery13A_result(query_db.query13A());
                     break;
             }
             return JSONResponse

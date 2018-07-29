@@ -40,6 +40,12 @@ public class DashboardModel {
     @Expose
     private List<Person> query11_result;
 
+    @Expose
+    private List<DashboardHospitalJoinHospitalized> query13_result;
+
+    @Expose
+    private List<DashboardHospitalJoinHospitalized> query13A_result;
+
 
     public DashboardModel() {
     }
@@ -82,5 +88,13 @@ public class DashboardModel {
 
     public void setQuery11_result(List<Person> query11_result) {
         this.query11_result = query11_result;
+    }
+
+    public void setQuery13_result(List<DashboardHospitalJoinHospitalized> query13_result) {
+        this.query13_result = query13_result;
+    }
+
+    public void setQuery13A_result(List<DashboardHospitalJoinHospitalized> query13A_result) {
+        this.query13A_result = query13A_result;
     }
 }

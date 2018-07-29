@@ -23,7 +23,7 @@ public class QueriesAccess extends DataAccess<DBObject> {
     }
 
     /**
-     * TODO: Add query description
+     * this query returns all the top 10 senior doctors in hospital
      * @return
      */
     public List<HospitalJoinPerson> query2(){
@@ -31,7 +31,7 @@ public class QueriesAccess extends DataAccess<DBObject> {
     }
 
     /**
-     * TODO: Add query description
+     * this query returns all the infected hospitals
      * @return
      */
     public List<HospitalJoinDepartmentJoinDoctor> query3() {
@@ -39,7 +39,7 @@ public class QueriesAccess extends DataAccess<DBObject> {
     }
 
     /**
-     * TODO: Add query description
+     * this query returns the status of the hospital (busy, not busy, regular)
      * @return
      */
     public List<HospitalJoinPersonJoinDoctor> query4() {
@@ -47,7 +47,7 @@ public class QueriesAccess extends DataAccess<DBObject> {
     }
 
     /**
-     * TODO: Add query description
+     * GIVEN doctorID this query return the patients of this doctor and the latest check
      * @param doctorID
      * @return
      */
@@ -56,7 +56,7 @@ public class QueriesAccess extends DataAccess<DBObject> {
     }
 
     /**
-     * TODO: Add query description
+     * this query returns the income from patients by MONTH and HOSPITAL
      * @return
      */
     public List<HospitalJoinHospitalized> query6(){
@@ -64,14 +64,14 @@ public class QueriesAccess extends DataAccess<DBObject> {
     }
 
     /**
-     * TODO: Add query description
+     * this query returns the number of doctors in a department
      * @return
      */
     public List<HospitalJoinDepartment> query7A(){
         return get(HospitalJoinDepartment.class,"QUERY_7A");
     }
     /**
-     * TODO: Add query description
+     * this query returns for every type of department the lowest ratio of doctors in all hospitals
      * @return
      */
     public List<HospitalJoinDepartmentJoinDoctor> query7B(){
@@ -79,7 +79,7 @@ public class QueriesAccess extends DataAccess<DBObject> {
     }
 
     /**
-     * TODO: Add query description
+     * this query returns all potential donors for bloodtypes
      * @return
      */
     public List<Person> query8(){
@@ -87,7 +87,7 @@ public class QueriesAccess extends DataAccess<DBObject> {
     }
 
     /**
-     * TODO: Add query description
+     * thie query returns the status of the department: high, medium, low (busy status)..
      * @return
      */
     public List<HospitalJoinDepartment> query9(){
@@ -95,7 +95,7 @@ public class QueriesAccess extends DataAccess<DBObject> {
     }
 
     /**
-     * TODO: Add query description
+     * GIVEN ID of a patient this query will return if he is hipochonder
      * @param patientId
      * @return
      */
@@ -104,19 +104,16 @@ public class QueriesAccess extends DataAccess<DBObject> {
     }
 
     /**
-     * TODO: Add query description
+     * this query returns the number of patients in a hospital
      * @param
      * @return
      */
-    public List<DashboardHospitalJoinHospitalized> query13(int hospitalID, int departmentID){
-        List<Integer> list = new ArrayList<>();
-        list.add(hospitalID);
-        list.add(departmentID);
-        return get(DashboardHospitalJoinHospitalized.class,"QUERY_13", list);
+    public List<DashboardHospitalJoinHospitalized> query13(int hospitalID){
+        return get(DashboardHospitalJoinHospitalized.class,"QUERY_13", hospitalID);
     }
 
     /**
-     * TODO: Add query description
+     * this query returns the number of patients per hospital
      * @param
      * @return
      */
