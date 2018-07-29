@@ -91,7 +91,7 @@
       <file leaf-file-name="DashboardHospitalJoinHospitalized.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/join/DashboardHospitalJoinHospitalized.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
+            <state relative-caret-position="540">
               <caret line="36" column="63" lean-forward="false" selection-start-line="36" selection-start-column="63" selection-end-line="36" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -113,6 +113,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="WorkInShiftController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/WorkInShiftController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="61" column="32" lean-forward="true" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="HospitalJoinDepartment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/join/HospitalJoinDepartment.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -126,27 +136,23 @@
       <file leaf-file-name="QueriesAccess.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/database/data_access/QueriesAccess.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="108" column="22" lean-forward="false" selection-start-line="108" selection-start-column="16" selection-end-line="108" selection-end-column="22" />
+            <state relative-caret-position="317">
+              <caret line="115" column="5" lean-forward="true" selection-start-line="115" selection-start-column="5" selection-end-line="115" selection-end-column="5" />
               <folding>
-                <element signature="e#522#523#0" expanded="true" />
-                <element signature="e#584#585#0" expanded="true" />
-                <element signature="e#912#913#0" expanded="true" />
-                <element signature="e#984#985#0" expanded="true" />
-                <element signature="e#1329#1330#0" expanded="true" />
-                <element signature="e#1397#1398#0" expanded="true" />
-                <element signature="e#1515#1516#0" expanded="true" />
-                <element signature="e#1582#1583#0" expanded="true" />
-                <element signature="e#1887#1888#0" expanded="true" />
-                <element signature="e#1937#1938#0" expanded="true" />
-                <element signature="e#2054#2055#0" expanded="true" />
-                <element signature="e#2120#2121#0" expanded="true" />
-                <element signature="e#2262#2263#0" expanded="true" />
-                <element signature="e#2323#2324#0" expanded="true" />
-                <element signature="e#2449#2450#0" expanded="true" />
-                <element signature="e#2510#2511#0" expanded="true" />
-                <element signature="e#2637#2638#0" expanded="true" />
-                <element signature="e#2698#2699#0" expanded="true" />
+                <element signature="e#577#578#0" expanded="true" />
+                <element signature="e#639#640#0" expanded="true" />
+                <element signature="e#967#968#0" expanded="true" />
+                <element signature="e#1039#1040#0" expanded="true" />
+                <element signature="e#1384#1385#0" expanded="true" />
+                <element signature="e#1452#1453#0" expanded="true" />
+                <element signature="e#1570#1571#0" expanded="true" />
+                <element signature="e#1637#1638#0" expanded="true" />
+                <element signature="e#1942#1943#0" expanded="true" />
+                <element signature="e#1992#1993#0" expanded="true" />
+                <element signature="e#2109#2110#0" expanded="true" />
+                <element signature="e#2175#2176#0" expanded="true" />
+                <element signature="e#2317#2318#0" expanded="true" />
+                <element signature="e#2378#2379#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -205,7 +211,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/controller/MedicalEventController.java" />
         <option value="$PROJECT_DIR$/src/controller/DoctorsController.java" />
         <option value="$PROJECT_DIR$/src/controller/DoctorVacationsController.java" />
         <option value="$PROJECT_DIR$/src/controller/MedicalEventInDepartmentController.java" />
@@ -254,6 +259,7 @@
         <option value="$PROJECT_DIR$/src/model/DashboardModel.java" />
         <option value="$PROJECT_DIR$/src/controller/DashboardController.java" />
         <option value="$PROJECT_DIR$/src/model/join/DashboardHospitalJoinHospitalized.java" />
+        <option value="$PROJECT_DIR$/src/controller/WorkInShiftController.java" />
         <option value="$PROJECT_DIR$/src/database/data_access/QueriesAccess.java" />
         <option value="$PROJECT_DIR$/src/database/data_access/QueriesAccess.java" />
       </list>
@@ -692,13 +698,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/controller/UpdateAccountPasswordController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="42" column="74" lean-forward="false" selection-start-line="42" selection-start-column="74" selection-end-line="42" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/database/data_access/AccountAccess.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -927,6 +926,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2134">
           <caret line="220" column="30" lean-forward="false" selection-start-line="220" selection-start-column="30" selection-end-line="220" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1002,7 +1002,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/join/DashboardHospitalJoinHospitalized.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
+        <state relative-caret-position="540">
           <caret line="36" column="63" lean-forward="false" selection-start-line="36" selection-start-column="63" selection-end-line="36" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1023,29 +1023,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/WorkInShiftController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="61" column="32" lean-forward="true" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/database/data_access/QueriesAccess.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="108" column="22" lean-forward="false" selection-start-line="108" selection-start-column="16" selection-end-line="108" selection-end-column="22" />
+        <state relative-caret-position="317">
+          <caret line="115" column="5" lean-forward="true" selection-start-line="115" selection-start-column="5" selection-end-line="115" selection-end-column="5" />
           <folding>
-            <element signature="e#522#523#0" expanded="true" />
-            <element signature="e#584#585#0" expanded="true" />
-            <element signature="e#912#913#0" expanded="true" />
-            <element signature="e#984#985#0" expanded="true" />
-            <element signature="e#1329#1330#0" expanded="true" />
-            <element signature="e#1397#1398#0" expanded="true" />
-            <element signature="e#1515#1516#0" expanded="true" />
-            <element signature="e#1582#1583#0" expanded="true" />
-            <element signature="e#1887#1888#0" expanded="true" />
-            <element signature="e#1937#1938#0" expanded="true" />
-            <element signature="e#2054#2055#0" expanded="true" />
-            <element signature="e#2120#2121#0" expanded="true" />
-            <element signature="e#2262#2263#0" expanded="true" />
-            <element signature="e#2323#2324#0" expanded="true" />
-            <element signature="e#2449#2450#0" expanded="true" />
-            <element signature="e#2510#2511#0" expanded="true" />
-            <element signature="e#2637#2638#0" expanded="true" />
-            <element signature="e#2698#2699#0" expanded="true" />
+            <element signature="e#577#578#0" expanded="true" />
+            <element signature="e#639#640#0" expanded="true" />
+            <element signature="e#967#968#0" expanded="true" />
+            <element signature="e#1039#1040#0" expanded="true" />
+            <element signature="e#1384#1385#0" expanded="true" />
+            <element signature="e#1452#1453#0" expanded="true" />
+            <element signature="e#1570#1571#0" expanded="true" />
+            <element signature="e#1637#1638#0" expanded="true" />
+            <element signature="e#1942#1943#0" expanded="true" />
+            <element signature="e#1992#1993#0" expanded="true" />
+            <element signature="e#2109#2110#0" expanded="true" />
+            <element signature="e#2175#2176#0" expanded="true" />
+            <element signature="e#2317#2318#0" expanded="true" />
+            <element signature="e#2378#2379#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -47,13 +47,6 @@ public class WorkInShiftController extends GenericController {
     @Override
     public Object readAll(JsonObject body, Session session) {
 
-        JsonObject params = parameters(body);
-        require(params);
-
-        // doctorID can be '0' -> get all shifts of all Doctors
-        // otherwise enter the doctorID and get all shifts of the specified doctor
-        String doctorID = params.get("doctorID").getAsString();
-
         try(WorkInShiftAccess workInShiftAccess = new WorkInShiftAccess()) {
 
             validateSession(session, workInShiftAccess, false);
@@ -62,7 +55,7 @@ public class WorkInShiftController extends GenericController {
                 return JSONResponse.FAILURE().message("Access Denied.");
             }
 
-            List<WorkInShift> shifts = workInShiftAccess.getAll(doctorID);
+            List<WorkInShift> shifts = workInShiftAccess.getAll(session.ACCOUNT_ID);
             JSONResponse<List<WorkInShift>> jsonResponse = JSONResponse.SUCCESS();
             jsonResponse.data(shifts);
 
