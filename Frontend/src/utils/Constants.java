@@ -71,6 +71,10 @@ final public class Constants {
         public static String account() {
             return getAddress() + "/account";
         }
+
+        public static String dashboard() {
+            return getAddress() + "/dashboard";
+        }
     }
     public static class Codes{
         public static final int SUCCESS=200;

@@ -71,7 +71,8 @@
         "io.hospital.department.*",
         "io.hospital.shift.*",
         "io.hospital.event_in_dep.read_all",
-        "io.hospital.event.read_all"
+        "io.hospital.event.read_all",
+        "io.hospital.dashboard.*"
       ],
       "extends" : [ 1 ]
     },

@@ -37,5 +37,6 @@ public class App extends RESTApplication {
         post("/updatePassword",new UpdateAccountPasswordController());
         post("/checkedBy",new CheckedByController());
         post("/account",new AccountController());
+        post("/dashboard",new DashboardController());
     }
 }
