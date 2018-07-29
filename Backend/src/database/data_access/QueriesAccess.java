@@ -3,9 +3,11 @@ package database.data_access;
 import database.DBObject;
 import database.Database;
 import database.access.DataAccess;
+import model.Hospitalized;
 import model.Person;
 import model.join.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -103,20 +105,23 @@ public class QueriesAccess extends DataAccess<DBObject> {
 
     /**
      * TODO: Add query description
-     * @param patientId
+     * @param
      * @return
      */
-    public List<Person> query13(){
-        return get(Person.class,"QUERY_11",patientId);
+    public List<DashboardHospitalJoinHospitalized> query13(int hospitalID, int departmentID){
+        List<Integer> list = new ArrayList<>();
+        list.add(hospitalID);
+        list.add(departmentID);
+        return get(DashboardHospitalJoinHospitalized.class,"QUERY_13", list);
     }
 
     /**
      * TODO: Add query description
-     * @param patientId
+     * @param
      * @return
      */
-    public List<Person> query13A(){
-        return get(Person.class,"QUERY_11",patientId);
+    public List<DashboardHospitalJoinHospitalized> query13A(){
+        return get(DashboardHospitalJoinHospitalized.class,"QUERY_13A");
     }
 
 }
