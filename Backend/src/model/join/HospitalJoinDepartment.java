@@ -19,6 +19,9 @@ public class HospitalJoinDepartment extends Join<Hospital, Department> {
     @Expose
     private String status;
 
+    @Expose
+    private Integer amount;
+
     public HospitalJoinDepartment() {
         super(Hospital.class, Department.class);
     }
@@ -45,5 +48,13 @@ public class HospitalJoinDepartment extends Join<Hospital, Department> {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 }
