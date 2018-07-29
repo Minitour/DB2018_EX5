@@ -11,56 +11,59 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.layout.AnchorPane?>
 <fx:root stylesheets="@../../ui/res/css/styles.css" type="javafx.scene.layout.StackPane" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
 
-    <HBox alignment="CENTER" spacing="8">
+    <AnchorPane>
+        <HBox AnchorPane.topAnchor="8" AnchorPane.leftAnchor="8" alignment="CENTER" spacing="8">
+            <VBox maxWidth="408" spacing="10">
+                <HBox spacing="10" VBox.vgrow="ALWAYS">
+                    <Label fx:id="query13" minHeight="90" minWidth="204" styleClass="container" alignment="CENTER" textAlignment="CENTER" wrapText="true"> Number Of Patients In Hospital
+                        <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="doctorsLabel" minHeight="90" minWidth="204" styleClass="container" alignment="CENTER" textAlignment="CENTER" wrapText="true"> Number Of Doctors
+                        <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                </HBox>
 
-        <VBox maxWidth="408" spacing="10">
-            <HBox spacing="10" VBox.vgrow="ALWAYS">
-                <Label fx:id="query13" minHeight="90" minWidth="204" styleClass="container" textAlignment="CENTER" wrapText="true"> Number Of Patients In Hospital
+                <PieChart fx:id="query2" maxHeight="200" styleClass="container" />
+
+                <PieChart fx:id="query8" maxHeight="200" styleClass="container" />
+            </VBox>
+
+            <VBox maxWidth="408" spacing="10">
+                <Label fx:id="unknown1" minHeight="90" minWidth="408" styleClass="container" alignment="CENTER" textAlignment="CENTER" wrapText="true"> Number Of Patients In Hospital
                     <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
-               <font>
-                  <Font size="18.0" />
-               </font>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
                 </Label>
-                <Label fx:id="doctorsLabel" minHeight="90" minWidth="204" styleClass="container" textAlignment="CENTER" wrapText="true"> Number Of Doctors
-                    <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
-               <font>
-                  <Font size="18.0" />
-               </font>
-                </Label>
-            </HBox>
+                <VBox fx:id="query5_vbox" maxHeight="200" minHeight="200">
 
-            <PieChart fx:id="query2" maxHeight="200" styleClass="container" />
+                </VBox>
+                <StackedBarChart fx:id="query9" maxHeight="200" styleClass="container">
+                    <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis side="LEFT" />
+                    </yAxis>
+                </StackedBarChart>
 
-            <PieChart fx:id="query8" maxHeight="200" styleClass="container" />
-        </VBox>
-
-        <VBox maxWidth="408" spacing="10">
-            <Label fx:id="unknown1" minHeight="90" minWidth="408" styleClass="container" textAlignment="CENTER" wrapText="true"> Number Of Patients In Hospital
-                <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
-            <font>
-               <Font size="18.0" />
-            </font>
-            </Label>
-            <VBox fx:id="query5_vbox" maxHeight="200" minHeight="200">
 
             </VBox>
-         <StackedBarChart fx:id="query9" maxHeight="200" styleClass="container">
-           <xAxis>
-             <CategoryAxis side="BOTTOM" />
-           </xAxis>
-           <yAxis>
-             <NumberAxis side="LEFT" />
-           </yAxis>
-         </StackedBarChart>
 
-            
-        </VBox>
+            <padding>
+                <Insets bottom="8" left="8" right="8" top="8" />
+            </padding>
+        </HBox>
+    </AnchorPane>
 
-        <padding>
-            <Insets bottom="8" left="8" right="8" top="8" />
-        </padding>
-    </HBox>
 
 </fx:root>

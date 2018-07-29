@@ -1,14 +1,13 @@
 package view.special;
 
-import com.google.gson.JsonObject;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import network.api.DashboardAPI;
+import network.api.DoctorAPI;
 import ui.UIView;
-import utils.Response;
 
 import java.util.ResourceBundle;
 
@@ -36,7 +35,7 @@ public class DashboardView extends UIView {
     private VBox query5_vbox;
 
     @FXML
-    private StackedBarChart quer9;
+    private StackedBarChart query9;
 
     public DashboardView() {
         super("/resources/xml/view_dashboard3.fxml");
@@ -45,6 +44,11 @@ public class DashboardView extends UIView {
     @Override
     public void layoutSubviews(ResourceBundle bundle) {
         super.layoutSubviews(bundle);
+
+        new DoctorAPI().readAll((response, items) -> {
+            doctorsLabel.setText("Number Of Doctors\n"+items.size());
+        });
+
         new DashboardAPI().getData((response, data) -> {
 
         });
