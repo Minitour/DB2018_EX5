@@ -12,9 +12,6 @@ import utils.RESTRoute;
 public class DashboardController implements RESTRoute {
 
 
-    //TODO: validate session + permissions
-
-
     @Override
     public Object handle(Request request, Response response, JsonObject body, Session session) throws Exception {
 

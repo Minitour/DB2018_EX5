@@ -9,14 +9,13 @@ public class DashboardHospitalJoinHospitalized extends Join<Hospital, Hospitaliz
 
 
     @Expose
-    private int number_of_patients;
-
-    @Expose
     private int hospitalID;
 
     @Expose
     private String name;
 
+    @Expose
+    private int number_of_patients;
 
     public DashboardHospitalJoinHospitalized() {
         super(Hospital.class, Hospitalized.class);
