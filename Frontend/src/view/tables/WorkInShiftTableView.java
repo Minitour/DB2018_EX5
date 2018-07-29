@@ -71,9 +71,11 @@ public class WorkInShiftTableView extends GenericTableView<WorkInShift> {
 
     private void reloadDataFromServer(){
         api.readAll((response, items) -> {
-            shifts.clear();
-            shifts.addAll(items);
-            reloadData();
+            if(response.isOK()) {
+                shifts.clear();
+                shifts.addAll(items);
+                reloadData();
+            }
         });
     }
 }

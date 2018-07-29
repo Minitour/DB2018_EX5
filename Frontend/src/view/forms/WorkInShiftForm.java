@@ -18,8 +18,8 @@ import java.util.ResourceBundle;
  */
 public class WorkInShiftForm extends UIFormView<WorkInShift> {
 
-    private ObservableList<ComboItem> doctors = FXCollections.observableArrayList();
-    private ObservableList<ComboItem> shifts = FXCollections.observableArrayList();
+    private ObservableList<ComboItem> doctors;
+    private ObservableList<ComboItem> shifts;
 
     public WorkInShiftForm(WorkInShift existingValue, OnFinish<WorkInShift> callback) {
         super(WorkInShift.class, existingValue, callback);
@@ -82,6 +82,9 @@ public class WorkInShiftForm extends UIFormView<WorkInShift> {
     @Override
     public void layoutSubviews(ResourceBundle bundle) {
         super.layoutSubviews(bundle);
+
+        doctors = FXCollections.observableArrayList();
+        shifts = FXCollections.observableArrayList();
 
         // doctors
         new DoctorAPI().readAll((response, items) -> {
