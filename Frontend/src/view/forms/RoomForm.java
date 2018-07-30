@@ -122,16 +122,5 @@ public class RoomForm extends UIFormView<Room> {
                         ));
 
         });
-
-//        // departments
-//        new DepartmentAPI().readAll(new Department(AutoSignIn.HOSPITAL_ID),(response, items) -> {
-//            if(response.isOK())
-//                for (Department item : items)
-//                    departmentList.add(new ComboItem(
-//                            item.getDepartmentName(),
-//                            item.getDepartmentID()
-//                    ));
-//
-//        });
     }
 }
