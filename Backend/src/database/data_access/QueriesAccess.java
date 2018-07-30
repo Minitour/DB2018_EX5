@@ -121,4 +121,15 @@ public class QueriesAccess extends DataAccess<DBObject> {
         return get(DashboardHospitalJoinHospitalized.class,"QUERY_13A");
     }
 
+    /**
+     * this query returns the number of patients per city
+     * @param
+     * @return
+     */
+    public List<DashboardHospitalJoinHospitalized> query14(){
+        return get(DashboardHospitalJoinHospitalized.class,"QUERY_14");
+    }
+
+
+
 }
