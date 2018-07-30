@@ -55,6 +55,13 @@ public class DashboardView extends UIView {
     @FXML
     CategoryAxis yAxis;
 
+    @FXML
+    private TextFlow query14;
+
+    @FXML
+    private TextFlow query15;
+
+
     UITableView<Person> personTableView;
 
     public DashboardView() {
@@ -82,6 +89,9 @@ public class DashboardView extends UIView {
             //========================================================================
             JsonArray query6result = data.get("query6_result").getAsJsonArray();
             ObservableList<PieChart.Data> query6data = FXCollections.observableArrayList();
+
+            int totalAmount = 0;
+
             for (JsonElement element : query6result) {
                 String depName = element
                         .getAsJsonObject()
@@ -96,11 +106,20 @@ public class DashboardView extends UIView {
                         .getAsInt();
 
 
+                totalAmount += amount;
                 query6data.add(new PieChart.Data(depName,amount));
             }
             query2.setData(query6data);
             query2.setLegendSide(Side.RIGHT);
             query2.setTitle("Income from departments");
+
+            Text totalAmountLabel = new Text("Total Income");
+            totalAmountLabel.setStyle("-fx-font-weight: regular");
+
+            Text totalAmountValue =new Text("\n$" +totalAmount + ".00");
+            totalAmountValue.setStyle("-fx-font-weight: bold; -fx-font-size: 24px");
+            query14.getChildren().addAll(totalAmountLabel,totalAmountValue);
+
             //========================================================================
 
             JsonArray query9result = data.get("query9_result").getAsJsonArray();
