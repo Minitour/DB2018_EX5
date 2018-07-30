@@ -6,22 +6,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Side;
-import javafx.scene.Node;
 import javafx.scene.chart.*;
-import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import model.Person;
 import network.api.DashboardAPI;
 import network.api.DoctorAPI;
 import network.api.PatientsAPI;
-import network.generic.GenericAPI;
 import ui.UITableView;
 import ui.UIView;
-import utils.Response;
-import view.generic.UIFormView;
 
-import java.sql.Date;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  * Created By Tony on 28/07/2018
@@ -30,10 +29,10 @@ public class DashboardView extends UIView {
 
 
     @FXML
-    private Label query13;
+    private TextFlow query13;
 
     @FXML
-    private Label doctorsLabel;
+    private TextFlow doctorsLabel;
 
     @FXML
     private PieChart query2;
@@ -42,7 +41,7 @@ public class DashboardView extends UIView {
     private PieChart query8;
 
     @FXML
-    private Label unknown1;
+    private TextFlow unknown1;
 
     @FXML
     private VBox query5_vbox;
@@ -67,7 +66,14 @@ public class DashboardView extends UIView {
         super.layoutSubviews(bundle);
 
         new DoctorAPI().readAll((response, items) -> {
-            doctorsLabel.setText("Number Of Doctors\n"+items.size());
+            Text text1=new Text("Doctors");
+            text1.setStyle("-fx-font-weight: regular");
+
+            Text text2=new Text("\n"+items.size());
+            text2.setStyle("-fx-font-weight: bold; -fx-font-size: 24px");
+
+            doctorsLabel.getChildren().addAll(text1, text2);
+            //doctorsLabel.setText("Number Of Doctors\n"+items.size());
         });
 
         new DashboardAPI().getData((response, data) -> {
