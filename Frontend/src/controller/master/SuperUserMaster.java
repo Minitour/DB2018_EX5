@@ -9,6 +9,7 @@ import view.special.DashboardView;
 import view.tables.AccountTableView;
 import view.tables.HospitalTableView;
 import view.tables.MedicalEventTableView;
+import view.tables.ShiftTableView;
 
 /**
  * Created By Tony on 25/07/2018
@@ -19,6 +20,7 @@ public class SuperUserMaster extends MasterMenuController {
             new HospitalTableView(true,true,true),
             new AccountTableView(true,true,true),
             new MedicalEventTableView(true,true,true),
+            new ShiftTableView(true,true,true),
             new CardView(new AccountView())
     };
 
@@ -37,6 +39,7 @@ public class SuperUserMaster extends MasterMenuController {
                 "Hospitals", //create hospitals
                 "Users", // create admins
                 "Medical Events",
+                "Shifts",
                 "Account"
         };
     }
