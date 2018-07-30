@@ -250,7 +250,14 @@ public class DashboardView extends UIView {
             // ====================================================================================
 
             JsonArray query13result = data.get("query13_result").getAsJsonArray();
-            query13.setText("# Of Patients \n" + query13result.get(0).getAsJsonObject().get("number_of_patients").getAsInt());
+
+            Text text1=new Text("Patients");
+            text1.setStyle("-fx-font-weight: regular");
+
+            Text text2=new Text("\n"+query13result.get(0).getAsJsonObject().get("number_of_patients").getAsInt());
+            text2.setStyle("-fx-font-weight: bold; -fx-font-size: 24px");
+
+            query13.getChildren().addAll(text1, text2);
 
         });
 
