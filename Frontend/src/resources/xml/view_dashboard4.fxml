@@ -36,7 +36,11 @@
 
                 </HBox>
 
-                <VBox fx:id="comp_query3" maxHeight="200" minHeight="200"/>
+                <VBox fx:id="comp_query3" maxHeight="200" minHeight="200">
+                    <padding>
+                        <Insets bottom="8" top="8" />
+                    </padding>
+                </VBox>
 
                 <BarChart fx:id="comp_query7B" maxHeight="200" styleClass="container">
                     <xAxis>

@@ -17,7 +17,7 @@ public class SuperUserMaster extends MasterMenuController {
     UIView[] views = {
             new SuperDashboardView(),
             new HospitalTableView(true,true,true),
-            new AccountTableView(false,false,false),
+            new AccountTableView(true,true,true),
             new MedicalEventTableView(true,true,true),
             new MedicalEventTypeTableView(true,true,true),
             new ShiftTableView(true,true,true),
