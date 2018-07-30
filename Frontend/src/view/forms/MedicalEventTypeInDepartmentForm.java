@@ -3,6 +3,7 @@ package view.forms;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import model.Department;
 import model.Hospital;
@@ -11,6 +12,7 @@ import model.MedicalEventTypes;
 import network.api.DepartmentAPI;
 import network.api.EventTypesAPI;
 import network.api.HospitalAPI;
+import utils.AutoSignIn;
 import view.generic.UIFormView;
 
 import java.util.ResourceBundle;
@@ -20,9 +22,9 @@ import java.util.ResourceBundle;
  */
 public class MedicalEventTypeInDepartmentForm extends UIFormView<MedicalEventTypeInDepartment> {
 
-    private ObservableList<ComboItem> hospitalList = FXCollections.observableArrayList();
-    private ObservableList<ComboItem> departmentList = FXCollections.observableArrayList();
-    private ObservableList<ComboItem> types = FXCollections.observableArrayList();
+    private ObservableList<ComboItem> hospitalList;
+    private ObservableList<ComboItem> departmentList;
+    private ObservableList<ComboItem> types;
 
     public MedicalEventTypeInDepartmentForm(MedicalEventTypeInDepartment existingValue, OnFinish<MedicalEventTypeInDepartment> callback) {
         super(MedicalEventTypeInDepartment.class, existingValue, callback);
@@ -41,7 +43,7 @@ public class MedicalEventTypeInDepartmentForm extends UIFormView<MedicalEventTyp
      */
     @Override
     protected String[] comboBoxForFields() {
-        return null;
+        return new String[]{"hospitalID","departmentID","typeCode"};
     }
 
     /**
@@ -70,6 +72,27 @@ public class MedicalEventTypeInDepartmentForm extends UIFormView<MedicalEventTyp
         return null;
     }
 
+    @Override
+    protected void didComboSelectionChanged(String nameField, ComboItem value) {
+        switch (nameField){
+            case "hospitalID":
+                if(value != null) {
+                    int hospitalId = (int) value.value;
+                    ComboBox comboBox = (ComboBox) elements_vbox.lookup("#departmentID");
+                    comboBox.getSelectionModel().clearSelection();
+                    this.departmentList.clear();
+                    new DepartmentAPI().readAll(new Department(hospitalId),(response, items) -> {
+                        if(response.isOK())
+                            for (Department item : items)
+                                departmentList.add(new ComboItem(
+                                        item.getDepartmentName(),
+                                        item.getDepartmentID()
+                                ));
+
+                    });
+                }
+        }
+    }
 
     /**
      * This method is used to lock certain fields when viewing an existing object.
@@ -88,27 +111,24 @@ public class MedicalEventTypeInDepartmentForm extends UIFormView<MedicalEventTyp
     public void layoutSubviews(ResourceBundle bundle) {
         super.layoutSubviews(bundle);
 
+        hospitalList = FXCollections.observableArrayList();
+        departmentList = FXCollections.observableArrayList();
+        types = FXCollections.observableArrayList();
+
         // hospitals
         new HospitalAPI().readAll((response, items) -> {
             if(response.isOK())
-                for (Hospital item : items)
+            for (Hospital item : items)
+                // if super user  - all
+                // else can enter only with the same hospitalID as
+                if (AutoSignIn.ROLE_ID == 6 || item.getHospitalID().equals(AutoSignIn.HOSPITAL_ID))
                     hospitalList.add(new ComboItem(
                             item.getName(),
                             item.getHospitalID()
                     ));
 
         });
-
-        // departments
-        new DepartmentAPI().readAll((response, items) -> {
-            if(response.isOK())
-                for (Department item : items)
-                    departmentList.add(new ComboItem(
-                            item.getDepartmentName(),
-                            item.getDepartmentID()
-                    ));
-
-        });
+        ;
 
         // event types
         new EventTypesAPI().readAll((response, items) -> {
