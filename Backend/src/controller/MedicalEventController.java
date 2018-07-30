@@ -75,7 +75,7 @@ public class MedicalEventController extends GenericController {
         require(params);
         Gson gson = new Gson();
 
-        MedicalEvent medicalEvent = gson.fromJson(params.get("medicalEvent"),MedicalEvent.class);
+        MedicalEvent medicalEvent = gson.fromJson(params,MedicalEvent.class);
 
         try(MedicalEventAccess medicalEvent_db = new MedicalEventAccess()) {
 

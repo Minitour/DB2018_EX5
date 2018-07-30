@@ -73,9 +73,9 @@ public class WorkInShiftController extends GenericController {
 
         JsonObject params = parameters(body);
         require(params);
-        Gson gson = new Gson();
 
-        WorkInShift workInShift = gson.fromJson(params.get("department"),WorkInShift.class);
+        WorkInShift workInShift = new WorkInShift(params.get("doctorID").getAsString(), params.get("shiftNumber").getAsInt());
+
 
         try(WorkInShiftAccess workInShift_db = new WorkInShiftAccess()) {
 

@@ -72,7 +72,7 @@ public class DoctorVacationsController extends GenericController {
         require(params);
         Gson gson = new Gson();
 
-        DoctorVacation doctorVacation = gson.fromJson(params.get("vacation"),DoctorVacation.class);
+        DoctorVacation doctorVacation = gson.fromJson(params,DoctorVacation.class);
 
         try(DoctorVacationAccess vacation_db = new DoctorVacationAccess()) {
 

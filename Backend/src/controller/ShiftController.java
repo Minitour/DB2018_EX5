@@ -72,7 +72,7 @@ public class ShiftController extends GenericController {
         require(params);
         Gson gson = new Gson();
 
-        Shift shift = gson.fromJson(params.get("shift"),Shift.class);
+        Shift shift = gson.fromJson(body.get("parameters"),Shift.class);
 
         try(ShiftAccess shift_db = new ShiftAccess()) {
 

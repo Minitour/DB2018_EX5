@@ -81,7 +81,7 @@ public class DepartmentController extends GenericController {
         require(params);
         Gson gson = new Gson();
 
-        Department department = gson.fromJson(params.get("department"),Department.class);
+        Department department = gson.fromJson(body.get("parameters"),Department.class);
 
         try(DepartmentAccess department_db = new DepartmentAccess()) {
 
