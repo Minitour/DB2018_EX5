@@ -19,7 +19,7 @@ public class DoctorManagerMaster extends MasterMenuController {
             new ChecksTableView(true,true,true),
             new WorkInShiftTableView(true,true,true),
             new ShiftTableView(false,false,false),
-            new DoctorsTableView(false,true,true),
+            new DoctorsTableView(false,true,false),
             new DepartmentTableView(false,false,false),
             new CardView(new AccountView())
     };
