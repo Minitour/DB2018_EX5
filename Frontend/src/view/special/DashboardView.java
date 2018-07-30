@@ -63,8 +63,6 @@ public class DashboardView extends UIView {
 
     @FXML
     private AreaChart query18;
-    @FXML
-    private AreaChart<Integer, Integer> query16;
 
     @FXML
     private PieChart query19;
@@ -296,6 +294,9 @@ public class DashboardView extends UIView {
 
             JsonArray query14result = data.get("query14_result").getAsJsonArray();
             ObservableList<PieChart.Data> query19data = FXCollections.observableArrayList();
+
+            String mostPopularCity = "";
+            int maxPeopleInCity = 0;
             for (JsonElement element : query14result) {
                 String cityName = element
                         .getAsJsonObject()
@@ -309,8 +310,11 @@ public class DashboardView extends UIView {
                         .get("number_of_patients")
                         .getAsInt();
 
+                if(maxPeopleInCity < amount){
+                    maxPeopleInCity = amount;
+                    mostPopularCity = cityName;
+                }
 
-                totalAmount += amount;
                 query19data.add(new PieChart.Data(cityName,amount));
             }
 
@@ -319,7 +323,13 @@ public class DashboardView extends UIView {
 
             // ====================================================================================
 
+            Text popluarCityLabel = new Text("Most Popular City");
+            popluarCityLabel.setStyle("-fx-font-weight: regular");
 
+            Text popularCityValue = new Text("\n" + mostPopularCity);
+            popularCityValue.setStyle("-fx-font-weight: bold; -fx-font-size: 24px");
+
+            query15.getChildren().addAll(popluarCityLabel, popularCityValue);
 
             // ===================================================================================
             JsonArray query16result = data.get("query15_result").getAsJsonArray();
@@ -331,12 +341,13 @@ public class DashboardView extends UIView {
             y16Axis.setLabel("Patients");
             x16Axis.setLabel("Month");
 
-            query16.setAnimated(false);
+            query18.setAnimated(false);
+            XYChart.Series<String,Integer> series1 = new XYChart.Series<>();
             for (JsonElement element : query16result) {
-                int month = element
+                String month = String.valueOf(element
                         .getAsJsonObject()
                         .get("month")
-                        .getAsInt();
+                        .getAsInt());
 
                 int amount = element
                         .getAsJsonObject()
@@ -344,13 +355,13 @@ public class DashboardView extends UIView {
                         .getAsInt();
 
 
-                XYChart.Series<Integer,Integer> series1 = new XYChart.Series<>();
+
                 series1.getData().add(new XYChart.Data<>(month,amount));
-                query16.getData().add(series1);
             }
 
-            query16.setLegendVisible(false);
-            query16.setTitle("Empty Beds In Departments");
+            query18.getData().add(series1);
+            query18.setLegendVisible(false);
+            query18.setTitle("Patients In Hospital Every Month");
 
 
         });
