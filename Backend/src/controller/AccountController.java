@@ -32,7 +32,32 @@ public class AccountController extends GenericController {
     @Override
     public Object read(JsonObject body, Session session) {
         //method not needed
-        return super.read(body,session);
+        JsonObject params = parameters(body);
+        String email = params.get("EMAIL").getAsString();
+
+        try(AccountAccess account_db = new AccountAccess()){
+
+            validateSession(session,account_db,false);
+
+            if(!hasPermission("io.hospital.account.read",session))
+                return JSONResponse.FAILURE().message("Access Denied");
+
+            List<Account> accounts = account_db.getById(null,email,0);
+            if(accounts.size() != 1)
+                return JSONResponse.FAILURE().message("Account not found.");
+
+            Account account = accounts.get(0);
+            account.setUSER_PASSWORD(null);
+
+            return JSONResponse
+                    .SUCCESS()
+                    .data(account);
+
+        }catch (Exception e){
+            return JSONResponse
+                    .FAILURE()
+                    .message(e.getMessage());
+        }
     }
 
     /**
