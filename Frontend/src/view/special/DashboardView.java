@@ -61,6 +61,15 @@ public class DashboardView extends UIView {
     @FXML
     private TextFlow query15;
 
+    @FXML
+    private AreaChart<Integer, Integer> query16;
+
+    @FXML
+    NumberAxis x16Axis;
+
+    @FXML
+    CategoryAxis y16Axis;
+
 
     UITableView<Person> personTableView;
 
@@ -277,6 +286,40 @@ public class DashboardView extends UIView {
             text2.setStyle("-fx-font-weight: bold; -fx-font-size: 24px");
 
             query13.getChildren().addAll(text1, text2);
+
+
+
+            // ===================================================================================
+            JsonArray query16result = data.get("query15_result").getAsJsonArray();
+
+
+            final CategoryAxis x16Axis = new CategoryAxis();
+            final NumberAxis y16Axis = new NumberAxis();
+
+            y16Axis.setLabel("Patients");
+            x16Axis.setLabel("Month");
+
+            query16.setAnimated(false);
+            for (JsonElement element : query16result) {
+                int month = element
+                        .getAsJsonObject()
+                        .get("month")
+                        .getAsInt();
+
+                int amount = element
+                        .getAsJsonObject()
+                        .get("patients")
+                        .getAsInt();
+
+
+                XYChart.Series<Integer,Integer> series1 = new XYChart.Series<>();
+                series1.getData().add(new XYChart.Data<>(month,amount));
+                query16.getData().add(series1);
+            }
+
+            query16.setLegendVisible(false);
+            query16.setTitle("Empty Beds In Departments");
+
 
         });
 

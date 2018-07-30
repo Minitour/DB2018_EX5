@@ -4,6 +4,7 @@ import database.DBObject;
 import database.Database;
 import database.access.DataAccess;
 import model.Hospitalized;
+import model.PatientsInMonth;
 import model.Person;
 import model.join.*;
 
@@ -128,6 +129,10 @@ public class QueriesAccess extends DataAccess<DBObject> {
      */
     public List<DashboardHospitalJoinHospitalized> query14(int hospitalID){
         return get(DashboardHospitalJoinHospitalized.class,"QUERY_14", hospitalID);
+    }
+
+    public List<PatientsInMonth> query15(int hospitalID){
+        return get(PatientsInMonth.class,"QUERY_15", hospitalID);
     }
 
 
