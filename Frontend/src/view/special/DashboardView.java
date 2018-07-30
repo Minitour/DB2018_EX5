@@ -20,6 +20,7 @@ import ui.UIView;
 import utils.Response;
 import view.generic.UIFormView;
 
+import java.sql.Date;
 import java.util.*;
 
 /**
@@ -38,7 +39,7 @@ public class DashboardView extends UIView {
     private PieChart query2;
 
     @FXML
-    private PieChart query3;
+    private PieChart query8;
 
     @FXML
     private Label unknown1;
@@ -187,6 +188,60 @@ public class DashboardView extends UIView {
                 }
             };
             query5_vbox.getChildren().addAll(personTableView);
+
+            // =====================================================
+
+            JsonArray query8result = data.get("query8_result").getAsJsonArray();
+            ObservableList<PieChart.Data> query8data = FXCollections.observableArrayList();
+
+            String[] stringTypes = new String[]{"A", "B", "AB", "O"};
+
+            int typeA = 0;
+            int typeB = 0;
+            int typeAB = 0;
+            int typeO = 0;
+
+            for (JsonElement element : query8result) {
+                switch (element.getAsJsonObject().get("bloodType").getAsString()){
+
+                    case "A":
+                        typeA++;
+                    case "B":
+                        typeB++;
+                    case "AB":
+                        typeAB++;
+                    case "O":
+                        typeO++;
+                    default:
+                        break;
+                }
+
+            }
+
+            for (String type : stringTypes) {
+                switch (type) {
+                    case "A":
+                        query8data.add(new PieChart.Data(type,typeA));
+                        break;
+                    case "B":
+                        query8data.add(new PieChart.Data(type,typeB));
+                        break;
+                    case "AB":
+                        query8data.add(new PieChart.Data(type,typeAB));
+                        break;
+                    case "O":
+                        query8data.add(new PieChart.Data(type,typeO));
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            query8.setData(query8data);
+            query8.setLegendSide(Side.RIGHT);
+            query8.setTitle("Potential Donors");
         });
+
+
     }
 }

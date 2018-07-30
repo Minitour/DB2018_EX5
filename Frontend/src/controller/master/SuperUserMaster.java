@@ -5,6 +5,7 @@ import view.CardView;
 import view.forms.DepartmentForm;
 import view.forms.HospitalForm;
 import view.special.AccountView;
+import view.special.DashboardView;
 import view.tables.AccountTableView;
 import view.tables.HospitalTableView;
 import view.tables.MedicalEventTableView;
