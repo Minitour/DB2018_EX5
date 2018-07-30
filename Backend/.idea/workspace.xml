@@ -191,7 +191,6 @@
         <option value="$PROJECT_DIR$/src/controller/HospitalController.java" />
         <option value="$PROJECT_DIR$/src/database/data_access/RoomAccess.java" />
         <option value="$PROJECT_DIR$/src/controller/HospitalizedController.java" />
-        <option value="$PROJECT_DIR$/src/controller/AccountController.java" />
         <option value="$PROJECT_DIR$/src/model/dashboard/Query_2.java" />
         <option value="$PROJECT_DIR$/src/model/dashboard/Query_3.java" />
         <option value="$PROJECT_DIR$/src/model/dashboard/Query_4.java" />
@@ -554,7 +553,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -597,7 +595,7 @@
           <option name="timeStamp" value="118" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="123" />
+      <option name="time" value="134" />
     </breakpoint-manager>
     <watches-manager />
   </component>

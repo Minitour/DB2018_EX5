@@ -31,7 +31,7 @@
 
             <JFXPasswordField fx:id="password" promptText="Password" />
 
-            <JFXPasswordField fx:id="newPassword" promptText="Password" />
+            <JFXPasswordField fx:id="newPassword" promptText="New Password" />
 
             <JFXButton fx:id="update" styleClass="button-raised">Update</JFXButton>
 

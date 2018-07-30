@@ -1,11 +1,20 @@
+import com.google.gson.annotations.Expose;
 import controller.*;
+import database.data_access.PatientAccess;
+import database.data_access.PersonAccess;
 import database.data_access.QueriesAccess;
 import database.data_access.SessionAccess;
+import model.Person;
 import model.join.HospitalJoinPerson;
+import utils.CSVExporter;
 import utils.Permissions;
 import utils.RESTApplication;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.List;
 
 /**
  * Created by Antonio Zaitoun on 13/07/2018.
@@ -17,6 +26,7 @@ public class App extends RESTApplication {
         Permissions.init();
         //BasicConfigurator.configure();
         launch(8080);
+
     }
 
     @Override

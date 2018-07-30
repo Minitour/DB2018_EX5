@@ -25,7 +25,8 @@
         "io.hospital.department.read_all",
         "io.hospital.room.read",
         "io.hospital.room.read_all",
-        "io.hospital.account.upsert"
+        "io.hospital.account.upsert",
+        "io.hospital.account.read"
       ],
       "extends" : [ 1 ]
     },
