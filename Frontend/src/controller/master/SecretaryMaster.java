@@ -21,7 +21,7 @@ public class SecretaryMaster extends MasterMenuController implements UIFormView.
     UIView[] views = {
             new PatientsTableView(true,true,true),
             new RoomsTableView(false,false,false),
-            new HospitalizationTableView(false,false,false),
+            new HospitalizationTableView(false,true,true),
             new CardView(new AccountForm(null,this,false)),
             new CardView(new AccountView())
     };

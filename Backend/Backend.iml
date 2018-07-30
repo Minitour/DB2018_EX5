@@ -10,9 +10,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="com.google.code.gson:gson:2.8.2" level="project" />
-    <orderEntry type="library" name="com.sparkjava:spark-core:2.7.1" level="project" />
-    <orderEntry type="library" name="com.microsoft.sqlserver:mssql-jdbc:6.4.0.jre8" level="project" />
-    <orderEntry type="library" name="org.mindrot:jbcrypt:0.4" level="project" />
     <orderEntry type="module-library">
       <library name="JUnit4">
         <CLASSES>
@@ -35,6 +32,9 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="com.sparkjava:spark-core:2.7.1" level="project" />
+    <orderEntry type="library" name="org.mindrot:jbcrypt:0.4" level="project" />
+    <orderEntry type="library" name="com.microsoft.sqlserver:mssql-jdbc:6.4.0.jre8" level="project" />
     <orderEntry type="library" name="log4j:log4j:1.2.17" level="project" />
   </component>
 </module>
