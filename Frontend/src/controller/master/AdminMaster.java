@@ -14,7 +14,7 @@ public class AdminMaster extends MasterMenuController {
 
     UIView[] views = {
             new DashboardView(),
-            new PatientsTableView(true,true,true),
+            new PatientsTableView(true,true,false),
             new RoomsTableView(true,true,true),
             new HospitalizationTableView(false,false,false),
             new ChecksTableView(true,true,true),
