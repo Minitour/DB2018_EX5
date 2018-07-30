@@ -32,7 +32,7 @@ public class ShiftForm extends UIFormView<Shift> {
      */
     @Override
     protected String[] comboBoxForFields() {
-        return new String[]{"shiftType"};
+        return new String[]{"shiftType","dayInWeek"};
     }
 
     /**

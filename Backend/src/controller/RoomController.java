@@ -83,7 +83,7 @@ public class RoomController extends GenericController {
         require(params);
         Gson gson = new Gson();
 
-        Room room = gson.fromJson(params.get("room"),Room.class);
+        Room room = gson.fromJson(params,Room.class);
 
         try(RoomAccess room_db = new RoomAccess()) {
 

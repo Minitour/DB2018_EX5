@@ -29,6 +29,7 @@ public class DepartmentTableView extends GenericTableView<Department> {
     protected void onDelete(int index) {
         Department department = departments.remove(index);
         api.delete(department,response -> reloadDataFromServer());
+
     }
 
     @Override

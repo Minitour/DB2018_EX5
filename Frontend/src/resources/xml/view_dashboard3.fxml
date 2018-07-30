@@ -12,6 +12,8 @@
 <?import javafx.scene.text.Font?>
 
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.AreaChart?>
 <fx:root stylesheets="@../../ui/res/css/styles.css" type="javafx.scene.layout.StackPane" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
 
     <AnchorPane>
@@ -38,25 +40,59 @@
             </VBox>
 
             <VBox maxWidth="408" spacing="10">
-                <Label fx:id="unknown1" minHeight="90" minWidth="408" styleClass="container" alignment="CENTER" textAlignment="CENTER" wrapText="true"> Number Of Patients In Hospital
-                    <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Label>
+                <HBox spacing="10" VBox.vgrow="ALWAYS">
+                    <Label fx:id="query14" minHeight="90" minWidth="204" styleClass="container" alignment="CENTER" textAlignment="CENTER" wrapText="true"> Number Of Patients In Hospital
+                        <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="query15" minHeight="90" minWidth="204" styleClass="container" alignment="CENTER" textAlignment="CENTER" wrapText="true"> Number Of Doctors
+                        <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                </HBox>
                 <VBox fx:id="query5_vbox" maxHeight="200" minHeight="200">
 
                 </VBox>
                 <StackedBarChart fx:id="query9" maxHeight="200" styleClass="container">
                     <xAxis>
-                        <CategoryAxis side="BOTTOM" />
+                        <CategoryAxis fx:id="yAxis"   />
                     </xAxis>
                     <yAxis>
-                        <NumberAxis side="LEFT" />
+                        <NumberAxis fx:id="xAxis" />
                     </yAxis>
                 </StackedBarChart>
+            </VBox>
 
+            <VBox maxWidth="408" spacing="10">
+                <HBox spacing="10" VBox.vgrow="ALWAYS">
+                    <Label fx:id="query16" minHeight="90" minWidth="204" styleClass="container" alignment="CENTER" textAlignment="CENTER" wrapText="true"> Number Of Patients In Hospital
+                        <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="query17" minHeight="90" minWidth="204" styleClass="container" alignment="CENTER" textAlignment="CENTER" wrapText="true"> Number Of Doctors
+                        <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                </HBox>
 
+                <AreaChart fx:id="query18" maxHeight="200" styleClass="container">
+                    <xAxis>
+                        <CategoryAxis fx:id="query18yAxis"   />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis fx:id="query18xAxis" />
+                    </yAxis>
+                </AreaChart>
+
+                <PieChart fx:id="query19" maxHeight="200" styleClass="container" />
             </VBox>
 
             <padding>

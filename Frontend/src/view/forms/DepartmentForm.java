@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import model.Department;
 import model.Hospital;
 import network.api.HospitalAPI;
+import utils.AutoSignIn;
 import view.generic.UIFormView;
 
 import java.util.Arrays;
@@ -17,7 +18,7 @@ import java.util.ResourceBundle;
  */
 public class DepartmentForm extends UIFormView<Department> {
 
-    private ObservableList<ComboItem> hospitalList = FXCollections.observableArrayList();
+    private ObservableList<ComboItem> hospitalList;
 
     public DepartmentForm(Department existingValue, OnFinish<Department> callback) {
         super(Department.class, existingValue, callback);
@@ -78,13 +79,18 @@ public class DepartmentForm extends UIFormView<Department> {
     public void layoutSubviews(ResourceBundle bundle) {
         super.layoutSubviews(bundle);
 
+        hospitalList = FXCollections.observableArrayList();
+
         new HospitalAPI().readAll((response, items) -> {
             if(response.isOK())
                 for (Hospital item : items)
-                    hospitalList.add(new ComboItem(
-                            item.getName(),
-                            item.getHospitalID()
-                    ));
+                    // if super user  - all
+                    // else can enter only with the same hospitalID as
+                    if (AutoSignIn.ROLE_ID == 6 || item.getHospitalID().equals(AutoSignIn.HOSPITAL_ID))
+                        hospitalList.add(new ComboItem(
+                                item.getName(),
+                                item.getHospitalID()
+                        ));
 
         });
     }
