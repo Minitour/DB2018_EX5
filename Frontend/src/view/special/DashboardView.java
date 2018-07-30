@@ -221,16 +221,16 @@ public class DashboardView extends UIView {
             for (String type : stringTypes) {
                 switch (type) {
                     case "A":
-                        query8data.add(new PieChart.Data(type,typeA));
+                        query8data.add(new PieChart.Data(type + " (" + typeA + ")",typeA));
                         break;
                     case "B":
-                        query8data.add(new PieChart.Data(type,typeB));
+                        query8data.add(new PieChart.Data(type + " (" + typeB + ")",typeB));
                         break;
                     case "AB":
-                        query8data.add(new PieChart.Data(type,typeAB));
+                        query8data.add(new PieChart.Data(type + " (" + typeAB + ")",typeAB));
                         break;
                     case "O":
-                        query8data.add(new PieChart.Data(type,typeO));
+                        query8data.add(new PieChart.Data(type + " (" + typeO + ")",typeO));
                         break;
                     default:
                         break;
@@ -238,9 +238,17 @@ public class DashboardView extends UIView {
             }
 
             query8.setData(query8data);
-            query8.setLegendSide(Side.RIGHT);
+            query8.setLegendVisible(false);
             query8.setTitle("Potential Donors");
+
+            // ====================================================================================
+
+            JsonArray query13result = data.get("query13_result").getAsJsonArray();
+            query13.setText("# Of Patients \n" + query13result.get(0).getAsJsonObject().get("number_of_patients").getAsInt());
+
         });
+
+
 
 
     }
