@@ -101,6 +101,12 @@
           "read_all",
           "delete",
           "upsert"
+        ],
+        "payment" : [
+          "read",
+          "read_all",
+          "delete",
+          "upsert"
         ]
       }
     }

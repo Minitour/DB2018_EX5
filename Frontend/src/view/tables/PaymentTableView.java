@@ -72,9 +72,11 @@ public class PaymentTableView extends GenericTableView<Payment> {
 
     private void reloadDataFromServer(){
         api.readAll((response, items) -> {
-            payments.clear();
-            payments.addAll(items);
-            reloadData();
+            if(response.isOK()) {
+                payments.clear();
+                payments.addAll(items);
+                reloadData();
+            }
         });
     }
 }

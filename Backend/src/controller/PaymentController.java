@@ -2,11 +2,7 @@ package controller;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import database.data_access.MedicalEventAccess;
-import database.data_access.MedicalEventTypesAccess;
 import database.data_access.PaymentAccess;
-import model.MedicalEvent;
-import model.MedicalEventTypes;
 import model.Payment;
 import model.Session;
 import utils.GenericController;
@@ -15,25 +11,25 @@ import utils.JSONResponse;
 import java.util.List;
 
 /**
- * Created by Antonio Zaitoun on 30/07/2018.
+ * Created By Tony on 31/07/2018
  */
-public class MedicalEventTypesController extends GenericController {
+public class PaymentController extends GenericController {
 
     @Override
     public Object read(JsonObject body, Session session) {
         JsonObject params = parameters(body);
         require(params);
 
-        int id = params.get("typeCode").getAsInt();
+        int id = params.get("serialNumber").getAsInt();
 
-        try(MedicalEventTypesAccess access = new MedicalEventTypesAccess()) {
+        try(PaymentAccess payment_db = new PaymentAccess()) {
 
-            validateSession(session, access, false);
+            validateSession(session, payment_db, false);
 
-            if (!hasPermission("io.hospital.event_type.read", session))
+            if (!hasPermission("io.hospital.payment.read", session))
                 return JSONResponse.FAILURE().message("Access Denied.");
 
-            List<MedicalEventTypes> payments = access.getById(id);
+            List<Payment> payments = payment_db.getById(id);
             if (payments.size() != 1)
                 return JSONResponse.FAILURE().message("Not found.");
 
@@ -50,17 +46,16 @@ public class MedicalEventTypesController extends GenericController {
 
     @Override
     public Object readAll(JsonObject body, Session session) {
-        try(MedicalEventTypesAccess medicalEventAccess = new MedicalEventTypesAccess()) {
+        try(PaymentAccess access = new PaymentAccess()) {
 
-            validateSession(session, medicalEventAccess, false);
+            validateSession(session, access, false);
 
-            if (!hasPermission("io.hospital.event_type.read_all", session)) {
+            if (!hasPermission("io.hospital.payment.read_all", session))
                 return JSONResponse.FAILURE().message("Access Denied.");
-            }
 
-            List<MedicalEventTypes> medicals = medicalEventAccess.getAll();
-            JSONResponse<List<MedicalEventTypes>> jsonResponse = JSONResponse.SUCCESS();
-            jsonResponse.data(medicals);
+            List<Payment> payments = access.getAll();
+            JSONResponse<List<Payment>> jsonResponse = JSONResponse.SUCCESS();
+            jsonResponse.data(payments);
 
             return jsonResponse;
 
@@ -76,16 +71,16 @@ public class MedicalEventTypesController extends GenericController {
         JsonObject params = parameters(body);
         require(params);
 
-        int serialNumber = params.get("typeCode").getAsInt();
+        int serialNumber = params.get("serialNumber").getAsInt();
 
-        try(MedicalEventTypesAccess access = new MedicalEventTypesAccess()) {
+        try(PaymentAccess paymentAccess = new PaymentAccess()) {
 
-            validateSession(session, access, false);
+            validateSession(session, paymentAccess, false);
 
-            if (!hasPermission("io.hospital.event_type.delete", session))
+            if (!hasPermission("io.hospital.payment.delete", session))
                 return JSONResponse.FAILURE().message("Access Denied.");
 
-            access.delete(serialNumber);
+            paymentAccess.delete(serialNumber);
 
             return JSONResponse.SUCCESS();
 
@@ -102,20 +97,20 @@ public class MedicalEventTypesController extends GenericController {
         require(params);
         Gson gson = new Gson();
 
-        MedicalEventTypes eventType = gson.fromJson(params,MedicalEventTypes.class);
+        Payment payment = gson.fromJson(params,Payment.class);
 
-        try(MedicalEventTypesAccess access= new MedicalEventTypesAccess()) {
+        try(PaymentAccess paymentAccess= new PaymentAccess()) {
 
             //validate session
-            validateSession(session,access,false);
+            validateSession(session,paymentAccess,false);
 
             //check permissions
-            boolean isOk = hasPermission("io.hospital.event_type.upsert",session);
+            boolean isOk = hasPermission("io.hospital.payment.upsert",session);
 
             if(!isOk)
                 return JSONResponse.FAILURE().message("Access Denied");
 
-            access.upsert(eventType);
+            paymentAccess.upsert(payment);
 
             return JSONResponse.SUCCESS();
 
