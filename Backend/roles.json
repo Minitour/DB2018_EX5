@@ -82,7 +82,8 @@
       "permissions": [
         "io.hospital.account.*",
         "io.hospital.hospital.*",
-        "io.hospital.administrator.*"
+        "io.hospital.administrator.*",
+        "io.hospital.event.read_all"
       ],
       "extends" : [ 1 ]
     }
