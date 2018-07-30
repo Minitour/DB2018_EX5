@@ -37,10 +37,10 @@ public class ProfileView extends UIView {
         ProfileAPI api = new ProfileAPI();
         api.setRunOnUi(true);
 
-        api.readAll((response, items) -> {
+        api.read(new Person(),(response, items) -> {
             if(response.isOK()) {
-                items.removeIf(person -> !AutoSignIn.ID.equals(person.getACCOUNT_ID()));
-                Person p = items.get(0);
+                //items.removeIf(person -> !AutoSignIn.ID.equals(person.getACCOUNT_ID()));
+                Person p = items;//.get(0);
 
                 id.setText(p.getID());
                 firstName.setText(p.getFirstName());

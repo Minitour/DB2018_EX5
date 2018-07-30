@@ -67,7 +67,7 @@ public class ProfileController extends GenericController {
                     return JSONResponse.FAILURE().message("Access Denied.");
                 }else {
                     List<Person> personList = personAccess.getAll();
-                    personList.removeIf(person -> !session.ACCOUNT_ID.equals(person.getACCOUNT_ID()));
+                    personList.removeIf(person -> session.ACCOUNT_ID.equals(person.getACCOUNT_ID()));
                     JSONResponse<List<Person>> jsonResponse = JSONResponse.SUCCESS();
                     jsonResponse.data(personList);
                     return jsonResponse;
