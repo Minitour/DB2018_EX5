@@ -1,10 +1,13 @@
 package view.forms;
 
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import model.*;
 import network.api.*;
 import network.generic.GenericAPI;
@@ -37,6 +40,12 @@ public class HospitalizedForm extends UIFormView<Hospitalized> {
         return new JFXTextField();
     }
 
+    @Override
+    protected DatePicker datePickerFactory() {
+        JFXDatePicker picker = new JFXDatePicker();
+        picker.setDefaultColor(Color.web("#2ecc71"));
+        return picker;
+    }
 
     /**
      * This method is called once and is used to declare which fields are of type combo box.
