@@ -90,8 +90,8 @@ public class QueriesAccess extends DataAccess<DBObject> {
      * thie query returns the status of the department: high, medium, low (busy status)..
      * @return
      */
-    public List<HospitalJoinDepartment> query9(){
-        return get(HospitalJoinDepartment.class,"QUERY_9");
+    public List<HospitalJoinDepartment> query9(Integer hospitalId){
+        return get(HospitalJoinDepartment.class,"QUERY_9",hospitalId);
     }
 
     /**

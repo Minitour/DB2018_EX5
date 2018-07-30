@@ -20,6 +20,7 @@ public class AdminMaster extends MasterMenuController {
             new ChecksTableView(true,true,true),
             new ShiftTableView(true,true,true),
             new MedicalEventTypeInDepTableView(true,true,true),
+            new DepartmentTableView(true,true,true),
             new CardView(new AccountView())
     };
 
@@ -42,6 +43,7 @@ public class AdminMaster extends MasterMenuController {
                 "Checks",
                 "Shifts",
                 "Medical Events In Department",
+                "Departments",
                 "Account"
         };
     }

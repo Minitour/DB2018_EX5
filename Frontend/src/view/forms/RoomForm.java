@@ -3,12 +3,15 @@ package view.forms;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import model.Department;
 import model.Hospital;
 import model.Room;
 import network.api.DepartmentAPI;
 import network.api.HospitalAPI;
+import network.api.RoomAPI;
+import utils.AutoSignIn;
 import view.generic.UIFormView;
 
 import java.util.ResourceBundle;
@@ -18,8 +21,8 @@ import java.util.ResourceBundle;
  */
 public class RoomForm extends UIFormView<Room> {
 
-    private ObservableList<ComboItem> hospitalList = FXCollections.observableArrayList();
-    private ObservableList<ComboItem> departmentList = FXCollections.observableArrayList();
+    private ObservableList<ComboItem> hospitalList;
+    private ObservableList<ComboItem> departmentList;
 
     public RoomForm(Room existingValue, OnFinish<Room> callback) {
         super(Room.class, existingValue, callback);
@@ -66,6 +69,27 @@ public class RoomForm extends UIFormView<Room> {
         return null;
     }
 
+    @Override
+    protected void didComboSelectionChanged(String nameField, ComboItem value) {
+        switch (nameField){
+            case "hospitalID":
+                if(value != null) {
+                    int hospitalId = (int) value.value;
+                    ComboBox comboBox = (ComboBox) elements_vbox.lookup("#departmentID");
+                    comboBox.getSelectionModel().clearSelection();
+                    this.departmentList.clear();
+                    new DepartmentAPI().readAll(new Department(hospitalId),(response, items) -> {
+                        if(response.isOK())
+                            for (Department item : items)
+                                departmentList.add(new ComboItem(
+                                        item.getDepartmentName(),
+                                        item.getDepartmentID()
+                                ));
+
+                    });
+                }
+        }
+    }
 
     /**
      * This method is used to lock certain fields when viewing an existing object.
@@ -83,26 +107,31 @@ public class RoomForm extends UIFormView<Room> {
     public void layoutSubviews(ResourceBundle bundle) {
         super.layoutSubviews(bundle);
 
-        // hospitals
+        hospitalList = FXCollections.observableArrayList();
+        departmentList = FXCollections.observableArrayList();
+
         new HospitalAPI().readAll((response, items) -> {
             if(response.isOK())
                 for (Hospital item : items)
-                    hospitalList.add(new ComboItem(
-                            item.getName(),
-                            item.getHospitalID()
-                    ));
+                    // if super user  - all
+                    // else can enter only with the same hospitalID as
+                    if (AutoSignIn.ROLE_ID == 6 || item.getHospitalID().equals(AutoSignIn.HOSPITAL_ID))
+                        hospitalList.add(new ComboItem(
+                                item.getName(),
+                                item.getHospitalID()
+                        ));
 
         });
 
-        // departments
-        new DepartmentAPI().readAll((response, items) -> {
-            if(response.isOK())
-                for (Department item : items)
-                    departmentList.add(new ComboItem(
-                            item.getDepartmentName(),
-                            item.getDepartmentID()
-                    ));
-
-        });
+//        // departments
+//        new DepartmentAPI().readAll(new Department(AutoSignIn.HOSPITAL_ID),(response, items) -> {
+//            if(response.isOK())
+//                for (Department item : items)
+//                    departmentList.add(new ComboItem(
+//                            item.getDepartmentName(),
+//                            item.getDepartmentID()
+//                    ));
+//
+//        });
     }
 }
