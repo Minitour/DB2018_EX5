@@ -93,7 +93,7 @@ public class ProfileController extends GenericController {
         require(params);
         Gson gson = new Gson();
 
-        Person person = gson.fromJson(params.get("person"),Person.class);
+        Person person = gson.fromJson(params,Person.class);
 
         try(PersonAccess person_db = new PersonAccess()) {
 

@@ -52,6 +52,7 @@ public class DashboardController implements RESTRoute {
                     // assign the relevant components (queries) to the super user dashboard
                     dashboard.setQuery3_result(query_db.query3());
                     dashboard.setQuery4_result(query_db.query4());
+                    dashboard.setQuery6_result(query_db.query6(session.getHospitalId()));
                     dashboard.setQuery7A_result(query_db.query7A());
                     dashboard.setQuery7B_result(query_db.query7B());
                     dashboard.setQuery13A_result(query_db.query13A());

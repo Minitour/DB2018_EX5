@@ -15,10 +15,15 @@
       "permissions": [
         "io.hospital.profile.upsert",
         "io.hospital.patient.*",
+        "io.hospital.event.read",
+        "io.hospital.event.read_all",
         "io.hospital.hospitalized.read",
         "io.hospital.hospitalized.read_all",
         "io.hospital.hospitalized.upsert",
         "io.hospital.hospitalized.delete",
+        "io.hospital.department.read",
+        "io.hospital.department.read_all",
+        "io.hospital.room.read",
         "io.hospital.room.read_all",
         "io.hospital.account.upsert"
       ],
@@ -28,6 +33,8 @@
       "groupId": 3,
       "groupName": "doctor",
       "permissions": [
+        "io.hospital.doctor.read",
+        "io.hospital.doctor.read_all",
         "io.hospital.work.read",
         "io.hospital.work.read_all",
         "io.hospital.profile.upsert",
@@ -75,7 +82,8 @@
         "io.hospital.check.read_all",
         "io.hospital.doctor.*",
         "io.hospital.department.*",
-        "io.hospital.shift.*",
+        "io.hospital.shift.read",
+        "io.hospital.shift.read_all",
         "io.hospital.event_in_dep.read_all",
         "io.hospital.event.read_all",
         "io.hospital.dashboard.*"
@@ -89,6 +97,7 @@
         "io.hospital.event_type.*",
         "io.hospital.account.*",
         "io.hospital.hospital.*",
+        "io.hospital.shift.*",
         "io.hospital.administrator.*",
         "io.hospital.event.read_all",
         "io.hospital.dashboard.*"

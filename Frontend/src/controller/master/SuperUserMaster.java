@@ -6,6 +6,7 @@ import view.forms.DepartmentForm;
 import view.forms.HospitalForm;
 import view.special.AccountView;
 import view.special.DashboardView;
+import view.special.SuperDashboardView;
 import view.tables.AccountTableView;
 import view.tables.HospitalTableView;
 import view.tables.MedicalEventTableView;
@@ -17,8 +18,9 @@ import view.tables.ShiftTableView;
 public class SuperUserMaster extends MasterMenuController {
 
     UIView[] views = {
+            new SuperDashboardView(),
             new HospitalTableView(true,true,true),
-            new AccountTableView(true,true,true),
+            new AccountTableView(false,false,false),
             new MedicalEventTableView(true,true,true),
             new ShiftTableView(true,true,true),
             new CardView(new AccountView())
@@ -36,6 +38,7 @@ public class SuperUserMaster extends MasterMenuController {
     @Override
     public String[] itemsForMenu() {
         return new String[]{
+                "Dashboard",
                 "Hospitals", //create hospitals
                 "Users", // create admins
                 "Medical Events",

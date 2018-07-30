@@ -13,7 +13,7 @@ import view.tables.*;
 public class DoctorManagerMaster extends MasterMenuController {
 
     UIView[] views = {
-            new PatientsTableView(true,true,false),
+            new PatientsTableView(false,true,false),
             new RoomsTableView(false,false,false),
             new HospitalizationTableView(true,true,true),
             new ChecksTableView(true,true,true),
