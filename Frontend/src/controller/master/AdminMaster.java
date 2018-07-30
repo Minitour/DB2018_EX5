@@ -18,7 +18,6 @@ public class AdminMaster extends MasterMenuController {
             new RoomsTableView(true,true,true),
             new HospitalizationTableView(false,false,false),
             new ChecksTableView(true,true,true),
-            new ShiftTableView(true,true,true),
             new MedicalEventTypeInDepTableView(true,true,true),
             new DepartmentTableView(true,true,true),
             new CardView(new AccountView())
@@ -41,8 +40,7 @@ public class AdminMaster extends MasterMenuController {
                 "Rooms",
                 "Hospitalizations",
                 "Checks",
-                "Shifts",
-                "Medical Events In Department",
+                "Events In Department",
                 "Departments",
                 "Account"
         };

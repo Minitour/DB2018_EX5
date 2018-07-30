@@ -25,6 +25,7 @@ public class App extends RESTApplication {
         post("/doctor",new DoctorsController());
         post("/event",new MedicalEventController());
         post("/eventInDep",new MedicalEventInDepartmentController());
+        post("/eventTypes",new MedicalEventTypesController());
         post("/hospital",new HospitalController());
         post("/hospitalized",new HospitalizedController());
         post("/login",new LoginController());

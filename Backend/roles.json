@@ -65,6 +65,7 @@
       "groupId": 5,
       "groupName": "admin",
       "permissions": [
+        "io.hospital.event_type.read_all",
         "io.hospital.patient.read",
         "io.hospital.patient.read_all",
         "io.hospital.hospitalized.read",
@@ -85,6 +86,7 @@
       "groupId": 6,
       "groupName": "superuser",
       "permissions": [
+        "io.hospital.event_type.*",
         "io.hospital.account.*",
         "io.hospital.hospital.*",
         "io.hospital.administrator.*",
