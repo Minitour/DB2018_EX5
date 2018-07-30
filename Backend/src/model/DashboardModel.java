@@ -49,6 +49,9 @@ public class DashboardModel {
     @Expose
     private List<DashboardHospitalJoinHospitalized> query14_result;
 
+    @Expose
+    private List<PatientsInMonth> query15_result;
+
 
     public DashboardModel() {
     }
@@ -103,5 +106,9 @@ public class DashboardModel {
 
     public void setQuery14_result(List<DashboardHospitalJoinHospitalized> query14_result) {
         this.query14_result = query14_result;
+    }
+
+    public void setQuery15_result(List<PatientsInMonth> query15_result) {
+        this.query15_result = query15_result;
     }
 }

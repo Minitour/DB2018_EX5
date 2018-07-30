@@ -42,6 +42,7 @@ public class DashboardController implements RESTRoute {
                     dashboard.setQuery11_result(query_db.query11(personAccess.getById(session.ACCOUNT_ID,null).get(0).getID()));
                     dashboard.setQuery13_result(query_db.query13(session.getHospitalId()));
                     dashboard.setQuery14_result(query_db.query14(session.getHospitalId()));
+                    dashboard.setQuery15_result(query_db.query15(session.getHospitalId()));
 
                     break;
 
