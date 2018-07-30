@@ -62,7 +62,12 @@ public class DashboardView extends UIView {
     private TextFlow query15;
 
     @FXML
+    private AreaChart query18;
+    @FXML
     private AreaChart<Integer, Integer> query16;
+
+    @FXML
+    private PieChart query19;
 
     @FXML
     NumberAxis x16Axis;
@@ -286,6 +291,33 @@ public class DashboardView extends UIView {
             text2.setStyle("-fx-font-weight: bold; -fx-font-size: 24px");
 
             query13.getChildren().addAll(text1, text2);
+
+            // ====================================================================================
+
+            JsonArray query14result = data.get("query14_result").getAsJsonArray();
+            ObservableList<PieChart.Data> query19data = FXCollections.observableArrayList();
+            for (JsonElement element : query14result) {
+                String cityName = element
+                        .getAsJsonObject()
+                        .get("object_a")
+                        .getAsJsonObject()
+                        .get("city")
+                        .getAsString();
+
+                int amount = element
+                        .getAsJsonObject()
+                        .get("number_of_patients")
+                        .getAsInt();
+
+
+                totalAmount += amount;
+                query19data.add(new PieChart.Data(cityName,amount));
+            }
+
+            query19.setTitle("City Distribution");
+            query19.setData(query19data);
+
+            // ====================================================================================
 
 
 
