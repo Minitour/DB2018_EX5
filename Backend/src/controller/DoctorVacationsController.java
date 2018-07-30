@@ -102,7 +102,9 @@ public class DoctorVacationsController extends GenericController {
         JsonObject params = parameters(body);
         require(params);
 
-        String id = params.get("doctorID").getAsString();
+        Gson gson = new Gson();
+
+        DoctorVacation doctorVacation = gson.fromJson(params,DoctorVacation.class);
 
         try(DoctorVacationAccess access = new DoctorVacationAccess()){
 
@@ -113,7 +115,7 @@ public class DoctorVacationsController extends GenericController {
             if(!hasPermission("io.hospital.vacation.delete",session))
                 return JSONResponse.FAILURE().message("Access Denied.");
 
-            access.delete(id);
+            access.delete(doctorVacation.getDoctorID(),doctorVacation.getVacationDate());
 
             return JSONResponse.SUCCESS();
 

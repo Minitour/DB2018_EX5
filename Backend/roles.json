@@ -87,7 +87,8 @@
         "io.hospital.shift.read_all",
         "io.hospital.event_in_dep.read_all",
         "io.hospital.event.read_all",
-        "io.hospital.dashboard.*"
+        "io.hospital.dashboard.*",
+        "io.hospital.vacation.*"
       ],
       "extends" : [ 1 ]
     },
@@ -100,8 +101,9 @@
         "io.hospital.hospital.*",
         "io.hospital.shift.*",
         "io.hospital.administrator.*",
-        "io.hospital.event.read_all",
-        "io.hospital.dashboard.*"
+        "io.hospital.event.*",
+        "io.hospital.dashboard.*",
+        "io.hospital.payment.*"
       ],
       "extends" : [ 1 ]
     }

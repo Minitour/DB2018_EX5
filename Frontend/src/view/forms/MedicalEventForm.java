@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
  */
 public class MedicalEventForm extends UIFormView<MedicalEvent> {
 
-    private ObservableList<ComboItem> types = FXCollections.observableArrayList();
+    private ObservableList<ComboItem> types;
 
     public MedicalEventForm(MedicalEvent existingValue, OnFinish<MedicalEvent> callback) {
         super(MedicalEvent.class, existingValue, callback);
@@ -74,8 +74,25 @@ public class MedicalEventForm extends UIFormView<MedicalEvent> {
     }
 
     @Override
+    public String[] defaultValueFields() {
+        return new String[]{"eventCode"};
+    }
+
+    @Override
+    protected Object defaultValueForField(String fieldName) {
+        switch (fieldName){
+            case "eventCode":
+                return 0;
+        }
+
+        return null;
+    }
+
+    @Override
     public void layoutSubviews(ResourceBundle bundle) {
         super.layoutSubviews(bundle);
+
+        types = FXCollections.observableArrayList();
 
         new EventTypesAPI().readAll((response, items) -> {
             if(response.isOK())

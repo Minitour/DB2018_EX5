@@ -72,9 +72,11 @@ public class DoctorVacationTableView extends GenericTableView<DoctorVacation> {
 
     private void reloadDataFromServer(){
         api.readAll((response, items) -> {
-            vacations.clear();
-            vacations.addAll(items);
-            reloadData();
+            if(response.isOK()) {
+                vacations.clear();
+                vacations.addAll(items);
+                reloadData();
+            }
         });
     }
 }
