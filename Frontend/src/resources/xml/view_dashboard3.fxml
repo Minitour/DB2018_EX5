@@ -34,6 +34,8 @@
                     <PieChart fx:id="query2" maxHeight="200" styleClass="container" />
 
                     <PieChart fx:id="query8" maxHeight="200" styleClass="container" />
+
+                    <PieChart fx:id="query19" maxHeight="200" styleClass="container" />
                 </VBox>
 
                 <VBox maxWidth="408" spacing="10">
@@ -42,28 +44,6 @@
                             <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
                         </TextFlow>
                         <TextFlow fx:id="query15" minHeight="90" minWidth="204" styleClass="container" textAlignment="CENTER" >
-                            <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
-                        </TextFlow>
-                    </HBox>
-                    <VBox fx:id="query5_vbox" maxHeight="200" minHeight="200">
-
-                    </VBox>
-                    <StackedBarChart fx:id="query9" maxHeight="200" styleClass="container">
-                        <xAxis>
-                            <CategoryAxis fx:id="yAxis"   />
-                        </xAxis>
-                        <yAxis>
-                            <NumberAxis fx:id="xAxis" />
-                        </yAxis>
-                    </StackedBarChart>
-                </VBox>
-
-                <VBox maxWidth="408" spacing="10">
-                    <HBox spacing="10" VBox.vgrow="ALWAYS">
-                        <TextFlow fx:id="query16" minHeight="90" minWidth="204" styleClass="container" textAlignment="CENTER">
-                            <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
-                        </TextFlow>
-                        <TextFlow fx:id="query17" minHeight="90" minWidth="204" styleClass="container"  textAlignment="CENTER" >
                             <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
                         </TextFlow>
                     </HBox>
@@ -77,8 +57,18 @@
                         </yAxis>
                     </AreaChart>
 
-                    <PieChart fx:id="query19" maxHeight="200" styleClass="container" />
+                    <StackedBarChart fx:id="query9" maxHeight="200" styleClass="container">
+                        <xAxis>
+                            <CategoryAxis fx:id="yAxis"   />
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis fx:id="xAxis" />
+                        </yAxis>
+                    </StackedBarChart>
+
+                    <VBox fx:id="query5_vbox" maxHeight="200" minHeight="200"/>
                 </VBox>
+
 
                 <padding>
                     <Insets bottom="8" left="8" right="8" top="8" />

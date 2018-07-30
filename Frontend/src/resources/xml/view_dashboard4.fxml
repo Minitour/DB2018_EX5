@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.TextFlow?>
+<fx:root stylesheets="@../../ui/res/css/styles.css" type="javafx.scene.layout.StackPane" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+
+    <AnchorPane>
+        <ScrollPane AnchorPane.topAnchor="8" AnchorPane.leftAnchor="8" AnchorPane.bottomAnchor="8" AnchorPane.rightAnchor="8">
+            <HBox  alignment="CENTER" spacing="8">
+                <VBox maxWidth="408" spacing="10">
+                    <TextFlow fx:id="comp_query6" minHeight="90" minWidth="204" styleClass="container" textAlignment="CENTER">
+                        <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
+                    </TextFlow>
+                    <StackedBarChart fx:id="comp_query7A" maxHeight="200" styleClass="container" >
+                        <xAxis>
+                            <CategoryAxis  />
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis />
+                        </yAxis>
+                    </StackedBarChart>
+
+                    <PieChart fx:id="comp_query4" maxHeight="200" styleClass="container" />
+
+                </VBox>
+
+                <VBox maxWidth="408" spacing="10">
+                    <TextFlow fx:id="comp_query13A" minHeight="90" minWidth="204" styleClass="container" textAlignment="CENTER">
+                        <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
+                    </TextFlow>
+
+                    <VBox fx:id="comp_query3" maxHeight="200" minHeight="200"/>
+
+                    <StackedBarChart fx:id="comp_query7B" maxHeight="200" styleClass="container">
+                        <xAxis>
+                            <CategoryAxis  />
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis />
+                        </yAxis>
+                    </StackedBarChart>
+
+
+                </VBox>
+
+
+                <padding>
+                    <Insets bottom="8" left="8" right="8" top="8" />
+                </padding>
+            </HBox>
+        </ScrollPane>
+    </AnchorPane>
+
+
+</fx:root>
