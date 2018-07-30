@@ -1,11 +1,14 @@
 package controller.master;
 
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import model.Account;
 import network.api.AccountAPI;
 import network.generic.GenericAPI;
 import ui.UIView;
 import utils.Response;
 import view.CardView;
+import view.DialogView;
 import view.forms.AccountForm;
 import view.generic.UIFormView;
 import view.special.AccountView;
@@ -45,7 +48,12 @@ public class SecretaryMaster extends MasterMenuController implements UIFormView.
         UIFormView<Account> formView = (UIFormView<Account>) ((CardView) views[3]).getContentView();
         new AccountAPI().upsert(value, response -> {
             if(response.isOK()){
-                formView.reset();
+                new AccountAPI().read(value, (response1, object) -> {
+                    DialogView dialogView= makeDialog("Success","Created new account with ID ["+object.getACCOUNT_ID()+"]");
+                    dialogView.setPostiveEventHandler(event -> dialogView.close());
+                    dialogView.show(this.view);
+                    formView.reset();
+                });
             }
         });
 
