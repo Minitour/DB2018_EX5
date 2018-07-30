@@ -45,12 +45,15 @@ public abstract class MasterMenuController extends UIViewController {
     public MasterMenuController() {
         super("/resources/xml/controller_master.fxml");
         welcomeLabel.setText("Loading...");
-        new HospitalAPI().read(new Hospital(AutoSignIn.HOSPITAL_ID), (response, object) -> {
-            if(object != null)
-                welcomeLabel.setText(object.getName());
-            else
-                welcomeLabel.setText("Hospital Name");
-        });
+        if (AutoSignIn.ROLE_ID != 6) {
+            new HospitalAPI().read(new Hospital(AutoSignIn.HOSPITAL_ID), (response, object) -> {
+                if (object != null)
+                    welcomeLabel.setText(object.getName());
+                else
+                    welcomeLabel.setText("Hospital Name");
+            });
+        }else
+            welcomeLabel.setText("Super User");
     }
 
     @Override

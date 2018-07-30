@@ -31,4 +31,19 @@ public class MedicalEventTypeForm extends UIFormView<MedicalEventTypes> {
     public String[] inupdateableFields() {
         return new String[]{"typeCode"};
     }
+
+    @Override
+    public String[] defaultValueFields() {
+        return new String[]{"typeCode"};
+    }
+
+    @Override
+    protected Object defaultValueForField(String fieldName) {
+        switch (fieldName){
+            case "typeCode":
+                return 0;
+        }
+
+        return null;
+    }
 }
