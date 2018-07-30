@@ -137,12 +137,6 @@ public class DashboardView extends UIView {
             JsonArray query9result = data.get("query9_result").getAsJsonArray();
 
 
-            final CategoryAxis xAxis = new CategoryAxis();
-            final NumberAxis yAxis = new NumberAxis();
-
-            yAxis.setLabel("Department");
-            xAxis.setLabel("Empty Beds");
-
             query9.setAnimated(false);
             for (JsonElement element : query9result) {
                 String depName = element
