@@ -126,8 +126,8 @@ public class QueriesAccess extends DataAccess<DBObject> {
      * @param
      * @return
      */
-    public List<DashboardHospitalJoinHospitalized> query14(){
-        return get(DashboardHospitalJoinHospitalized.class,"QUERY_14");
+    public List<DashboardHospitalJoinHospitalized> query14(int hospitalID){
+        return get(DashboardHospitalJoinHospitalized.class,"QUERY_14", hospitalID);
     }
 
 
