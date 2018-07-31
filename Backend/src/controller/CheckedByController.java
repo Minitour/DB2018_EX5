@@ -106,11 +106,14 @@ public class CheckedByController extends GenericController {
         JsonObject params = parameters(body);
         require(params);
 
-        String patientID = params.get("patientID").getAsString();
-        int eventCode = params.get("eventCode").getAsInt();
-        String doctorID = params.get("doctorID").getAsString();
-        int shiftNumber = params.get("shiftNumber").getAsInt();
-        Date checkTime = new Date(params.get("checkTime").getAsLong());
+//        String patientID = params.get("patientID").getAsString();
+//        int eventCode = params.get("eventCode").getAsInt();
+//        String doctorID = params.get("doctorID").getAsString();
+//        int shiftNumber = params.get("shiftNumber").getAsInt();
+//        Date checkTime = new Date(params.get("checkTime").getAsLong());
+
+        Gson gson = new Gson();
+        CheckedBy checkedBy =  gson.fromJson(params,CheckedBy.class);
 
         try(CheckedByAccess checkedByAccess = new CheckedByAccess()) {
 
@@ -119,7 +122,7 @@ public class CheckedByController extends GenericController {
             if (!hasPermission("io.hospital.check.delete", session))
                 return JSONResponse.FAILURE().message("Access Denied.");
 
-            checkedByAccess.delete(patientID, eventCode, doctorID, shiftNumber, checkTime);
+            checkedByAccess.delete(checkedBy.getPatientID(), checkedBy.getEventCode(), checkedBy.getDoctorID(), checkedBy.getShiftNumber(), checkedBy.getCheckTime());
 
             return JSONResponse.SUCCESS();
 
