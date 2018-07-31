@@ -20,7 +20,7 @@ public class AdminMaster extends MasterMenuController {
             new DoctorVacationTableView(true,false,true),
             new HospitalizationTableView(false,false,false),
             new ChecksTableView(false,false,false),
-            new MedicalEventTypeInDepTableView(true,true,true),
+            new MedicalEventTypeInDepTableView(true,false,true),
             new DepartmentTableView(true,true,true),
             new CardView(new AccountView())
     };

@@ -1,21 +1,24 @@
 package view.tables;
 
 import com.jfoenix.controls.JFXSnackbar;
-import model.Doctor;
-import network.api.DoctorAPI;
+import model.*;
+import network.api.*;
+import ui.UITableView;
+import utils.AutoSignIn;
 import view.forms.DoctorForm;
 import view.generic.GenericTableView;
 import view.generic.UIFormView;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class DoctorsTableView extends GenericTableView<Doctor> {
 
     private DoctorAPI doctorAPI;
     private List<Doctor> doctorList = new ArrayList<>();
+
+    private Map<String, String> names;
+    private Map<Integer, Hospital> hospitalMap;
+    private Map<String, Department> departmentMap;
 
 
     public DoctorsTableView(boolean delete, boolean update, boolean insert) {
@@ -49,17 +52,16 @@ public class DoctorsTableView extends GenericTableView<Doctor> {
         return doctorList;
     }
 
-    private void reloadDataFromServer(){
-        doctorAPI.readAll((response, items) -> {
-            doctorList.clear();
-            doctorList.addAll(items);
-            reloadData();
-        });
-    }
+
 
     @Override
     public void layoutSubviews(ResourceBundle bundle) {
         super.layoutSubviews(bundle);
+
+        names = new HashMap<>();
+        hospitalMap = new HashMap<>();
+        departmentMap = new HashMap<>();
+
         doctorAPI = new DoctorAPI();
 
         doctorAPI.setRunOnUi(true);
@@ -77,5 +79,89 @@ public class DoctorsTableView extends GenericTableView<Doctor> {
             reloadDataFromServer();
 
         });
+    }
+
+    @Override
+    public TableColumnValue<Doctor> cellValueForColumnAt(int index) {
+        switch (index){
+            case 0:
+                return p -> names.get(p.getDoctorID());
+            case 1:
+                return p -> hospitalMap.get(p.getHospitalID()).getName();
+            case 2:
+                return p -> departmentMap.get(p.getHospitalID() + "_"+p.getDepartmentID()).getDepartmentName();
+            case 4:
+                return p -> p.getManager() == 0 ? "NO" : "YES";
+                default:
+                    return super.cellValueForColumnAt(index);
+        }
+    }
+
+    private void reloadDataFromServer(){
+
+        if(!_doctorLoad){
+            loadDoctors();
+            return;
+        }
+
+        if(!_hospitalLoad){
+            loadHospitals();
+            return;
+        }
+
+        if(!_departmentLoad){
+            loadDepartments();
+            return;
+        }
+
+        doctorAPI.readAll((response, items) -> {
+            doctorList.clear();
+            doctorList.addAll(items);
+            reloadData();
+        });
+    }
+
+    private boolean _doctorLoad = false;
+    private boolean _hospitalLoad = false;
+    private boolean _departmentLoad = false;
+
+    private void loadDoctors(){
+        if(!_doctorLoad)
+            new ProfileAPI().readAll((response, items) -> {
+                names.clear();
+
+                for (Person item : items)
+                    names.put(item.getID(),item.getFirstName() + " "+ item.getSurName());
+
+                _doctorLoad = true;
+                reloadDataFromServer();
+            });
+    }
+
+    private void loadHospitals(){
+        if(!_hospitalLoad)
+            new HospitalAPI().readAll((response, items) -> {
+                hospitalMap.clear();
+
+                for (Hospital item : items)
+                    hospitalMap.put(item.getHospitalID(),item);
+
+                _hospitalLoad = true;
+                reloadDataFromServer();
+            });
+    }
+
+    private void loadDepartments(){
+        if(!_departmentLoad)
+            new DepartmentAPI().readAll(new Department(0),(response, items) -> {
+                departmentMap.clear();
+
+                for (Department department : items) {
+                    departmentMap.put(department.getHospitalID() + "_" + department.getDepartmentID(),department);
+                }
+
+                _departmentLoad = true;
+                reloadDataFromServer();
+            });
     }
 }
