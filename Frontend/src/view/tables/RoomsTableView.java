@@ -121,8 +121,6 @@ public class RoomsTableView extends GenericTableView<Room> {
                     }
                 });
             });
-
-
         });
     }
 }
