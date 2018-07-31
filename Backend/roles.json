@@ -103,7 +103,8 @@
         "io.hospital.administrator.*",
         "io.hospital.event.*",
         "io.hospital.dashboard.*",
-        "io.hospital.payment.*"
+        "io.hospital.payment.*",
+        "io.hospital.profile.*"
       ],
       "extends" : [ 1 ]
     }
