@@ -56,6 +56,8 @@ public class ChecksTableView extends GenericTableView<CheckedBy> {
         reloadDataFromServer();
     }
 
+
+
     private void reloadDataFromServer(){
         api.readAll((response, items) -> {
             list.clear();
