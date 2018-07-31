@@ -1,11 +1,12 @@
 package model;
 
 import com.google.gson.annotations.Expose;
+import utils.Searchable;
 
 /**
  * Created by Antonio Zaitoun on 13/07/2018.
  */
-public class Shift {
+public class Shift implements Searchable {
 
     @Expose
     private Integer shiftNumber;
