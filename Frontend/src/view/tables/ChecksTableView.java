@@ -2,15 +2,19 @@ package view.tables;
 
 import com.jfoenix.controls.JFXSnackbar;
 import model.CheckedBy;
+import model.MedicalEvent;
+import model.Person;
 import network.api.CheckedByAPI;
+import network.api.EventAPI;
+import network.api.ProfileAPI;
+import network.generic.GenericAPI;
+import ui.UITableView;
+import utils.Response;
 import view.forms.CheckedByForm;
 import view.generic.GenericTableView;
 import view.generic.UIFormView;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * Created By Tony on 27/07/2018
@@ -19,6 +23,8 @@ public class ChecksTableView extends GenericTableView<CheckedBy> {
 
     private CheckedByAPI api;
     private List<CheckedBy> list = new ArrayList<>();
+    private Map<String,String> names;
+    private Map<Integer, MedicalEvent> eventMap;
 
     public ChecksTableView(boolean delete, boolean update, boolean insert) {
         super(delete, update, insert);
@@ -50,15 +56,70 @@ public class ChecksTableView extends GenericTableView<CheckedBy> {
     }
 
     @Override
+    public TableColumnValue<CheckedBy> cellValueForColumnAt(int index) {
+        switch (index){
+            case 0:
+                return p -> names.get(p.getPatientID());
+            case 1:
+                return p -> eventMap.get(p.getEventCode()).getDescription();
+            case 2:
+                return p -> names.get(p.getDoctorID());
+                default:
+                    return super.cellValueForColumnAt(index);
+        }
+    }
+
+    @Override
     public void layoutSubviews(ResourceBundle bundle) {
         super.layoutSubviews(bundle);
+        eventMap = new HashMap<>();
+        names = new HashMap<>();
+
         api = new CheckedByAPI();
         reloadDataFromServer();
     }
 
 
+    private boolean _namesLoad = false;
+    private boolean _eventsLoad = false;
+
+    private void loadEvents(){
+        if(!_eventsLoad)
+            new EventAPI().readAll((response, items) -> {
+                eventMap.clear();
+
+                for (MedicalEvent item : items)
+                    eventMap.put(item.getEventCode(),item);
+
+                _eventsLoad = true;
+                reloadDataFromServer();
+            });
+    }
+
+    private void loadNames(){
+        if(!_namesLoad)
+            new ProfileAPI().readAll(new Person(), (response, items) -> {
+                for (Person item : items) {
+                    names.put(item.getID(),item.getFirstName() + " " + item.getSurName());
+                }
+
+                _namesLoad = true;
+                reloadDataFromServer();
+            });
+
+    }
 
     private void reloadDataFromServer(){
+        if(!_namesLoad){
+            loadNames();
+            return;
+        }
+
+        if(!_eventsLoad){
+            loadEvents();
+            return;
+        }
+
         api.readAll((response, items) -> {
             list.clear();
             list.addAll(items);
