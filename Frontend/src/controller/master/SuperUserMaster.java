@@ -18,6 +18,7 @@ public class SuperUserMaster extends MasterMenuController {
             new SuperDashboardView(),
             new HospitalTableView(true,true,true),
             new AccountTableView(true,true,true),
+            new ProfileTableView(true,true,true),
             new MedicalEventTableView(true,true,true),
             new MedicalEventTypeTableView(true,true,true),
             new ShiftTableView(true,true,true),
@@ -40,6 +41,7 @@ public class SuperUserMaster extends MasterMenuController {
                 "Dashboard",
                 "Hospitals", //create hospitals
                 "Users", // create admins
+                "Profiles",
                 "Medical Events",
                 "Medical Event Types",
                 "Shifts",

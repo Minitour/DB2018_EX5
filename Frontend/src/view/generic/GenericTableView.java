@@ -1,12 +1,20 @@
 package view.generic;
 import com.google.gson.annotations.Expose;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXSnackbar;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.layout.Pane;
+import ui.LocalizationManager;
 import ui.UITableView;
+import utils.CSVExportRequest;
+import utils.CSVExporter;
 import view.DialogView;
 import view.DynamicDialog;
 
@@ -42,6 +50,7 @@ public abstract class GenericTableView<T> extends UITableView<T> implements UIFo
     private TableColumn<T,?> col_delete;
     private TableColumn<T,?> col_view;
     private Button addButton;
+    private Button exportButton;
 
     public GenericTableView(boolean delete, boolean update, boolean insert) {
         super();
@@ -77,6 +86,11 @@ public abstract class GenericTableView<T> extends UITableView<T> implements UIFo
             .show(this);
         });
 
+        exportButton = new JFXButton("Export");
+        exportButton.getStyleClass().addAll("button-raised");
+        exportButton.setOnAction(event -> makeExportRequest());
+
+        getToolBar().getChildren().addAll(exportButton);
 
         if (update) {
             //show view column
@@ -92,6 +106,8 @@ public abstract class GenericTableView<T> extends UITableView<T> implements UIFo
             //show insert button
             getToolBar().getChildren().add(addButton);
         }
+
+
     }
 
 
@@ -245,5 +261,64 @@ public abstract class GenericTableView<T> extends UITableView<T> implements UIFo
         }
 
         return new String(array);
+    }
+
+    private String[] convertRowToArray(int row){
+        String[] arr = new String[numberOfColumns()];
+
+        for(int i = 0; i< numberOfColumns();i++){
+            arr[i] = getStringValue(row,i);
+        }
+
+        return arr;
+    }
+
+    private List<String[]> prepareDataForCSVExport(){
+        List<String[]> list = new ArrayList<>();
+        for(int i = 0; i < data.size(); i++){
+            list.add(convertRowToArray(i));
+        }
+        return list;
+    }
+
+
+    private String[] getCSVHeader(){
+        String arr[] = new String[numberOfColumns()];
+        for(int i = 0; i < arr.length;i++){
+            arr[i] = bundleIdForIndex(i);
+        }
+        return arr;
+    }
+
+    private void makeExportRequest(){
+        CSVExportRequest request = new CSVExportRequest(
+                ("export_"+classType().getSimpleName()+"_"+System.currentTimeMillis()).toLowerCase()
+                , prepareDataForCSVExport()
+                ,getCSVHeader()
+        );
+
+        CSVExporter.export(request,(name,success) -> {
+            Pane pane = getDelegate().getRoot();
+            JFXSnackbar bar = new JFXSnackbar(pane);
+            if (success)
+                bar.enqueue(new JFXSnackbar.SnackbarEvent("Successfully created "+name));
+            else
+                bar.enqueue(new JFXSnackbar.SnackbarEvent("Failed to export "+name));
+        });
+    }
+
+    protected String getStringValue(int row,int column){
+        String value = null;
+        try{
+            ObservableValue s = ((TableColumn) tableView.getColumns().get(column)).getCellObservableValue(row);
+            value = s.getValue().toString();
+        }catch (ClassCastException e){
+            value = ((TableColumn) tableView.getColumns().get(column)).getCellObservableValue(row).toString();
+        }finally {
+            return value
+                    .replace(",","")
+                    .replace("\"","")
+                    .replace("\n"," ");
+        }
     }
 }
