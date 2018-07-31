@@ -34,6 +34,8 @@
       "groupId": 3,
       "groupName": "doctor",
       "permissions": [
+        "io.hospital.profile.read",
+        "io.hospital.profile.read_all",
         "io.hospital.doctor.read",
         "io.hospital.doctor.read_all",
         "io.hospital.work.read",

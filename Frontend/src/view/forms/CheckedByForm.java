@@ -3,17 +3,18 @@ package view.forms;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import model.*;
-import network.api.DoctorAPI;
-import network.api.EventAPI;
-import network.api.PatientsAPI;
-import network.api.ShiftAPI;
+import network.api.*;
 import network.generic.GenericAPI;
+import sun.java2d.cmm.Profile;
+import utils.AutoSignIn;
+import utils.Response;
 import view.generic.UIFormView;
+import view.tables.HospitalizationTableView;
 
-import java.util.Arrays;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * Created By Tony on 26/07/2018
@@ -24,6 +25,15 @@ public class CheckedByForm extends UIFormView<CheckedBy> {
     private ObservableList<ComboItem> events;
     private ObservableList<ComboItem> doctors;
     private ObservableList<ComboItem> shifts;
+
+    //key: person id, value hospitalizations
+    private Map<String,Set<Hospitalized>> hospitalizedMap;
+
+    //key: doctor id, value: shift code
+    private Map<String,Set<Integer>> shiftNumbers;
+
+    private Map<Integer,MedicalEvent> eventMap;
+
 
     public CheckedByForm(CheckedBy existingValue, OnFinish<CheckedBy> callback) {
         super(CheckedBy.class, existingValue, callback);
@@ -74,6 +84,39 @@ public class CheckedByForm extends UIFormView<CheckedBy> {
         return null;
     }
 
+    @Override
+    protected void didComboSelectionChanged(String nameField, ComboItem value) {
+        switch (nameField){
+            case "patientID":
+                ComboBox eventsBox = (ComboBox) elements_vbox.lookup("#eventCode");
+                eventsBox.getSelectionModel().clearSelection();
+                events.clear();
+                Set<Hospitalized> d = hospitalizedMap.get(value.value);
+                if(d == null)
+                    return;
+                for (Hospitalized hospitalized : d) {
+                    int eventCode = hospitalized.getEventCode();
+                    MedicalEvent event = eventMap.get(eventCode);
+                    events.add(new ComboItem(event.getDescription(),event.getEventCode()));
+                }
+                break;
+            case "doctorID":
+                ComboBox shiftBox = (ComboBox) elements_vbox.lookup("#shiftNumber");
+                shiftBox.getSelectionModel().clearSelection();
+                new WorkInShiftAPI().readAll((response, items) -> {
+                    shifts.clear();
+                    if(response.isOK())
+                        for (WorkInShift item : items)
+                            if(item.getDoctorID().equals(value.value))
+                                shifts.add(new ComboItem(
+                                        String.valueOf(item.getShiftNumber())
+                                ));
+
+                });
+                break;
+
+        }
+    }
 
     /**
      * This method is used to lock certain fields when viewing an existing object.
@@ -84,7 +127,7 @@ public class CheckedByForm extends UIFormView<CheckedBy> {
      */
     @Override
     public String[] inupdateableFields() {
-        return new String[]{"patientID", "eventCode", "doctorID", "shiftNumber"};
+        return new String[]{"patientID", "eventCode", "doctorID", "shiftNumber","checkTime"};
     }
 
     @Override
@@ -96,47 +139,67 @@ public class CheckedByForm extends UIFormView<CheckedBy> {
         doctors = FXCollections.observableArrayList();
         shifts = FXCollections.observableArrayList();
 
-        // patients
-        new PatientsAPI().readAll((response, items) -> {
-            if(response.isOK())
-                for (Person item : items)
-                    patients.add(new ComboItem(
-                            item.getFirstName() + ", " + item.getSurName(),
-                            item.getID()
-                    ));
+        hospitalizedMap = new HashMap<>();
+        shiftNumbers = new HashMap<>();
+        eventMap = new HashMap<>();
 
-        });
-
-        // event codes
         new EventAPI().readAll((response, items) -> {
-            if(response.isOK())
-                for (MedicalEvent item : items)
-                    events.add(new ComboItem(
-                            item.getDescription(),
-                            item.getEventCode()
-                    ));
+            eventMap.clear();
 
+            for (MedicalEvent item : items){
+                events.add(new ComboItem(
+                        item.getDescription(),
+                        item.getEventCode()
+                ));
+                eventMap.put(item.getEventCode(),item);
+            }
         });
 
-        // doctors
-        new DoctorAPI().readAll((response, items) -> {
+        new WorkInShiftAPI().readAll((response, items) -> {
+            shifts.clear();
             if(response.isOK())
-                for (Doctor item : items)
-                    doctors.add(new ComboItem(
-                            item.getDoctorID()
-                    ));
-
-        });
-
-        // shifts
-        new ShiftAPI().readAll((response, items) -> {
-            if(response.isOK())
-                for (Shift item : items)
+                for (WorkInShift item : items)
                     shifts.add(new ComboItem(
                             String.valueOf(item.getShiftNumber())
-                    ));
+                        ));
 
         });
+
+
+        new ProfileAPI().readAll((response, items) -> {
+
+            Map<String,String> names = new HashMap<>();
+            if(response.isOK())
+                for (Person item : items)
+                    names.put(item.getID(),item.getFirstName() + " " + item.getSurName());
+
+            new HospitalizedAPI().readAll(new Hospitalized(AutoSignIn.HOSPITAL_ID,0),(res1, hospitalizeds) -> {
+                for (Hospitalized hospitalized : hospitalizeds) {
+                    patients.add(new ComboItem(names.get(hospitalized.getPatientID()), hospitalized.getPatientID()));
+
+                    if(hospitalizedMap.containsKey(hospitalized.getPatientID())){
+                        //add to set
+                        hospitalizedMap.get(hospitalized.getPatientID()).add(hospitalized);
+                    }else{
+                        Set<Hospitalized> nset = new HashSet<>();
+                        nset.add(hospitalized);
+                        hospitalizedMap.put(hospitalized.getPatientID(),nset);
+                    }
+                }
+            });
+
+            new DoctorAPI().readAll((res1, doctors) -> {
+                if(response.isOK()) {
+                    for (Doctor item : doctors) {
+                        this.doctors.add(new ComboItem(names.get(item.getDoctorID()),item.getDoctorID()));
+                    }
+
+                }
+            });
+
+        });
+
+
 
     }
 }

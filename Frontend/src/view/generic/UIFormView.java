@@ -149,7 +149,10 @@ public abstract class UIFormView<T> extends UIView {
 
                     //add change listener
                     comboBox.valueProperty().addListener((observable, oldValue, newValue)
-                            -> didComboSelectionChanged(fieldName,newValue));
+                            -> {
+                        if(existingValue == null)
+                            didComboSelectionChanged(fieldName,newValue);
+                    });
 
                     //extract value if exists
                     extract(field, existingValue, value -> {
@@ -604,12 +607,22 @@ public abstract class UIFormView<T> extends UIView {
         public String toString() {
             return displayName;
         }
+//
+//        @Override
+//        public boolean equals(Object obj) {
+//            return obj != null &&
+//                    obj instanceof ComboItem
+//                    && (((ComboItem) obj).displayName.equals(displayName) || String.valueOf(((ComboItem) obj).value).equals(String.valueOf(value)));
+//        }
+
 
         @Override
-        public boolean equals(Object obj) {
-            return obj != null &&
-                    obj instanceof ComboItem
-                    && (((ComboItem) obj).displayName.equals(displayName) || String.valueOf(((ComboItem) obj).value).equals(String.valueOf(value)));
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            ComboItem comboItem = (ComboItem) o;
+            return Objects.equals(value, comboItem.value);
         }
+
     }
 }
