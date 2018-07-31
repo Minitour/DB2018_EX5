@@ -32,4 +32,18 @@ public class HospitalForm extends UIFormView<Hospital> {
     public String[] inupdateableFields() {
         return new String[]{"hospitalID"};
     }
+
+    @Override
+    protected Object defaultValueForField(String fieldName) {
+        switch(fieldName){
+            case "hospitalID":
+                return 0;
+        }
+        return null;
+    }
+
+    @Override
+    public String[] defaultValueFields() {
+        return new String[]{"hospitalID"};
+    }
 }
