@@ -1,18 +1,23 @@
 package view.tables;
 
 import com.jfoenix.controls.JFXSnackbar;
+import javafx.scene.control.TableColumn;
+import model.Department;
+import model.Hospital;
 import model.Room;
+import network.api.DepartmentAPI;
+import network.api.HospitalAPI;
 import network.api.PatientsAPI;
 import network.api.RoomAPI;
+import network.generic.GenericAPI;
+import ui.UITableView;
 import utils.AutoSignIn;
+import utils.Response;
 import view.forms.RoomForm;
 import view.generic.GenericTableView;
 import view.generic.UIFormView;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * Created By Tony on 26/07/2018
@@ -20,7 +25,12 @@ import java.util.ResourceBundle;
 public class RoomsTableView extends GenericTableView<Room> {
 
     private RoomAPI api;
+    private DepartmentAPI departmentAPI;
+    private HospitalAPI hospitalAPI;
     private List<Room> roomList = new ArrayList<>();
+
+    private Map<String,Department> departmentMap;
+    private Map<Integer, Hospital> hospitalMap;
 
     public RoomsTableView(boolean delete, boolean update, boolean insert) {
         super(delete, update, insert);
@@ -58,8 +68,25 @@ public class RoomsTableView extends GenericTableView<Room> {
     public void layoutSubviews(ResourceBundle bundle) {
         super.layoutSubviews(bundle);
         api = new RoomAPI();
+
+        departmentAPI = new DepartmentAPI();
+        hospitalAPI = new HospitalAPI();
+        departmentMap = new HashMap<>();
+        hospitalMap = new HashMap<>();
+
         api.setRunOnUi(true);
         reloadDataFromServer();
+    }
+
+    @Override
+    public TableColumnValue<Room> cellValueForColumnAt(int index) {
+        switch (index){
+            case 0:
+                return object -> hospitalMap.get(object.getHospitalID()).getName();
+            case 1:
+                return object -> departmentMap.get(object.getHospitalID() + "_" + object.getDepartmentID()).getDepartmentName();
+                default: return super.cellValueForColumnAt(index);
+        }
     }
 
     @Override
@@ -76,11 +103,26 @@ public class RoomsTableView extends GenericTableView<Room> {
 
     private void reloadDataFromServer(){
         api.readAll(new Room(AutoSignIn.HOSPITAL_ID,0,0),(response, items) -> {
-            if(response.isOK()) {
-                roomList.clear();
-                roomList.addAll(items);
-                reloadData();
-            }
+            hospitalAPI.readAll((response2, items12) -> {
+                for (Hospital hospital : items12){
+                    hospitalMap.put(hospital.getHospitalID(),hospital);
+                }
+
+                departmentAPI.readAll(new Department(AutoSignIn.HOSPITAL_ID), (response1, items1) -> {
+
+                    for (Department department : items1) {
+                        departmentMap.put(department.getHospitalID() + "_" + department.getDepartmentID(),department);
+                    }
+
+                    if(response.isOK()) {
+                        roomList.clear();
+                        roomList.addAll(items);
+                        reloadData();
+                    }
+                });
+            });
+
+
         });
     }
 }
