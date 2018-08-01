@@ -45,6 +45,9 @@ public abstract class MasterMenuController extends UIViewController {
     private Label usernameLabel;
 
     @FXML
+    private Label roleLabel;
+
+    @FXML
     private Button logout;
 
     @FXML
@@ -81,6 +84,26 @@ public abstract class MasterMenuController extends UIViewController {
 
         logout.setStyle("-fx-text-fill: " + AutoColor.secondaryColor + ";");
 
+        String roleLiteral;
+        switch (AutoSignIn.ROLE_ID){
+            case 1:
+                roleLiteral = "Patient";break;
+            case 2:
+                roleLiteral = "Secretary";break;
+            case 3:
+                roleLiteral = "Doctor";break;
+            case 4:
+                roleLiteral = "Doctor Manager";break;
+            case 5:
+                roleLiteral = "Admin";break;
+            case 6:
+                roleLiteral = "User";break;
+            default:
+                roleLiteral = "Unknown";break;
+        }
+
+        roleLabel.setText(roleLiteral);
+
     }
 
     protected DialogView makeDialog(String title, String message){
@@ -98,6 +121,7 @@ public abstract class MasterMenuController extends UIViewController {
 
         welcomeLabel.setTextFill(c);
         usernameLabel.setTextFill(c);
+        roleLabel.setTextFill(c);
     }
 
     public void setOnLogout(EventHandler<ActionEvent> eventHandler){
