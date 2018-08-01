@@ -93,7 +93,7 @@ public class DoctorsTableView extends GenericTableView<Doctor> {
             case 2:
                 return p -> departmentMap.get(p.getHospitalID() + "_"+p.getDepartmentID()).getDepartmentName();
             case 4:
-                return p -> p.getManager() == 0 ? "NO" : "YES";
+                return p -> p.getManager() ? "Yes" : "No";
                 default:
                     return super.cellValueForColumnAt(index);
         }
