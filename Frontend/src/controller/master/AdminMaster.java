@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 public class AdminMaster extends MasterMenuController {
 
     UIView[] views = {
-            new DashboardView(),
+            null,
             new PatientsTableView(true,true,true),
             new RoomsTableView(true,true,true),
             new DoctorsTableView(true,true,true),
@@ -33,6 +33,9 @@ public class AdminMaster extends MasterMenuController {
 
     @Override
     public UIView viewForIndexAt(int index) {
+        if(index == 0)
+            return new DashboardView();
+
         return views[index];
     }
 

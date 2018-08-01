@@ -10,17 +10,20 @@ import javafx.scene.chart.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import model.Doctor;
 import model.Person;
 import network.api.DashboardAPI;
 import network.api.DoctorAPI;
 import network.api.PatientsAPI;
 import ui.UITableView;
 import ui.UIView;
+import utils.AutoSignIn;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 /**
  * Created By Tony on 28/07/2018
@@ -85,6 +88,10 @@ public class DashboardView extends UIView {
         super.layoutSubviews(bundle);
 
         new DoctorAPI().readAll((response, items) -> {
+
+
+            items.removeIf(doctor -> !AutoSignIn.HOSPITAL_ID.equals(doctor.getHospitalID()));
+
             Text text1=new Text("Doctors");
             text1.setStyle("-fx-font-weight: regular");
 
@@ -96,8 +103,11 @@ public class DashboardView extends UIView {
         });
 
         new DashboardAPI().getData((response, data) -> {
-            data = data.get("data").getAsJsonObject();
 
+            if(data == null || !data.has("data"))
+                return;
+
+                data = data.get("data").getAsJsonObject();
             //========================================================================
             JsonArray query6result = data.get("query6_result").getAsJsonArray();
             ObservableList<PieChart.Data> query6data = FXCollections.observableArrayList();
