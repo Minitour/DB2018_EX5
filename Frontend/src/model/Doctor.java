@@ -23,7 +23,7 @@ public class Doctor implements Searchable {
     private Date dateOfGraduation;
 
     @Expose
-    private boolean manager;
+    private Boolean manager;
 
     public Doctor(String doctorID) { this.doctorID = doctorID; }
 
