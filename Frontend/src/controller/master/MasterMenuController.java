@@ -64,7 +64,7 @@ public abstract class MasterMenuController extends UIViewController {
                     welcomeLabel.setText("Hospital Name");
             });
         }else
-            welcomeLabel.setText("Super User");
+            welcomeLabel.setText("");
     }
 
     @Override

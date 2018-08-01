@@ -6,10 +6,15 @@ import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import model.Hospital;
 import network.api.AuthAPI;
+import network.api.HospitalAPI;
+import network.generic.GenericAPI;
 import ui.UIView;
 import utils.AutoSignIn;
+import utils.Response;
 
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -58,5 +63,34 @@ public class AccountView extends UIView {
                 newPassword.setText("");
             });
         });
+
+        new HospitalAPI().readAll((response, items) -> {
+            for (Hospital item : items) {
+                if(AutoSignIn.HOSPITAL_ID.equals(item.getHospitalID())){
+                    hospital.setText(item.getName());
+                    break;
+                }
+            }
+        });
+
+        String roleLiteral;
+        switch (AutoSignIn.ROLE_ID){
+            case 1:
+                roleLiteral = "Patient";break;
+            case 2:
+                roleLiteral = "Secretary";break;
+            case 3:
+                roleLiteral = "Doctor";break;
+            case 4:
+                roleLiteral = "Doctor Manager";break;
+            case 5:
+                roleLiteral = "Admin";break;
+            case 6:
+                roleLiteral = "Super User";break;
+            default:
+                roleLiteral = "Unknown";break;
+        }
+
+        role.setText(roleLiteral);
     }
 }

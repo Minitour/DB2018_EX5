@@ -4,9 +4,6 @@
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.AreaChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -14,18 +11,24 @@
 
 <fx:root stylesheets="@../../ui/res/css/styles.css" type="javafx.scene.layout.StackPane" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
 
-    <VBox spacing="8">
+    <VBox alignment="CENTER" spacing="8">
         <Label text="Account Details">
             <font>
-                <Font name="System Bold" size="12.0" />
+                <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-        <VBox fx:id="parent" alignment="CENTER" spacing="10">
+        <VBox fx:id="parent" alignment="CENTER_LEFT" spacing="10">
 
 
-            <Label fx:id="hospital" prefWidth="${parent.prefWidth}">Hospital Name</Label>
+            <Label fx:id="hospital" text="Hospital Name">
+            <font>
+               <Font name="System Bold" size="18.0" />
+            </font></Label>
 
-            <Label fx:id="role" prefWidth="${parent.prefWidth}">Role Type</Label>
+            <Label fx:id="role" text="Role Type">
+            <font>
+               <Font size="15.0" />
+            </font></Label>
 
             <JFXTextField fx:id="email" promptText="Email" />
 
@@ -33,10 +36,11 @@
 
             <JFXPasswordField fx:id="newPassword" promptText="New Password" />
 
-            <JFXButton fx:id="update" styleClass="button-raised">Update</JFXButton>
-
             <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
         </VBox>
+
+        <JFXButton fx:id="update" styleClass="button-raised">Update</JFXButton>
+
         <padding><Insets bottom="8" left="8" right="8" top="8" /></padding>
     </VBox>
 
