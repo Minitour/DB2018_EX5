@@ -5,12 +5,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TextField;
 import model.Doctor;
+import model.Person;
 import model.Shift;
 import model.WorkInShift;
 import network.api.DoctorAPI;
+import network.api.ProfileAPI;
 import network.api.ShiftAPI;
+import network.generic.GenericAPI;
+import utils.Response;
 import view.generic.UIFormView;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 /**
@@ -88,11 +95,17 @@ public class WorkInShiftForm extends UIFormView<WorkInShift> {
 
         // doctors
         new DoctorAPI().readAll((response, items) -> {
-            if(response.isOK())
-                for (Doctor item : items)
-                    doctors.add(new ComboItem(
-                            item.getDoctorID()
-                    ));
+            if(response.isOK()){
+                new ProfileAPI().readAll((response1, items1) -> {
+                    Map<String,String> names = new HashMap<>();
+                    for(Person p : items1)
+                        names.put(p.getID(),p.getFirstName() +" " +p.getSurName());
+
+                    for (Doctor item : items)
+                        doctors.add(new ComboItem(names.get(item.getDoctorID()),item.getDoctorID()));
+                });
+            }
+
 
         });
 
@@ -100,9 +113,7 @@ public class WorkInShiftForm extends UIFormView<WorkInShift> {
         new ShiftAPI().readAll((response, items) -> {
             if(response.isOK())
                 for (Shift item : items)
-                    shifts.add(new ComboItem(
-                            String.valueOf(item.getShiftNumber())
-                    ));
+                    shifts.add(new ComboItem("#"+item.getShiftNumber()+", "+item.dayLiteralValue()+", "+item.typeLiteralValue(),String.valueOf(item.getShiftNumber())));
 
         });
     }
