@@ -84,7 +84,7 @@ public class DoctorsController extends GenericController {
         require(params);
         Gson gson = new Gson();
 
-        Doctor d = gson.fromJson(params.get("doctor"),Doctor.class);
+        Doctor d = gson.fromJson(params,Doctor.class);
 
         try(DoctorAccess doctor_db = new DoctorAccess()) {
 
@@ -97,7 +97,7 @@ public class DoctorsController extends GenericController {
             if(!isOk)
                 return JSONResponse.FAILURE().message("Access Denied");
 
-            doctor_db.upsert(d);
+            doctor_db.upsert(d.getDoctorID(),d.getDateOfGraduation(),d.getManager(),d.getHospitalID(),d.getDepartmentID());
 
             return JSONResponse.SUCCESS();
 

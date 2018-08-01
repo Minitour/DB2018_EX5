@@ -23,11 +23,11 @@ public class Doctor extends DBObject {
     private Date dateOfGraduation;
 
     @Expose
-    private int manager;
+    private boolean manager;
 
     public Doctor() {}
 
-    public Doctor(String doctorId, int hospitalID, int departmentID, Date dateOfGraduation, int manager) {
+    public Doctor(String doctorId, int hospitalID, int departmentID, Date dateOfGraduation, boolean manager) {
         this.doctorID = doctorId;
         this.hospitalID = hospitalID;
         this.departmentID = departmentID;
@@ -51,7 +51,7 @@ public class Doctor extends DBObject {
         return dateOfGraduation;
     }
 
-    public int getManager() {
+    public boolean getManager() {
         return manager;
     }
 
@@ -71,7 +71,7 @@ public class Doctor extends DBObject {
         this.dateOfGraduation = dateOfGraduation;
     }
 
-    public void setManager(int manager) {
+    public void setManager(boolean manager) {
         this.manager = manager;
     }
 }
