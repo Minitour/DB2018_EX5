@@ -13,6 +13,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.layout.Pane;
 import ui.LocalizationManager;
 import ui.UITableView;
+import utils.AutoColor;
 import utils.CSVExportRequest;
 import utils.CSVExporter;
 import view.DialogView;
@@ -75,6 +76,7 @@ public abstract class GenericTableView<T> extends UITableView<T> implements UIFo
 
         addButton = new JFXButton("+");
         addButton.getStyleClass().add("fab");
+        addButton.setStyle("-fx-background-color: "+ AutoColor.secondaryColor+";");
         addButton.setOnAction(event -> {
             UIFormView form = onInsert();
             dialogView = new DynamicDialog(form);
@@ -88,6 +90,7 @@ public abstract class GenericTableView<T> extends UITableView<T> implements UIFo
 
         exportButton = new JFXButton("Export");
         exportButton.getStyleClass().addAll("button-raised");
+        exportButton.setStyle("-fx-background-color: "+ AutoColor.secondaryColor+";");
         exportButton.setOnAction(event -> makeExportRequest());
 
         getToolBar().getChildren().addAll(exportButton);

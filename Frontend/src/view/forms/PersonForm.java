@@ -8,6 +8,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import model.Person;
+import utils.AutoColor;
 import view.generic.UIFormView;
 
 import java.util.Arrays;
@@ -30,7 +31,7 @@ public class PersonForm extends UIFormView<Person> {
     @Override
     protected DatePicker datePickerFactory() {
         JFXDatePicker picker = new JFXDatePicker();
-        picker.setDefaultColor(Color.web("#2ecc71"));
+        picker.setDefaultColor(Color.web(AutoColor.secondaryColor));
         return picker;
     }
 

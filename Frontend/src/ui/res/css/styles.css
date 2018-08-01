@@ -41,10 +41,22 @@
     -fx-min-width: 64;
 }
 
+.button-nav {
+    -jfx-button-type: FLAT;
+    -fx-background-color: white;
+    -fx-text-fill: rgb(26, 188, 156);
+    -fx-min-width: 64;
+}
+
 .container {
     -fx-background-color: WHITE;
     -fx-border-radius: 3 3 3 3;
     -fx-background-radius: 3 3 3 3;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.26), 10, 0.12, -1, 2);
+}
+
+.navbar {
+    -fx-background-color: WHITE;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.26), 10, 0.12, -1, 2);
 }
 

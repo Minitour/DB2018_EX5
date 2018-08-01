@@ -10,8 +10,6 @@ import view.tables.HospitalizationTableView;
 import view.tables.PatientsTableView;
 import view.tables.RoomsTableView;
 
-import java.util.ResourceBundle;
-
 /**
  * Created By Tony on 25/07/2018
  */
@@ -37,15 +35,15 @@ public class DoctorMaster extends MasterMenuController {
     }
 
     @Override
-    public String[] itemsForMenu() {
-        return new String[]{
-                "Patients",
-                "Rooms",
-                "Hospitalizations",
-                "Checks",
-                "Working Shifts",
-                "All Shifts",
-                "Account"
+    public MenuItem[] itemsForMenu() {
+        return new MenuItem[]{
+                new MenuItem("Patients",""),
+                new MenuItem("Rooms",""),
+                new MenuItem("Hospitalizations",""),
+                new MenuItem("Checks",""),
+                new MenuItem("Working Shifts",""),
+                new MenuItem("All Shifts",""),
+                new MenuItem("Account","")
         };
     }
 }

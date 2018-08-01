@@ -41,8 +41,7 @@
                 </items>
             </SplitPane>
         </AnchorPane>
-        <HBox AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" prefHeight="44" spacing="8" styleClass="container"
-              style="-fx-border-radius: 0 0 0 0;-fx-background-radius: 0 0 0 0;">
+        <HBox fx:id="navBar" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" prefHeight="44" spacing="8" styleClass="navbar">
             <padding>
                 <Insets bottom="8" left="16" right="16" top="8" />
             </padding>
@@ -53,7 +52,7 @@
             </HBox>
             <HBox spacing="8" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
                 <Label fx:id="usernameLabel" text="Username" ></Label>
-                <JFXButton text="Logout" mnemonicParsing="false" fx:id="logout" styleClass="button-normal"/>
+                <JFXButton text="Logout" mnemonicParsing="false" fx:id="logout" styleClass="button-nav"/>
             </HBox>
 
         </HBox>

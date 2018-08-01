@@ -34,17 +34,29 @@ public class DoctorManagerMaster extends MasterMenuController {
     }
 
     @Override
-    public String[] itemsForMenu() {
-        return new String[]{
-                "Patients",
-                "Rooms",
-                "Hospitalizations",
-                "Checks",
-                "Working Shifts",
-                "Shifts",
-                "Doctors",
-                "Department",
-                "Account"
+    public MenuItem[] itemsForMenu() {
+//        return new String[]{
+//                "Patients",
+//                "Rooms",
+//                "Hospitalizations",
+//                "Checks",
+//                "Working Shifts",
+//                "Shifts",
+//                "Doctors",
+//                "Department",
+//                "Account"
+//        };
+
+        return new MenuItem[]{
+                new MenuItem("Patients",""),
+                new MenuItem("Rooms",""),
+                new MenuItem("Hospitalizations",""),
+                new MenuItem("Checks",""),
+                new MenuItem("Working Shifts",""),
+                new MenuItem("Shifts",""),
+                new MenuItem("Doctors",""),
+                new MenuItem("Department",""),
+                new MenuItem("Account",""),
         };
     }
 }

@@ -1,12 +1,8 @@
 package controller.master;
 
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import model.Account;
 import network.api.AccountAPI;
-import network.generic.GenericAPI;
 import ui.UIView;
-import utils.Response;
 import view.CardView;
 import view.DialogView;
 import view.forms.AccountForm;
@@ -39,8 +35,14 @@ public class SecretaryMaster extends MasterMenuController implements UIFormView.
     }
 
     @Override
-    public String[] itemsForMenu() {
-        return new String[]{"Patients","Rooms","Hospitalization","Create Account","Account"};
+    public MenuItem[] itemsForMenu() {
+        return new MenuItem[]{
+                new MenuItem("Patients",""),
+                new MenuItem("Rooms",""),
+                new MenuItem("Hospitalization",""),
+                new MenuItem("Create Account",""),
+                new MenuItem("Account","")
+        };
     }
 
     @Override
