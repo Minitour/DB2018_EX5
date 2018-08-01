@@ -2,20 +2,23 @@ package view.tables;
 
 import com.jfoenix.controls.JFXSnackbar;
 import model.MedicalEvent;
+import model.MedicalEventTypes;
 import network.api.EventAPI;
+import network.api.EventTypesAPI;
+import network.generic.GenericAPI;
+import ui.UITableView;
+import utils.Response;
 import view.forms.MedicalEventForm;
 import view.generic.GenericTableView;
 import view.generic.UIFormView;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class MedicalEventTableView extends GenericTableView<MedicalEvent> {
 
     private EventAPI api ;
     private List<MedicalEvent> events = new ArrayList<>();
+    private Map<Integer,String> eventCodeNames = new HashMap<>();
 
     public MedicalEventTableView(boolean delete, boolean update, boolean insert) {
         super(delete, update, insert);
@@ -62,6 +65,15 @@ public class MedicalEventTableView extends GenericTableView<MedicalEvent> {
     }
 
     @Override
+    public TableColumnValue<MedicalEvent> cellValueForColumnAt(int index) {
+        switch (index){
+            case 2:
+                return event -> eventCodeNames.get(event.getTypeCode());
+                default:return super.cellValueForColumnAt(index);
+        }
+    }
+
+    @Override
     public void layoutSubviews(ResourceBundle bundle) {
         super.layoutSubviews(bundle);
         api = new EventAPI();
@@ -71,9 +83,17 @@ public class MedicalEventTableView extends GenericTableView<MedicalEvent> {
 
     private void reloadDataFromServer(){
         api.readAll((response, items) -> {
-            events.clear();
-            events.addAll(items);
-            reloadData();
+            if(response.isOK()){
+                new EventTypesAPI().readAll((response1, items1) -> {
+                    for(MedicalEventTypes e : items1){
+                        eventCodeNames.put(e.getTypeCode(),e.getTypeName());
+                    }
+
+                    events.clear();
+                    events.addAll(items);
+                    reloadData();
+                });
+            }
         });
     }
 }

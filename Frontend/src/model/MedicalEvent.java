@@ -26,5 +26,7 @@ public class MedicalEvent implements Searchable {
         return discription;
     }
 
-
+    public Integer getTypeCode() {
+        return typeCode;
+    }
 }
