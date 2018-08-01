@@ -9,19 +9,23 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import model.Doctor;
 import model.DoctorVacation;
+import model.Person;
 import network.api.DoctorAPI;
+import network.api.ProfileAPI;
+import network.generic.GenericAPI;
 import utils.AutoColor;
+import utils.Response;
 import view.generic.UIFormView;
 
-import java.util.Arrays;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * Created By Tony on 26/07/2018
  */
 public class DoctorVacationForm extends UIFormView<DoctorVacation> {
 
-    public ObservableList<ComboItem> doctors = FXCollections.observableArrayList();
+    private ObservableList<ComboItem> doctors;
+
 
     public DoctorVacationForm(DoctorVacation existingValue, OnFinish<DoctorVacation> callback) {
         super(DoctorVacation.class, existingValue, callback);
@@ -90,13 +94,26 @@ public class DoctorVacationForm extends UIFormView<DoctorVacation> {
     public void layoutSubviews(ResourceBundle bundle) {
         super.layoutSubviews(bundle);
 
-        new DoctorAPI().readAll((response, items) -> {
-            if(response.isOK())
-                for (Doctor item : items)
-                    doctors.add(new ComboItem(
-                            item.getDoctorID()
-                    ));
+        doctors = FXCollections.observableArrayList();
+        Map<String,String> names = new HashMap<>();
 
+
+        new DoctorAPI().readAll((response, items) -> {
+            if(response.isOK()){
+                new ProfileAPI().readAll((response1, items1) -> {
+                    for(Person p : items1){
+                        names.put(p.getID(),p.getFirstName() + " " + p.getSurName());
+                    }
+
+                    for (Doctor item : items)
+                        doctors.add(new ComboItem(
+                                names.get(item.getDoctorID()),
+                                item.getDoctorID()
+                        ));
+                });
+
+
+            }
         });
     }
 }

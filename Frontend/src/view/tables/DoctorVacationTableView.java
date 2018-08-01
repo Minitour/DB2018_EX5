@@ -2,20 +2,23 @@ package view.tables;
 
 import com.jfoenix.controls.JFXSnackbar;
 import model.DoctorVacation;
+import model.Person;
+import network.api.ProfileAPI;
 import network.api.VacationAPI;
+import network.generic.GenericAPI;
+import ui.UITableView;
+import utils.Response;
 import view.forms.DoctorVacationForm;
 import view.generic.GenericTableView;
 import view.generic.UIFormView;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class DoctorVacationTableView extends GenericTableView<DoctorVacation> {
 
     VacationAPI api ;
     List<DoctorVacation> vacations = new ArrayList<>();
+    Map<String,String> names = new HashMap<>();
 
     public DoctorVacationTableView(boolean delete, boolean update, boolean insert) {
         super(delete, update, insert);
@@ -63,6 +66,16 @@ public class DoctorVacationTableView extends GenericTableView<DoctorVacation> {
     }
 
     @Override
+    public TableColumnValue<DoctorVacation> cellValueForColumnAt(int index) {
+        switch (index){
+            case 0:
+                return p-> names.get(p.getDoctorID());
+
+                default:return super.cellValueForColumnAt(index);
+        }
+    }
+
+    @Override
     public void layoutSubviews(ResourceBundle bundle) {
         super.layoutSubviews(bundle);
         api = new VacationAPI();
@@ -72,10 +85,19 @@ public class DoctorVacationTableView extends GenericTableView<DoctorVacation> {
 
     private void reloadDataFromServer(){
         api.readAll((response, items) -> {
+
             if(response.isOK()) {
-                vacations.clear();
-                vacations.addAll(items);
-                reloadData();
+                new ProfileAPI().readAll((response1, items1) -> {
+
+                    for (Person profile : items1){
+                        names.put(profile.getID(),profile.getFirstName() +" "+profile.getSurName());
+                    }
+
+                    vacations.clear();
+                    vacations.addAll(items);
+                    reloadData();
+                });
+
             }
         });
     }
