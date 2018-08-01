@@ -119,38 +119,50 @@ public class DoctorsTableView extends GenericTableView<Doctor> {
 
         doctorList.clear();
         doctorAPI.readAll((response, items) -> {
-            if(AutoSignIn.ROLE_ID < 5) {
-                new ProfileAPI().readAll((response1, items1) -> {
-                    Person self = null;
-                    for (Person person : items1) {
-                        if (AutoSignIn.ID.equals(person.getACCOUNT_ID())) {
-                            self = person;
-                            break;
+            if(AutoSignIn.ROLE_ID < 6) {
+
+                if (AutoSignIn.ROLE_ID < 5){
+                    new ProfileAPI().readAll((response1, items1) -> {
+                        Person self = null;
+                        for (Person person : items1) {
+                            if (AutoSignIn.ID.equals(person.getACCOUNT_ID())) {
+                                self = person;
+                                break;
+                            }
                         }
-                    }
 
-                    if(self == null)
-                        return;
+                        if(self == null)
+                            return;
 
-                    Doctor selfDoctor = null;
-                    for (Doctor item : items) {
-                        if (item.getDoctorID().equals(self.getID())) {
-                            selfDoctor = item;
-                            break;
+                        Doctor selfDoctor = null;
+                        for (Doctor item : items) {
+                            if (item.getDoctorID().equals(self.getID())) {
+                                selfDoctor = item;
+                                break;
+                            }
                         }
-                    }
 
-                    if(selfDoctor == null)
-                        return;
+                        if(selfDoctor == null)
+                            return;
 
+                        for (Doctor item : items) {
+                            if (item.getHospitalID().equals(selfDoctor.getHospitalID()) &&
+                                    item.getDepartmentID().equals(selfDoctor.getDepartmentID())) {
+                                doctorList.add(item);
+                            }
+                        }
+                        reloadData();
+                    });
+                }else {
                     for (Doctor item : items) {
-                        if (item.getHospitalID().equals(selfDoctor.getHospitalID()) &&
-                                item.getDepartmentID().equals(selfDoctor.getDepartmentID())) {
+                        if (AutoSignIn.HOSPITAL_ID.equals(item.getHospitalID())) {
                             doctorList.add(item);
                         }
                     }
                     reloadData();
-                });
+                }
+
+
             }else {
                 doctorList.addAll(items);
                 reloadData();
