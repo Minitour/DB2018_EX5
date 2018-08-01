@@ -101,6 +101,7 @@
         "io.hospital.event_type.*",
         "io.hospital.account.*",
         "io.hospital.hospital.*",
+        "io.hospital.department.delete",
         "io.hospital.shift.*",
         "io.hospital.administrator.*",
         "io.hospital.event.*",

@@ -3,6 +3,7 @@ package view.tables;
 import com.jfoenix.controls.JFXSnackbar;
 import model.Shift;
 import network.api.ShiftAPI;
+import ui.UITableView;
 import view.forms.ShiftForm;
 import view.generic.GenericTableView;
 import view.generic.UIFormView;
@@ -46,6 +47,19 @@ public class ShiftTableView extends GenericTableView<Shift> {
     @Override
     public Collection<? extends Shift> dataSource() {
         return shifts;
+    }
+
+    @Override
+    public TableColumnValue<Shift> cellValueForColumnAt(int index) {
+        switch (index){
+            case 1:
+                return Shift::dayLiteralValue;
+            case 2:
+                return Shift::typeLiteralValue;
+
+                default:
+                    return super.cellValueForColumnAt(index);
+        }
     }
 
     @Override

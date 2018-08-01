@@ -12,10 +12,10 @@ public class Account implements Searchable {
     private Integer ACCOUNT_ID;
 
     @Expose
-    private String USER_PASSWORD;
+    private String EMAIL;
 
     @Expose
-    private String EMAIL;
+    private String USER_PASSWORD;
 
     @Expose
     private Short ROLE_ID;
@@ -46,5 +46,24 @@ public class Account implements Searchable {
 
     public Integer getHospitalID() {
         return hospitalID;
+    }
+
+    public String roleLiteral(){
+        switch (getROLE_ID()){
+            case 1:
+                return "Patient";
+            case 2:
+                return "Secretary";
+            case 3:
+                return "Doctor";
+            case 4:
+                return "Doctor Manager";
+            case 5:
+                return "Admin";
+            case 6:
+                return "Super User";
+            default:
+                return "Unknown";
+        }
     }
 }
