@@ -37,11 +37,11 @@ public class SecretaryMaster extends MasterMenuController implements UIFormView.
     @Override
     public MenuItem[] itemsForMenu() {
         return new MenuItem[]{
-                new MenuItem("Patients",""),
-                new MenuItem("Rooms",""),
-                new MenuItem("Hospitalization",""),
-                new MenuItem("Create Account",""),
-                new MenuItem("Account","")
+                new MenuItem("Patients", "/resources/img/ic_patients.png"),
+                new MenuItem("Rooms", "/resources/img/ic_room.png"),
+                new MenuItem("Hospitalization", "/resources/img/ic_hospitalizations.png"),
+                new MenuItem("Create Account", "/resources/img/ic_add_account.png"),
+                new MenuItem("Account", "/resources/img/ic_account.png")
         };
     }
 

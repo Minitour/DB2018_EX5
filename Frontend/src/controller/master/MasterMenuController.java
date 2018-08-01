@@ -97,7 +97,7 @@ public abstract class MasterMenuController extends UIViewController {
             case 5:
                 roleLiteral = "Admin";break;
             case 6:
-                roleLiteral = "User";break;
+                roleLiteral = "Super User";break;
             default:
                 roleLiteral = "Unknown";break;
         }
