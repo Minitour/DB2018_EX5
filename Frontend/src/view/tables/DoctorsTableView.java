@@ -3,8 +3,10 @@ package view.tables;
 import com.jfoenix.controls.JFXSnackbar;
 import model.*;
 import network.api.*;
+import network.generic.GenericAPI;
 import ui.UITableView;
 import utils.AutoSignIn;
+import utils.Response;
 import view.forms.DoctorForm;
 import view.generic.GenericTableView;
 import view.generic.UIFormView;
@@ -114,11 +116,47 @@ public class DoctorsTableView extends GenericTableView<Doctor> {
             return;
         }
 
+
+        doctorList.clear();
         doctorAPI.readAll((response, items) -> {
-            doctorList.clear();
-            doctorList.addAll(items);
-            reloadData();
+            if(AutoSignIn.ROLE_ID < 5) {
+                new ProfileAPI().readAll((response1, items1) -> {
+                    Person self = null;
+                    for (Person person : items1) {
+                        if (AutoSignIn.ID.equals(person.getACCOUNT_ID())) {
+                            self = person;
+                            break;
+                        }
+                    }
+
+                    if(self == null)
+                        return;
+
+                    Doctor selfDoctor = null;
+                    for (Doctor item : items) {
+                        if (item.getDoctorID().equals(self.getID())) {
+                            selfDoctor = item;
+                            break;
+                        }
+                    }
+
+                    if(selfDoctor == null)
+                        return;
+
+                    for (Doctor item : items) {
+                        if (item.getHospitalID().equals(selfDoctor.getHospitalID()) &&
+                                item.getDepartmentID().equals(selfDoctor.getDepartmentID())) {
+                            doctorList.add(item);
+                        }
+                    }
+                    reloadData();
+                });
+            }else {
+                doctorList.addAll(items);
+                reloadData();
+            }
         });
+
     }
 
     private boolean _doctorLoad = false;
