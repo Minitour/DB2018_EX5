@@ -37,13 +37,13 @@ public class DoctorMaster extends MasterMenuController {
     @Override
     public MenuItem[] itemsForMenu() {
         return new MenuItem[]{
-                new MenuItem("Patients",""),
-                new MenuItem("Rooms",""),
-                new MenuItem("Hospitalizations",""),
-                new MenuItem("Checks",""),
-                new MenuItem("Working Shifts",""),
-                new MenuItem("All Shifts",""),
-                new MenuItem("Account","")
+                new MenuItem("Patients", "/resources/img/ic_patients.png"),
+                new MenuItem("Rooms", "/resources/img/ic_room.png"),
+                new MenuItem("Hospitalizations", "/resources/img/ic_hospitalizations.png"),
+                new MenuItem("Checks", "/resources/img/ic_checks2.png"),
+                new MenuItem("Working Shifts", "/resources/img/ic_workinshifts.png"),
+                new MenuItem("All Shifts", "/resources/img/ic_shifts.png"),
+                new MenuItem("Account", "/resources/img/ic_account.png")
         };
     }
 }

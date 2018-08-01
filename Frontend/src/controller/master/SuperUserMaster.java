@@ -35,15 +35,15 @@ public class SuperUserMaster extends MasterMenuController {
     @Override
     public MenuItem[] itemsForMenu() {
         return new MenuItem[]{
-                new MenuItem("Dashboard",""),
-                new MenuItem("Hospitals",""),
-                new MenuItem("Users",""),
-                new MenuItem("Profiles",""),
-                new MenuItem("Medical Events",""),
-                new MenuItem("Medical Event Types",""),
-                new MenuItem("Shifts",""),
-                new MenuItem("Payments",""),
-                new MenuItem("Account","")
+                new MenuItem("Dashboard", "/resources/img/ic_dashboard.png"),
+                new MenuItem("Hospitals", "/resources/img/ic_hospital.png"),
+                new MenuItem("Users", "/resources/img/ic_accounts.png"),
+                new MenuItem("Profiles", "/resources/img/ic_users.png"),
+                new MenuItem("Medical Events", "/resources/img/ic_medical_event.png"),
+                new MenuItem("Medical Event Types", "/resources/img/ic_medical_event_type.png"),
+                new MenuItem("Shifts", "/resources/img/ic_shifts.png"),
+                new MenuItem("Payments", "/resources/img/ic_payment.png"),
+                new MenuItem("Account", "/resources/img/ic_account.png")
         };
     }
 }

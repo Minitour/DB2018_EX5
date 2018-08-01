@@ -30,8 +30,8 @@ public class PatientMaster extends MasterMenuController {
     @Override
     public MenuItem[] itemsForMenu() {
         return new MenuItem[]{
-                new MenuItem("Profile",""),
-                new MenuItem("Account","")
+                new MenuItem("Profile", "/resources/img/ic_profile.png"),
+                new MenuItem("Account", "/resources/img/ic_account.png")
         };
     }
 
