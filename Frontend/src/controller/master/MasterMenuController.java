@@ -16,7 +16,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import model.Hospital;
+import model.Person;
 import network.api.HospitalAPI;
+import network.api.ProfileAPI;
 import ui.UIListViewCell;
 import ui.UIView;
 import ui.UIViewController;
@@ -65,13 +67,28 @@ public abstract class MasterMenuController extends UIViewController {
             });
         }else
             welcomeLabel.setText("");
+
+        new ProfileAPI().read(new Person(),(response, items) -> {
+            if(response.isOK()) {
+                //items.removeIf(person -> !AutoSignIn.ID.equals(person.getACCOUNT_ID()));
+                Person p = items;//.get(0);
+                if(p == null) {
+                    usernameLabel.setText(AutoSignIn.EMAIL);
+                }else {
+                    usernameLabel.setText(p.getFirstName() +" " + p.getSurName());
+                }
+
+            }else {
+                usernameLabel.setText(AutoSignIn.EMAIL);
+            }
+        });
     }
 
     @Override
     public void viewWillLoad(ResourceBundle bundle) {
         super.viewWillLoad(bundle);
 
-        usernameLabel.setText(AutoSignIn.EMAIL);
+
 
         listView.setCellFactory(param -> new Cell());
 
