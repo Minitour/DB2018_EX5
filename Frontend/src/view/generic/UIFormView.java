@@ -1,6 +1,7 @@
 package view.generic;
 
 import com.google.gson.annotations.Expose;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -48,7 +49,7 @@ public abstract class UIFormView<T> extends UIView {
     /**
      * The existing value of this form.
      */
-    private T existingValue;
+    protected T existingValue;
 
     /**
      * The callback delegate.
@@ -150,7 +151,6 @@ public abstract class UIFormView<T> extends UIView {
                     //add change listener
                     comboBox.valueProperty().addListener((observable, oldValue, newValue)
                             -> {
-                        if(existingValue == null)
                             didComboSelectionChanged(fieldName,newValue);
                     });
 
@@ -467,6 +467,11 @@ public abstract class UIFormView<T> extends UIView {
                             value = Short.parseShort(data);
                         }catch (NumberFormatException e){ value = null; }
                     }
+
+                    if(ofField.equals(Boolean.class)){
+                        value = Boolean.parseBoolean(data);
+                    }
+
                     field.setAccessible(true);
                     field.set(instance,value);
                     continue;
@@ -508,6 +513,10 @@ public abstract class UIFormView<T> extends UIView {
                         try {
                             value = Short.parseShort(data);
                         }catch (NumberFormatException e){ value = null; }
+                    }
+
+                    if(ofField.equals(Boolean.class)){
+                        value = Boolean.parseBoolean(data);
                     }
                 }
 

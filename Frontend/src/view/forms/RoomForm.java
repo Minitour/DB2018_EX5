@@ -75,20 +75,24 @@ public class RoomForm extends UIFormView<Room> {
             case "hospitalID":
                 if(value != null) {
                     int hospitalId = (int) value.value;
-                    ComboBox comboBox = (ComboBox) elements_vbox.lookup("#departmentID");
-                    comboBox.getSelectionModel().clearSelection();
-                    this.departmentList.clear();
-                    new DepartmentAPI().readAll(new Department(hospitalId),(response, items) -> {
-                        if(response.isOK())
-                            for (Department item : items)
-                                departmentList.add(new ComboItem(
-                                        item.getDepartmentName(),
-                                        item.getDepartmentID()
-                                ));
-
-                    });
+                    select_department(hospitalId);
                 }
         }
+    }
+
+    void select_department(int hospitalId){
+        ComboBox comboBox = (ComboBox) elements_vbox.lookup("#departmentID");
+        comboBox.getSelectionModel().clearSelection();
+        this.departmentList.clear();
+        new DepartmentAPI().readAll(new Department(hospitalId),(response, items) -> {
+            if(response.isOK())
+                for (Department item : items)
+                    departmentList.add(new ComboItem(
+                            item.getDepartmentName(),
+                            item.getDepartmentID()
+                    ));
+
+        });
     }
 
     /**

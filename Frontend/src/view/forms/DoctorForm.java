@@ -8,16 +8,26 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import model.Department;
 import model.Doctor;
+import model.Hospital;
+import network.api.DepartmentAPI;
+import network.api.HospitalAPI;
 import utils.AutoColor;
+import utils.AutoSignIn;
 import view.generic.UIFormView;
 
 import java.util.Arrays;
+import java.util.ResourceBundle;
 
 /**
  * Created By Tony on 26/07/2018
  */
 public class DoctorForm extends UIFormView<Doctor> {
+
+    private ObservableList<ComboItem> hospitalList;
+    private ObservableList<ComboItem> departmentList;
+
     public DoctorForm(Doctor existingValue, OnFinish<Doctor> callback) {
         super(Doctor.class, existingValue, callback);
     }
@@ -43,8 +53,11 @@ public class DoctorForm extends UIFormView<Doctor> {
      */
     @Override
     protected String[] comboBoxForFields() {
-        return new String[]{"manager"};
+        return new String[]{"manager","hospitalID", "departmentID"};
     }
+
+
+
 
     /**
      * Here we return an observable list.
@@ -63,13 +76,41 @@ public class DoctorForm extends UIFormView<Doctor> {
         switch (fieldName){
             case "manager":
                 return FXCollections.observableArrayList(Arrays.asList(
-                        new ComboItem("Yes",1),
-                        new ComboItem("No",0))
+                        new ComboItem("Yes", "true"),
+                        new ComboItem("No","false"))
                 );
+            case "hospitalID":
+                return hospitalList;
+            case "departmentID":
+                return departmentList;
         }
         return null;
     }
 
+    @Override
+    protected void didComboSelectionChanged(String nameField, ComboItem value) {
+        if(existingValue != null)
+            return;
+
+        switch (nameField){
+            case "hospitalID":
+                if(value != null) {
+                    int hospitalId = (int) value.value;
+                    ComboBox comboBox = (ComboBox) elements_vbox.lookup("#departmentID");
+                    comboBox.getSelectionModel().clearSelection();
+                    this.departmentList.clear();
+                    new DepartmentAPI().readAll(new Department(hospitalId),(response, items) -> {
+                        if(response.isOK())
+                            for (Department item : items)
+                                departmentList.add(new ComboItem(
+                                        item.getDepartmentName(),
+                                        item.getDepartmentID()
+                                ));
+
+                    });
+                }
+        }
+    }
 
     /**
      * This method is used to lock certain fields when viewing an existing object.
@@ -81,5 +122,26 @@ public class DoctorForm extends UIFormView<Doctor> {
     @Override
     public String[] inupdateableFields() {
         return new String[]{"doctorID"};
+    }
+
+    @Override
+    public void layoutSubviews(ResourceBundle bundle) {
+        super.layoutSubviews(bundle);
+
+        hospitalList = FXCollections.observableArrayList();
+        departmentList = FXCollections.observableArrayList();
+
+        new HospitalAPI().readAll((response, items) -> {
+            if(response.isOK())
+                for (Hospital item : items)
+                    // if super user  - all
+                    // else can enter only with the same hospitalID as
+                    if (AutoSignIn.ROLE_ID == 6 || item.getHospitalID().equals(AutoSignIn.HOSPITAL_ID))
+                        hospitalList.add(new ComboItem(
+                                item.getName(),
+                                item.getHospitalID()
+                        ));
+
+        });
     }
 }
