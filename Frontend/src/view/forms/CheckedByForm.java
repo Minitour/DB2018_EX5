@@ -185,7 +185,7 @@ public class CheckedByForm extends UIFormView<CheckedBy> {
 
             new HospitalizedAPI().readAll(new Hospitalized(AutoSignIn.HOSPITAL_ID,0),(res1, hospitalizeds) -> {
                 for (Hospitalized hospitalized : hospitalizeds) {
-                    patients.add(new ComboItem(names.get(hospitalized.getPatientID()), hospitalized.getPatientID()));
+                    patients.add(new ComboItem(hospitalized.getPatientID()));
 
                     if(hospitalizedMap.containsKey(hospitalized.getPatientID())){
                         //add to set

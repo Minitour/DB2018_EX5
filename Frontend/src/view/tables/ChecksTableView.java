@@ -59,7 +59,7 @@ public class ChecksTableView extends GenericTableView<CheckedBy> {
     public TableColumnValue<CheckedBy> cellValueForColumnAt(int index) {
         switch (index){
             case 0:
-                return p -> names.get(p.getPatientID());
+                return CheckedBy::getPatientID;
             case 1:
                 return p -> eventMap.get(p.getEventCode()).getDescription();
             case 2:
