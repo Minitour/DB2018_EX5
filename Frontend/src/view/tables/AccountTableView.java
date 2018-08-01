@@ -46,7 +46,7 @@ public class AccountTableView extends GenericTableView<Account> {
             case 1:
                 return Account::getEMAIL;
             case 2:
-                return Account::getROLE_ID;
+                return Account::roleLiteral;
             case 3:
                 return Account::getHospitalID;
 

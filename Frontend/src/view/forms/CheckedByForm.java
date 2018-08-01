@@ -1,14 +1,18 @@
 package view.forms;
 
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import model.*;
 import network.api.*;
 import network.generic.GenericAPI;
 import sun.java2d.cmm.Profile;
+import utils.AutoColor;
 import utils.AutoSignIn;
 import utils.Response;
 import view.generic.UIFormView;
@@ -34,6 +38,12 @@ public class CheckedByForm extends UIFormView<CheckedBy> {
 
     private Map<Integer,MedicalEvent> eventMap;
 
+    @Override
+    protected DatePicker datePickerFactory() {
+        JFXDatePicker picker = new JFXDatePicker();
+        picker.setDefaultColor(Color.web(AutoColor.secondaryColor));
+        return picker;
+    }
 
     public CheckedByForm(CheckedBy existingValue, OnFinish<CheckedBy> callback) {
         super(CheckedBy.class, existingValue, callback);

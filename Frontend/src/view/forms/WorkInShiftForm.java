@@ -38,7 +38,7 @@ public class WorkInShiftForm extends UIFormView<WorkInShift> {
      */
     @Override
     protected String[] comboBoxForFields() {
-        return new String[]{"doctorId", "shiftNumber"};
+        return new String[]{"doctorID", "shiftNumber"};
     }
 
     /**

@@ -1,21 +1,24 @@
 package view.tables;
 
 import com.jfoenix.controls.JFXSnackbar;
+import model.Shift;
 import model.WorkInShift;
+import network.api.ShiftAPI;
 import network.api.WorkInShiftAPI;
+import network.generic.GenericAPI;
+import ui.UITableView;
+import utils.Response;
 import view.forms.WorkInShiftForm;
 import view.generic.GenericTableView;
 import view.generic.UIFormView;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class WorkInShiftTableView extends GenericTableView<WorkInShift> {
 
     private WorkInShiftAPI api ;
     private List<WorkInShift> shifts = new ArrayList<>();
+    private Map<Integer, Shift> allShifts = new HashMap<>();
 
     public WorkInShiftTableView(boolean delete, boolean update, boolean insert) {
         super(delete, update, insert);
@@ -62,6 +65,18 @@ public class WorkInShiftTableView extends GenericTableView<WorkInShift> {
     }
 
     @Override
+    public TableColumnValue<WorkInShift> cellValueForColumnAt(int index) {
+        switch (index){
+            case 1:
+                return ws -> {
+                    Shift s = allShifts.get(ws.getShiftNumber());
+                    return s.dayLiteralValue() + ", " +s.typeLiteralValue();
+                };
+                default:return super.cellValueForColumnAt(index);
+        }
+    }
+
+    @Override
     public void layoutSubviews(ResourceBundle bundle) {
         super.layoutSubviews(bundle);
         api = new WorkInShiftAPI();
@@ -72,9 +87,14 @@ public class WorkInShiftTableView extends GenericTableView<WorkInShift> {
     private void reloadDataFromServer(){
         api.readAll((response, items) -> {
             if(response.isOK()) {
-                shifts.clear();
-                shifts.addAll(items);
-                reloadData();
+                new ShiftAPI().readAll((res, data) -> {
+                    for (Shift shift : data)
+                        allShifts.put(shift.getShiftNumber(),shift);
+
+                    shifts.clear();
+                    shifts.addAll(items);
+                    reloadData();
+                });
             }
         });
     }

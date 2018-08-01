@@ -6,8 +6,8 @@ import javafx.scene.paint.Color;
  * Created By Tony on 01/08/2018
  */
 public class AutoColor {
-    public static String primaryColor = "#FFF";//"#3F51B5";
-    public static String secondaryColor = "#009688";//"#FF4081";
+    public static String primaryColor = "#24292e";//"#3F51B5";
+    public static String secondaryColor = "#28a745";//"#FF4081";
 
     public static Color primaryColor(){
         return Color.web(primaryColor);
