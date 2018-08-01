@@ -29,4 +29,18 @@ public class PaymentForm extends UIFormView<Payment> {
     public String[] inupdateableFields() {
         return new String[]{"serialNumber"};
     }
+
+    @Override
+    public String[] defaultValueFields() {
+        return new String[]{"serialNumber"};
+    }
+
+    @Override
+    protected Object defaultValueForField(String fieldName) {
+        switch (fieldName){
+            case "serialNumber":
+                return 0;
+                default:return null;
+        }
+    }
 }
