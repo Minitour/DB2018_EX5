@@ -14,6 +14,7 @@ import network.api.DoctorAPI;
 import network.api.ProfileAPI;
 import network.generic.GenericAPI;
 import utils.AutoColor;
+import utils.AutoSignIn;
 import utils.Response;
 import view.generic.UIFormView;
 
@@ -99,17 +100,26 @@ public class DoctorVacationForm extends UIFormView<DoctorVacation> {
 
 
         new DoctorAPI().readAll((response, items) -> {
+
+            Set<String> validDoctors = new HashSet<>();
+            for (Doctor item : items) {
+                if(AutoSignIn.ROLE_ID == 6 || AutoSignIn.HOSPITAL_ID.equals(item.getHospitalID()))
+                    validDoctors.add(item.getDoctorID());
+            }
+
             if(response.isOK()){
                 new ProfileAPI().readAll((response1, items1) -> {
+
                     for(Person p : items1){
                         names.put(p.getID(),p.getFirstName() + " " + p.getSurName());
                     }
 
                     for (Doctor item : items)
-                        doctors.add(new ComboItem(
-                                names.get(item.getDoctorID()),
-                                item.getDoctorID()
-                        ));
+                        if(validDoctors.contains(item.getDoctorID()))
+                            doctors.add(new ComboItem(
+                                    names.get(item.getDoctorID()),
+                                    item.getDoctorID()
+                            ));
                 });
 
 

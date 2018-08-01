@@ -1,12 +1,15 @@
 package view.tables;
 
 import com.jfoenix.controls.JFXSnackbar;
+import model.Doctor;
 import model.DoctorVacation;
 import model.Person;
+import network.api.DoctorAPI;
 import network.api.ProfileAPI;
 import network.api.VacationAPI;
 import network.generic.GenericAPI;
 import ui.UITableView;
+import utils.AutoSignIn;
 import utils.Response;
 import view.forms.DoctorVacationForm;
 import view.generic.GenericTableView;
@@ -87,16 +90,29 @@ public class DoctorVacationTableView extends GenericTableView<DoctorVacation> {
         api.readAll((response, items) -> {
 
             if(response.isOK()) {
-                new ProfileAPI().readAll((response1, items1) -> {
+                new DoctorAPI().readAll((response12, items12) -> {
+                    Set<String> validDoctors = new HashSet<>();
 
-                    for (Person profile : items1){
-                        names.put(profile.getID(),profile.getFirstName() +" "+profile.getSurName());
+                    for (Doctor doctor : items12) {
+                        if(AutoSignIn.ROLE_ID == 6 || AutoSignIn.HOSPITAL_ID.equals(doctor.getHospitalID()))
+                            validDoctors.add(doctor.getDoctorID());
                     }
 
-                    vacations.clear();
-                    vacations.addAll(items);
-                    reloadData();
+                    new ProfileAPI().readAll((response1, items1) -> {
+
+                        for (Person profile : items1){
+                            names.put(profile.getID(),profile.getFirstName() +" "+profile.getSurName());
+                        }
+                        vacations.clear();
+
+                        for (DoctorVacation item : items) {
+                            if(validDoctors.contains(item.getDoctorID()))
+                                vacations.add(item);
+                        }
+                        reloadData();
+                    });
                 });
+
 
             }
         });
