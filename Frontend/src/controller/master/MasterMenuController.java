@@ -9,13 +9,18 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import model.Hospital;
 import network.api.HospitalAPI;
 import ui.UIListViewCell;
 import ui.UIView;
 import ui.UIViewController;
+import utils.AutoColor;
 import utils.AutoSignIn;
 import view.DialogView;
 
@@ -28,7 +33,7 @@ import java.util.ResourceBundle;
 public abstract class MasterMenuController extends UIViewController {
 
     @FXML
-    private ListView<String> listView;
+    private ListView<MenuItem> listView;
 
     @FXML
     private AnchorPane rightMenu;
@@ -41,6 +46,9 @@ public abstract class MasterMenuController extends UIViewController {
 
     @FXML
     private Button logout;
+
+    @FXML
+    private Pane navBar;
 
     public MasterMenuController() {
         super("/resources/xml/controller_master.fxml");
@@ -69,6 +77,9 @@ public abstract class MasterMenuController extends UIViewController {
         listView.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue)
                 -> onListItemChanged(newValue.intValue()));
 
+        setNavBar(AutoColor.primaryColor,AutoColor.isColorDark(AutoColor.primaryColor));
+
+        logout.setStyle("-fx-text-fill: " + AutoColor.secondaryColor + ";");
 
     }
 
@@ -81,6 +92,14 @@ public abstract class MasterMenuController extends UIViewController {
         return dialogView;
     }
 
+    protected void setNavBar(String color, boolean isDark){
+        Color c = isDark ? Color.web("#FFF") : Color.web("#000");
+        navBar.setStyle("-fx-background-color: "+color+";");
+
+        welcomeLabel.setTextFill(c);
+        usernameLabel.setTextFill(c);
+    }
+
     public void setOnLogout(EventHandler<ActionEvent> eventHandler){
         logout.setOnAction(eventHandler);
     }
@@ -91,7 +110,7 @@ public abstract class MasterMenuController extends UIViewController {
 
     public abstract UIView viewForIndexAt(int index);
 
-    public abstract String[] itemsForMenu();
+    public abstract MenuItem[] itemsForMenu();
 
     private void showView(UIView view){
         rightMenu.getChildren().clear();
@@ -105,20 +124,30 @@ public abstract class MasterMenuController extends UIViewController {
         }
     }
 
-    static class Cell extends UIListViewCell<String, UIView> {
+    public static class MenuItem {
+        private String title;
+        private String image;
+
+        public MenuItem(String title, String image) {
+            this.title = title;
+            this.image = image;
+        }
+    }
+
+    static class Cell extends UIListViewCell<MenuItem, UIView> {
 
 
         private String defStyle;
         private String highlighted;
 
         @Override
-        public UIView load(String item) {
+        public UIView load(MenuItem item) {
 
             defStyle = getStyle();
-            highlighted = "-fx-background-color:  #ecf0f1 !important;-fx-background-radius: 5";
+            highlighted = "-fx-background-color:  #c7c9c9 !important;-fx-background-radius: 5";
             //setStyle(":selected{-fx-background-color:  #97ff8e !important;}");
             changeBackgroundOnHoverUsingBinding(this);
-            return new CellView().setData(item);
+            return new CellView().setData(item.title,item.image);
         }
 
         void changeBackgroundOnHoverUsingBinding(Node node) {
@@ -141,8 +170,19 @@ public abstract class MasterMenuController extends UIViewController {
         @FXML
         private Label menu;
 
-        public CellView setData(String str) {
+        @FXML
+        private ImageView imageView;
+
+        @FXML
+        private HBox vbox;
+
+        public CellView setData(String str,String image) {
             this.menu.setText(str);
+            if(image != null && !image.isEmpty()){
+                this.imageView.setImage(new Image(image));
+            }else {
+                vbox.getChildren().remove(imageView);
+            }
             return this;
         }
 

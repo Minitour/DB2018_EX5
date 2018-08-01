@@ -11,6 +11,7 @@ import javafx.scene.paint.Color;
 import model.*;
 import network.api.*;
 import network.generic.GenericAPI;
+import utils.AutoColor;
 import utils.AutoSignIn;
 import utils.Response;
 import view.generic.UIFormView;
@@ -43,7 +44,7 @@ public class HospitalizedForm extends UIFormView<Hospitalized> {
     @Override
     protected DatePicker datePickerFactory() {
         JFXDatePicker picker = new JFXDatePicker();
-        picker.setDefaultColor(Color.web("#2ecc71"));
+        picker.setDefaultColor(Color.web(AutoColor.secondaryColor));
         return picker;
     }
 

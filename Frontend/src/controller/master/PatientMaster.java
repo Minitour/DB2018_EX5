@@ -28,8 +28,11 @@ public class PatientMaster extends MasterMenuController {
     }
 
     @Override
-    public String[] itemsForMenu() {
-        return new String[]{"Profile","Account"};
+    public MenuItem[] itemsForMenu() {
+        return new MenuItem[]{
+                new MenuItem("Profile",""),
+                new MenuItem("Account","")
+        };
     }
 
 }

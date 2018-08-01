@@ -2,10 +2,7 @@ package controller.master;
 
 import ui.UIView;
 import view.CardView;
-import view.forms.DepartmentForm;
-import view.forms.HospitalForm;
 import view.special.AccountView;
-import view.special.DashboardView;
 import view.special.SuperDashboardView;
 import view.tables.*;
 
@@ -36,17 +33,17 @@ public class SuperUserMaster extends MasterMenuController {
     }
 
     @Override
-    public String[] itemsForMenu() {
-        return new String[]{
-                "Dashboard",
-                "Hospitals", //create hospitals
-                "Users", // create admins
-                "Profiles",
-                "Medical Events",
-                "Medical Event Types",
-                "Shifts",
-                "Payments",
-                "Account"
+    public MenuItem[] itemsForMenu() {
+        return new MenuItem[]{
+                new MenuItem("Dashboard",""),
+                new MenuItem("Hospitals",""),
+                new MenuItem("Users",""),
+                new MenuItem("Profiles",""),
+                new MenuItem("Medical Events",""),
+                new MenuItem("Medical Event Types",""),
+                new MenuItem("Shifts",""),
+                new MenuItem("Payments",""),
+                new MenuItem("Account","")
         };
     }
 }
