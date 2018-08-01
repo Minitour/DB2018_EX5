@@ -1,8 +1,10 @@
 package view.tables;
 
 import com.jfoenix.controls.JFXSnackbar;
+import model.Person;
 import model.Shift;
 import model.WorkInShift;
+import network.api.ProfileAPI;
 import network.api.ShiftAPI;
 import network.api.WorkInShiftAPI;
 import network.generic.GenericAPI;
@@ -19,6 +21,7 @@ public class WorkInShiftTableView extends GenericTableView<WorkInShift> {
     private WorkInShiftAPI api ;
     private List<WorkInShift> shifts = new ArrayList<>();
     private Map<Integer, Shift> allShifts = new HashMap<>();
+    private Map<String,String> names = new HashMap<>();
 
     public WorkInShiftTableView(boolean delete, boolean update, boolean insert) {
         super(delete, update, insert);
@@ -67,6 +70,8 @@ public class WorkInShiftTableView extends GenericTableView<WorkInShift> {
     @Override
     public TableColumnValue<WorkInShift> cellValueForColumnAt(int index) {
         switch (index){
+            case 0:
+                return ws -> names.get(ws.getDoctorID());
             case 1:
                 return ws -> {
                     Shift s = allShifts.get(ws.getShiftNumber());
@@ -91,9 +96,15 @@ public class WorkInShiftTableView extends GenericTableView<WorkInShift> {
                     for (Shift shift : data)
                         allShifts.put(shift.getShiftNumber(),shift);
 
-                    shifts.clear();
-                    shifts.addAll(items);
-                    reloadData();
+                    new ProfileAPI().readAll((response1, items1) -> {
+
+                        for(Person p : items1)
+                            names.put(p.getID(),p.getFirstName() + " " + p.getSurName());
+
+                        shifts.clear();
+                        shifts.addAll(items);
+                        reloadData();
+                    });
                 });
             }
         });
